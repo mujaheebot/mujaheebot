@@ -27,7 +27,7 @@
       padding-bottom: 30px;
     }
 
-    /* Top Pills Navigation */
+    /* Top Navigation Pills */
     .top-nav {
       background-color: #041713;
       border: 1px solid rgba(0, 230, 153, 0.2);
@@ -98,7 +98,7 @@
       grid-template-columns: repeat(5, 1fr);
       gap: 6px;
       background-color: #02120e;
-      padding: 12px;
+      padding: 10px;
       border-radius: 12px;
       border: 2px solid rgba(0, 230, 153, 0.4);
     }
@@ -112,7 +112,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       color: var(--accent-green);
     }
 
@@ -132,7 +132,27 @@
       text-align: center;
     }
 
-    /* Command Buttons */
+    /* Option Button (Sisi Kiri) */
+    .opt-btn {
+      background-color: #093b30;
+      color: var(--text-light);
+      border: 1px solid var(--accent-green);
+      border-radius: 8px;
+      padding: 10px 14px;
+      width: 100%;
+      text-align: left;
+      font-weight: 600;
+      margin-bottom: 8px;
+      transition: all 0.2s;
+    }
+
+    .opt-btn:hover {
+      background-color: var(--accent-green);
+      color: #000;
+      transform: translateX(4px);
+    }
+
+    /* Command Buttons (Sisi Kanan) */
     .cmd-btn {
       color: #ffffff;
       border: none;
@@ -160,7 +180,7 @@
       background-color: #020b09;
       border: 2px dashed rgba(0, 230, 153, 0.3);
       border-radius: 10px;
-      min-height: 160px;
+      min-height: 150px;
       padding: 15px;
       display: flex;
       flex-wrap: wrap;
@@ -182,25 +202,6 @@
     .btn-run:hover {
       background-color: #34d399;
       transform: scale(1.02);
-    }
-
-    .opt-btn {
-      background-color: #093b30;
-      color: var(--text-light);
-      border: 1px solid var(--accent-green);
-      border-radius: 8px;
-      padding: 12px 16px;
-      width: 100%;
-      text-align: left;
-      font-weight: 600;
-      margin-bottom: 8px;
-      transition: all 0.2s;
-    }
-
-    .opt-btn:hover {
-      background-color: var(--accent-green);
-      color: #000;
-      transform: translateX(4px);
     }
 
     .feedback-overlay {
@@ -239,32 +240,41 @@
         <div class="d-flex align-items-center gap-2">
           <label for="moduleSelect" class="fw-bold small text-light m-0">Modul:</label>
           <select id="moduleSelect" class="form-select bg-dark text-light border-success form-select-sm" style="min-width: 260px;" onchange="loadChallenge(this.value)">
-            <!-- Options from challenges.json -->
+            <!-- Populated from challenges.json -->
           </select>
         </div>
         <span class="badge-star"><i class="fa-solid fa-star me-1"></i> <span id="scoreDisplay">0</span></span>
       </div>
     </div>
 
-    <!-- Workspace Layout (Gambar 100% Persis) -->
+    <!-- Workspace Layout (Kiri: Soal, Option, Map | Kanan: Blok Perintah & Logic) -->
     <div class="row g-3">
       
-      <!-- Left Column: Module Card & Grid Game Board -->
+      <!-- SISI KIRI: Deskripsi Level + Pilihan Ganda (ABC) + Grid Game Board -->
       <div class="col-lg-6">
         
-        <!-- Module Card -->
-        <div class="panel-card mb-3" style="min-height: 110px;">
+        <!-- Module Card Info -->
+        <div class="panel-card mb-3">
           <div class="d-flex align-items-start gap-3">
             <i class="fa-solid fa-graduation-cap fa-2x text-success mt-1"></i>
             <div>
-              <h5 id="modTitle" class="fw-bold text-success mb-1">Modul 2: Aksi Go Green Mujahidin</h5>
-              <p id="modDesc" class="small m-0 text-light opacity-90">Bersihkan sampah di lapangan sekolah! Gunakan perintah 'Ambil' dan blok 'Ulangi' agar lebih efisien.</p>
+              <h5 id="modTitle" class="fw-bold text-success mb-1">Modul Level</h5>
+              <p id="modDesc" class="small m-0 text-light opacity-90">Deskripsi Soal dan Tantangan...</p>
             </div>
+          </div>
+        </div>
+
+        <!-- Pilihan Ganda (ABC) - Tampil di Sisi Kiri jika tipe Soal Multiple Choice -->
+        <div id="leftOptionsArea" class="panel-card mb-3" style="display: none;">
+          <div class="small fw-bold text-warning mb-2"><i class="fa-solid fa-list-check me-1"></i> PILIH JAWABAN YANG TEPAT:</div>
+          <div id="quizOptionsContainer">
+            <!-- Pilihan A, B, C, D di-generate otomatis di sini -->
           </div>
         </div>
 
         <!-- Grid Game Board Simulation -->
         <div class="panel-card">
+          <div class="small fw-bold text-success mb-2"><i class="fa-solid fa-map-location-dot me-1"></i> PETA KISI SIMULASI MUJAHEEBOT</div>
           <div class="grid-board" id="gridBoard">
             <!-- 25 Grid Cells -->
           </div>
@@ -272,7 +282,7 @@
 
       </div>
 
-      <!-- Right Column: Command Palette & Code Assembly -->
+      <!-- SISI KANAN: Blok Perintah & Program MujaHeeBot Assembly -->
       <div class="col-lg-6">
         <div class="panel-card d-flex flex-column justify-content-between">
           
@@ -289,7 +299,7 @@
             </div>
           </div>
 
-          <!-- Code Builder Area / Quiz Container -->
+          <!-- Code Builder Area -->
           <div class="mb-3">
             <div class="d-flex justify-content-between align-items-center mb-2">
               <span class="small fw-bold text-light"><i class="fa-solid fa-code me-1 text-success"></i> PROGRAM MUJAHIBOT</span>
@@ -299,9 +309,6 @@
             <div id="programEditor" class="program-editor">
               <span id="placeholderText" class="text-muted small m-auto text-center">Belum ada perintah.<br>Klik tombol di atas untuk menyusun logika MujaHiBot!</span>
             </div>
-
-            <!-- Quiz Option Area (Hanya tampil jika pilihan ganda) -->
-            <div id="quizOptionsContainer" class="mt-2" style="display: none;"></div>
           </div>
 
           <!-- Action Buttons & Feedback -->
@@ -370,15 +377,17 @@
       document.getElementById('modDesc').textContent = ch.question;
       document.getElementById('feedbackBox').style.display = 'none';
 
-      const quizContainer = document.getElementById('quizOptionsContainer');
+      const optionsArea = document.getElementById('leftOptionsArea');
+      const optionsContainer = document.getElementById('quizOptionsContainer');
+
       if (ch.type === 'multiple_choice') {
-        quizContainer.style.display = 'block';
-        quizContainer.innerHTML = ch.options.map(opt => `
+        optionsArea.style.display = 'block';
+        optionsContainer.innerHTML = ch.options.map(opt => `
           <button class="opt-btn" onclick="checkChoice('${opt}')">${opt}</button>
         `).join('');
       } else {
-        quizContainer.style.display = 'none';
-        quizContainer.innerHTML = '';
+        optionsArea.style.display = 'none';
+        optionsContainer.innerHTML = '';
       }
 
       updateEditorDisplay();
@@ -393,7 +402,6 @@
         const cell = document.createElement('div');
         cell.className = 'grid-cell';
 
-        // Render Persis seperti screenshot (Robot, Sampah, Rintangan, Bank Sampah)
         if (i === 5) {
           cell.classList.add('bot');
           cell.innerHTML = '<i class="fa-solid fa-robot"></i>';
