@@ -9,8 +9,8 @@
   <style>
     :root {
       --bg-dark: #031410;
-      --panel-bg: #07221c;
-      --card-bg: #0b2e26;
+      --panel-bg: #061e18;
+      --card-bg: #0a2922;
       --accent-green: #00e699;
       --btn-blue: #2563eb;
       --btn-purple: #7c3aed;
@@ -27,7 +27,35 @@
       padding-bottom: 30px;
     }
 
-    /* Header Main Banner */
+    /* Top Pills Navigation */
+    .top-nav {
+      background-color: #041713;
+      border: 1px solid rgba(0, 230, 153, 0.2);
+      border-radius: 12px;
+      padding: 10px 15px;
+      margin-bottom: 20px;
+    }
+
+    .nav-pill-btn {
+      background-color: #082b23;
+      color: #a3e635;
+      border: 1px solid #15803d;
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .nav-pill-btn.active, .nav-pill-btn:hover {
+      background-color: #0284c7;
+      color: #ffffff;
+      border-color: #38bdf8;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+    }
+
+    /* Header Banner */
     .main-header-card {
       background: linear-gradient(135deg, #093b30, #041d18);
       border: 2px solid var(--accent-green);
@@ -36,11 +64,15 @@
       box-shadow: 0 0 15px rgba(0, 230, 153, 0.2);
     }
 
-    .school-emblem {
+    .bot-icon-badge {
       width: 48px;
       height: 48px;
-      object-fit: contain;
-      filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+      background-color: #093b30;
+      border: 2px solid var(--accent-green);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .badge-star {
@@ -60,29 +92,28 @@
       height: 100%;
     }
 
-    /* Grid Game Simulation (5x5) */
+    /* Grid Game 5x5 Board */
     .grid-board {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       gap: 6px;
-      background-color: #031a15;
-      padding: 10px;
+      background-color: #02120e;
+      padding: 12px;
       border-radius: 12px;
       border: 2px solid rgba(0, 230, 153, 0.4);
     }
 
     .grid-cell {
       aspect-ratio: 1;
-      background-color: #092e26;
+      background-color: #082a22;
       border: 1px solid rgba(0, 230, 153, 0.15);
       border-radius: 6px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       color: var(--accent-green);
-      transition: all 0.3s;
     }
 
     .grid-cell.bot {
@@ -96,19 +127,19 @@
       background-color: #14532d;
       border: 2px dashed var(--accent-yellow);
       color: var(--accent-yellow);
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: bold;
       text-align: center;
     }
 
-    /* Command Blocks */
+    /* Command Buttons */
     .cmd-btn {
       color: #ffffff;
       border: none;
-      padding: 8px 12px;
+      padding: 10px 14px;
       border-radius: 8px;
       font-weight: 700;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -124,12 +155,12 @@
       filter: brightness(1.15);
     }
 
-    /* Code Assembly Area */
+    /* Code Assembly Box */
     .program-editor {
-      background-color: #020f0c;
+      background-color: #020b09;
       border: 2px dashed rgba(0, 230, 153, 0.3);
       border-radius: 10px;
-      min-height: 140px;
+      min-height: 160px;
       padding: 15px;
       display: flex;
       flex-wrap: wrap;
@@ -144,8 +175,8 @@
       border: none;
       padding: 12px 20px;
       border-radius: 8px;
-      font-size: 1rem;
-      box-shadow: 0 0 10px rgba(0, 230, 153, 0.4);
+      font-size: 1.05rem;
+      box-shadow: 0 0 12px rgba(0, 230, 153, 0.4);
     }
 
     .btn-run:hover {
@@ -153,40 +184,30 @@
       transform: scale(1.02);
     }
 
-    /* Option Button for Multiple Choice */
     .opt-btn {
       background-color: #093b30;
       color: var(--text-light);
       border: 1px solid var(--accent-green);
-      border-radius: 10px;
-      padding: 12px 18px;
+      border-radius: 8px;
+      padding: 12px 16px;
       width: 100%;
       text-align: left;
       font-weight: 600;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       transition: all 0.2s;
     }
 
     .opt-btn:hover {
       background-color: var(--accent-green);
       color: #000;
-      transform: translateX(5px);
+      transform: translateX(4px);
     }
 
     .feedback-overlay {
       display: none;
       border-radius: 10px;
-      padding: 12px 18px;
+      padding: 14px 18px;
       margin-top: 15px;
-    }
-
-    .info-badge {
-      font-size: 0.75rem;
-      background-color: #093b30;
-      color: var(--accent-green);
-      padding: 3px 8px;
-      border-radius: 6px;
-      border: 1px solid rgba(0, 230, 153, 0.3);
     }
   </style>
 </head>
@@ -194,109 +215,110 @@
 
   <div class="container-fluid px-4">
 
-    <!-- Header Main Banner -->
-    <div class="main-header-card d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+    <!-- Top Navigation Pills -->
+    <div class="top-nav d-flex flex-wrap justify-content-center gap-2">
+      <a href="#" class="nav-pill-btn"><i class="fa-solid fa-book me-1"></i> 1. TEORI & KONSEP</a>
+      <a href="#" class="nav-pill-btn"><i class="fa-solid fa-microchip me-1"></i> 2. ANATOMI KOMPONEN KOMPUTER</a>
+      <a href="#" class="nav-pill-btn"><i class="fa-solid fa-gamepad me-1"></i> 3. ARENA GAME & TANTANGAN</a>
+      <a href="#" class="nav-pill-btn active"><i class="fa-solid fa-robot me-1"></i> 4. MUJAHEEBOT CODING</a>
+      <a href="#" class="nav-pill-btn"><i class="fa-solid fa-code me-1"></i> 5. CODING KIDS (SCRATCH)</a>
+    </div>
+
+    <!-- Header Main Quest Banner -->
+    <div class="main-header-card d-flex flex-wrap justify-content-between align-items-center mb-3 gap-3">
       <div class="d-flex align-items-center gap-3">
-        <img src="https://lh3.googleusercontent.com/d/1nBO66TKYu_Nzv4XckDaRZJGCqmbqjWS1" alt="Logo SD Mujahidin" class="school-emblem">
-        <i class="fa-solid fa-robot fa-2x text-success"></i>
+        <div class="bot-icon-badge">
+          <i class="fa-solid fa-robot fa-2x text-success"></i>
+        </div>
         <div>
           <h3 class="m-0 fw-bold text-light">MujaHeeBot Coding Quest</h3>
-          <small class="text-success-light opacity-75">Platform Digital Logika & Coding SD AI Mujahidin Wonosari</small>
+          <small class="text-success-light opacity-75">Petualangan Logika & Coding SD AI Mujahidin Wonosari</small>
         </div>
       </div>
       <div class="d-flex align-items-center gap-3">
         <div class="d-flex align-items-center gap-2">
-          <label for="moduleSelect" class="fw-bold small text-light m-0"><i class="fa-solid fa-layer-group me-1 text-warning"></i> Pilih Level:</label>
+          <label for="moduleSelect" class="fw-bold small text-light m-0">Modul:</label>
           <select id="moduleSelect" class="form-select bg-dark text-light border-success form-select-sm" style="min-width: 260px;" onchange="loadChallenge(this.value)">
-            <!-- Populated from challenges.json -->
+            <!-- Options from challenges.json -->
           </select>
         </div>
         <span class="badge-star"><i class="fa-solid fa-star me-1"></i> <span id="scoreDisplay">0</span></span>
       </div>
     </div>
 
-    <!-- Main Workspace -->
+    <!-- Workspace Layout (Gambar 100% Persis) -->
     <div class="row g-3">
       
-      <!-- Left Column: Description & Simulation Map -->
+      <!-- Left Column: Module Card & Grid Game Board -->
       <div class="col-lg-6">
         
-        <!-- Module Info -->
-        <div class="panel-card mb-3">
+        <!-- Module Card -->
+        <div class="panel-card mb-3" style="min-height: 110px;">
           <div class="d-flex align-items-start gap-3">
-            <i class="fa-solid fa-graduation-cap fa-2x text-warning"></i>
-            <div class="w-100">
-              <div class="d-flex justify-content-between align-items-center mb-1">
-                <h5 id="modTitle" class="fw-bold text-success m-0">Level 1</h5>
-                <span id="modLevelBadge" class="badge bg-warning text-dark fw-bold">Pemula</span>
-              </div>
-              
-              <p id="modDesc" class="small m-0 text-light opacity-90 mb-2">Deskripsi tantangan...</p>
-              
-              <div class="d-flex flex-wrap gap-2 pt-1 border-top border-secondary border-opacity-25">
-                <span class="info-badge"><i class="fa-solid fa-book-open me-1"></i> Materi: <strong id="modSubject">-</strong></span>
-                <span class="info-badge"><i class="fa-solid fa-heart me-1"></i> Karakter: <strong id="modChar">-</strong></span>
-                <span class="info-badge"><i class="fa-solid fa-bullseye me-1"></i> <strong id="modSdg">-</strong></span>
-              </div>
+            <i class="fa-solid fa-graduation-cap fa-2x text-success mt-1"></i>
+            <div>
+              <h5 id="modTitle" class="fw-bold text-success mb-1">Modul 2: Aksi Go Green Mujahidin</h5>
+              <p id="modDesc" class="small m-0 text-light opacity-90">Bersihkan sampah di lapangan sekolah! Gunakan perintah 'Ambil' dan blok 'Ulangi' agar lebih efisien.</p>
             </div>
           </div>
         </div>
 
-        <!-- Grid Board Simulation -->
+        <!-- Grid Game Board Simulation -->
         <div class="panel-card">
-          <div class="small fw-bold text-success mb-2"><i class="fa-solid fa-map-location-dot me-1"></i> PETA SIMULASI INTERAKTIF</div>
           <div class="grid-board" id="gridBoard">
-            <!-- 25 Cells -->
+            <!-- 25 Grid Cells -->
           </div>
         </div>
 
       </div>
 
-      <!-- Right Column: Adaptif Block Coding OR Multiple Choice -->
+      <!-- Right Column: Command Palette & Code Assembly -->
       <div class="col-lg-6">
         <div class="panel-card d-flex flex-column justify-content-between">
           
-          <!-- Mode 1: Drag & Drop Coding Blocks (Tampil jika type == 'drag_drop_code') -->
-          <div id="codingModeArea">
-            <div class="mb-3">
-              <div class="small fw-bold text-light mb-2"><i class="fa-solid fa-cubes me-1 text-success"></i> BLOK PERINTAH (KLIK UNTUK TAMBAH)</div>
-              <div class="row g-2" id="commandButtonsContainer">
-                <!-- Dynamic command buttons -->
-              </div>
+          <!-- Command Blocks Palette -->
+          <div class="mb-3">
+            <div class="small fw-bold text-light mb-2"><i class="fa-solid fa-cubes me-1 text-success"></i> BLOK PERINTAH (KLIK UNTUK TAMBAH)</div>
+            <div class="row g-2">
+              <div class="col-4"><button class="cmd-btn cmd-btn-blue w-100" onclick="addCommand('Maju 1')"><span>↑ Maju 1</span> <span>+</span></button></div>
+              <div class="col-4"><button class="cmd-btn cmd-btn-blue w-100" onclick="addCommand('Belok Kiri')"><span>↺ Belok Kiri</span> <span>+</span></button></div>
+              <div class="col-4"><button class="cmd-btn cmd-btn-blue w-100" onclick="addCommand('Belok Kanan')"><span>↻ Belok Kanan</span> <span>+</span></button></div>
+              <div class="col-4"><button class="cmd-btn cmd-btn-orange w-100" onclick="addCommand('Ambil Objek')"><span>✋ Ambil Objek</span> <span>+</span></button></div>
+              <div class="col-4"><button class="cmd-btn cmd-btn-purple w-100" onclick="addCommand('Ulangi 2x')"><span>🔁 Ulangi 2x</span> <span>+</span></button></div>
+              <div class="col-4"><button class="cmd-btn cmd-btn-purple w-100" onclick="addCommand('Ulangi 3x')"><span>🔁 Ulangi 3x</span> <span>+</span></button></div>
+            </div>
+          </div>
+
+          <!-- Code Builder Area / Quiz Container -->
+          <div class="mb-3">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="small fw-bold text-light"><i class="fa-solid fa-code me-1 text-success"></i> PROGRAM MUJAHIBOT</span>
+              <button class="btn btn-link btn-sm text-danger text-decoration-none p-0 fw-bold" onclick="resetCode()"><i class="fa-solid fa-trash me-1"></i> Hapus Semua</button>
+            </div>
+            
+            <div id="programEditor" class="program-editor">
+              <span id="placeholderText" class="text-muted small m-auto text-center">Belum ada perintah.<br>Klik tombol di atas untuk menyusun logika MujaHiBot!</span>
             </div>
 
-            <div class="mb-3">
-              <div class="d-flex justify-content-between align-items-center mb-2">
-                <span class="small fw-bold text-light"><i class="fa-solid fa-code me-1 text-success"></i> PROGRAM MUJAHIBOT</span>
-                <button class="btn btn-link btn-sm text-danger text-decoration-none p-0 fw-bold" onclick="resetCode()"><i class="fa-solid fa-trash me-1"></i> Hapus Semua</button>
-              </div>
-              
-              <div id="programEditor" class="program-editor">
-                <span id="placeholderText" class="text-muted small m-auto text-center">Belum ada perintah.<br>Klik tombol di atas untuk menyusun logika MujaHeeBot!</span>
-              </div>
-            </div>
+            <!-- Quiz Option Area (Hanya tampil jika pilihan ganda) -->
+            <div id="quizOptionsContainer" class="mt-2" style="display: none;"></div>
+          </div>
 
+          <!-- Action Buttons & Feedback -->
+          <div>
             <div class="d-flex gap-2">
               <button class="btn btn-run flex-grow-1" onclick="executeProgram()"><i class="fa-solid fa-play me-2"></i> JALANKAN KODE</button>
               <button class="btn btn-outline-secondary text-light px-3" onclick="resetCode()"><i class="fa-solid fa-arrow-rotate-left"></i></button>
             </div>
-          </div>
 
-          <!-- Mode 2: Multiple Choice Options (Tampil jika type == 'multiple_choice') -->
-          <div id="quizModeArea" style="display: none;">
-            <div class="small fw-bold text-warning mb-3"><i class="fa-solid fa-list-check me-1"></i> PILIH JAWABAN YANG TEPAT:</div>
-            <div id="optionsContainer">
-              <!-- Options loaded dynamically -->
-            </div>
-          </div>
-
-          <!-- Feedback Box -->
-          <div id="feedbackBox" class="feedback-overlay">
-            <div class="d-flex align-items-center gap-2">
-              <i id="feedbackIcon" class="fa-solid fa-circle-check fa-2x"></i>
-              <div>
-                <h6 id="feedbackTitle" class="m-0 fw-bold">Respon MujaHeeBot:</h6>
-                <p id="feedbackMsg" class="small m-0 text-light"></p>
+            <!-- Feedback Overlay -->
+            <div id="feedbackBox" class="feedback-overlay">
+              <div class="d-flex align-items-center gap-2">
+                <i id="feedbackIcon" class="fa-solid fa-circle-check text-warning fa-2x"></i>
+                <div>
+                  <h6 id="feedbackTitle" class="m-0 fw-bold text-warning">Respon MujaHeeBot:</h6>
+                  <p id="feedbackMsg" class="small m-0 text-light"></p>
+                </div>
               </div>
             </div>
           </div>
@@ -317,7 +339,6 @@
     let currentIdx = 0;
     let userProgram = [];
     let score = 0;
-    let botPos = 20; // Posisi Awal Bot di Grid
 
     async function init() {
       try {
@@ -344,55 +365,24 @@
       currentIdx = parseInt(idx);
       const ch = challengesData[currentIdx];
       userProgram = [];
-      botPos = 20;
       
       document.getElementById('modTitle').textContent = ch.title;
       document.getElementById('modDesc').textContent = ch.question;
-      document.getElementById('modLevelBadge').textContent = ch.level || "Pemula";
-      document.getElementById('modSubject').textContent = ch.academic_subject || "Umum";
-      document.getElementById('modChar').textContent = ch.character_value || "Berakhlak Mulia";
-      document.getElementById('modSdg').textContent = ch.sdg_target || "SDG 4";
-      
       document.getElementById('feedbackBox').style.display = 'none';
 
+      const quizContainer = document.getElementById('quizOptionsContainer');
       if (ch.type === 'multiple_choice') {
-        document.getElementById('codingModeArea').style.display = 'none';
-        document.getElementById('quizModeArea').style.display = 'block';
-        renderOptions(ch);
+        quizContainer.style.display = 'block';
+        quizContainer.innerHTML = ch.options.map(opt => `
+          <button class="opt-btn" onclick="checkChoice('${opt}')">${opt}</button>
+        `).join('');
       } else {
-        document.getElementById('codingModeArea').style.display = 'block';
-        document.getElementById('quizModeArea').style.display = 'none';
-        renderCommandButtons(ch);
-        updateEditorDisplay();
+        quizContainer.style.display = 'none';
+        quizContainer.innerHTML = '';
       }
 
+      updateEditorDisplay();
       renderGridBoard();
-    }
-
-    function renderCommandButtons(ch) {
-      const container = document.getElementById('commandButtonsContainer');
-      const blocks = ch.initial_blocks || ["Maju 1", "Belok Kiri", "Belok Kanan", "Ambil Objek", "Ulangi 2x", "Ulangi 3x"];
-      
-      container.innerHTML = blocks.map(b => {
-        let btnClass = "cmd-btn-blue";
-        if (b.includes("Ambil")) btnClass = "cmd-btn-orange";
-        if (b.includes("Ulangi")) btnClass = "cmd-btn-purple";
-
-        return `
-          <div class="col-6 col-md-4">
-            <button class="cmd-btn ${btnClass} w-100" onclick="addCommand('${b}')">
-              <span>${b}</span> <span>+</span>
-            </button>
-          </div>
-        `;
-      }).join('');
-    }
-
-    function renderOptions(ch) {
-      const container = document.getElementById('optionsContainer');
-      container.innerHTML = ch.options.map(opt => `
-        <button class="opt-btn" onclick="checkAnswer('${opt}')">${opt}</button>
-      `).join('');
     }
 
     function renderGridBoard() {
@@ -402,18 +392,18 @@
       for (let i = 0; i < 25; i++) {
         const cell = document.createElement('div');
         cell.className = 'grid-cell';
-        cell.id = `cell-${i}`;
 
-        if (i === botPos) {
+        // Render Persis seperti screenshot (Robot, Sampah, Rintangan, Bank Sampah)
+        if (i === 5) {
           cell.classList.add('bot');
           cell.innerHTML = '<i class="fa-solid fa-robot"></i>';
-        } else if (i === 17) {
-          cell.innerHTML = '<i class="fa-solid fa-book text-info"></i>';
-        } else if (i === 8 || i === 13 || i === 18) {
+        } else if (i === 6 || i === 11 || i === 16) {
+          cell.innerHTML = '<i class="fa-solid fa-trash-can text-info opacity-75"></i>';
+        } else if (i === 7 || i === 18) {
           cell.innerHTML = '<i class="fa-solid fa-ban text-danger opacity-50"></i>';
-        } else if (i === 4) {
+        } else if (i === 24) {
           cell.classList.add('target');
-          cell.innerHTML = '<i class="fa-solid fa-school fa-lg"></i><span>Kelas</span>';
+          cell.innerHTML = '<i class="fa-solid fa-recycle fa-lg mb-1"></i><span>Bank Sampah</span>';
         }
 
         board.appendChild(cell);
@@ -428,7 +418,7 @@
     function updateEditorDisplay() {
       const editor = document.getElementById('programEditor');
       if (userProgram.length === 0) {
-        editor.innerHTML = '<span id="placeholderText" class="text-muted small m-auto text-center">Belum ada perintah.<br>Klik tombol di atas untuk menyusun logika MujaHeeBot!</span>';
+        editor.innerHTML = '<span id="placeholderText" class="text-muted small m-auto text-center">Belum ada perintah.<br>Klik tombol di atas untuk menyusun logika MujaHiBot!</span>';
         return;
       }
 
@@ -439,38 +429,37 @@
 
     function resetCode() {
       userProgram = [];
-      botPos = 20;
       updateEditorDisplay();
-      renderGridBoard();
       document.getElementById('feedbackBox').style.display = 'none';
     }
 
-    function checkAnswer(selectedOpt) {
+    function checkChoice(opt) {
       const ch = challengesData[currentIdx];
-      const isCorrect = selectedOpt === ch.correct_answer;
-      showFeedback(isCorrect, isCorrect ? ch.positive_feedback : "Jawabanmu belum pas. Hitung kembali dengan teliti ya!");
+      const isCorrect = opt === ch.correct_answer;
+      showFeedback(isCorrect, isCorrect ? ch.positive_feedback : "Jawabanmu belum tepat. Teliti dan hitung kembali ya!");
     }
 
     function executeProgram() {
       const ch = challengesData[currentIdx];
-      const isCorrect = JSON.stringify(userProgram) === JSON.stringify(ch.correct_sequence);
-      
-      if (userProgram.length > 0) {
-        botPos = 4; // Animasi simulasi bot melangkah ke target
-        renderGridBoard();
+      let isCorrect = false;
+
+      if (ch.type === 'drag_drop_code') {
+        isCorrect = JSON.stringify(userProgram) === JSON.stringify(ch.correct_sequence);
+      } else {
+        isCorrect = userProgram.length > 0;
       }
 
       showFeedback(isCorrect, isCorrect ? ch.positive_feedback : "Hampir tepat! Tinjau kembali susunan blok perintah MujaHeeBot dan coba lagi ya!");
     }
 
-    function showFeedback(isCorrect, message) {
+    function showFeedback(isCorrect, msg) {
       const box = document.getElementById('feedbackBox');
-      const msg = document.getElementById('feedbackMsg');
+      const text = document.getElementById('feedbackMsg');
       const title = document.getElementById('feedbackTitle');
       const icon = document.getElementById('feedbackIcon');
 
       box.style.display = 'block';
-      msg.textContent = message;
+      text.textContent = msg;
 
       if (isCorrect) {
         box.style.backgroundColor = '#064e3b';
