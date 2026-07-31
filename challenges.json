@@ -1,168 +1,1922 @@
 [
   {
     "id": "ch_001",
-    "title": "Level 1: Bismillah, Langkah Pertama",
+    "title": "Level 1: Skala Denah Sekolah #1",
     "level": "Pemula",
-    "academic_subject": "Agama Islam & Adab",
-    "character_value": "Pembiasaan Doa & Ketepatan Waktu",
-    "sdg_target": "SDG 4: Quality Education",
-    "type": "drag_drop_code",
-    "question": "Pandu MujaHeeBot untuk berdoa sebelum belajar dan melangkah maju menuju ruang kelas I Champion!",
-    "initial_blocks": ["Baca Doa", "Maju 1 Langkah", "Masuk Kelas"],
-    "correct_sequence": ["Baca Doa", "Maju 1 Langkah", "Masuk Kelas"],
-    "positive_feedback": "MasyaAllah! Awal yang penuh berkah. Selamat belajar, generasi Rabbani!"
-  },
-  {
-    "id": "ch_002",
-    "title": "Level 2: Hitung Skala Denah Sekolah",
-    "level": "Pemula",
-    "academic_subject": "Matematika (Skala & Peta)",
+    "academic_subject": "Matematika (Skala & Denah)",
     "character_value": "Ketelitian & Pengenalan Lingkungan",
     "sdg_target": "SDG 11: Sustainable Cities",
     "type": "multiple_choice",
-    "question": "Jarak sebenarnya dari gerbang ke Laboratorium Komputer adalah 100 meter. Jika skala denah 1 : 2.000, berapakah jarak pada denah?",
-    "options": ["A. 5 cm", "B. 10 cm", "C. 2 cm", "D. 50 cm"],
-    "correct_answer": "A. 5 cm",
-    "positive_feedback": "Barakallah! Perhitunganmu sangat teliti (10.000 cm / 2.000 = 5 cm)."
+    "question": "Jarak sebenarnya dari gerbang ke Laboratorium Komputer SD Al Mujahidin adalah 20 m. Jika skala denah 1 : 2000, berapa cm jarak pada denah?",
+    "options": [
+      "A. 1 cm",
+      "B. 5 cm",
+      "C. 2 cm",
+      "D. 10 cm"
+    ],
+    "correct_answer": "A. 1 cm",
+    "positive_feedback": "Barakallah! Perhitunganmu sangat teliti (Jarak Denah = Jarak Sebenarnya (cm) / Skala)."
   },
   {
-    "id": "ch_003",
-    "title": "Level 3: Indahnya Infak Jumat (Teologi Al-Ma'un)",
+    "id": "ch_002",
+    "title": "Level 2: Teologi Al-Ma'un & Sedekah #2",
     "level": "Pemula",
     "academic_subject": "Kemuhammadiyahan",
     "character_value": "Kedermawanan & Kepedulian Sosial",
     "sdg_target": "SDG 1: No Poverty",
     "type": "multiple_choice",
-    "question": "Mengamalkan ajaran K.H. Ahmad Dahlan tentang Teologi Al-Ma'un di SD Al Mujahidin dilakukan dengan...",
+    "question": "Mengamalkan ajaran K.H. Ahmad Dahlan tentang Teologi Al-Ma'un di SD Al Mujahidin dapat diwujudkan melalui aksi...",
     "options": [
-      "A. Menyimpan seluruh uang saku",
-      "B. Sisih uang saku untuk Infak Jumat & LazisMu",
-      "C. Membeli jajanan berlebihan",
-      "D. Acuh terhadap teman yang kesusahan"
+      "A. Rutin menyisihkan uang saku untuk Infak Jumat & LazisMu",
+      "B. Menyimpan seluruh uang saku untuk belanja pribadi",
+      "C. Membeli mainan mahal di lingkungan sekolah",
+      "D. Acuh tak acuh terhadap teman yang kesusahan"
     ],
-    "correct_answer": "B. Sisih uang saku untuk Infak Jumat & LazisMu",
-    "positive_feedback": "Alhamdulillah! Meneladani Al-Ma'un menjadikan kita pribadi yang peka dan dermawan."
+    "correct_answer": "A. Rutin menyisihkan uang saku untuk Infak Jumat & LazisMu",
+    "positive_feedback": "Alhamdulillah! Meneladani Al-Ma'un menjadikan kita generasi Rabbani yang dermawan."
   },
   {
-    "id": "ch_004",
-    "title": "Level 4: Arah Navigasi Pandu HW",
+    "id": "ch_003",
+    "title": "Level 3: Navigasi Pandu Hizbul Wathan #3",
     "level": "Pemula",
-    "academic_subject": "Kepanduan Hizbul Wathan & IPAS",
+    "academic_subject": "Kepanduan HW & IPAS",
     "character_value": "Kemandirian & Kedisiplinan Athfal",
     "sdg_target": "SDG 15: Life on Land",
     "type": "drag_drop_code",
-    "question": "Pandu Athfal sedang memegang kompas. Programlah MujaHeeBot agar berjalan 2 langkah ke Barat lalu berbelok ke Selatan!",
-    "initial_blocks": ["Maju 2 Langkah Barat", "Belok Selatan", "Maju 1 Langkah"],
-    "correct_sequence": ["Maju 2 Langkah Barat", "Belok Selatan", "Maju 1 Langkah"],
-    "positive_feedback": "Tangkas sekali! Pandu HW selalu siap dan paham arah mata angin."
+    "question": "Programlah MujaHeeBot untuk membantu Pandu Athfal melakukan navigasi kompas di lapangan sekolah!",
+    "initial_blocks": [
+      "Maju ke Utara",
+      "Belok Kanan ke Timur",
+      "Maju 2 Langkah"
+    ],
+    "correct_sequence": [
+      "Maju ke Utara",
+      "Belok Kanan ke Timur",
+      "Maju 2 Langkah"
+    ],
+    "positive_feedback": "Tangkas! Pandu HW selalu mandiri, disiplin, dan mahir menentukan arah mata angin."
+  },
+  {
+    "id": "ch_004",
+    "title": "Level 4: Green School & Pemilahan Sampah #4",
+    "level": "Pemula",
+    "academic_subject": "IPAS & Lingkungan Hidup",
+    "character_value": "Gerakan Pungut Sampah (GPS) & 3R",
+    "sdg_target": "SDG 12: Responsible Consumption",
+    "type": "multiple_choice",
+    "question": "Tindakan memanfaatkan botol plastik bekas menjadi pot tanaman ecobrick kelas merupakan penerapan dari...",
+    "options": [
+      "A. Reuse (Menggunakan kembali)",
+      "B. Reduce (Mengurangi)",
+      "C. Recycle (Mendaur ulang)",
+      "D. Replace (Mengganti)"
+    ],
+    "correct_answer": "A. Reuse (Menggunakan kembali)",
+    "positive_feedback": "Luar biasa! Kamu adalah Agen Green School Al Mujahidin yang menjaga kelestarian alam."
   },
   {
     "id": "ch_005",
-    "title": "Level 5: Green School & Pemilahan Sampah 3R",
+    "title": "Level 5: Operasi Pecahan Sederhana #5",
     "level": "Pemula",
-    "academic_subject": "IPAS & Lingkungan Hidup",
-    "character_value": "Gerakan Pungut Sampah (GPS)",
-    "sdg_target": "SDG 12: Responsible Consumption",
+    "academic_subject": "Matematika (Pecahan)",
+    "character_value": "Penalaran Kritis & Ketelitian",
+    "sdg_target": "SDG 4: Quality Education",
     "type": "multiple_choice",
-    "question": "Tindakan memanfaatkan kembali botol plastik bekas menjadi pot tanaman hias kelas merupakan penerapan...",
-    "options": ["A. Reduce", "B. Reuse", "C. Recycle", "D. Replace"],
-    "correct_answer": "B. Reuse",
-    "positive_feedback": "Luar biasa! Kamu adalah Agen Green School Al Mujahidin yang menjaga kelestarian bumi."
+    "question": "Berapakah hasil penjumlahan pecahan berpenyebut sama dari 2/10 + 3/10?",
+    "options": [
+      "A. 5/10",
+      "B. 5/20",
+      "C. 6/10",
+      "D. 1/10"
+    ],
+    "correct_answer": "A. 5/10",
+    "positive_feedback": "Pintar! Karena penyebutnya sudah sama, cukup jumlahkan pembilangnya."
   },
   {
     "id": "ch_006",
-    "title": "Level 6: Kecepatan & Waktu Tempuh (JKW)",
+    "title": "Level 6: Algoritma Adab Menuntut Ilmu #6",
+    "level": "Pemula",
+    "academic_subject": "Al-Islam & Pembiasaan Rabbani",
+    "character_value": "Akhlakul Karimah & Keimanan",
+    "sdg_target": "SDG 4: Quality Education",
+    "type": "drag_drop_code",
+    "question": "Susun langkah adab Islami sebelum memulai proses pembelajaran di kelas!",
+    "initial_blocks": [
+      "Ucapkan Salam & Basmalah",
+      "Berdoa Sebelum Belajar",
+      "Duduk Rapi & Perhatikan Guru"
+    ],
+    "correct_sequence": [
+      "Ucapkan Salam & Basmalah",
+      "Berdoa Sebelum Belajar",
+      "Duduk Rapi & Perhatikan Guru"
+    ],
+    "positive_feedback": "MasyaAllah! Adab yang baik membuka pintu pemahaman dan keberkahan ilmu."
+  },
+  {
+    "id": "ch_007",
+    "title": "Level 7: Hitung Jarak Tempuh JKW #7",
+    "level": "Pemula",
+    "academic_subject": "Matematika (Kecepatan & Waktu)",
+    "character_value": "Manajemen Waktu & Kedisiplinan",
+    "sdg_target": "SDG 4: Quality Education",
+    "type": "multiple_choice",
+    "question": "Ahmad naik sepeda ke sekolah dengan kecepatan 12 km/jam selama 2 jam. Berapa km jarak yang ditempuh Ahmad?",
+    "options": [
+      "A. 24 km",
+      "B. 14 km",
+      "C. 24 km",
+      "D. 5 km"
+    ],
+    "correct_answer": "A. 24 km",
+    "positive_feedback": "Hebat! Rumus Jarak = Kecepatan x Waktu."
+  },
+  {
+    "id": "ch_008",
+    "title": "Level 8: Proyek Oven Surya ISTEAMCT #8",
+    "level": "Pemula",
+    "academic_subject": "ISTEAMCT & Sains",
+    "character_value": "Inovasi & Berpikir Komputasional",
+    "sdg_target": "SDG 7: Clean Energy",
+    "type": "drag_drop_code",
+    "question": "Rangkai algoritma proyek ISTEAMCT untuk mengaktifkan Oven Surya Sederhana ramah lingkungan!",
+    "initial_blocks": [
+      "Buka Reflektor Alumunium",
+      "Arahkan ke Cahaya Matahari",
+      "Serap Energi Panas"
+    ],
+    "correct_sequence": [
+      "Buka Reflektor Alumunium",
+      "Arahkan ke Cahaya Matahari",
+      "Serap Energi Panas"
+    ],
+    "positive_feedback": "Top! Inovasi teknologi ramah lingkungan ISTEAMCT berhasil diaktifkan."
+  },
+  {
+    "id": "ch_009",
+    "title": "Level 9: Etika Tabayyun Digital #9",
+    "level": "Pemula",
+    "academic_subject": "Literasi Digital & Al-Islam",
+    "character_value": "Kesantunan & Tabayyun Digital",
+    "sdg_target": "SDG 16: Peace and Justice",
+    "type": "multiple_choice",
+    "question": "Sikap utama Pelajar Muhammadiyah saat menerima berita di media sosial adalah...",
+    "options": [
+      "A. Tabayyun (Menyaring & mengecek kebenaran informasi)",
+      "B. Langsung membagikan berita tanpa dibaca",
+      "C. Memusuhi pengirim berita",
+      "D. Menulis komentar mengejek"
+    ],
+    "correct_answer": "A. Tabayyun (Menyaring & mengecek kebenaran informasi)",
+    "positive_feedback": "MasyaAllah! Prinsip Tabayyun adalah cerminan akhlak mulia di era digital."
+  },
+  {
+    "id": "ch_010",
+    "title": "Level 10: Global Citizen Welcoming #10",
+    "level": "Pemula",
+    "academic_subject": "Bahasa Inggris & Global Citizenship",
+    "character_value": "Belia Mendunia & Adaptif",
+    "sdg_target": "SDG 17: Partnerships for the Goals",
+    "type": "drag_drop_code",
+    "question": "Arrange the correct sentence blocks to welcome Sister School international guests!",
+    "initial_blocks": [
+      "Welcome to",
+      "SD Muhammadiyah Al Mujahidin",
+      "Wonosari!"
+    ],
+    "correct_sequence": [
+      "Welcome to",
+      "SD Muhammadiyah Al Mujahidin",
+      "Wonosari!"
+    ],
+    "positive_feedback": "Excellent! You are ready to be a confident global citizen!"
+  },
+  {
+    "id": "ch_011",
+    "title": "Level 11: Skala Denah Sekolah #11",
+    "level": "Pemula",
+    "academic_subject": "Matematika (Skala & Denah)",
+    "character_value": "Ketelitian & Pengenalan Lingkungan",
+    "sdg_target": "SDG 11: Sustainable Cities",
+    "type": "multiple_choice",
+    "question": "Jarak sebenarnya dari gerbang ke Laboratorium Komputer SD Al Mujahidin adalah 220 m. Jika skala denah 1 : 2000, berapa cm jarak pada denah?",
+    "options": [
+      "A. 11 cm",
+      "B. 15 cm",
+      "C. 22 cm",
+      "D. 10 cm"
+    ],
+    "correct_answer": "A. 11 cm",
+    "positive_feedback": "Barakallah! Perhitunganmu sangat teliti (Jarak Denah = Jarak Sebenarnya (cm) / Skala)."
+  },
+  {
+    "id": "ch_012",
+    "title": "Level 12: Teologi Al-Ma'un & Sedekah #12",
+    "level": "Pemula",
+    "academic_subject": "Kemuhammadiyahan",
+    "character_value": "Kedermawanan & Kepedulian Sosial",
+    "sdg_target": "SDG 1: No Poverty",
+    "type": "multiple_choice",
+    "question": "Mengamalkan ajaran K.H. Ahmad Dahlan tentang Teologi Al-Ma'un di SD Al Mujahidin dapat diwujudkan melalui aksi...",
+    "options": [
+      "A. Rutin menyisihkan uang saku untuk Infak Jumat & LazisMu",
+      "B. Menyimpan seluruh uang saku untuk belanja pribadi",
+      "C. Membeli mainan mahal di lingkungan sekolah",
+      "D. Acuh tak acuh terhadap teman yang kesusahan"
+    ],
+    "correct_answer": "A. Rutin menyisihkan uang saku untuk Infak Jumat & LazisMu",
+    "positive_feedback": "Alhamdulillah! Meneladani Al-Ma'un menjadikan kita generasi Rabbani yang dermawan."
+  },
+  {
+    "id": "ch_013",
+    "title": "Level 13: Navigasi Pandu Hizbul Wathan #13",
+    "level": "Pemula",
+    "academic_subject": "Kepanduan HW & IPAS",
+    "character_value": "Kemandirian & Kedisiplinan Athfal",
+    "sdg_target": "SDG 15: Life on Land",
+    "type": "drag_drop_code",
+    "question": "Programlah MujaHeeBot untuk membantu Pandu Athfal melakukan navigasi kompas di lapangan sekolah!",
+    "initial_blocks": [
+      "Maju ke Utara",
+      "Belok Kanan ke Timur",
+      "Maju 2 Langkah"
+    ],
+    "correct_sequence": [
+      "Maju ke Utara",
+      "Belok Kanan ke Timur",
+      "Maju 2 Langkah"
+    ],
+    "positive_feedback": "Tangkas! Pandu HW selalu mandiri, disiplin, dan mahir menentukan arah mata angin."
+  },
+  {
+    "id": "ch_014",
+    "title": "Level 14: Green School & Pemilahan Sampah #14",
+    "level": "Pemula",
+    "academic_subject": "IPAS & Lingkungan Hidup",
+    "character_value": "Gerakan Pungut Sampah (GPS) & 3R",
+    "sdg_target": "SDG 12: Responsible Consumption",
+    "type": "multiple_choice",
+    "question": "Tindakan memanfaatkan botol plastik bekas menjadi pot tanaman ecobrick kelas merupakan penerapan dari...",
+    "options": [
+      "A. Reuse (Menggunakan kembali)",
+      "B. Reduce (Mengurangi)",
+      "C. Recycle (Mendaur ulang)",
+      "D. Replace (Mengganti)"
+    ],
+    "correct_answer": "A. Reuse (Menggunakan kembali)",
+    "positive_feedback": "Luar biasa! Kamu adalah Agen Green School Al Mujahidin yang menjaga kelestarian alam."
+  },
+  {
+    "id": "ch_015",
+    "title": "Level 15: Operasi Pecahan Sederhana #15",
+    "level": "Pemula",
+    "academic_subject": "Matematika (Pecahan)",
+    "character_value": "Penalaran Kritis & Ketelitian",
+    "sdg_target": "SDG 4: Quality Education",
+    "type": "multiple_choice",
+    "question": "Berapakah hasil penjumlahan pecahan berpenyebut sama dari 1/10 + 1/10?",
+    "options": [
+      "A. 2/10",
+      "B. 2/20",
+      "C. 1/10",
+      "D. 1/10"
+    ],
+    "correct_answer": "A. 2/10",
+    "positive_feedback": "Pintar! Karena penyebutnya sudah sama, cukup jumlahkan pembilangnya."
+  },
+  {
+    "id": "ch_016",
+    "title": "Level 16: Algoritma Adab Menuntut Ilmu #16",
+    "level": "Pemula",
+    "academic_subject": "Al-Islam & Pembiasaan Rabbani",
+    "character_value": "Akhlakul Karimah & Keimanan",
+    "sdg_target": "SDG 4: Quality Education",
+    "type": "drag_drop_code",
+    "question": "Susun langkah adab Islami sebelum memulai proses pembelajaran di kelas!",
+    "initial_blocks": [
+      "Ucapkan Salam & Basmalah",
+      "Berdoa Sebelum Belajar",
+      "Duduk Rapi & Perhatikan Guru"
+    ],
+    "correct_sequence": [
+      "Ucapkan Salam & Basmalah",
+      "Berdoa Sebelum Belajar",
+      "Duduk Rapi & Perhatikan Guru"
+    ],
+    "positive_feedback": "MasyaAllah! Adab yang baik membuka pintu pemahaman dan keberkahan ilmu."
+  },
+  {
+    "id": "ch_017",
+    "title": "Level 17: Hitung Jarak Tempuh JKW #17",
+    "level": "Pemula",
+    "academic_subject": "Matematika (Kecepatan & Waktu)",
+    "character_value": "Manajemen Waktu & Kedisiplinan",
+    "sdg_target": "SDG 4: Quality Education",
+    "type": "multiple_choice",
+    "question": "Ahmad naik sepeda ke sekolah dengan kecepatan 14 km/jam selama 3 jam. Berapa km jarak yang ditempuh Ahmad?",
+    "options": [
+      "A. 42 km",
+      "B. 17 km",
+      "C. 28 km",
+      "D. 5 km"
+    ],
+    "correct_answer": "A. 42 km",
+    "positive_feedback": "Hebat! Rumus Jarak = Kecepatan x Waktu."
+  },
+  {
+    "id": "ch_018",
+    "title": "Level 18: Proyek Oven Surya ISTEAMCT #18",
+    "level": "Pemula",
+    "academic_subject": "ISTEAMCT & Sains",
+    "character_value": "Inovasi & Berpikir Komputasional",
+    "sdg_target": "SDG 7: Clean Energy",
+    "type": "drag_drop_code",
+    "question": "Rangkai algoritma proyek ISTEAMCT untuk mengaktifkan Oven Surya Sederhana ramah lingkungan!",
+    "initial_blocks": [
+      "Buka Reflektor Alumunium",
+      "Arahkan ke Cahaya Matahari",
+      "Serap Energi Panas"
+    ],
+    "correct_sequence": [
+      "Buka Reflektor Alumunium",
+      "Arahkan ke Cahaya Matahari",
+      "Serap Energi Panas"
+    ],
+    "positive_feedback": "Top! Inovasi teknologi ramah lingkungan ISTEAMCT berhasil diaktifkan."
+  },
+  {
+    "id": "ch_019",
+    "title": "Level 19: Etika Tabayyun Digital #19",
+    "level": "Pemula",
+    "academic_subject": "Literasi Digital & Al-Islam",
+    "character_value": "Kesantunan & Tabayyun Digital",
+    "sdg_target": "SDG 16: Peace and Justice",
+    "type": "multiple_choice",
+    "question": "Sikap utama Pelajar Muhammadiyah saat menerima berita di media sosial adalah...",
+    "options": [
+      "A. Tabayyun (Menyaring & mengecek kebenaran informasi)",
+      "B. Langsung membagikan berita tanpa dibaca",
+      "C. Memusuhi pengirim berita",
+      "D. Menulis komentar mengejek"
+    ],
+    "correct_answer": "A. Tabayyun (Menyaring & mengecek kebenaran informasi)",
+    "positive_feedback": "MasyaAllah! Prinsip Tabayyun adalah cerminan akhlak mulia di era digital."
+  },
+  {
+    "id": "ch_020",
+    "title": "Level 20: Global Citizen Welcoming #20",
+    "level": "Pemula",
+    "academic_subject": "Bahasa Inggris & Global Citizenship",
+    "character_value": "Belia Mendunia & Adaptif",
+    "sdg_target": "SDG 17: Partnerships for the Goals",
+    "type": "drag_drop_code",
+    "question": "Arrange the correct sentence blocks to welcome Sister School international guests!",
+    "initial_blocks": [
+      "Welcome to",
+      "SD Muhammadiyah Al Mujahidin",
+      "Wonosari!"
+    ],
+    "correct_sequence": [
+      "Welcome to",
+      "SD Muhammadiyah Al Mujahidin",
+      "Wonosari!"
+    ],
+    "positive_feedback": "Excellent! You are ready to be a confident global citizen!"
+  },
+  {
+    "id": "ch_021",
+    "title": "Level 21: Skala Denah Sekolah #21",
+    "level": "Pemula",
+    "academic_subject": "Matematika (Skala & Denah)",
+    "character_value": "Ketelitian & Pengenalan Lingkungan",
+    "sdg_target": "SDG 11: Sustainable Cities",
+    "type": "multiple_choice",
+    "question": "Jarak sebenarnya dari gerbang ke Laboratorium Komputer SD Al Mujahidin adalah 420 m. Jika skala denah 1 : 2000, berapa cm jarak pada denah?",
+    "options": [
+      "A. 21 cm",
+      "B. 25 cm",
+      "C. 42 cm",
+      "D. 10 cm"
+    ],
+    "correct_answer": "A. 21 cm",
+    "positive_feedback": "Barakallah! Perhitunganmu sangat teliti (Jarak Denah = Jarak Sebenarnya (cm) / Skala)."
+  },
+  {
+    "id": "ch_022",
+    "title": "Level 22: Teologi Al-Ma'un & Sedekah #22",
+    "level": "Pemula",
+    "academic_subject": "Kemuhammadiyahan",
+    "character_value": "Kedermawanan & Kepedulian Sosial",
+    "sdg_target": "SDG 1: No Poverty",
+    "type": "multiple_choice",
+    "question": "Mengamalkan ajaran K.H. Ahmad Dahlan tentang Teologi Al-Ma'un di SD Al Mujahidin dapat diwujudkan melalui aksi...",
+    "options": [
+      "A. Rutin menyisihkan uang saku untuk Infak Jumat & LazisMu",
+      "B. Menyimpan seluruh uang saku untuk belanja pribadi",
+      "C. Membeli mainan mahal di lingkungan sekolah",
+      "D. Acuh tak acuh terhadap teman yang kesusahan"
+    ],
+    "correct_answer": "A. Rutin menyisihkan uang saku untuk Infak Jumat & LazisMu",
+    "positive_feedback": "Alhamdulillah! Meneladani Al-Ma'un menjadikan kita generasi Rabbani yang dermawan."
+  },
+  {
+    "id": "ch_023",
+    "title": "Level 23: Navigasi Pandu Hizbul Wathan #23",
+    "level": "Pemula",
+    "academic_subject": "Kepanduan HW & IPAS",
+    "character_value": "Kemandirian & Kedisiplinan Athfal",
+    "sdg_target": "SDG 15: Life on Land",
+    "type": "drag_drop_code",
+    "question": "Programlah MujaHeeBot untuk membantu Pandu Athfal melakukan navigasi kompas di lapangan sekolah!",
+    "initial_blocks": [
+      "Maju ke Utara",
+      "Belok Kanan ke Timur",
+      "Maju 2 Langkah"
+    ],
+    "correct_sequence": [
+      "Maju ke Utara",
+      "Belok Kanan ke Timur",
+      "Maju 2 Langkah"
+    ],
+    "positive_feedback": "Tangkas! Pandu HW selalu mandiri, disiplin, dan mahir menentukan arah mata angin."
+  },
+  {
+    "id": "ch_024",
+    "title": "Level 24: Green School & Pemilahan Sampah #24",
+    "level": "Pemula",
+    "academic_subject": "IPAS & Lingkungan Hidup",
+    "character_value": "Gerakan Pungut Sampah (GPS) & 3R",
+    "sdg_target": "SDG 12: Responsible Consumption",
+    "type": "multiple_choice",
+    "question": "Tindakan memanfaatkan botol plastik bekas menjadi pot tanaman ecobrick kelas merupakan penerapan dari...",
+    "options": [
+      "A. Reuse (Menggunakan kembali)",
+      "B. Reduce (Mengurangi)",
+      "C. Recycle (Mendaur ulang)",
+      "D. Replace (Mengganti)"
+    ],
+    "correct_answer": "A. Reuse (Menggunakan kembali)",
+    "positive_feedback": "Luar biasa! Kamu adalah Agen Green School Al Mujahidin yang menjaga kelestarian alam."
+  },
+  {
+    "id": "ch_025",
+    "title": "Level 25: Operasi Pecahan Sederhana #25",
+    "level": "Pemula",
+    "academic_subject": "Matematika (Pecahan)",
+    "character_value": "Penalaran Kritis & Ketelitian",
+    "sdg_target": "SDG 4: Quality Education",
+    "type": "multiple_choice",
+    "question": "Berapakah hasil penjumlahan pecahan berpenyebut sama dari 1/10 + 2/10?",
+    "options": [
+      "A. 3/10",
+      "B. 3/20",
+      "C. 2/10",
+      "D. 1/10"
+    ],
+    "correct_answer": "A. 3/10",
+    "positive_feedback": "Pintar! Karena penyebutnya sudah sama, cukup jumlahkan pembilangnya."
+  },
+  {
+    "id": "ch_026",
+    "title": "Level 26: Algoritma Adab Menuntut Ilmu #26",
+    "level": "Pemula",
+    "academic_subject": "Al-Islam & Pembiasaan Rabbani",
+    "character_value": "Akhlakul Karimah & Keimanan",
+    "sdg_target": "SDG 4: Quality Education",
+    "type": "drag_drop_code",
+    "question": "Susun langkah adab Islami sebelum memulai proses pembelajaran di kelas!",
+    "initial_blocks": [
+      "Ucapkan Salam & Basmalah",
+      "Berdoa Sebelum Belajar",
+      "Duduk Rapi & Perhatikan Guru"
+    ],
+    "correct_sequence": [
+      "Ucapkan Salam & Basmalah",
+      "Berdoa Sebelum Belajar",
+      "Duduk Rapi & Perhatikan Guru"
+    ],
+    "positive_feedback": "MasyaAllah! Adab yang baik membuka pintu pemahaman dan keberkahan ilmu."
+  },
+  {
+    "id": "ch_027",
+    "title": "Level 27: Hitung Jarak Tempuh JKW #27",
+    "level": "Pemula",
+    "academic_subject": "Matematika (Kecepatan & Waktu)",
+    "character_value": "Manajemen Waktu & Kedisiplinan",
+    "sdg_target": "SDG 4: Quality Education",
+    "type": "multiple_choice",
+    "question": "Ahmad naik sepeda ke sekolah dengan kecepatan 14 km/jam selama 1 jam. Berapa km jarak yang ditempuh Ahmad?",
+    "options": [
+      "A. 14 km",
+      "B. 15 km",
+      "C. 28 km",
+      "D. 5 km"
+    ],
+    "correct_answer": "A. 14 km",
+    "positive_feedback": "Hebat! Rumus Jarak = Kecepatan x Waktu."
+  },
+  {
+    "id": "ch_028",
+    "title": "Level 28: Proyek Oven Surya ISTEAMCT #28",
+    "level": "Pemula",
+    "academic_subject": "ISTEAMCT & Sains",
+    "character_value": "Inovasi & Berpikir Komputasional",
+    "sdg_target": "SDG 7: Clean Energy",
+    "type": "drag_drop_code",
+    "question": "Rangkai algoritma proyek ISTEAMCT untuk mengaktifkan Oven Surya Sederhana ramah lingkungan!",
+    "initial_blocks": [
+      "Buka Reflektor Alumunium",
+      "Arahkan ke Cahaya Matahari",
+      "Serap Energi Panas"
+    ],
+    "correct_sequence": [
+      "Buka Reflektor Alumunium",
+      "Arahkan ke Cahaya Matahari",
+      "Serap Energi Panas"
+    ],
+    "positive_feedback": "Top! Inovasi teknologi ramah lingkungan ISTEAMCT berhasil diaktifkan."
+  },
+  {
+    "id": "ch_029",
+    "title": "Level 29: Etika Tabayyun Digital #29",
+    "level": "Pemula",
+    "academic_subject": "Literasi Digital & Al-Islam",
+    "character_value": "Kesantunan & Tabayyun Digital",
+    "sdg_target": "SDG 16: Peace and Justice",
+    "type": "multiple_choice",
+    "question": "Sikap utama Pelajar Muhammadiyah saat menerima berita di media sosial adalah...",
+    "options": [
+      "A. Tabayyun (Menyaring & mengecek kebenaran informasi)",
+      "B. Langsung membagikan berita tanpa dibaca",
+      "C. Memusuhi pengirim berita",
+      "D. Menulis komentar mengejek"
+    ],
+    "correct_answer": "A. Tabayyun (Menyaring & mengecek kebenaran informasi)",
+    "positive_feedback": "MasyaAllah! Prinsip Tabayyun adalah cerminan akhlak mulia di era digital."
+  },
+  {
+    "id": "ch_030",
+    "title": "Level 30: Global Citizen Welcoming #30",
+    "level": "Pemula",
+    "academic_subject": "Bahasa Inggris & Global Citizenship",
+    "character_value": "Belia Mendunia & Adaptif",
+    "sdg_target": "SDG 17: Partnerships for the Goals",
+    "type": "drag_drop_code",
+    "question": "Arrange the correct sentence blocks to welcome Sister School international guests!",
+    "initial_blocks": [
+      "Welcome to",
+      "SD Muhammadiyah Al Mujahidin",
+      "Wonosari!"
+    ],
+    "correct_sequence": [
+      "Welcome to",
+      "SD Muhammadiyah Al Mujahidin",
+      "Wonosari!"
+    ],
+    "positive_feedback": "Excellent! You are ready to be a confident global citizen!"
+  },
+  {
+    "id": "ch_031",
+    "title": "Level 31: Skala Denah Sekolah #31",
+    "level": "Pemula",
+    "academic_subject": "Matematika (Skala & Denah)",
+    "character_value": "Ketelitian & Pengenalan Lingkungan",
+    "sdg_target": "SDG 11: Sustainable Cities",
+    "type": "multiple_choice",
+    "question": "Jarak sebenarnya dari gerbang ke Laboratorium Komputer SD Al Mujahidin adalah 620 m. Jika skala denah 1 : 2000, berapa cm jarak pada denah?",
+    "options": [
+      "A. 31 cm",
+      "B. 35 cm",
+      "C. 62 cm",
+      "D. 10 cm"
+    ],
+    "correct_answer": "A. 31 cm",
+    "positive_feedback": "Barakallah! Perhitunganmu sangat teliti (Jarak Denah = Jarak Sebenarnya (cm) / Skala)."
+  },
+  {
+    "id": "ch_032",
+    "title": "Level 32: Teologi Al-Ma'un & Sedekah #32",
+    "level": "Pemula",
+    "academic_subject": "Kemuhammadiyahan",
+    "character_value": "Kedermawanan & Kepedulian Sosial",
+    "sdg_target": "SDG 1: No Poverty",
+    "type": "multiple_choice",
+    "question": "Mengamalkan ajaran K.H. Ahmad Dahlan tentang Teologi Al-Ma'un di SD Al Mujahidin dapat diwujudkan melalui aksi...",
+    "options": [
+      "A. Rutin menyisihkan uang saku untuk Infak Jumat & LazisMu",
+      "B. Menyimpan seluruh uang saku untuk belanja pribadi",
+      "C. Membeli mainan mahal di lingkungan sekolah",
+      "D. Acuh tak acuh terhadap teman yang kesusahan"
+    ],
+    "correct_answer": "A. Rutin menyisihkan uang saku untuk Infak Jumat & LazisMu",
+    "positive_feedback": "Alhamdulillah! Meneladani Al-Ma'un menjadikan kita generasi Rabbani yang dermawan."
+  },
+  {
+    "id": "ch_033",
+    "title": "Level 33: Navigasi Pandu Hizbul Wathan #33",
+    "level": "Pemula",
+    "academic_subject": "Kepanduan HW & IPAS",
+    "character_value": "Kemandirian & Kedisiplinan Athfal",
+    "sdg_target": "SDG 15: Life on Land",
+    "type": "drag_drop_code",
+    "question": "Programlah MujaHeeBot untuk membantu Pandu Athfal melakukan navigasi kompas di lapangan sekolah!",
+    "initial_blocks": [
+      "Maju ke Utara",
+      "Belok Kanan ke Timur",
+      "Maju 2 Langkah"
+    ],
+    "correct_sequence": [
+      "Maju ke Utara",
+      "Belok Kanan ke Timur",
+      "Maju 2 Langkah"
+    ],
+    "positive_feedback": "Tangkas! Pandu HW selalu mandiri, disiplin, dan mahir menentukan arah mata angin."
+  },
+  {
+    "id": "ch_034",
+    "title": "Level 34: Green School & Pemilahan Sampah #34",
+    "level": "Pemula",
+    "academic_subject": "IPAS & Lingkungan Hidup",
+    "character_value": "Gerakan Pungut Sampah (GPS) & 3R",
+    "sdg_target": "SDG 12: Responsible Consumption",
+    "type": "multiple_choice",
+    "question": "Tindakan memanfaatkan botol plastik bekas menjadi pot tanaman ecobrick kelas merupakan penerapan dari...",
+    "options": [
+      "A. Reuse (Menggunakan kembali)",
+      "B. Reduce (Mengurangi)",
+      "C. Recycle (Mendaur ulang)",
+      "D. Replace (Mengganti)"
+    ],
+    "correct_answer": "A. Reuse (Menggunakan kembali)",
+    "positive_feedback": "Luar biasa! Kamu adalah Agen Green School Al Mujahidin yang menjaga kelestarian alam."
+  },
+  {
+    "id": "ch_035",
+    "title": "Level 35: Operasi Pecahan Sederhana #35",
+    "level": "Pemula",
+    "academic_subject": "Matematika (Pecahan)",
+    "character_value": "Penalaran Kritis & Ketelitian",
+    "sdg_target": "SDG 4: Quality Education",
+    "type": "multiple_choice",
+    "question": "Berapakah hasil penjumlahan pecahan berpenyebut sama dari 1/10 + 3/10?",
+    "options": [
+      "A. 4/10",
+      "B. 4/20",
+      "C. 3/10",
+      "D. 1/10"
+    ],
+    "correct_answer": "A. 4/10",
+    "positive_feedback": "Pintar! Karena penyebutnya sudah sama, cukup jumlahkan pembilangnya."
+  },
+  {
+    "id": "ch_036",
+    "title": "Level 36: Algoritma Adab Menuntut Ilmu #36",
+    "level": "Menengah",
+    "academic_subject": "Al-Islam & Pembiasaan Rabbani",
+    "character_value": "Akhlakul Karimah & Keimanan",
+    "sdg_target": "SDG 4: Quality Education",
+    "type": "drag_drop_code",
+    "question": "Susun langkah adab Islami sebelum memulai proses pembelajaran di kelas!",
+    "initial_blocks": [
+      "Ucapkan Salam & Basmalah",
+      "Berdoa Sebelum Belajar",
+      "Duduk Rapi & Perhatikan Guru"
+    ],
+    "correct_sequence": [
+      "Ucapkan Salam & Basmalah",
+      "Berdoa Sebelum Belajar",
+      "Duduk Rapi & Perhatikan Guru"
+    ],
+    "positive_feedback": "MasyaAllah! Adab yang baik membuka pintu pemahaman dan keberkahan ilmu."
+  },
+  {
+    "id": "ch_037",
+    "title": "Level 37: Hitung Jarak Tempuh JKW #37",
     "level": "Menengah",
     "academic_subject": "Matematika (Kecepatan & Waktu)",
     "character_value": "Manajemen Waktu & Kedisiplinan",
     "sdg_target": "SDG 4: Quality Education",
     "type": "multiple_choice",
-    "question": "Ahmad bersepeda ke sekolah dengan kecepatan 10 km/jam. Jika jarak rumah ke sekolah 5 km, berapa menit waktu yang dibutuhkan Ahmad?",
-    "options": ["A. 15 menit", "B. 30 menit", "C. 45 menit", "D. 60 menit"],
-    "correct_answer": "B. 30 menit",
-    "positive_feedback": "Hebat! Waktu = Jarak / Kecepatan (5/10 jam = 0.5 jam = 30 menit)."
+    "question": "Ahmad naik sepeda ke sekolah dengan kecepatan 12 km/jam selama 2 jam. Berapa km jarak yang ditempuh Ahmad?",
+    "options": [
+      "A. 24 km",
+      "B. 14 km",
+      "C. 24 km",
+      "D. 5 km"
+    ],
+    "correct_answer": "A. 24 km",
+    "positive_feedback": "Hebat! Rumus Jarak = Kecepatan x Waktu."
   },
   {
-    "id": "ch_007",
-    "title": "Level 7: Proyek Oven Surya ISTEAMCT",
+    "id": "ch_038",
+    "title": "Level 38: Proyek Oven Surya ISTEAMCT #38",
     "level": "Menengah",
     "academic_subject": "ISTEAMCT & Sains",
-    "character_value": "Kreativitas & Inovasi Energi Terbarukan",
+    "character_value": "Inovasi & Berpikir Komputasional",
     "sdg_target": "SDG 7: Clean Energy",
     "type": "drag_drop_code",
-    "question": "Rangkai algoritma pengoperasian Oven Surya Sederhana untuk mengumpulkan energi panas matahari!",
-    "initial_blocks": ["Buka Reflektor Alumunium", "Arahkan ke Cahaya Matahari", "Serap Panas"],
-    "correct_sequence": ["Buka Reflektor Alumunium", "Arahkan ke Cahaya Matahari", "Serap Panas"],
-    "positive_feedback": "Top! Inovasi teknologi ramah lingkungan ISTEAMCT berhasil diaktifkan!"
+    "question": "Rangkai algoritma proyek ISTEAMCT untuk mengaktifkan Oven Surya Sederhana ramah lingkungan!",
+    "initial_blocks": [
+      "Buka Reflektor Alumunium",
+      "Arahkan ke Cahaya Matahari",
+      "Serap Energi Panas"
+    ],
+    "correct_sequence": [
+      "Buka Reflektor Alumunium",
+      "Arahkan ke Cahaya Matahari",
+      "Serap Energi Panas"
+    ],
+    "positive_feedback": "Top! Inovasi teknologi ramah lingkungan ISTEAMCT berhasil diaktifkan."
   },
   {
-    "id": "ch_008",
-    "title": "Level 8: Operasi Pecahan Berpenyebut Sama",
-    "level": "Menengah",
-    "academic_subject": "Matematika (Numerasi Pecahan)",
-    "character_value": "Penalaran Kritis & Ketelitian",
-    "sdg_target": "SDG 4: Quality Education",
-    "type": "multiple_choice",
-    "question": "Berapakah hasil dari 3/10 + 4/10 ?",
-    "options": ["A. 7/20", "B. 7/10", "C. 12/10", "D. 1/10"],
-    "correct_answer": "B. 7/10",
-    "positive_feedback": "Pintar! Karena penyebutnya sudah sama, cukup jumlahkan pembilangnya (3+4=7)."
-  },
-  {
-    "id": "ch_009",
-    "title": "Level 9: Simpul Jangkar & Pangkal HW",
-    "level": "Menengah",
-    "academic_subject": "Kepanduan Hizbul Wathan",
-    "character_value": "Kecakapan Tali Temali",
-    "sdg_target": "SDG 15: Life on Land",
-    "type": "drag_drop_code",
-    "question": "Susun langkah pembuatan simpul pangkal untuk mengikat tiang tenda perkemahan!",
-    "initial_blocks": ["Melingkarkan Tali ke Tiang", "Silangkan Tali", "Masukkan Ujung Tali & Tarik"],
-    "correct_sequence": ["Melingkarkan Tali ke Tiang", "Silangkan Tali", "Masukkan Ujung Tali & Tarik"],
-    "positive_feedback": "Sangat cekatan! Tali tenda terikat kuat dan rapi."
-  },
-  {
-    "id": "ch_010",
-    "title": "Level 10: Etika Digital & Internet Sehat",
+    "id": "ch_039",
+    "title": "Level 39: Etika Tabayyun Digital #39",
     "level": "Menengah",
     "academic_subject": "Literasi Digital & Al-Islam",
-    "character_value": "Kesantunan Bermedia Sosial",
-    "sdg_target": "SDG 16: Peace & Justice",
+    "character_value": "Kesantunan & Tabayyun Digital",
+    "sdg_target": "SDG 16: Peace and Justice",
     "type": "multiple_choice",
-    "question": "Sikap terbaik Pelajar Muhammadiyah saat menerima berita di media sosial adalah...",
+    "question": "Sikap utama Pelajar Muhammadiyah saat menerima berita di media sosial adalah...",
     "options": [
-      "A. Langsung membagikan tanpa dibaca",
-      "B. Tabayyun (menyaring dan mengecek kebenaran)",
-      "C. Menulis komentar celaan",
-      "D. Memarahi pengirimnya"
+      "A. Tabayyun (Menyaring & mengecek kebenaran informasi)",
+      "B. Langsung membagikan berita tanpa dibaca",
+      "C. Memusuhi pengirim berita",
+      "D. Menulis komentar mengejek"
     ],
-    "correct_answer": "B. Tabayyun (menyaring dan mengecek kebenaran)",
-    "positive_feedback": "MasyaAllah! Prinsip Tabayyun adalah ciri khas Muslim beradab digital."
+    "correct_answer": "A. Tabayyun (Menyaring & mengecek kebenaran informasi)",
+    "positive_feedback": "MasyaAllah! Prinsip Tabayyun adalah cerminan akhlak mulia di era digital."
   },
   {
-    "id": "ch_011",
-    "title": "Level 11: Welcoming Sister School (English)",
-    "level": "Mahir",
-    "academic_subject": "Bahasa Inggris & Global Citizen",
+    "id": "ch_040",
+    "title": "Level 40: Global Citizen Welcoming #40",
+    "level": "Menengah",
+    "academic_subject": "Bahasa Inggris & Global Citizenship",
     "character_value": "Belia Mendunia & Adaptif",
     "sdg_target": "SDG 17: Partnerships for the Goals",
     "type": "drag_drop_code",
-    "question": "Arrange the greeting sentence for our international guests!",
-    "initial_blocks": ["Welcome to", "SD Muhammadiyah Al Mujahidin", "Wonosari!"],
-    "correct_sequence": ["Welcome to", "SD Muhammadiyah Al Mujahidin", "Wonosari!"],
+    "question": "Arrange the correct sentence blocks to welcome Sister School international guests!",
+    "initial_blocks": [
+      "Welcome to",
+      "SD Muhammadiyah Al Mujahidin",
+      "Wonosari!"
+    ],
+    "correct_sequence": [
+      "Welcome to",
+      "SD Muhammadiyah Al Mujahidin",
+      "Wonosari!"
+    ],
     "positive_feedback": "Excellent! You are ready to be a confident global citizen!"
   },
   {
-    "id": "ch_012",
-    "title": "Level 12: Pengolahan Data & Piktogram",
-    "level": "Mahir",
-    "academic_subject": "Matematika (Analisis Data)",
-    "character_value": "Kemampuan Analitis",
-    "sdg_target": "SDG 9: Industry & Innovation",
+    "id": "ch_041",
+    "title": "Level 41: Skala Denah Sekolah #41",
+    "level": "Menengah",
+    "academic_subject": "Matematika (Skala & Denah)",
+    "character_value": "Ketelitian & Pengenalan Lingkungan",
+    "sdg_target": "SDG 11: Sustainable Cities",
     "type": "multiple_choice",
-    "question": "Pada piktogram, 1 gambar buku mewakili 5 buku di perpustakaan. Jika ada 6 gambar buku, berapa jumlah buku sebenarnya?",
-    "options": ["A. 11 buku", "B. 30 buku", "C. 25 buku", "D. 35 buku"],
-    "correct_answer": "B. 30 buku",
-    "positive_feedback": "Luar biasa! 6 x 5 = 30 buku perpustakaan."
+    "question": "Jarak sebenarnya dari gerbang ke Laboratorium Komputer SD Al Mujahidin adalah 820 m. Jika skala denah 1 : 2000, berapa cm jarak pada denah?",
+    "options": [
+      "A. 41 cm",
+      "B. 45 cm",
+      "C. 82 cm",
+      "D. 10 cm"
+    ],
+    "correct_answer": "A. 41 cm",
+    "positive_feedback": "Barakallah! Perhitunganmu sangat teliti (Jarak Denah = Jarak Sebenarnya (cm) / Skala)."
+  },
+  {
+    "id": "ch_042",
+    "title": "Level 42: Teologi Al-Ma'un & Sedekah #42",
+    "level": "Menengah",
+    "academic_subject": "Kemuhammadiyahan",
+    "character_value": "Kedermawanan & Kepedulian Sosial",
+    "sdg_target": "SDG 1: No Poverty",
+    "type": "multiple_choice",
+    "question": "Mengamalkan ajaran K.H. Ahmad Dahlan tentang Teologi Al-Ma'un di SD Al Mujahidin dapat diwujudkan melalui aksi...",
+    "options": [
+      "A. Rutin menyisihkan uang saku untuk Infak Jumat & LazisMu",
+      "B. Menyimpan seluruh uang saku untuk belanja pribadi",
+      "C. Membeli mainan mahal di lingkungan sekolah",
+      "D. Acuh tak acuh terhadap teman yang kesusahan"
+    ],
+    "correct_answer": "A. Rutin menyisihkan uang saku untuk Infak Jumat & LazisMu",
+    "positive_feedback": "Alhamdulillah! Meneladani Al-Ma'un menjadikan kita generasi Rabbani yang dermawan."
+  },
+  {
+    "id": "ch_043",
+    "title": "Level 43: Navigasi Pandu Hizbul Wathan #43",
+    "level": "Menengah",
+    "academic_subject": "Kepanduan HW & IPAS",
+    "character_value": "Kemandirian & Kedisiplinan Athfal",
+    "sdg_target": "SDG 15: Life on Land",
+    "type": "drag_drop_code",
+    "question": "Programlah MujaHeeBot untuk membantu Pandu Athfal melakukan navigasi kompas di lapangan sekolah!",
+    "initial_blocks": [
+      "Maju ke Utara",
+      "Belok Kanan ke Timur",
+      "Maju 2 Langkah"
+    ],
+    "correct_sequence": [
+      "Maju ke Utara",
+      "Belok Kanan ke Timur",
+      "Maju 2 Langkah"
+    ],
+    "positive_feedback": "Tangkas! Pandu HW selalu mandiri, disiplin, dan mahir menentukan arah mata angin."
+  },
+  {
+    "id": "ch_044",
+    "title": "Level 44: Green School & Pemilahan Sampah #44",
+    "level": "Menengah",
+    "academic_subject": "IPAS & Lingkungan Hidup",
+    "character_value": "Gerakan Pungut Sampah (GPS) & 3R",
+    "sdg_target": "SDG 12: Responsible Consumption",
+    "type": "multiple_choice",
+    "question": "Tindakan memanfaatkan botol plastik bekas menjadi pot tanaman ecobrick kelas merupakan penerapan dari...",
+    "options": [
+      "A. Reuse (Menggunakan kembali)",
+      "B. Reduce (Mengurangi)",
+      "C. Recycle (Mendaur ulang)",
+      "D. Replace (Mengganti)"
+    ],
+    "correct_answer": "A. Reuse (Menggunakan kembali)",
+    "positive_feedback": "Luar biasa! Kamu adalah Agen Green School Al Mujahidin yang menjaga kelestarian alam."
+  },
+  {
+    "id": "ch_045",
+    "title": "Level 45: Operasi Pecahan Sederhana #45",
+    "level": "Menengah",
+    "academic_subject": "Matematika (Pecahan)",
+    "character_value": "Penalaran Kritis & Ketelitian",
+    "sdg_target": "SDG 4: Quality Education",
+    "type": "multiple_choice",
+    "question": "Berapakah hasil penjumlahan pecahan berpenyebut sama dari 2/10 + 2/10?",
+    "options": [
+      "A. 4/10",
+      "B. 4/20",
+      "C. 2/10",
+      "D. 1/10"
+    ],
+    "correct_answer": "A. 4/10",
+    "positive_feedback": "Pintar! Karena penyebutnya sudah sama, cukup jumlahkan pembilangnya."
+  },
+  {
+    "id": "ch_046",
+    "title": "Level 46: Algoritma Adab Menuntut Ilmu #46",
+    "level": "Menengah",
+    "academic_subject": "Al-Islam & Pembiasaan Rabbani",
+    "character_value": "Akhlakul Karimah & Keimanan",
+    "sdg_target": "SDG 4: Quality Education",
+    "type": "drag_drop_code",
+    "question": "Susun langkah adab Islami sebelum memulai proses pembelajaran di kelas!",
+    "initial_blocks": [
+      "Ucapkan Salam & Basmalah",
+      "Berdoa Sebelum Belajar",
+      "Duduk Rapi & Perhatikan Guru"
+    ],
+    "correct_sequence": [
+      "Ucapkan Salam & Basmalah",
+      "Berdoa Sebelum Belajar",
+      "Duduk Rapi & Perhatikan Guru"
+    ],
+    "positive_feedback": "MasyaAllah! Adab yang baik membuka pintu pemahaman dan keberkahan ilmu."
+  },
+  {
+    "id": "ch_047",
+    "title": "Level 47: Hitung Jarak Tempuh JKW #47",
+    "level": "Menengah",
+    "academic_subject": "Matematika (Kecepatan & Waktu)",
+    "character_value": "Manajemen Waktu & Kedisiplinan",
+    "sdg_target": "SDG 4: Quality Education",
+    "type": "multiple_choice",
+    "question": "Ahmad naik sepeda ke sekolah dengan kecepatan 14 km/jam selama 3 jam. Berapa km jarak yang ditempuh Ahmad?",
+    "options": [
+      "A. 42 km",
+      "B. 17 km",
+      "C. 28 km",
+      "D. 5 km"
+    ],
+    "correct_answer": "A. 42 km",
+    "positive_feedback": "Hebat! Rumus Jarak = Kecepatan x Waktu."
+  },
+  {
+    "id": "ch_048",
+    "title": "Level 48: Proyek Oven Surya ISTEAMCT #48",
+    "level": "Menengah",
+    "academic_subject": "ISTEAMCT & Sains",
+    "character_value": "Inovasi & Berpikir Komputasional",
+    "sdg_target": "SDG 7: Clean Energy",
+    "type": "drag_drop_code",
+    "question": "Rangkai algoritma proyek ISTEAMCT untuk mengaktifkan Oven Surya Sederhana ramah lingkungan!",
+    "initial_blocks": [
+      "Buka Reflektor Alumunium",
+      "Arahkan ke Cahaya Matahari",
+      "Serap Energi Panas"
+    ],
+    "correct_sequence": [
+      "Buka Reflektor Alumunium",
+      "Arahkan ke Cahaya Matahari",
+      "Serap Energi Panas"
+    ],
+    "positive_feedback": "Top! Inovasi teknologi ramah lingkungan ISTEAMCT berhasil diaktifkan."
+  },
+  {
+    "id": "ch_049",
+    "title": "Level 49: Etika Tabayyun Digital #49",
+    "level": "Menengah",
+    "academic_subject": "Literasi Digital & Al-Islam",
+    "character_value": "Kesantunan & Tabayyun Digital",
+    "sdg_target": "SDG 16: Peace and Justice",
+    "type": "multiple_choice",
+    "question": "Sikap utama Pelajar Muhammadiyah saat menerima berita di media sosial adalah...",
+    "options": [
+      "A. Tabayyun (Menyaring & mengecek kebenaran informasi)",
+      "B. Langsung membagikan berita tanpa dibaca",
+      "C. Memusuhi pengirim berita",
+      "D. Menulis komentar mengejek"
+    ],
+    "correct_answer": "A. Tabayyun (Menyaring & mengecek kebenaran informasi)",
+    "positive_feedback": "MasyaAllah! Prinsip Tabayyun adalah cerminan akhlak mulia di era digital."
+  },
+  {
+    "id": "ch_050",
+    "title": "Level 50: Global Citizen Welcoming #50",
+    "level": "Menengah",
+    "academic_subject": "Bahasa Inggris & Global Citizenship",
+    "character_value": "Belia Mendunia & Adaptif",
+    "sdg_target": "SDG 17: Partnerships for the Goals",
+    "type": "drag_drop_code",
+    "question": "Arrange the correct sentence blocks to welcome Sister School international guests!",
+    "initial_blocks": [
+      "Welcome to",
+      "SD Muhammadiyah Al Mujahidin",
+      "Wonosari!"
+    ],
+    "correct_sequence": [
+      "Welcome to",
+      "SD Muhammadiyah Al Mujahidin",
+      "Wonosari!"
+    ],
+    "positive_feedback": "Excellent! You are ready to be a confident global citizen!"
+  },
+  {
+    "id": "ch_051",
+    "title": "Level 51: Skala Denah Sekolah #51",
+    "level": "Menengah",
+    "academic_subject": "Matematika (Skala & Denah)",
+    "character_value": "Ketelitian & Pengenalan Lingkungan",
+    "sdg_target": "SDG 11: Sustainable Cities",
+    "type": "multiple_choice",
+    "question": "Jarak sebenarnya dari gerbang ke Laboratorium Komputer SD Al Mujahidin adalah 1020 m. Jika skala denah 1 : 2000, berapa cm jarak pada denah?",
+    "options": [
+      "A. 51 cm",
+      "B. 55 cm",
+      "C. 102 cm",
+      "D. 10 cm"
+    ],
+    "correct_answer": "A. 51 cm",
+    "positive_feedback": "Barakallah! Perhitunganmu sangat teliti (Jarak Denah = Jarak Sebenarnya (cm) / Skala)."
+  },
+  {
+    "id": "ch_052",
+    "title": "Level 52: Teologi Al-Ma'un & Sedekah #52",
+    "level": "Menengah",
+    "academic_subject": "Kemuhammadiyahan",
+    "character_value": "Kedermawanan & Kepedulian Sosial",
+    "sdg_target": "SDG 1: No Poverty",
+    "type": "multiple_choice",
+    "question": "Mengamalkan ajaran K.H. Ahmad Dahlan tentang Teologi Al-Ma'un di SD Al Mujahidin dapat diwujudkan melalui aksi...",
+    "options": [
+      "A. Rutin menyisihkan uang saku untuk Infak Jumat & LazisMu",
+      "B. Menyimpan seluruh uang saku untuk belanja pribadi",
+      "C. Membeli mainan mahal di lingkungan sekolah",
+      "D. Acuh tak acuh terhadap teman yang kesusahan"
+    ],
+    "correct_answer": "A. Rutin menyisihkan uang saku untuk Infak Jumat & LazisMu",
+    "positive_feedback": "Alhamdulillah! Meneladani Al-Ma'un menjadikan kita generasi Rabbani yang dermawan."
+  },
+  {
+    "id": "ch_053",
+    "title": "Level 53: Navigasi Pandu Hizbul Wathan #53",
+    "level": "Menengah",
+    "academic_subject": "Kepanduan HW & IPAS",
+    "character_value": "Kemandirian & Kedisiplinan Athfal",
+    "sdg_target": "SDG 15: Life on Land",
+    "type": "drag_drop_code",
+    "question": "Programlah MujaHeeBot untuk membantu Pandu Athfal melakukan navigasi kompas di lapangan sekolah!",
+    "initial_blocks": [
+      "Maju ke Utara",
+      "Belok Kanan ke Timur",
+      "Maju 2 Langkah"
+    ],
+    "correct_sequence": [
+      "Maju ke Utara",
+      "Belok Kanan ke Timur",
+      "Maju 2 Langkah"
+    ],
+    "positive_feedback": "Tangkas! Pandu HW selalu mandiri, disiplin, dan mahir menentukan arah mata angin."
+  },
+  {
+    "id": "ch_054",
+    "title": "Level 54: Green School & Pemilahan Sampah #54",
+    "level": "Menengah",
+    "academic_subject": "IPAS & Lingkungan Hidup",
+    "character_value": "Gerakan Pungut Sampah (GPS) & 3R",
+    "sdg_target": "SDG 12: Responsible Consumption",
+    "type": "multiple_choice",
+    "question": "Tindakan memanfaatkan botol plastik bekas menjadi pot tanaman ecobrick kelas merupakan penerapan dari...",
+    "options": [
+      "A. Reuse (Menggunakan kembali)",
+      "B. Reduce (Mengurangi)",
+      "C. Recycle (Mendaur ulang)",
+      "D. Replace (Mengganti)"
+    ],
+    "correct_answer": "A. Reuse (Menggunakan kembali)",
+    "positive_feedback": "Luar biasa! Kamu adalah Agen Green School Al Mujahidin yang menjaga kelestarian alam."
+  },
+  {
+    "id": "ch_055",
+    "title": "Level 55: Operasi Pecahan Sederhana #55",
+    "level": "Menengah",
+    "academic_subject": "Matematika (Pecahan)",
+    "character_value": "Penalaran Kritis & Ketelitian",
+    "sdg_target": "SDG 4: Quality Education",
+    "type": "multiple_choice",
+    "question": "Berapakah hasil penjumlahan pecahan berpenyebut sama dari 1/10 + 1/10?",
+    "options": [
+      "A. 2/10",
+      "B. 2/20",
+      "C. 1/10",
+      "D. 1/10"
+    ],
+    "correct_answer": "A. 2/10",
+    "positive_feedback": "Pintar! Karena penyebutnya sudah sama, cukup jumlahkan pembilangnya."
+  },
+  {
+    "id": "ch_056",
+    "title": "Level 56: Algoritma Adab Menuntut Ilmu #56",
+    "level": "Menengah",
+    "academic_subject": "Al-Islam & Pembiasaan Rabbani",
+    "character_value": "Akhlakul Karimah & Keimanan",
+    "sdg_target": "SDG 4: Quality Education",
+    "type": "drag_drop_code",
+    "question": "Susun langkah adab Islami sebelum memulai proses pembelajaran di kelas!",
+    "initial_blocks": [
+      "Ucapkan Salam & Basmalah",
+      "Berdoa Sebelum Belajar",
+      "Duduk Rapi & Perhatikan Guru"
+    ],
+    "correct_sequence": [
+      "Ucapkan Salam & Basmalah",
+      "Berdoa Sebelum Belajar",
+      "Duduk Rapi & Perhatikan Guru"
+    ],
+    "positive_feedback": "MasyaAllah! Adab yang baik membuka pintu pemahaman dan keberkahan ilmu."
+  },
+  {
+    "id": "ch_057",
+    "title": "Level 57: Hitung Jarak Tempuh JKW #57",
+    "level": "Menengah",
+    "academic_subject": "Matematika (Kecepatan & Waktu)",
+    "character_value": "Manajemen Waktu & Kedisiplinan",
+    "sdg_target": "SDG 4: Quality Education",
+    "type": "multiple_choice",
+    "question": "Ahmad naik sepeda ke sekolah dengan kecepatan 14 km/jam selama 1 jam. Berapa km jarak yang ditempuh Ahmad?",
+    "options": [
+      "A. 14 km",
+      "B. 15 km",
+      "C. 28 km",
+      "D. 5 km"
+    ],
+    "correct_answer": "A. 14 km",
+    "positive_feedback": "Hebat! Rumus Jarak = Kecepatan x Waktu."
+  },
+  {
+    "id": "ch_058",
+    "title": "Level 58: Proyek Oven Surya ISTEAMCT #58",
+    "level": "Menengah",
+    "academic_subject": "ISTEAMCT & Sains",
+    "character_value": "Inovasi & Berpikir Komputasional",
+    "sdg_target": "SDG 7: Clean Energy",
+    "type": "drag_drop_code",
+    "question": "Rangkai algoritma proyek ISTEAMCT untuk mengaktifkan Oven Surya Sederhana ramah lingkungan!",
+    "initial_blocks": [
+      "Buka Reflektor Alumunium",
+      "Arahkan ke Cahaya Matahari",
+      "Serap Energi Panas"
+    ],
+    "correct_sequence": [
+      "Buka Reflektor Alumunium",
+      "Arahkan ke Cahaya Matahari",
+      "Serap Energi Panas"
+    ],
+    "positive_feedback": "Top! Inovasi teknologi ramah lingkungan ISTEAMCT berhasil diaktifkan."
+  },
+  {
+    "id": "ch_059",
+    "title": "Level 59: Etika Tabayyun Digital #59",
+    "level": "Menengah",
+    "academic_subject": "Literasi Digital & Al-Islam",
+    "character_value": "Kesantunan & Tabayyun Digital",
+    "sdg_target": "SDG 16: Peace and Justice",
+    "type": "multiple_choice",
+    "question": "Sikap utama Pelajar Muhammadiyah saat menerima berita di media sosial adalah...",
+    "options": [
+      "A. Tabayyun (Menyaring & mengecek kebenaran informasi)",
+      "B. Langsung membagikan berita tanpa dibaca",
+      "C. Memusuhi pengirim berita",
+      "D. Menulis komentar mengejek"
+    ],
+    "correct_answer": "A. Tabayyun (Menyaring & mengecek kebenaran informasi)",
+    "positive_feedback": "MasyaAllah! Prinsip Tabayyun adalah cerminan akhlak mulia di era digital."
+  },
+  {
+    "id": "ch_060",
+    "title": "Level 60: Global Citizen Welcoming #60",
+    "level": "Menengah",
+    "academic_subject": "Bahasa Inggris & Global Citizenship",
+    "character_value": "Belia Mendunia & Adaptif",
+    "sdg_target": "SDG 17: Partnerships for the Goals",
+    "type": "drag_drop_code",
+    "question": "Arrange the correct sentence blocks to welcome Sister School international guests!",
+    "initial_blocks": [
+      "Welcome to",
+      "SD Muhammadiyah Al Mujahidin",
+      "Wonosari!"
+    ],
+    "correct_sequence": [
+      "Welcome to",
+      "SD Muhammadiyah Al Mujahidin",
+      "Wonosari!"
+    ],
+    "positive_feedback": "Excellent! You are ready to be a confident global citizen!"
+  },
+  {
+    "id": "ch_061",
+    "title": "Level 61: Skala Denah Sekolah #61",
+    "level": "Menengah",
+    "academic_subject": "Matematika (Skala & Denah)",
+    "character_value": "Ketelitian & Pengenalan Lingkungan",
+    "sdg_target": "SDG 11: Sustainable Cities",
+    "type": "multiple_choice",
+    "question": "Jarak sebenarnya dari gerbang ke Laboratorium Komputer SD Al Mujahidin adalah 1220 m. Jika skala denah 1 : 2000, berapa cm jarak pada denah?",
+    "options": [
+      "A. 61 cm",
+      "B. 65 cm",
+      "C. 122 cm",
+      "D. 10 cm"
+    ],
+    "correct_answer": "A. 61 cm",
+    "positive_feedback": "Barakallah! Perhitunganmu sangat teliti (Jarak Denah = Jarak Sebenarnya (cm) / Skala)."
+  },
+  {
+    "id": "ch_062",
+    "title": "Level 62: Teologi Al-Ma'un & Sedekah #62",
+    "level": "Menengah",
+    "academic_subject": "Kemuhammadiyahan",
+    "character_value": "Kedermawanan & Kepedulian Sosial",
+    "sdg_target": "SDG 1: No Poverty",
+    "type": "multiple_choice",
+    "question": "Mengamalkan ajaran K.H. Ahmad Dahlan tentang Teologi Al-Ma'un di SD Al Mujahidin dapat diwujudkan melalui aksi...",
+    "options": [
+      "A. Rutin menyisihkan uang saku untuk Infak Jumat & LazisMu",
+      "B. Menyimpan seluruh uang saku untuk belanja pribadi",
+      "C. Membeli mainan mahal di lingkungan sekolah",
+      "D. Acuh tak acuh terhadap teman yang kesusahan"
+    ],
+    "correct_answer": "A. Rutin menyisihkan uang saku untuk Infak Jumat & LazisMu",
+    "positive_feedback": "Alhamdulillah! Meneladani Al-Ma'un menjadikan kita generasi Rabbani yang dermawan."
+  },
+  {
+    "id": "ch_063",
+    "title": "Level 63: Navigasi Pandu Hizbul Wathan #63",
+    "level": "Menengah",
+    "academic_subject": "Kepanduan HW & IPAS",
+    "character_value": "Kemandirian & Kedisiplinan Athfal",
+    "sdg_target": "SDG 15: Life on Land",
+    "type": "drag_drop_code",
+    "question": "Programlah MujaHeeBot untuk membantu Pandu Athfal melakukan navigasi kompas di lapangan sekolah!",
+    "initial_blocks": [
+      "Maju ke Utara",
+      "Belok Kanan ke Timur",
+      "Maju 2 Langkah"
+    ],
+    "correct_sequence": [
+      "Maju ke Utara",
+      "Belok Kanan ke Timur",
+      "Maju 2 Langkah"
+    ],
+    "positive_feedback": "Tangkas! Pandu HW selalu mandiri, disiplin, dan mahir menentukan arah mata angin."
+  },
+  {
+    "id": "ch_064",
+    "title": "Level 64: Green School & Pemilahan Sampah #64",
+    "level": "Menengah",
+    "academic_subject": "IPAS & Lingkungan Hidup",
+    "character_value": "Gerakan Pungut Sampah (GPS) & 3R",
+    "sdg_target": "SDG 12: Responsible Consumption",
+    "type": "multiple_choice",
+    "question": "Tindakan memanfaatkan botol plastik bekas menjadi pot tanaman ecobrick kelas merupakan penerapan dari...",
+    "options": [
+      "A. Reuse (Menggunakan kembali)",
+      "B. Reduce (Mengurangi)",
+      "C. Recycle (Mendaur ulang)",
+      "D. Replace (Mengganti)"
+    ],
+    "correct_answer": "A. Reuse (Menggunakan kembali)",
+    "positive_feedback": "Luar biasa! Kamu adalah Agen Green School Al Mujahidin yang menjaga kelestarian alam."
+  },
+  {
+    "id": "ch_065",
+    "title": "Level 65: Operasi Pecahan Sederhana #65",
+    "level": "Menengah",
+    "academic_subject": "Matematika (Pecahan)",
+    "character_value": "Penalaran Kritis & Ketelitian",
+    "sdg_target": "SDG 4: Quality Education",
+    "type": "multiple_choice",
+    "question": "Berapakah hasil penjumlahan pecahan berpenyebut sama dari 1/10 + 2/10?",
+    "options": [
+      "A. 3/10",
+      "B. 3/20",
+      "C. 2/10",
+      "D. 1/10"
+    ],
+    "correct_answer": "A. 3/10",
+    "positive_feedback": "Pintar! Karena penyebutnya sudah sama, cukup jumlahkan pembilangnya."
+  },
+  {
+    "id": "ch_066",
+    "title": "Level 66: Algoritma Adab Menuntut Ilmu #66",
+    "level": "Menengah",
+    "academic_subject": "Al-Islam & Pembiasaan Rabbani",
+    "character_value": "Akhlakul Karimah & Keimanan",
+    "sdg_target": "SDG 4: Quality Education",
+    "type": "drag_drop_code",
+    "question": "Susun langkah adab Islami sebelum memulai proses pembelajaran di kelas!",
+    "initial_blocks": [
+      "Ucapkan Salam & Basmalah",
+      "Berdoa Sebelum Belajar",
+      "Duduk Rapi & Perhatikan Guru"
+    ],
+    "correct_sequence": [
+      "Ucapkan Salam & Basmalah",
+      "Berdoa Sebelum Belajar",
+      "Duduk Rapi & Perhatikan Guru"
+    ],
+    "positive_feedback": "MasyaAllah! Adab yang baik membuka pintu pemahaman dan keberkahan ilmu."
+  },
+  {
+    "id": "ch_067",
+    "title": "Level 67: Hitung Jarak Tempuh JKW #67",
+    "level": "Menengah",
+    "academic_subject": "Matematika (Kecepatan & Waktu)",
+    "character_value": "Manajemen Waktu & Kedisiplinan",
+    "sdg_target": "SDG 4: Quality Education",
+    "type": "multiple_choice",
+    "question": "Ahmad naik sepeda ke sekolah dengan kecepatan 14 km/jam selama 2 jam. Berapa km jarak yang ditempuh Ahmad?",
+    "options": [
+      "A. 28 km",
+      "B. 16 km",
+      "C. 28 km",
+      "D. 5 km"
+    ],
+    "correct_answer": "A. 28 km",
+    "positive_feedback": "Hebat! Rumus Jarak = Kecepatan x Waktu."
+  },
+  {
+    "id": "ch_068",
+    "title": "Level 68: Proyek Oven Surya ISTEAMCT #68",
+    "level": "Menengah",
+    "academic_subject": "ISTEAMCT & Sains",
+    "character_value": "Inovasi & Berpikir Komputasional",
+    "sdg_target": "SDG 7: Clean Energy",
+    "type": "drag_drop_code",
+    "question": "Rangkai algoritma proyek ISTEAMCT untuk mengaktifkan Oven Surya Sederhana ramah lingkungan!",
+    "initial_blocks": [
+      "Buka Reflektor Alumunium",
+      "Arahkan ke Cahaya Matahari",
+      "Serap Energi Panas"
+    ],
+    "correct_sequence": [
+      "Buka Reflektor Alumunium",
+      "Arahkan ke Cahaya Matahari",
+      "Serap Energi Panas"
+    ],
+    "positive_feedback": "Top! Inovasi teknologi ramah lingkungan ISTEAMCT berhasil diaktifkan."
+  },
+  {
+    "id": "ch_069",
+    "title": "Level 69: Etika Tabayyun Digital #69",
+    "level": "Menengah",
+    "academic_subject": "Literasi Digital & Al-Islam",
+    "character_value": "Kesantunan & Tabayyun Digital",
+    "sdg_target": "SDG 16: Peace and Justice",
+    "type": "multiple_choice",
+    "question": "Sikap utama Pelajar Muhammadiyah saat menerima berita di media sosial adalah...",
+    "options": [
+      "A. Tabayyun (Menyaring & mengecek kebenaran informasi)",
+      "B. Langsung membagikan berita tanpa dibaca",
+      "C. Memusuhi pengirim berita",
+      "D. Menulis komentar mengejek"
+    ],
+    "correct_answer": "A. Tabayyun (Menyaring & mengecek kebenaran informasi)",
+    "positive_feedback": "MasyaAllah! Prinsip Tabayyun adalah cerminan akhlak mulia di era digital."
+  },
+  {
+    "id": "ch_070",
+    "title": "Level 70: Global Citizen Welcoming #70",
+    "level": "Menengah",
+    "academic_subject": "Bahasa Inggris & Global Citizenship",
+    "character_value": "Belia Mendunia & Adaptif",
+    "sdg_target": "SDG 17: Partnerships for the Goals",
+    "type": "drag_drop_code",
+    "question": "Arrange the correct sentence blocks to welcome Sister School international guests!",
+    "initial_blocks": [
+      "Welcome to",
+      "SD Muhammadiyah Al Mujahidin",
+      "Wonosari!"
+    ],
+    "correct_sequence": [
+      "Welcome to",
+      "SD Muhammadiyah Al Mujahidin",
+      "Wonosari!"
+    ],
+    "positive_feedback": "Excellent! You are ready to be a confident global citizen!"
+  },
+  {
+    "id": "ch_071",
+    "title": "Level 71: Skala Denah Sekolah #71",
+    "level": "Mahir",
+    "academic_subject": "Matematika (Skala & Denah)",
+    "character_value": "Ketelitian & Pengenalan Lingkungan",
+    "sdg_target": "SDG 11: Sustainable Cities",
+    "type": "multiple_choice",
+    "question": "Jarak sebenarnya dari gerbang ke Laboratorium Komputer SD Al Mujahidin adalah 1420 m. Jika skala denah 1 : 2000, berapa cm jarak pada denah?",
+    "options": [
+      "A. 71 cm",
+      "B. 75 cm",
+      "C. 142 cm",
+      "D. 10 cm"
+    ],
+    "correct_answer": "A. 71 cm",
+    "positive_feedback": "Barakallah! Perhitunganmu sangat teliti (Jarak Denah = Jarak Sebenarnya (cm) / Skala)."
+  },
+  {
+    "id": "ch_072",
+    "title": "Level 72: Teologi Al-Ma'un & Sedekah #72",
+    "level": "Mahir",
+    "academic_subject": "Kemuhammadiyahan",
+    "character_value": "Kedermawanan & Kepedulian Sosial",
+    "sdg_target": "SDG 1: No Poverty",
+    "type": "multiple_choice",
+    "question": "Mengamalkan ajaran K.H. Ahmad Dahlan tentang Teologi Al-Ma'un di SD Al Mujahidin dapat diwujudkan melalui aksi...",
+    "options": [
+      "A. Rutin menyisihkan uang saku untuk Infak Jumat & LazisMu",
+      "B. Menyimpan seluruh uang saku untuk belanja pribadi",
+      "C. Membeli mainan mahal di lingkungan sekolah",
+      "D. Acuh tak acuh terhadap teman yang kesusahan"
+    ],
+    "correct_answer": "A. Rutin menyisihkan uang saku untuk Infak Jumat & LazisMu",
+    "positive_feedback": "Alhamdulillah! Meneladani Al-Ma'un menjadikan kita generasi Rabbani yang dermawan."
+  },
+  {
+    "id": "ch_073",
+    "title": "Level 73: Navigasi Pandu Hizbul Wathan #73",
+    "level": "Mahir",
+    "academic_subject": "Kepanduan HW & IPAS",
+    "character_value": "Kemandirian & Kedisiplinan Athfal",
+    "sdg_target": "SDG 15: Life on Land",
+    "type": "drag_drop_code",
+    "question": "Programlah MujaHeeBot untuk membantu Pandu Athfal melakukan navigasi kompas di lapangan sekolah!",
+    "initial_blocks": [
+      "Maju ke Utara",
+      "Belok Kanan ke Timur",
+      "Maju 2 Langkah"
+    ],
+    "correct_sequence": [
+      "Maju ke Utara",
+      "Belok Kanan ke Timur",
+      "Maju 2 Langkah"
+    ],
+    "positive_feedback": "Tangkas! Pandu HW selalu mandiri, disiplin, dan mahir menentukan arah mata angin."
+  },
+  {
+    "id": "ch_074",
+    "title": "Level 74: Green School & Pemilahan Sampah #74",
+    "level": "Mahir",
+    "academic_subject": "IPAS & Lingkungan Hidup",
+    "character_value": "Gerakan Pungut Sampah (GPS) & 3R",
+    "sdg_target": "SDG 12: Responsible Consumption",
+    "type": "multiple_choice",
+    "question": "Tindakan memanfaatkan botol plastik bekas menjadi pot tanaman ecobrick kelas merupakan penerapan dari...",
+    "options": [
+      "A. Reuse (Menggunakan kembali)",
+      "B. Reduce (Mengurangi)",
+      "C. Recycle (Mendaur ulang)",
+      "D. Replace (Mengganti)"
+    ],
+    "correct_answer": "A. Reuse (Menggunakan kembali)",
+    "positive_feedback": "Luar biasa! Kamu adalah Agen Green School Al Mujahidin yang menjaga kelestarian alam."
+  },
+  {
+    "id": "ch_075",
+    "title": "Level 75: Operasi Pecahan Sederhana #75",
+    "level": "Mahir",
+    "academic_subject": "Matematika (Pecahan)",
+    "character_value": "Penalaran Kritis & Ketelitian",
+    "sdg_target": "SDG 4: Quality Education",
+    "type": "multiple_choice",
+    "question": "Berapakah hasil penjumlahan pecahan berpenyebut sama dari 1/10 + 3/10?",
+    "options": [
+      "A. 4/10",
+      "B. 4/20",
+      "C. 3/10",
+      "D. 1/10"
+    ],
+    "correct_answer": "A. 4/10",
+    "positive_feedback": "Pintar! Karena penyebutnya sudah sama, cukup jumlahkan pembilangnya."
+  },
+  {
+    "id": "ch_076",
+    "title": "Level 76: Algoritma Adab Menuntut Ilmu #76",
+    "level": "Mahir",
+    "academic_subject": "Al-Islam & Pembiasaan Rabbani",
+    "character_value": "Akhlakul Karimah & Keimanan",
+    "sdg_target": "SDG 4: Quality Education",
+    "type": "drag_drop_code",
+    "question": "Susun langkah adab Islami sebelum memulai proses pembelajaran di kelas!",
+    "initial_blocks": [
+      "Ucapkan Salam & Basmalah",
+      "Berdoa Sebelum Belajar",
+      "Duduk Rapi & Perhatikan Guru"
+    ],
+    "correct_sequence": [
+      "Ucapkan Salam & Basmalah",
+      "Berdoa Sebelum Belajar",
+      "Duduk Rapi & Perhatikan Guru"
+    ],
+    "positive_feedback": "MasyaAllah! Adab yang baik membuka pintu pemahaman dan keberkahan ilmu."
+  },
+  {
+    "id": "ch_077",
+    "title": "Level 77: Hitung Jarak Tempuh JKW #77",
+    "level": "Mahir",
+    "academic_subject": "Matematika (Kecepatan & Waktu)",
+    "character_value": "Manajemen Waktu & Kedisiplinan",
+    "sdg_target": "SDG 4: Quality Education",
+    "type": "multiple_choice",
+    "question": "Ahmad naik sepeda ke sekolah dengan kecepatan 12 km/jam selama 3 jam. Berapa km jarak yang ditempuh Ahmad?",
+    "options": [
+      "A. 36 km",
+      "B. 15 km",
+      "C. 24 km",
+      "D. 5 km"
+    ],
+    "correct_answer": "A. 36 km",
+    "positive_feedback": "Hebat! Rumus Jarak = Kecepatan x Waktu."
+  },
+  {
+    "id": "ch_078",
+    "title": "Level 78: Proyek Oven Surya ISTEAMCT #78",
+    "level": "Mahir",
+    "academic_subject": "ISTEAMCT & Sains",
+    "character_value": "Inovasi & Berpikir Komputasional",
+    "sdg_target": "SDG 7: Clean Energy",
+    "type": "drag_drop_code",
+    "question": "Rangkai algoritma proyek ISTEAMCT untuk mengaktifkan Oven Surya Sederhana ramah lingkungan!",
+    "initial_blocks": [
+      "Buka Reflektor Alumunium",
+      "Arahkan ke Cahaya Matahari",
+      "Serap Energi Panas"
+    ],
+    "correct_sequence": [
+      "Buka Reflektor Alumunium",
+      "Arahkan ke Cahaya Matahari",
+      "Serap Energi Panas"
+    ],
+    "positive_feedback": "Top! Inovasi teknologi ramah lingkungan ISTEAMCT berhasil diaktifkan."
+  },
+  {
+    "id": "ch_079",
+    "title": "Level 79: Etika Tabayyun Digital #79",
+    "level": "Mahir",
+    "academic_subject": "Literasi Digital & Al-Islam",
+    "character_value": "Kesantunan & Tabayyun Digital",
+    "sdg_target": "SDG 16: Peace and Justice",
+    "type": "multiple_choice",
+    "question": "Sikap utama Pelajar Muhammadiyah saat menerima berita di media sosial adalah...",
+    "options": [
+      "A. Tabayyun (Menyaring & mengecek kebenaran informasi)",
+      "B. Langsung membagikan berita tanpa dibaca",
+      "C. Memusuhi pengirim berita",
+      "D. Menulis komentar mengejek"
+    ],
+    "correct_answer": "A. Tabayyun (Menyaring & mengecek kebenaran informasi)",
+    "positive_feedback": "MasyaAllah! Prinsip Tabayyun adalah cerminan akhlak mulia di era digital."
+  },
+  {
+    "id": "ch_080",
+    "title": "Level 80: Global Citizen Welcoming #80",
+    "level": "Mahir",
+    "academic_subject": "Bahasa Inggris & Global Citizenship",
+    "character_value": "Belia Mendunia & Adaptif",
+    "sdg_target": "SDG 17: Partnerships for the Goals",
+    "type": "drag_drop_code",
+    "question": "Arrange the correct sentence blocks to welcome Sister School international guests!",
+    "initial_blocks": [
+      "Welcome to",
+      "SD Muhammadiyah Al Mujahidin",
+      "Wonosari!"
+    ],
+    "correct_sequence": [
+      "Welcome to",
+      "SD Muhammadiyah Al Mujahidin",
+      "Wonosari!"
+    ],
+    "positive_feedback": "Excellent! You are ready to be a confident global citizen!"
+  },
+  {
+    "id": "ch_081",
+    "title": "Level 81: Skala Denah Sekolah #81",
+    "level": "Mahir",
+    "academic_subject": "Matematika (Skala & Denah)",
+    "character_value": "Ketelitian & Pengenalan Lingkungan",
+    "sdg_target": "SDG 11: Sustainable Cities",
+    "type": "multiple_choice",
+    "question": "Jarak sebenarnya dari gerbang ke Laboratorium Komputer SD Al Mujahidin adalah 1620 m. Jika skala denah 1 : 2000, berapa cm jarak pada denah?",
+    "options": [
+      "A. 81 cm",
+      "B. 85 cm",
+      "C. 162 cm",
+      "D. 10 cm"
+    ],
+    "correct_answer": "A. 81 cm",
+    "positive_feedback": "Barakallah! Perhitunganmu sangat teliti (Jarak Denah = Jarak Sebenarnya (cm) / Skala)."
+  },
+  {
+    "id": "ch_082",
+    "title": "Level 82: Teologi Al-Ma'un & Sedekah #82",
+    "level": "Mahir",
+    "academic_subject": "Kemuhammadiyahan",
+    "character_value": "Kedermawanan & Kepedulian Sosial",
+    "sdg_target": "SDG 1: No Poverty",
+    "type": "multiple_choice",
+    "question": "Mengamalkan ajaran K.H. Ahmad Dahlan tentang Teologi Al-Ma'un di SD Al Mujahidin dapat diwujudkan melalui aksi...",
+    "options": [
+      "A. Rutin menyisihkan uang saku untuk Infak Jumat & LazisMu",
+      "B. Menyimpan seluruh uang saku untuk belanja pribadi",
+      "C. Membeli mainan mahal di lingkungan sekolah",
+      "D. Acuh tak acuh terhadap teman yang kesusahan"
+    ],
+    "correct_answer": "A. Rutin menyisihkan uang saku untuk Infak Jumat & LazisMu",
+    "positive_feedback": "Alhamdulillah! Meneladani Al-Ma'un menjadikan kita generasi Rabbani yang dermawan."
+  },
+  {
+    "id": "ch_083",
+    "title": "Level 83: Navigasi Pandu Hizbul Wathan #83",
+    "level": "Mahir",
+    "academic_subject": "Kepanduan HW & IPAS",
+    "character_value": "Kemandirian & Kedisiplinan Athfal",
+    "sdg_target": "SDG 15: Life on Land",
+    "type": "drag_drop_code",
+    "question": "Programlah MujaHeeBot untuk membantu Pandu Athfal melakukan navigasi kompas di lapangan sekolah!",
+    "initial_blocks": [
+      "Maju ke Utara",
+      "Belok Kanan ke Timur",
+      "Maju 2 Langkah"
+    ],
+    "correct_sequence": [
+      "Maju ke Utara",
+      "Belok Kanan ke Timur",
+      "Maju 2 Langkah"
+    ],
+    "positive_feedback": "Tangkas! Pandu HW selalu mandiri, disiplin, dan mahir menentukan arah mata angin."
+  },
+  {
+    "id": "ch_084",
+    "title": "Level 84: Green School & Pemilahan Sampah #84",
+    "level": "Mahir",
+    "academic_subject": "IPAS & Lingkungan Hidup",
+    "character_value": "Gerakan Pungut Sampah (GPS) & 3R",
+    "sdg_target": "SDG 12: Responsible Consumption",
+    "type": "multiple_choice",
+    "question": "Tindakan memanfaatkan botol plastik bekas menjadi pot tanaman ecobrick kelas merupakan penerapan dari...",
+    "options": [
+      "A. Reuse (Menggunakan kembali)",
+      "B. Reduce (Mengurangi)",
+      "C. Recycle (Mendaur ulang)",
+      "D. Replace (Mengganti)"
+    ],
+    "correct_answer": "A. Reuse (Menggunakan kembali)",
+    "positive_feedback": "Luar biasa! Kamu adalah Agen Green School Al Mujahidin yang menjaga kelestarian alam."
+  },
+  {
+    "id": "ch_085",
+    "title": "Level 85: Operasi Pecahan Sederhana #85",
+    "level": "Mahir",
+    "academic_subject": "Matematika (Pecahan)",
+    "character_value": "Penalaran Kritis & Ketelitian",
+    "sdg_target": "SDG 4: Quality Education",
+    "type": "multiple_choice",
+    "question": "Berapakah hasil penjumlahan pecahan berpenyebut sama dari 1/10 + 2/10?",
+    "options": [
+      "A. 3/10",
+      "B. 3/20",
+      "C. 2/10",
+      "D. 1/10"
+    ],
+    "correct_answer": "A. 3/10",
+    "positive_feedback": "Pintar! Karena penyebutnya sudah sama, cukup jumlahkan pembilangnya."
+  },
+  {
+    "id": "ch_086",
+    "title": "Level 86: Algoritma Adab Menuntut Ilmu #86",
+    "level": "Mahir",
+    "academic_subject": "Al-Islam & Pembiasaan Rabbani",
+    "character_value": "Akhlakul Karimah & Keimanan",
+    "sdg_target": "SDG 4: Quality Education",
+    "type": "drag_drop_code",
+    "question": "Susun langkah adab Islami sebelum memulai proses pembelajaran di kelas!",
+    "initial_blocks": [
+      "Ucapkan Salam & Basmalah",
+      "Berdoa Sebelum Belajar",
+      "Duduk Rapi & Perhatikan Guru"
+    ],
+    "correct_sequence": [
+      "Ucapkan Salam & Basmalah",
+      "Berdoa Sebelum Belajar",
+      "Duduk Rapi & Perhatikan Guru"
+    ],
+    "positive_feedback": "MasyaAllah! Adab yang baik membuka pintu pemahaman dan keberkahan ilmu."
+  },
+  {
+    "id": "ch_087",
+    "title": "Level 87: Hitung Jarak Tempuh JKW #87",
+    "level": "Mahir",
+    "academic_subject": "Matematika (Kecepatan & Waktu)",
+    "character_value": "Manajemen Waktu & Kedisiplinan",
+    "sdg_target": "SDG 4: Quality Education",
+    "type": "multiple_choice",
+    "question": "Ahmad naik sepeda ke sekolah dengan kecepatan 14 km/jam selama 1 jam. Berapa km jarak yang ditempuh Ahmad?",
+    "options": [
+      "A. 14 km",
+      "B. 15 km",
+      "C. 28 km",
+      "D. 5 km"
+    ],
+    "correct_answer": "A. 14 km",
+    "positive_feedback": "Hebat! Rumus Jarak = Kecepatan x Waktu."
+  },
+  {
+    "id": "ch_088",
+    "title": "Level 88: Proyek Oven Surya ISTEAMCT #88",
+    "level": "Mahir",
+    "academic_subject": "ISTEAMCT & Sains",
+    "character_value": "Inovasi & Berpikir Komputasional",
+    "sdg_target": "SDG 7: Clean Energy",
+    "type": "drag_drop_code",
+    "question": "Rangkai algoritma proyek ISTEAMCT untuk mengaktifkan Oven Surya Sederhana ramah lingkungan!",
+    "initial_blocks": [
+      "Buka Reflektor Alumunium",
+      "Arahkan ke Cahaya Matahari",
+      "Serap Energi Panas"
+    ],
+    "correct_sequence": [
+      "Buka Reflektor Alumunium",
+      "Arahkan ke Cahaya Matahari",
+      "Serap Energi Panas"
+    ],
+    "positive_feedback": "Top! Inovasi teknologi ramah lingkungan ISTEAMCT berhasil diaktifkan."
+  },
+  {
+    "id": "ch_089",
+    "title": "Level 89: Etika Tabayyun Digital #89",
+    "level": "Mahir",
+    "academic_subject": "Literasi Digital & Al-Islam",
+    "character_value": "Kesantunan & Tabayyun Digital",
+    "sdg_target": "SDG 16: Peace and Justice",
+    "type": "multiple_choice",
+    "question": "Sikap utama Pelajar Muhammadiyah saat menerima berita di media sosial adalah...",
+    "options": [
+      "A. Tabayyun (Menyaring & mengecek kebenaran informasi)",
+      "B. Langsung membagikan berita tanpa dibaca",
+      "C. Memusuhi pengirim berita",
+      "D. Menulis komentar mengejek"
+    ],
+    "correct_answer": "A. Tabayyun (Menyaring & mengecek kebenaran informasi)",
+    "positive_feedback": "MasyaAllah! Prinsip Tabayyun adalah cerminan akhlak mulia di era digital."
+  },
+  {
+    "id": "ch_090",
+    "title": "Level 90: Global Citizen Welcoming #90",
+    "level": "Mahir",
+    "academic_subject": "Bahasa Inggris & Global Citizenship",
+    "character_value": "Belia Mendunia & Adaptif",
+    "sdg_target": "SDG 17: Partnerships for the Goals",
+    "type": "drag_drop_code",
+    "question": "Arrange the correct sentence blocks to welcome Sister School international guests!",
+    "initial_blocks": [
+      "Welcome to",
+      "SD Muhammadiyah Al Mujahidin",
+      "Wonosari!"
+    ],
+    "correct_sequence": [
+      "Welcome to",
+      "SD Muhammadiyah Al Mujahidin",
+      "Wonosari!"
+    ],
+    "positive_feedback": "Excellent! You are ready to be a confident global citizen!"
+  },
+  {
+    "id": "ch_091",
+    "title": "Level 91: Skala Denah Sekolah #91",
+    "level": "Mahir",
+    "academic_subject": "Matematika (Skala & Denah)",
+    "character_value": "Ketelitian & Pengenalan Lingkungan",
+    "sdg_target": "SDG 11: Sustainable Cities",
+    "type": "multiple_choice",
+    "question": "Jarak sebenarnya dari gerbang ke Laboratorium Komputer SD Al Mujahidin adalah 1820 m. Jika skala denah 1 : 2000, berapa cm jarak pada denah?",
+    "options": [
+      "A. 91 cm",
+      "B. 95 cm",
+      "C. 182 cm",
+      "D. 10 cm"
+    ],
+    "correct_answer": "A. 91 cm",
+    "positive_feedback": "Barakallah! Perhitunganmu sangat teliti (Jarak Denah = Jarak Sebenarnya (cm) / Skala)."
+  },
+  {
+    "id": "ch_092",
+    "title": "Level 92: Teologi Al-Ma'un & Sedekah #92",
+    "level": "Mahir",
+    "academic_subject": "Kemuhammadiyahan",
+    "character_value": "Kedermawanan & Kepedulian Sosial",
+    "sdg_target": "SDG 1: No Poverty",
+    "type": "multiple_choice",
+    "question": "Mengamalkan ajaran K.H. Ahmad Dahlan tentang Teologi Al-Ma'un di SD Al Mujahidin dapat diwujudkan melalui aksi...",
+    "options": [
+      "A. Rutin menyisihkan uang saku untuk Infak Jumat & LazisMu",
+      "B. Menyimpan seluruh uang saku untuk belanja pribadi",
+      "C. Membeli mainan mahal di lingkungan sekolah",
+      "D. Acuh tak acuh terhadap teman yang kesusahan"
+    ],
+    "correct_answer": "A. Rutin menyisihkan uang saku untuk Infak Jumat & LazisMu",
+    "positive_feedback": "Alhamdulillah! Meneladani Al-Ma'un menjadikan kita generasi Rabbani yang dermawan."
+  },
+  {
+    "id": "ch_093",
+    "title": "Level 93: Navigasi Pandu Hizbul Wathan #93",
+    "level": "Mahir",
+    "academic_subject": "Kepanduan HW & IPAS",
+    "character_value": "Kemandirian & Kedisiplinan Athfal",
+    "sdg_target": "SDG 15: Life on Land",
+    "type": "drag_drop_code",
+    "question": "Programlah MujaHeeBot untuk membantu Pandu Athfal melakukan navigasi kompas di lapangan sekolah!",
+    "initial_blocks": [
+      "Maju ke Utara",
+      "Belok Kanan ke Timur",
+      "Maju 2 Langkah"
+    ],
+    "correct_sequence": [
+      "Maju ke Utara",
+      "Belok Kanan ke Timur",
+      "Maju 2 Langkah"
+    ],
+    "positive_feedback": "Tangkas! Pandu HW selalu mandiri, disiplin, dan mahir menentukan arah mata angin."
+  },
+  {
+    "id": "ch_094",
+    "title": "Level 94: Green School & Pemilahan Sampah #94",
+    "level": "Mahir",
+    "academic_subject": "IPAS & Lingkungan Hidup",
+    "character_value": "Gerakan Pungut Sampah (GPS) & 3R",
+    "sdg_target": "SDG 12: Responsible Consumption",
+    "type": "multiple_choice",
+    "question": "Tindakan memanfaatkan botol plastik bekas menjadi pot tanaman ecobrick kelas merupakan penerapan dari...",
+    "options": [
+      "A. Reuse (Menggunakan kembali)",
+      "B. Reduce (Mengurangi)",
+      "C. Recycle (Mendaur ulang)",
+      "D. Replace (Mengganti)"
+    ],
+    "correct_answer": "A. Reuse (Menggunakan kembali)",
+    "positive_feedback": "Luar biasa! Kamu adalah Agen Green School Al Mujahidin yang menjaga kelestarian alam."
+  },
+  {
+    "id": "ch_095",
+    "title": "Level 95: Operasi Pecahan Sederhana #95",
+    "level": "Mahir",
+    "academic_subject": "Matematika (Pecahan)",
+    "character_value": "Penalaran Kritis & Ketelitian",
+    "sdg_target": "SDG 4: Quality Education",
+    "type": "multiple_choice",
+    "question": "Berapakah hasil penjumlahan pecahan berpenyebut sama dari 1/10 + 2/10?",
+    "options": [
+      "A. 3/10",
+      "B. 3/20",
+      "C. 2/10",
+      "D. 1/10"
+    ],
+    "correct_answer": "A. 3/10",
+    "positive_feedback": "Pintar! Karena penyebutnya sudah sama, cukup jumlahkan pembilangnya."
+  },
+  {
+    "id": "ch_096",
+    "title": "Level 96: Algoritma Adab Menuntut Ilmu #96",
+    "level": "Mahir",
+    "academic_subject": "Al-Islam & Pembiasaan Rabbani",
+    "character_value": "Akhlakul Karimah & Keimanan",
+    "sdg_target": "SDG 4: Quality Education",
+    "type": "drag_drop_code",
+    "question": "Susun langkah adab Islami sebelum memulai proses pembelajaran di kelas!",
+    "initial_blocks": [
+      "Ucapkan Salam & Basmalah",
+      "Berdoa Sebelum Belajar",
+      "Duduk Rapi & Perhatikan Guru"
+    ],
+    "correct_sequence": [
+      "Ucapkan Salam & Basmalah",
+      "Berdoa Sebelum Belajar",
+      "Duduk Rapi & Perhatikan Guru"
+    ],
+    "positive_feedback": "MasyaAllah! Adab yang baik membuka pintu pemahaman dan keberkahan ilmu."
+  },
+  {
+    "id": "ch_097",
+    "title": "Level 97: Hitung Jarak Tempuh JKW #97",
+    "level": "Mahir",
+    "academic_subject": "Matematika (Kecepatan & Waktu)",
+    "character_value": "Manajemen Waktu & Kedisiplinan",
+    "sdg_target": "SDG 4: Quality Education",
+    "type": "multiple_choice",
+    "question": "Ahmad naik sepeda ke sekolah dengan kecepatan 14 km/jam selama 2 jam. Berapa km jarak yang ditempuh Ahmad?",
+    "options": [
+      "A. 28 km",
+      "B. 16 km",
+      "C. 28 km",
+      "D. 5 km"
+    ],
+    "correct_answer": "A. 28 km",
+    "positive_feedback": "Hebat! Rumus Jarak = Kecepatan x Waktu."
+  },
+  {
+    "id": "ch_098",
+    "title": "Level 98: Proyek Oven Surya ISTEAMCT #98",
+    "level": "Mahir",
+    "academic_subject": "ISTEAMCT & Sains",
+    "character_value": "Inovasi & Berpikir Komputasional",
+    "sdg_target": "SDG 7: Clean Energy",
+    "type": "drag_drop_code",
+    "question": "Rangkai algoritma proyek ISTEAMCT untuk mengaktifkan Oven Surya Sederhana ramah lingkungan!",
+    "initial_blocks": [
+      "Buka Reflektor Alumunium",
+      "Arahkan ke Cahaya Matahari",
+      "Serap Energi Panas"
+    ],
+    "correct_sequence": [
+      "Buka Reflektor Alumunium",
+      "Arahkan ke Cahaya Matahari",
+      "Serap Energi Panas"
+    ],
+    "positive_feedback": "Top! Inovasi teknologi ramah lingkungan ISTEAMCT berhasil diaktifkan."
+  },
+  {
+    "id": "ch_099",
+    "title": "Level 99: Etika Tabayyun Digital #99",
+    "level": "Mahir",
+    "academic_subject": "Literasi Digital & Al-Islam",
+    "character_value": "Kesantunan & Tabayyun Digital",
+    "sdg_target": "SDG 16: Peace and Justice",
+    "type": "multiple_choice",
+    "question": "Sikap utama Pelajar Muhammadiyah saat menerima berita di media sosial adalah...",
+    "options": [
+      "A. Tabayyun (Menyaring & mengecek kebenaran informasi)",
+      "B. Langsung membagikan berita tanpa dibaca",
+      "C. Memusuhi pengirim berita",
+      "D. Menulis komentar mengejek"
+    ],
+    "correct_answer": "A. Tabayyun (Menyaring & mengecek kebenaran informasi)",
+    "positive_feedback": "MasyaAllah! Prinsip Tabayyun adalah cerminan akhlak mulia di era digital."
+  },
+  {
+    "id": "ch_100",
+    "title": "Level 100: Puncak Prestasi Belia Mendunia #100",
+    "level": "Mahir",
+    "academic_subject": "Bahasa Inggris & Global Citizenship",
+    "character_value": "Belia Mendunia & Adaptif",
+    "sdg_target": "SDG 17: Partnerships for the Goals",
+    "type": "drag_drop_code",
+    "question": "Selamat mencapai puncak Level 100! Arrange the graduation blocks to become an outstanding student!",
+    "initial_blocks": [
+      "Welcome to",
+      "SD Muhammadiyah Al Mujahidin",
+      "Wonosari!"
+    ],
+    "correct_sequence": [
+      "Welcome to",
+      "SD Muhammadiyah Al Mujahidin",
+      "Wonosari!"
+    ],
+    "positive_feedback": "MasyaAllah! Luar Biasa! Kamu resmi menuntaskan 100 Level MujaHeeBot Quest!"
   }
 ]
