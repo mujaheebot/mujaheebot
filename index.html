@@ -27,34 +27,6 @@
       padding-bottom: 30px;
     }
 
-    /* Top Pills Nav Bar */
-    .top-nav {
-      background-color: #051c17;
-      border: 1px solid rgba(0, 230, 153, 0.2);
-      border-radius: 12px;
-      padding: 10px 15px;
-      margin-bottom: 20px;
-    }
-
-    .nav-pill-btn {
-      background-color: #0b2e26;
-      color: #a3e635;
-      border: 1px solid #15803d;
-      border-radius: 20px;
-      padding: 6px 16px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-
-    .nav-pill-btn:hover, .nav-pill-btn.active {
-      background-color: #0284c7;
-      color: #ffffff;
-      border-color: #38bdf8;
-      box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
-    }
-
     /* Header Main Banner */
     .main-header-card {
       background: linear-gradient(135deg, #093b30, #041d18);
@@ -65,8 +37,8 @@
     }
 
     .school-emblem {
-      width: 45px;
-      height: 45px;
+      width: 48px;
+      height: 48px;
       object-fit: contain;
       filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
     }
@@ -86,7 +58,6 @@
       border: 1px solid rgba(0, 230, 153, 0.25);
       border-radius: 14px;
       padding: 18px;
-      height: 100%;
     }
 
     /* Grid Game Simulation (5x5) */
@@ -188,35 +159,36 @@
       padding: 12px 18px;
       margin-top: 15px;
     }
+
+    .info-badge {
+      font-size: 0.75rem;
+      background-color: #093b30;
+      color: var(--accent-green);
+      padding: 3px 8px;
+      border-radius: 6px;
+      border: 1px solid rgba(0, 230, 153, 0.3);
+    }
   </style>
 </head>
 <body class="py-3">
 
   <div class="container-fluid px-4">
-    
-    <!-- Top Navigation Pills Bar -->
-    <div class="top-nav d-flex flex-wrap justify-content-center gap-2">
-      <a href="#" class="nav-pill-btn"><i class="fa-solid fa-book me-1"></i> 1. TEORI & KONSEP</a>
-      <a href="#" class="nav-pill-btn"><i class="fa-solid fa-microchip me-1"></i> 2. ANATOMI KOMPONEN KOMPUTER</a>
-      <a href="#" class="nav-pill-btn"><i class="fa-solid fa-gamepad me-1"></i> 3. ARENA GAME & TANTANGAN</a>
-      <a href="#" class="nav-pill-btn active"><i class="fa-solid fa-robot me-1"></i> 4. MUJAHEEBOT CODING</a>
-      <a href="#" class="nav-pill-btn"><i class="fa-solid fa-code me-1"></i> 5. CODING KIDS (SCRATCH)</a>
-    </div>
 
     <!-- Header Main Quest Banner -->
     <div class="main-header-card d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
       <div class="d-flex align-items-center gap-3">
+        <!-- Logo Sekolah Resmi SD Muhammadiyah Al Mujahidin -->
         <img src="https://lh3.googleusercontent.com/d/1nBO66TKYu_Nzv4XckDaRZJGCqmbqjWS1" alt="Logo SD Mujahidin" class="school-emblem">
         <i class="fa-solid fa-robot fa-2x text-success"></i>
         <div>
           <h3 class="m-0 fw-bold text-light">MujaHeeBot Coding Quest</h3>
-          <small class="text-success-light opacity-75">Petualangan Logika & Coding SD AI Mujahidin Wonosari</small>
+          <small class="text-success-light opacity-75">Platform Digital Logika & Coding SD AI Mujahidin Wonosari</small>
         </div>
       </div>
       <div class="d-flex align-items-center gap-3">
         <div class="d-flex align-items-center gap-2">
-          <label for="moduleSelect" class="fw-bold small text-light m-0">Modul:</label>
-          <select id="moduleSelect" class="form-select bg-dark text-light border-success form-select-sm" style="min-width: 250px;" onchange="loadChallenge(this.value)">
+          <label for="moduleSelect" class="fw-bold small text-light m-0"><i class="fa-solid fa-layer-group me-1 text-warning"></i> Pilih Level:</label>
+          <select id="moduleSelect" class="form-select bg-dark text-light border-success form-select-sm" style="min-width: 260px;" onchange="loadChallenge(this.value)">
             <!-- Options dynamically populated from challenges.json -->
           </select>
         </div>
@@ -224,19 +196,31 @@
       </div>
     </div>
 
-    <!-- Main Workspace (3 Column Layout) -->
+    <!-- Main Workspace (Layout 2 Kolom) -->
     <div class="row g-3">
       
       <!-- Left Column: Module Description & Grid Simulation Game -->
       <div class="col-lg-6">
         
-        <!-- Module Description Panel -->
+        <!-- Module Description Panel Lengkap -->
         <div class="panel-card mb-3">
           <div class="d-flex align-items-start gap-3">
-            <i class="fa-solid fa-graduation-cap fa-2x text-success"></i>
-            <div>
-              <h5 id="modTitle" class="fw-bold text-success mb-1">Modul 1: Langkah Pertama di Sekolah</h5>
-              <p id="modDesc" class="small m-0 opacity-90">Pandu MujaHeeBot menuju Ruang Kelas. Jangan lupa ambil Buku Pelajaran di jalan!</p>
+            <i class="fa-solid fa-graduation-cap fa-2x text-warning"></i>
+            <div class="w-100">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <h5 id="modTitle" class="fw-bold text-success m-0">Level 1: Skala Denah Sekolah</h5>
+                <span id="modLevelBadge" class="badge bg-warning text-dark fw-bold">Pemula</span>
+              </div>
+              
+              <!-- Deskripsi Tantangan -->
+              <p id="modDesc" class="small m-0 text-light opacity-90 mb-2">Pandu MujaHeeBot untuk menyelesaikan misi logika sekolah!</p>
+              
+              <!-- Keterangan Tambahan Samping Toga -->
+              <div class="d-flex flex-wrap gap-2 pt-1 border-top border-secondary border-opacity-25">
+                <span class="info-badge"><i class="fa-solid fa-book-open me-1"></i> Materi: <strong id="modSubject">Matematika</strong></span>
+                <span class="info-badge"><i class="fa-solid fa-heart me-1"></i> Karakter: <strong id="modChar">Ketelitian</strong></span>
+                <span class="info-badge"><i class="fa-solid fa-bullseye me-1"></i> <strong id="modSdg">SDG Target</strong></span>
+              </div>
             </div>
           </div>
         </div>
@@ -252,7 +236,7 @@
 
       <!-- Right Column: Command Blocks & Code Builder Area -->
       <div class="col-lg-6">
-        <div class="panel-card d-flex flex-column justify-content-between">
+        <div class="panel-card d-flex flex-column justify-content-between h-100">
           
           <!-- Command Blocks Palette -->
           <div class="mb-3">
@@ -275,7 +259,7 @@
             </div>
             
             <div id="programEditor" class="program-editor">
-              <span id="placeholderText" class="text-muted small m-auto text-center">Belum ada perintah.<br>Klik tombol di atas untuk menyusun logika MujaHiBot!</span>
+              <span id="placeholderText" class="text-muted small m-auto text-center">Belum ada perintah.<br>Klik tombol di atas untuk menyusun logika MujaHeeBot!</span>
             </div>
           </div>
 
@@ -305,7 +289,7 @@
 
     <!-- Footer -->
     <footer class="text-center mt-4 text-muted small opacity-75">
-      &copy; 2026 MAZDANY DIGITAL PLATFORM. SD MUHAMMADIYAH AL MUJAHIDIN. ALL RIGHTS RESERVED.
+      &copy; 2026 MAZDANY DIGITAL PLATFORM. SD MUHAMMADIYAH AL MUJAHIDIN WONOSARI. ALL RIGHTS RESERVED.
     </footer>
   </div>
 
@@ -343,6 +327,11 @@
       
       document.getElementById('modTitle').textContent = ch.title;
       document.getElementById('modDesc').textContent = ch.question;
+      document.getElementById('modLevelBadge').textContent = ch.level || "Pemula";
+      document.getElementById('modSubject').textContent = ch.academic_subject || "Umum";
+      document.getElementById('modChar').textContent = ch.character_value || "Berakhlak Mulia";
+      document.getElementById('modSdg').textContent = ch.sdg_target || "SDG 4";
+      
       document.getElementById('feedbackBox').style.display = 'none';
       
       updateEditorDisplay();
@@ -381,7 +370,7 @@
     function updateEditorDisplay() {
       const editor = document.getElementById('programEditor');
       if (userProgram.length === 0) {
-        editor.innerHTML = '<span id="placeholderText" class="text-muted small m-auto text-center">Belum ada perintah.<br>Klik tombol di atas untuk menyusun logika MujaHiBot!</span>';
+        editor.innerHTML = '<span id="placeholderText" class="text-muted small m-auto text-center">Belum ada perintah.<br>Klik tombol di atas untuk menyusun logika MujaHeeBot!</span>';
         return;
       }
 
