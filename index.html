@@ -138,11 +138,11 @@
       color: var(--text-light);
       border: 1px solid var(--accent-green);
       border-radius: 8px;
-      padding: 10px 14px;
+      padding: 12px 16px;
       width: 100%;
       text-align: left;
       font-weight: 600;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       transition: all 0.2s;
     }
 
@@ -180,7 +180,7 @@
       background-color: #020b09;
       border: 2px dashed rgba(0, 230, 153, 0.3);
       border-radius: 10px;
-      min-height: 150px;
+      min-height: 130px;
       padding: 15px;
       display: flex;
       flex-wrap: wrap;
@@ -247,10 +247,10 @@
       </div>
     </div>
 
-    <!-- Workspace Layout (Kiri: Soal, Option, Map | Kanan: Blok Perintah & Logic) -->
+    <!-- Workspace Layout (Seimbang: Sisi Kiri Soal & Option | Sisi Kanan Peta, Blok & Code) -->
     <div class="row g-3">
       
-      <!-- SISI KIRI: Deskripsi Level + Pilihan Ganda (ABC) + Grid Game Board -->
+      <!-- SISI KIRI: Deskripsi Level + Pilihan Ganda (ABC) -->
       <div class="col-lg-6">
         
         <!-- Module Card Info -->
@@ -264,28 +264,28 @@
           </div>
         </div>
 
-        <!-- Pilihan Ganda (ABC) - Tampil di Sisi Kiri jika tipe Soal Multiple Choice -->
-        <div id="leftOptionsArea" class="panel-card mb-3" style="display: none;">
+        <!-- Pilihan Ganda (ABC) -->
+        <div id="leftOptionsArea" class="panel-card" style="display: none;">
           <div class="small fw-bold text-warning mb-2"><i class="fa-solid fa-list-check me-1"></i> PILIH JAWABAN YANG TEPAT:</div>
           <div id="quizOptionsContainer">
             <!-- Pilihan A, B, C, D di-generate otomatis di sini -->
           </div>
         </div>
 
-        <!-- Grid Game Board Simulation -->
-        <div class="panel-card">
-          <div class="small fw-bold text-success mb-2"><i class="fa-solid fa-map-location-dot me-1"></i> PETA KISI SIMULASI MUJAHEEBOT</div>
-          <div class="grid-board" id="gridBoard">
-            <!-- 25 Grid Cells -->
-          </div>
-        </div>
-
       </div>
 
-      <!-- SISI KANAN: Blok Perintah & Program MujaHeeBot Assembly -->
+      <!-- SISI KANAN: Peta Kisi Simulasi + Blok Perintah + Program Assembly -->
       <div class="col-lg-6">
         <div class="panel-card d-flex flex-column justify-content-between">
           
+          <!-- Grid Game Board Simulation -->
+          <div class="mb-3">
+            <div class="small fw-bold text-success mb-2"><i class="fa-solid fa-map-location-dot me-1"></i> PETA KISI SIMULASI MUJAHEEBOT</div>
+            <div class="grid-board" id="gridBoard">
+              <!-- 25 Grid Cells -->
+            </div>
+          </div>
+
           <!-- Command Blocks Palette -->
           <div class="mb-3">
             <div class="small fw-bold text-light mb-2"><i class="fa-solid fa-cubes me-1 text-success"></i> BLOK PERINTAH (KLIK UNTUK TAMBAH)</div>
