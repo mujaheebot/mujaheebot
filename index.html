@@ -30,9 +30,45 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.6);
     }
 
-    /* Welcome Banner Styling */
+    /* Logo Sekolah Header */
+    .school-logo {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.5));
+    }
+
+    /* Avatar Robot Berlogo Sekolah */
+    .robot-avatar {
+      position: relative;
+      display: inline-block;
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #10b981, #047857);
+      border-radius: 50%;
+      border: 3px solid var(--accent-yellow);
+      box-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .robot-badge-logo {
+      position: absolute;
+      bottom: -4px;
+      right: -4px;
+      width: 30px;
+      height: 30px;
+      background: #ffffff;
+      border-radius: 50%;
+      padding: 2px;
+      border: 2px solid var(--accent-green);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    }
+
+    /* Welcome Hero Banner */
     .welcome-hero {
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(251, 191, 36, 0.15)), var(--card-bg);
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(251, 191, 36, 0.15)), var(--card-bg);
       border: 2px solid var(--accent-green);
       border-radius: 16px;
       padding: 25px;
@@ -154,14 +190,15 @@
 </head>
 <body class="pb-5">
 
-  <!-- Navbar -->
+  <!-- Header & Navbar -->
   <nav class="navbar navbar-custom py-3 mb-4">
     <div class="container d-flex justify-content-between align-items-center">
       <div class="d-flex align-items-center gap-3">
-        <i class="fa-solid fa-robot fa-2x text-warning"></i>
+        <!-- Logo Sekolah Resmi SD Muhammadiyah Al Mujahidin -->
+        <img src="https://lh3.googleusercontent.com/d/1nBO66TKYu_Nzv4XckDaRZJGCqmbqjWS1" alt="Logo SD Mujahidin" class="school-logo">
         <div>
           <h4 class="m-0 fw-bold text-success">MujaHeeBot Quest</h4>
-          <small class="text-light opacity-75">Platform Gamifikasi & Coding SD Al Mujahidin Wonosari</small>
+          <small class="text-light opacity-75">SD Muhammadiyah Al Mujahidin Wonosari</small>
         </div>
       </div>
       <div>
@@ -172,18 +209,25 @@
 
   <div class="container">
     
-    <!-- Welcome Header Banner -->
+    <!-- Welcome Hero Banner -->
     <div class="welcome-hero mb-4">
       <div class="row align-items-center">
-        <div class="col-md-8">
+        <div class="col-md-2 text-center mb-3 mb-md-0">
+          <!-- Maskot Robot Ber-Emblem Logo Sekolah -->
+          <div class="robot-avatar">
+            <i class="fa-solid fa-robot fa-3x text-warning"></i>
+            <img src="https://lh3.googleusercontent.com/d/1nBO66TKYu_Nzv4XckDaRZJGCqmbqjWS1" alt="Logo Emblem" class="robot-badge-logo">
+          </div>
+        </div>
+        <div class="col-md-7">
           <h3 class="fw-bold text-warning mb-2"><i class="fa-solid fa-hand-wave me-2"></i> Selamat Datang, Anak-Anak Hebat!</h3>
           <p class="m-0 fs-6 leading-relaxed">
-            Selamat datang di petualangan coding dan kuis interaktif <strong>MujaHeeBot Quest</strong>! Mari kita tingkatkan logika, ketelitian, dan nilai-nilai keislaman untuk menjadi generasi <em>Rabbani, Unggul, Kreatif, Adaptif, dan Belia Mendunia</em>.
+            Selamat datang di petualangan coding dan kuis interaktif <strong>100 Level MujaHeeBot Quest</strong>! Mari tingkatkan pemikiran kritis, logika coding, dan nilai keislaman untuk menjadi generasi <em>Rabbani, Unggul, Kreatif, Adaptif, dan Belia Mendunia</em>.
           </p>
         </div>
-        <div class="col-md-4 text-md-end mt-3 mt-md-0">
+        <div class="col-md-3 text-md-end mt-3 mt-md-0">
           <a href="#questSection" class="btn btn-warning fw-bold px-4 py-2 text-dark rounded-pill shadow">
-            <i class="fa-solid fa-gamepad me-2"></i> Mulai Main Sekarang!
+            <i class="fa-solid fa-gamepad me-2"></i> Misi 100 Level!
           </a>
         </div>
       </div>
@@ -196,11 +240,11 @@
       <div class="col-lg-4">
         <div class="quest-card">
           <div class="d-flex justify-content-between align-items-center mb-3">
-            <h5 class="fw-bold text-warning m-0"><i class="fa-solid fa-list-ol me-2"></i> Modul Tantangan</h5>
-            <span id="totalLevelBadge" class="badge bg-success">0 Level</span>
+            <h5 class="fw-bold text-warning m-0"><i class="fa-solid fa-list-ol me-2"></i> Modul 100 Level</h5>
+            <span id="totalLevelBadge" class="badge bg-success">100 Level</span>
           </div>
           
-          <div id="levelList" class="d-flex flex-column gap-2" style="max-height: 500px; overflow-y: auto; padding-right: 5px;">
+          <div id="levelList" class="d-flex flex-column gap-2" style="max-height: 520px; overflow-y: auto; padding-right: 5px;">
             <!-- Dynamic Level Cards -->
           </div>
         </div>
