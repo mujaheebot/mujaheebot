@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MujaHeeBot Coding Quest - SD Muhammadiyah Al Mujahidin</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0a1f1c;
+      --card-bg: #11322c;
+      --accent-green: #10b981;
+      --accent-yellow: #fbbf24;
+      --panel-bg: #0d2823;
+      --text-light: #ecfdf5;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .header-panel {
+      background-color: var(--card-bg);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 12px;
+      padding: 15px 25px;
+    }
+
+    .badge-score {
+      background-color: var(--accent-yellow);
+      color: #000;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border-radius: 20px;
+      padding: 5px 15px;
+    }
+
+    .quest-card {
+      background-color: var(--card-bg);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      border-radius: 12px;
+      padding: 20px;
+      height: 100%;
+    }
+
+    .block-btn {
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      margin: 4px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .block-btn:hover {
+      background-color: #1d4ed8;
+      transform: translateY(-2px);
+    }
+
+    .code-area {
+      background-color: var(--panel-bg);
+      border: 2px dashed #059669;
+      border-radius: 8px;
+      min-height: 150px;
+      padding: 15px;
+    }
+
+    .btn-action {
+      background-color: var(--accent-green);
+      color: #000;
+      font-weight: bold;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+    }
+
+    .btn-action:hover {
+      background-color: #34d399;
+    }
+
+    .feedback-box {
+      display: none;
+      background-color: #065f46;
+      border: 1px solid #10b981;
+      border-radius: 8px;
+      padding: 15px;
+      margin-top: 15px;
+    }
+
+    .opt-btn {
+      background-color: var(--panel-bg);
+      color: white;
+      border: 1px solid #059669;
+      text-align: left;
+      margin-bottom: 10px;
+      padding: 12px;
+      border-radius: 8px;
+      width: 100%;
+      transition: all 0.2s;
+    }
+
+    .opt-btn:hover {
+      background-color: #059669;
+    }
+  </style>
+</head>
+<body class="py-4">
+
+  <div class="container">
+    <!-- Header -->
+    <div class="header-panel d-flex justify-content-between align-items-center mb-4">
+      <div class="d-flex align-items-center gap-3">
+        <i class="fa-solid fa-robot fa-2x text-warning"></i>
+        <div>
+          <h4 class="m-0 fw-bold">MujaHeeBot Coding Quest</h4>
+          <small class="text-success-light">Petualangan Logika & Coding SD AI Mujahidin Wonosari</small>
+        </div>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+        <select id="challengeSelect" class="form-select bg-dark text-light border-success" onchange="loadChallenge(this.value)">
+          <!-- Dynamic Options -->
+        </select>
+        <span class="badge-score"><i class="fa-solid fa-star me-1"></i> <span id="scoreDisplay">0</span></span>
+      </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="row g-4">
+      <!-- Challenge Description -->
+      <div class="col-md-5">
+        <div class="quest-card">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span id="badgeLevel" class="badge bg-warning text-dark">Pemula</span>
+            <small id="sdgTarget" class="text-info fw-bold">SDG Target</small>
+          </div>
+          <h5 id="questTitle" class="fw-bold text-success mb-3">Judul Tantangan</h5>
+          <p id="questQuestion" class="mb-3">Deskripsi pertanyaan atau tantangan akan muncul di sini...</p>
+          
+          <div class="p-3 mb-3 rounded" style="background-color: var(--panel-bg); border-left: 4px solid var(--accent-green);">
+            <small class="d-block text-muted">Materi & Nilai Karakter:</small>
+            <span id="charValue" class="fw-bold text-light">-</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Area -->
+      <div class="col-md-7">
+        <div class="quest-card">
+          <div id="interactiveArea">
+            <!-- Dynamic elements load here -->
+          </div>
+
+          <!-- Feedback Box -->
+          <div id="feedbackBox" class="feedback-box mt-3">
+            <div class="d-flex align-items-center gap-2">
+              <i class="fa-solid fa-circle-check fa-2x text-warning"></i>
+              <div>
+                <h6 class="m-0 fw-bold text-warning">Respon MujaHeeBot:</h6>
+                <p id="feedbackText" class="m-0 small"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="text-center mt-5 text-muted small">
+      &copy; SD Muhammadiyah Al Mujahidin Wonosari.
+    </footer>
+  </div>
+
+  <script>
+    let challengesData = [];
+    let currentChallenge = null;
+    let userSequence = [];
+    let score = 0;
+
+    async function init() {
+      try {
+        const response = await fetch('challenges.json');
+        challengesData = await response.json();
+        
+        const selectEl = document.getElementById('challengeSelect');
+        selectEl.innerHTML = '';
+        
+        challengesData.forEach((ch, idx) => {
+          const opt = document.createElement('option');
+          opt.value = idx;
+          opt.textContent = `Tantangan ${idx + 1}: ${ch.title}`;
+          selectEl.appendChild(opt);
+        });
+
+        loadChallenge(0);
+      } catch (err) {
+        console.error("Gagal memuat data challenges.json", err);
+      }
+    }
+
+    function loadChallenge(index) {
+      currentChallenge = challengesData[index];
+      userSequence = [];
+      document.getElementById('feedbackBox').style.display = 'none';
+
+      document.getElementById('questTitle').textContent = currentChallenge.title;
+      document.getElementById('questQuestion').textContent = currentChallenge.question;
+      document.getElementById('badgeLevel').textContent = currentChallenge.level;
+      document.getElementById('sdgTarget').textContent = currentChallenge.sdg_target;
+      document.getElementById('charValue').textContent = `${currentChallenge.academic_subject} | ${currentChallenge.character_value}`;
+
+      const area = document.getElementById('interactiveArea');
+      area.innerHTML = '';
+
+      if (currentChallenge.type === 'drag_drop_code') {
+        renderCodeBlocks(area);
+      } else if (currentChallenge.type === 'multiple_choice') {
+        renderMultipleChoice(area);
+      }
+    }
+
+    function renderCodeBlocks(container) {
+      container.innerHTML = `
+        <h6 class="fw-bold mb-2"><i class="fa-solid fa-cubes me-1"></i> Blok Perintah (Klik untuk Menambah):</h6>
+        <div id="availableBlocks" class="mb-3">
+          ${currentChallenge.initial_blocks.map(block => `
+            <button class="block-btn" onclick="addBlock('${block}')">+ ${block}</button>
+          `).join('')}
+        </div>
+        <h6 class="fw-bold mb-2"><i class="fa-solid fa-code me-1"></i> Program MujaHeeBot:</h6>
+        <div id="codeArea" class="code-area mb-3"><i>Belum ada perintah. Klik tombol di atas!</i></div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-action flex-grow-1" onclick="runCode()"><i class="fa-solid fa-play me-1"></i> JALANKAN KODE</button>
+          <button class="btn btn-outline-danger" onclick="resetCode()"><i class="fa-solid fa-rotate-right"></i></button>
+        </div>
+      `;
+    }
+
+    function addBlock(block) {
+      userSequence.push(block);
+      updateCodeDisplay();
+    }
+
+    function updateCodeDisplay() {
+      const display = document.getElementById('codeArea');
+      if (userSequence.length === 0) {
+        display.innerHTML = '<i>Belum ada perintah. Klik tombol di atas!</i>';
+        return;
+      }
+      display.innerHTML = userSequence.map((b, i) => `
+        <span class="badge bg-success me-1 p-2">${i + 1}. ${b}</span>
+      `).join('');
+    }
+
+    function resetCode() {
+      userSequence = [];
+      updateCodeDisplay();
+      document.getElementById('feedbackBox').style.display = 'none';
+    }
+
+    function runCode() {
+      const isCorrect = JSON.stringify(userSequence) === JSON.stringify(currentChallenge.correct_sequence);
+      showFeedback(isCorrect);
+    }
+
+    function renderMultipleChoice(container) {
+      container.innerHTML = `
+        <h6 class="fw-bold mb-3"><i class="fa-solid fa-list-check me-1"></i> Pilih Jawaban yang Tepat:</h6>
+        <div>
+          ${currentChallenge.options.map(opt => `
+            <button class="opt-btn" onclick="checkChoice('${opt}')">${opt}</button>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    function checkChoice(selectedOption) {
+      const isCorrect = selectedOption === currentChallenge.correct_answer;
+      showFeedback(isCorrect);
+    }
+
+    function showFeedback(isCorrect) {
+      const box = document.getElementById('feedbackBox');
+      const text = document.getElementById('feedbackText');
+      
+      if (isCorrect) {
+        text.textContent = currentChallenge.positive_feedback;
+        box.style.display = 'block';
+        box.style.backgroundColor = '#065f46';
+        score += 20;
+        document.getElementById('scoreDisplay').textContent = score;
+      } else {
+        text.textContent = "Hampir tepat! Coba tinjau kembali langkah dan jawabanmu ya!";
+        box.style.display = 'block';
+        box.style.backgroundColor = '#991b1b';
+      }
+    }
+
+    window.onload = init;
+  </script>
+</body>
+</html>
