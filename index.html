@@ -8,14 +8,13 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
     :root {
-      --bg-main: #061814;
-      --card-bg: #0f2d26;
-      --panel-bg: #153e35;
+      --bg-main: #051613;
+      --card-bg: #0c2b24;
+      --panel-bg: #133d34;
       --accent-green: #10b981;
       --accent-yellow: #fbbf24;
       --accent-blue: #3b82f6;
-      --accent-purple: #8b5cf6;
-      --text-light: #f0fdf4;
+      --text-light: #ecfdf5;
     }
 
     body {
@@ -26,41 +25,31 @@
     }
 
     .navbar-custom {
-      background: linear-gradient(135deg, #0d382e, #061814);
-      border-bottom: 2px solid var(--accent-green);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      background: linear-gradient(135deg, #0a332a, #051613);
+      border-bottom: 3px solid var(--accent-green);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    }
+
+    /* Welcome Banner Styling */
+    .welcome-hero {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(251, 191, 36, 0.15)), var(--card-bg);
+      border: 2px solid var(--accent-green);
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
     }
 
     .badge-score {
       background: linear-gradient(45deg, #fbbf24, #f59e0b);
       color: #000;
       font-weight: 800;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       border-radius: 20px;
-      padding: 6px 18px;
-      box-shadow: 0 0 10px rgba(251, 191, 36, 0.4);
+      padding: 8px 20px;
+      box-shadow: 0 0 12px rgba(251, 191, 36, 0.5);
     }
 
-    .level-card {
-      background-color: var(--card-bg);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      border-radius: 12px;
-      cursor: pointer;
-      transition: all 0.25s ease;
-    }
-
-    .level-card:hover {
-      transform: translateY(-3px);
-      border-color: var(--accent-green);
-      box-shadow: 0 5px 15px rgba(16, 185, 129, 0.2);
-    }
-
-    .level-card.active {
-      border: 2px solid var(--accent-yellow);
-      background-color: var(--panel-bg);
-    }
-
-    .quest-main-card {
+    .quest-card {
       background: linear-gradient(145deg, var(--card-bg), var(--panel-bg));
       border: 1px solid rgba(16, 185, 129, 0.3);
       border-radius: 16px;
@@ -68,26 +57,24 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.3);
     }
 
-    /* Simulation Grid Map */
-    .grid-container {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      background-color: var(--bg-main);
-      padding: 15px;
-      border-radius: 12px;
-      border: 2px solid var(--accent-green);
+    .level-card {
+      background-color: var(--card-bg);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.25s ease;
     }
 
-    .grid-cell {
-      aspect-ratio: 1;
+    .level-card:hover {
+      transform: translateX(5px);
+      border-color: var(--accent-yellow);
       background-color: var(--panel-bg);
-      border: 1px dashed rgba(16, 185, 129, 0.4);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
+    }
+
+    .level-card.active {
+      border: 2px solid var(--accent-yellow);
+      background-color: var(--panel-bg);
+      box-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
     }
 
     .block-btn {
@@ -111,7 +98,7 @@
       background-color: var(--bg-main);
       border: 2px dashed var(--accent-green);
       border-radius: 10px;
-      min-height: 120px;
+      min-height: 110px;
       padding: 15px;
     }
 
@@ -123,7 +110,7 @@
       padding: 12px 24px;
       border-radius: 10px;
       font-size: 1.1rem;
-      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
     }
 
     .btn-action:hover {
@@ -167,66 +154,78 @@
 </head>
 <body class="pb-5">
 
-  <!-- Navbar Navigation -->
+  <!-- Navbar -->
   <nav class="navbar navbar-custom py-3 mb-4">
     <div class="container d-flex justify-content-between align-items-center">
       <div class="d-flex align-items-center gap-3">
         <i class="fa-solid fa-robot fa-2x text-warning"></i>
         <div>
           <h4 class="m-0 fw-bold text-success">MujaHeeBot Quest</h4>
-          <small class="text-light opacity-75">Platform Gamifikasi & Coding SD Al Mujahidin</small>
+          <small class="text-light opacity-75">Platform Gamifikasi & Coding SD Al Mujahidin Wonosari</small>
         </div>
       </div>
-      <div class="d-flex align-items-center gap-3">
+      <div>
         <span class="badge-score"><i class="fa-solid fa-trophy me-2"></i> Skor: <span id="scoreDisplay">0</span></span>
       </div>
     </div>
   </nav>
 
   <div class="container">
-    <div class="row g-4">
+    
+    <!-- Welcome Header Banner -->
+    <div class="welcome-hero mb-4">
+      <div class="row align-items-center">
+        <div class="col-md-8">
+          <h3 class="fw-bold text-warning mb-2"><i class="fa-solid fa-hand-wave me-2"></i> Selamat Datang, Anak-Anak Hebat!</h3>
+          <p class="m-0 fs-6 leading-relaxed">
+            Selamat datang di petualangan coding dan kuis interaktif <strong>MujaHeeBot Quest</strong>! Mari kita tingkatkan logika, ketelitian, dan nilai-nilai keislaman untuk menjadi generasi <em>Rabbani, Unggul, Kreatif, Adaptif, dan Belia Mendunia</em>.
+          </p>
+        </div>
+        <div class="col-md-4 text-md-end mt-3 mt-md-0">
+          <a href="#questSection" class="btn btn-warning fw-bold px-4 py-2 text-dark rounded-pill shadow">
+            <i class="fa-solid fa-gamepad me-2"></i> Mulai Main Sekarang!
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div id="questSection" class="row g-4">
       
-      <!-- Left Sidebar: Level Selection List -->
+      <!-- Left Sidebar: Level List -->
       <div class="col-lg-4">
-        <div class="quest-main-card">
-          <h5 class="fw-bold text-warning mb-3"><i class="fa-solid fa-map-location-dot me-2"></i> Daftar Tantangan</h5>
-          <div id="levelList" class="d-flex flex-column gap-2 style-scrollbar" style="max-height: 520px; overflow-y: auto;">
+        <div class="quest-card">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="fw-bold text-warning m-0"><i class="fa-solid fa-list-ol me-2"></i> Modul Tantangan</h5>
+            <span id="totalLevelBadge" class="badge bg-success">0 Level</span>
+          </div>
+          
+          <div id="levelList" class="d-flex flex-column gap-2" style="max-height: 500px; overflow-y: auto; padding-right: 5px;">
             <!-- Dynamic Level Cards -->
           </div>
         </div>
       </div>
 
-      <!-- Right Main: Interactive Challenge Area -->
+      <!-- Right Panel: Challenge Workstation -->
       <div class="col-lg-8">
-        <div class="quest-main-card">
+        <div class="quest-card">
           
-          <!-- Level Header Info -->
+          <!-- Badge Header -->
           <div class="d-flex justify-content-between align-items-center mb-3">
             <span id="badgeLevel" class="badge bg-warning text-dark px-3 py-2 fw-bold">Pemula</span>
             <span id="sdgTarget" class="badge bg-info text-dark px-3 py-2 fw-bold">SDG Target</span>
           </div>
 
           <h4 id="questTitle" class="fw-bold text-success mb-2">Judul Tantangan</h4>
-          <p id="questQuestion" class="lead fs-6 mb-4">Deskripsi pertanyaan akan dimuat di sini...</p>
+          <p id="questQuestion" class="lead fs-6 mb-4">Deskripsi tantangan akan muncul di sini...</p>
           
-          <!-- Visual Grid Simulation (Untuk Game Coding) -->
-          <div id="gridSection" class="mb-4 d-none">
-            <h6 class="fw-bold text-warning mb-2"><i class="fa-solid fa-gamepad me-2"></i> Peta Simulasi MujaHeeBot:</h6>
-            <div class="grid-container">
-              <div class="grid-cell"><i class="fa-solid fa-robot text-warning"></i></div>
-              <div class="grid-cell"><i class="fa-solid fa-arrow-right opacity-25"></i></div>
-              <div class="grid-cell"><i class="fa-solid fa-book text-info"></i></div>
-              <div class="grid-cell"><i class="fa-solid fa-school text-success"></i></div>
-            </div>
-          </div>
-
-          <!-- Academic & Character Value Box -->
+          <!-- Subject & Character Info Box -->
           <div class="p-3 mb-4 rounded" style="background-color: var(--bg-main); border-left: 4px solid var(--accent-green);">
-            <small class="text-muted d-block mb-1"><i class="fa-solid fa-graduation-cap me-1"></i> Muatan Kurikulum & Nilai Karakter:</small>
+            <small class="text-muted d-block mb-1"><i class="fa-solid fa-graduation-cap me-1"></i> Integrasi Materi & Karakter:</small>
             <span id="charValue" class="fw-bold text-light">-</span>
           </div>
 
-          <!-- Dynamic Interaction Area -->
+          <!-- Dynamic Interactive Workspace -->
           <div id="interactiveArea"></div>
 
           <!-- Feedback Box -->
@@ -246,7 +245,7 @@
     </div>
 
     <footer class="text-center mt-5 text-muted small">
-      <p>&copy; 2026 SD Muhammadiyah Al Mujahidin Wonosari. Platform Gamifikasi "Belia Mendunia".</p>
+      <p>&copy; 2026 SD Muhammadiyah Al Mujahidin Wonosari | Platform Digital Coding & Gamifikasi</p>
     </footer>
   </div>
 
@@ -261,10 +260,11 @@
         const response = await fetch('challenges.json');
         challengesData = await response.json();
         
+        document.getElementById('totalLevelBadge').textContent = `${challengesData.length} Level`;
         renderLevelSidebar();
         loadChallenge(0);
       } catch (err) {
-        console.error("Gagal memuat challenges.json", err);
+        console.error("Gagal memuat file challenges.json", err);
       }
     }
 
@@ -304,15 +304,12 @@
       document.getElementById('sdgTarget').textContent = currentChallenge.sdg_target;
       document.getElementById('charValue').textContent = `${currentChallenge.academic_subject} | Nilai: ${currentChallenge.character_value}`;
 
-      const gridSec = document.getElementById('gridSection');
       const area = document.getElementById('interactiveArea');
       area.innerHTML = '';
 
       if (currentChallenge.type === 'drag_drop_code') {
-        gridSec.classList.remove('d-none');
         renderCodeBlocks(area);
       } else {
-        gridSec.classList.add('d-none');
         renderMultipleChoice(area);
       }
     }
@@ -325,7 +322,7 @@
             <button class="block-btn" onclick="addBlock('${block}')">+ ${block}</button>
           `).join('')}
         </div>
-        <h6 class="fw-bold text-success mb-2"><i class="fa-solid fa-code me-1"></i> Urutan Kode MujaHeeBot:</h6>
+        <h6 class="fw-bold text-success mb-2"><i class="fa-solid fa-code me-1"></i> Logika Urutan MujaHeeBot:</h6>
         <div id="codeArea" class="code-area mb-3"><i>Belum ada logika perintah. Klik tombol di atas!</i></div>
         <div class="d-flex gap-2">
           <button class="btn btn-action flex-grow-1" onclick="runCode()"><i class="fa-solid fa-play me-2"></i> JALANKAN PROGRAM</button>
@@ -387,7 +384,7 @@
         box.style.display = 'block';
         box.style.backgroundColor = '#065f46';
         box.style.border = '1px solid #10b981';
-        title.textContent = "MasyaAllah, Benar Sekali!";
+        title.textContent = "MasyaAllah, Luar Biasa!";
         title.className = "fw-bold text-warning";
         icon.className = "fa-solid fa-circle-check fa-3x text-warning";
         text.textContent = currentChallenge.positive_feedback;
@@ -398,10 +395,10 @@
         box.style.display = 'block';
         box.style.backgroundColor = '#7f1d1d';
         box.style.border = '1px solid #ef4444';
-        title.textContent = "Hampir Tepat!";
+        title.textContent = "Ayo Coba Lagi!";
         title.className = "fw-bold text-danger-light";
         icon.className = "fa-solid fa-circle-xmark fa-3x text-danger";
-        text.textContent = "Coba evaluasi kembali logika urutan atau pilihan jawabanmu ya!";
+        text.textContent = "Logika atau jawabanmu belum pas. Teliti kembali dan coba lagi ya!";
       }
     }
 
