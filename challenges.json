@@ -1,0 +1,82 @@
+[
+  {
+    "id": "ch_01",
+    "title": "Membantu Dika ke Sekolah",
+    "level": "Pemula",
+    "academic_subject": "Matematika & Agama (Penerapan Adab & JKW)",
+    "character_value": "Kemuliaan Akhlak & Ketepatan Waktu",
+    "sdg_target": "SDG 4: Education Quality",
+    "type": "drag_drop_code",
+    "question": "Rumah Dika berjarak 250 m dari sekolah. Pandu MujaHeeBot untuk berjalan mengambil Buku Pelajaran dan tiba di kelas sebelum bel berbunyi dengan adab membaca doa!",
+    "initial_blocks": ["Maju 1", "Belok Kiri", "Ambil Objek", "Belok Kanan", "Maju 1"],
+    "correct_sequence": ["Maju 1", "Ambil Objek", "Maju 1", "Belok Kanan", "Maju 1"],
+    "positive_feedback": "MasyaAllah, Luar Biasa! Kamu berhasil membantu Dika mengambil buku pelajaran tepat waktu dan mengamalkan adab menuntut ilmu!"
+  },
+  {
+    "id": "ch_02",
+    "title": "Kalkulasi Skala Peta Wonosari",
+    "level": "Menengah",
+    "academic_subject": "Matematika (Skala & Denah Peta)",
+    "character_value": "Ketelitian & Pengenalan Lingkungan",
+    "sdg_target": "SDG 11: Sustainable Cities and Communities",
+    "type": "multiple_choice",
+    "question": "Jarak sebenarnya dari rumah Dika ke SD Muhammadiyah Al Mujahidin adalah 250 m. Jika skala pada denah adalah 1 : 5.000, berapakah jarak rumah Dika ke sekolah pada gambar denah?",
+    "options": [
+      "A. 5 cm",
+      "B. 25 cm",
+      "C. 20 cm",
+      "D. 50 cm"
+    ],
+    "correct_answer": "A. 5 cm",
+    "positive_feedback": "Barakallah! Perhitunganmu sangat teliti. (Rumus: Jarak Peta = 25000 cm / 5000 = 5 cm)."
+  },
+  {
+    "id": "ch_03",
+    "title": "Aksi Teologi Al-Ma'un & Sedekah",
+    "level": "Pemula",
+    "academic_subject": "Kemuhammadiyahan / Al-Islam",
+    "character_value": "Kedermawanan & Kepedulian Sosial",
+    "sdg_target": "SDG 1: No Poverty",
+    "type": "multiple_choice",
+    "question": "SD Muhammadiyah Al Mujahidin rutin mengadakan 'Shodaqoh Jumat' dan pengumpulan infak untuk membantu sesama. Mengamalkan Teologi Al-Ma'un yang diajarkan KH Ahmad Dahlan berarti...",
+    "options": [
+      "A. Menyimpan uang saku hanya untuk kepentingan pribadi",
+      "B. Peduli dan berbagi makanan serta rezeki kepada yang membutuhkan",
+      "C. Membeli mainan mahal di sekolah",
+      "D. Menghabiskan infak untuk keperluan game"
+    ],
+    "correct_answer": "B. Peduli dan berbagi makanan serta rezeki kepada yang membutuhkan",
+    "positive_feedback": "Alhamdulillah, Benar! Meneladani Teologi Al-Ma'un menjadikan kita generasi Rabbani yang peka dan dermawan."
+  },
+  {
+    "id": "ch_04",
+    "title": "Arah Pandu Hizbul Wathan",
+    "level": "Pemula",
+    "academic_subject": "Kepanduan Hizbul Wathan & IPAS (Arah Mata Angin)",
+    "character_value": "Kedisiplinan & Kemandirian (Athfal)",
+    "sdg_target": "SDG 15: Life on Land",
+    "type": "drag_drop_code",
+    "question": "Anggota Kepanduan Hizbul Wathan sedang berlatih navigasi kompas di halaman sekolah. Buatlah urutan perintah agar MujaHeeBot bergerak ke arah Utara lalu berbelok menuju Timur!",
+    "initial_blocks": ["Maju Utara", "Belok Kanan (Timur)", "Maju 2 Langkah"],
+    "correct_sequence": ["Maju Utara", "Belok Kanan (Timur)", "Maju 2 Langkah"],
+    "positive_feedback": "Hebat! Ciri khas Pandu HW adalah mandiri, tangkas, dan mahir menentukan arah mata angin."
+  },
+  {
+    "id": "ch_05",
+    "title": "Penyortiran Sampah 3R & Ecobrick",
+    "level": "Menengah",
+    "academic_subject": "IPAS & Green School (Lingkungan Hidup)",
+    "character_value": "Cinta Lingkungan & Pengelolaan Sampah",
+    "sdg_target": "SDG 12: Responsible Consumption and Production",
+    "type": "multiple_choice",
+    "question": "Dalam mendukung program Green School dan Gerakan Pungut Sampah (GPS) di SD Al Mujahidin, murid diajak melakukan pengelolaan sampah 3R. Langkah mana yang merupakan contoh penerapan 'Reuse'?",
+    "options": [
+      "A. Mengurangi penggunaan kantong plastik sekali pakai",
+      "B. Menggunakan kembali botol bekas menjadi media tanam atau ecobrick",
+      "C. Mengolah sampah organik menjadi kompos",
+      "D. Membuang sampah plastik langsung ke sungai"
+    ],
+    "correct_answer": "B. Menggunakan kembali botol bekas menjadi media tanam atau ecobrick",
+    "positive_feedback": "Luar biasa! Kamu adalah Agen Green School Al Mujahidin yang menjaga kelestarian alam ciptaan Allah."
+  }
+]
