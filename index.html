@@ -8,277 +8,292 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
     :root {
-      --bg-main: #051613;
-      --card-bg: #0c2b24;
-      --panel-bg: #133d34;
-      --accent-green: #10b981;
+      --bg-dark: #031410;
+      --panel-bg: #07221c;
+      --card-bg: #0b2e26;
+      --accent-green: #00e699;
+      --btn-blue: #2563eb;
+      --btn-purple: #7c3aed;
+      --btn-orange: #f59e0b;
       --accent-yellow: #fbbf24;
-      --accent-blue: #3b82f6;
-      --text-light: #ecfdf5;
+      --text-light: #e6f7f3;
     }
 
     body {
-      background-color: var(--bg-main);
+      background-color: var(--bg-dark);
       color: var(--text-light);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       min-height: 100vh;
+      padding-bottom: 30px;
     }
 
-    .navbar-custom {
-      background: linear-gradient(135deg, #0a332a, #051613);
-      border-bottom: 3px solid var(--accent-green);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    /* Top Pills Nav Bar */
+    .top-nav {
+      background-color: #051c17;
+      border: 1px solid rgba(0, 230, 153, 0.2);
+      border-radius: 12px;
+      padding: 10px 15px;
+      margin-bottom: 20px;
     }
 
-    /* Logo Sekolah Header */
-    .school-logo {
-      width: 50px;
-      height: 50px;
+    .nav-pill-btn {
+      background-color: #0b2e26;
+      color: #a3e635;
+      border: 1px solid #15803d;
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .nav-pill-btn:hover, .nav-pill-btn.active {
+      background-color: #0284c7;
+      color: #ffffff;
+      border-color: #38bdf8;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+    }
+
+    /* Header Main Banner */
+    .main-header-card {
+      background: linear-gradient(135deg, #093b30, #041d18);
+      border: 2px solid var(--accent-green);
+      border-radius: 16px;
+      padding: 15px 25px;
+      box-shadow: 0 0 15px rgba(0, 230, 153, 0.2);
+    }
+
+    .school-emblem {
+      width: 45px;
+      height: 45px;
       object-fit: contain;
-      filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.5));
+      filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
     }
 
-    /* Avatar Robot Berlogo Sekolah */
-    .robot-avatar {
-      position: relative;
-      display: inline-block;
-      width: 80px;
-      height: 80px;
-      background: linear-gradient(135deg, #10b981, #047857);
-      border-radius: 50%;
-      border: 3px solid var(--accent-yellow);
-      box-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
+    .badge-star {
+      background-color: var(--accent-yellow);
+      color: #000;
+      font-weight: 800;
+      font-size: 1.1rem;
+      border-radius: 20px;
+      padding: 6px 18px;
+    }
+
+    /* Layout Panel Styling */
+    .panel-card {
+      background-color: var(--panel-bg);
+      border: 1px solid rgba(0, 230, 153, 0.25);
+      border-radius: 14px;
+      padding: 18px;
+      height: 100%;
+    }
+
+    /* Grid Game Simulation (5x5) */
+    .grid-board {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+      background-color: #031a15;
+      padding: 10px;
+      border-radius: 12px;
+      border: 2px solid rgba(0, 230, 153, 0.4);
+    }
+
+    .grid-cell {
+      aspect-ratio: 1;
+      background-color: #092e26;
+      border: 1px solid rgba(0, 230, 153, 0.15);
+      border-radius: 6px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      font-size: 1.2rem;
+      color: var(--accent-green);
     }
 
-    .robot-badge-logo {
-      position: absolute;
-      bottom: -4px;
-      right: -4px;
-      width: 30px;
-      height: 30px;
-      background: #ffffff;
-      border-radius: 50%;
-      padding: 2px;
+    .grid-cell.bot {
+      background-color: #064e3b;
       border: 2px solid var(--accent-green);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+      color: var(--accent-yellow);
     }
 
-    /* Welcome Hero Banner */
-    .welcome-hero {
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(251, 191, 36, 0.15)), var(--card-bg);
-      border: 2px solid var(--accent-green);
-      border-radius: 16px;
-      padding: 25px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    .grid-cell.target {
+      background-color: #14532d;
+      border: 2px dashed var(--accent-yellow);
+      color: var(--accent-yellow);
+      font-size: 0.75rem;
+      font-weight: bold;
+      text-align: center;
     }
 
-    .badge-score {
-      background: linear-gradient(45deg, #fbbf24, #f59e0b);
-      color: #000;
-      font-weight: 800;
-      font-size: 1.15rem;
-      border-radius: 20px;
-      padding: 8px 20px;
-      box-shadow: 0 0 12px rgba(251, 191, 36, 0.5);
-    }
-
-    .quest-card {
-      background: linear-gradient(145deg, var(--card-bg), var(--panel-bg));
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      border-radius: 16px;
-      padding: 24px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    }
-
-    .level-card {
-      background-color: var(--card-bg);
-      border: 1px solid rgba(16, 185, 129, 0.25);
-      border-radius: 10px;
-      cursor: pointer;
-      transition: all 0.25s ease;
-    }
-
-    .level-card:hover {
-      transform: translateX(5px);
-      border-color: var(--accent-yellow);
-      background-color: var(--panel-bg);
-    }
-
-    .level-card.active {
-      border: 2px solid var(--accent-yellow);
-      background-color: var(--panel-bg);
-      box-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
-    }
-
-    .block-btn {
-      background: linear-gradient(135deg, #2563eb, #1d4ed8);
-      color: white;
+    /* Command Blocks */
+    .cmd-btn {
+      color: #ffffff;
       border: none;
-      padding: 10px 16px;
-      margin: 4px;
+      padding: 8px 12px;
       border-radius: 8px;
-      font-weight: 600;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      font-weight: 700;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       transition: all 0.2s;
     }
 
-    .block-btn:hover {
-      transform: scale(1.05);
-      background: linear-gradient(135deg, #3b82f6, #2563eb);
-    }
+    .cmd-btn-blue { background-color: var(--btn-blue); }
+    .cmd-btn-orange { background-color: var(--btn-orange); }
+    .cmd-btn-purple { background-color: var(--btn-purple); }
 
-    .code-area {
-      background-color: var(--bg-main);
-      border: 2px dashed var(--accent-green);
-      border-radius: 10px;
-      min-height: 110px;
-      padding: 15px;
-    }
-
-    .btn-action {
-      background: linear-gradient(45deg, #10b981, #059669);
-      color: #000;
-      font-weight: 800;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 10px;
-      font-size: 1.1rem;
-      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
-    }
-
-    .btn-action:hover {
-      background: linear-gradient(45deg, #34d399, #10b981);
+    .cmd-btn:hover {
       transform: translateY(-2px);
+      filter: brightness(1.15);
     }
 
-    .opt-btn {
-      background-color: var(--panel-bg);
-      color: white;
-      border: 1px solid var(--accent-green);
-      text-align: left;
-      margin-bottom: 12px;
-      padding: 14px 18px;
+    /* Code Assembly Area */
+    .program-editor {
+      background-color: #020f0c;
+      border: 2px dashed rgba(0, 230, 153, 0.3);
       border-radius: 10px;
-      width: 100%;
-      font-weight: 500;
-      transition: all 0.2s;
+      min-height: 180px;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      gap: 6px;
     }
 
-    .opt-btn:hover {
+    .btn-run {
       background-color: var(--accent-green);
       color: #000;
-      font-weight: bold;
-      transform: translateX(5px);
+      font-weight: 800;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 1rem;
+      box-shadow: 0 0 10px rgba(0, 230, 153, 0.4);
     }
 
-    .feedback-box {
+    .btn-run:hover {
+      background-color: #34d399;
+      transform: scale(1.02);
+    }
+
+    .feedback-overlay {
       display: none;
-      border-radius: 12px;
-      padding: 18px;
+      background-color: #064e3b;
+      border: 1px solid var(--accent-green);
+      border-radius: 10px;
+      padding: 12px 18px;
       margin-top: 15px;
-      animation: fadeIn 0.3s ease-in;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
-<body class="pb-5">
+<body class="py-3">
 
-  <!-- Header & Navbar -->
-  <nav class="navbar navbar-custom py-3 mb-4">
-    <div class="container d-flex justify-content-between align-items-center">
-      <div class="d-flex align-items-center gap-3">
-        <!-- Logo Sekolah Resmi SD Muhammadiyah Al Mujahidin -->
-        <img src="https://lh3.googleusercontent.com/d/1nBO66TKYu_Nzv4XckDaRZJGCqmbqjWS1" alt="Logo SD Mujahidin" class="school-logo">
-        <div>
-          <h4 class="m-0 fw-bold text-success">MujaHeeBot Quest</h4>
-          <small class="text-light opacity-75">SD Muhammadiyah Al Mujahidin Wonosari</small>
-        </div>
-      </div>
-      <div>
-        <span class="badge-score"><i class="fa-solid fa-trophy me-2"></i> Skor: <span id="scoreDisplay">0</span></span>
-      </div>
-    </div>
-  </nav>
-
-  <div class="container">
+  <div class="container-fluid px-4">
     
-    <!-- Welcome Hero Banner -->
-    <div class="welcome-hero mb-4">
-      <div class="row align-items-center">
-        <div class="col-md-2 text-center mb-3 mb-md-0">
-          <!-- Maskot Robot Ber-Emblem Logo Sekolah -->
-          <div class="robot-avatar">
-            <i class="fa-solid fa-robot fa-3x text-warning"></i>
-            <img src="https://lh3.googleusercontent.com/d/1nBO66TKYu_Nzv4XckDaRZJGCqmbqjWS1" alt="Logo Emblem" class="robot-badge-logo">
-          </div>
+    <!-- Top Navigation Pills Bar -->
+    <div class="top-nav d-flex flex-wrap justify-content-center gap-2">
+      <a href="#" class="nav-pill-btn"><i class="fa-solid fa-book me-1"></i> 1. TEORI & KONSEP</a>
+      <a href="#" class="nav-pill-btn"><i class="fa-solid fa-microchip me-1"></i> 2. ANATOMI KOMPONEN KOMPUTER</a>
+      <a href="#" class="nav-pill-btn"><i class="fa-solid fa-gamepad me-1"></i> 3. ARENA GAME & TANTANGAN</a>
+      <a href="#" class="nav-pill-btn active"><i class="fa-solid fa-robot me-1"></i> 4. MUJAHEEBOT CODING</a>
+      <a href="#" class="nav-pill-btn"><i class="fa-solid fa-code me-1"></i> 5. CODING KIDS (SCRATCH)</a>
+    </div>
+
+    <!-- Header Main Quest Banner -->
+    <div class="main-header-card d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+      <div class="d-flex align-items-center gap-3">
+        <img src="https://lh3.googleusercontent.com/d/1nBO66TKYu_Nzv4XckDaRZJGCqmbqjWS1" alt="Logo SD Mujahidin" class="school-emblem">
+        <i class="fa-solid fa-robot fa-2x text-success"></i>
+        <div>
+          <h3 class="m-0 fw-bold text-light">MujaHeeBot Coding Quest</h3>
+          <small class="text-success-light opacity-75">Petualangan Logika & Coding SD AI Mujahidin Wonosari</small>
         </div>
-        <div class="col-md-7">
-          <h3 class="fw-bold text-warning mb-2"><i class="fa-solid fa-hand-wave me-2"></i> Selamat Datang, Anak-Anak Hebat!</h3>
-          <p class="m-0 fs-6 leading-relaxed">
-            Selamat datang di petualangan coding dan kuis interaktif <strong>100 Level MujaHeeBot Quest</strong>! Mari tingkatkan pemikiran kritis, logika coding, dan nilai keislaman untuk menjadi generasi <em>Rabbani, Unggul, Kreatif, Adaptif, dan Belia Mendunia</em>.
-          </p>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+        <div class="d-flex align-items-center gap-2">
+          <label for="moduleSelect" class="fw-bold small text-light m-0">Modul:</label>
+          <select id="moduleSelect" class="form-select bg-dark text-light border-success form-select-sm" style="min-width: 250px;" onchange="loadChallenge(this.value)">
+            <!-- Options dynamically populated from challenges.json -->
+          </select>
         </div>
-        <div class="col-md-3 text-md-end mt-3 mt-md-0">
-          <a href="#questSection" class="btn btn-warning fw-bold px-4 py-2 text-dark rounded-pill shadow">
-            <i class="fa-solid fa-gamepad me-2"></i> Misi 100 Level!
-          </a>
-        </div>
+        <span class="badge-star"><i class="fa-solid fa-star me-1"></i> <span id="scoreDisplay">0</span></span>
       </div>
     </div>
 
-    <!-- Main Content Grid -->
-    <div id="questSection" class="row g-4">
+    <!-- Main Workspace (3 Column Layout) -->
+    <div class="row g-3">
       
-      <!-- Left Sidebar: Level List -->
-      <div class="col-lg-4">
-        <div class="quest-card">
-          <div class="d-flex justify-content-between align-items-center mb-3">
-            <h5 class="fw-bold text-warning m-0"><i class="fa-solid fa-list-ol me-2"></i> Modul 100 Level</h5>
-            <span id="totalLevelBadge" class="badge bg-success">100 Level</span>
-          </div>
-          
-          <div id="levelList" class="d-flex flex-column gap-2" style="max-height: 520px; overflow-y: auto; padding-right: 5px;">
-            <!-- Dynamic Level Cards -->
+      <!-- Left Column: Module Description & Grid Simulation Game -->
+      <div class="col-lg-6">
+        
+        <!-- Module Description Panel -->
+        <div class="panel-card mb-3">
+          <div class="d-flex align-items-start gap-3">
+            <i class="fa-solid fa-graduation-cap fa-2x text-success"></i>
+            <div>
+              <h5 id="modTitle" class="fw-bold text-success mb-1">Modul 1: Langkah Pertama di Sekolah</h5>
+              <p id="modDesc" class="small m-0 opacity-90">Pandu MujaHeeBot menuju Ruang Kelas. Jangan lupa ambil Buku Pelajaran di jalan!</p>
+            </div>
           </div>
         </div>
+
+        <!-- Grid Simulation Panel (5x5 Grid Game Board) -->
+        <div class="panel-card">
+          <div class="grid-board" id="gridBoard">
+            <!-- 25 Cells Generated Dynamically -->
+          </div>
+        </div>
+
       </div>
 
-      <!-- Right Panel: Challenge Workstation -->
-      <div class="col-lg-8">
-        <div class="quest-card">
+      <!-- Right Column: Command Blocks & Code Builder Area -->
+      <div class="col-lg-6">
+        <div class="panel-card d-flex flex-column justify-content-between">
           
-          <!-- Badge Header -->
-          <div class="d-flex justify-content-between align-items-center mb-3">
-            <span id="badgeLevel" class="badge bg-warning text-dark px-3 py-2 fw-bold">Pemula</span>
-            <span id="sdgTarget" class="badge bg-info text-dark px-3 py-2 fw-bold">SDG Target</span>
+          <!-- Command Blocks Palette -->
+          <div class="mb-3">
+            <div class="small fw-bold text-light mb-2"><i class="fa-solid fa-cubes me-1 text-success"></i> BLOK PERINTAH (KLIK UNTUK TAMBAH)</div>
+            <div class="row g-2">
+              <div class="col-4"><button class="cmd-btn cmd-btn-blue w-100" onclick="addCommand('Maju 1')"><span>↑ Maju 1</span> <span>+</span></button></div>
+              <div class="col-4"><button class="cmd-btn cmd-btn-blue w-100" onclick="addCommand('Belok Kiri')"><span>↺ Belok Kiri</span> <span>+</span></button></div>
+              <div class="col-4"><button class="cmd-btn cmd-btn-blue w-100" onclick="addCommand('Belok Kanan')"><span>↻ Belok Kanan</span> <span>+</span></button></div>
+              <div class="col-4"><button class="cmd-btn cmd-btn-orange w-100" onclick="addCommand('Ambil Objek')"><span>✋ Ambil Objek</span> <span>+</span></button></div>
+              <div class="col-4"><button class="cmd-btn cmd-btn-purple w-100" onclick="addCommand('Ulangi 2x')"><span>🔁 Ulangi 2x</span> <span>+</span></button></div>
+              <div class="col-4"><button class="cmd-btn cmd-btn-purple w-100" onclick="addCommand('Ulangi 3x')"><span>🔁 Ulangi 3x</span> <span>+</span></button></div>
+            </div>
           </div>
 
-          <h4 id="questTitle" class="fw-bold text-success mb-2">Judul Tantangan</h4>
-          <p id="questQuestion" class="lead fs-6 mb-4">Deskripsi tantangan akan muncul di sini...</p>
-          
-          <!-- Subject & Character Info Box -->
-          <div class="p-3 mb-4 rounded" style="background-color: var(--bg-main); border-left: 4px solid var(--accent-green);">
-            <small class="text-muted d-block mb-1"><i class="fa-solid fa-graduation-cap me-1"></i> Integrasi Materi & Karakter:</small>
-            <span id="charValue" class="fw-bold text-light">-</span>
+          <!-- Code Builder Box -->
+          <div class="mb-3">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="small fw-bold text-light"><i class="fa-solid fa-code me-1 text-success"></i> PROGRAM MUJAHIBOT</span>
+              <button class="btn btn-link btn-sm text-danger text-decoration-none p-0 fw-bold" onclick="resetCode()"><i class="fa-solid fa-trash me-1"></i> Hapus Semua</button>
+            </div>
+            
+            <div id="programEditor" class="program-editor">
+              <span id="placeholderText" class="text-muted small m-auto text-center">Belum ada perintah.<br>Klik tombol di atas untuk menyusun logika MujaHiBot!</span>
+            </div>
           </div>
 
-          <!-- Dynamic Interactive Workspace -->
-          <div id="interactiveArea"></div>
+          <!-- Action Buttons & Feedback -->
+          <div>
+            <div class="d-flex gap-2">
+              <button class="btn btn-run flex-grow-1" onclick="executeProgram()"><i class="fa-solid fa-play me-2"></i> JALANKAN KODE</button>
+              <button class="btn btn-outline-secondary text-light px-3" onclick="resetCode()"><i class="fa-solid fa-arrow-rotate-left"></i></button>
+            </div>
 
-          <!-- Feedback Box -->
-          <div id="feedbackBox" class="feedback-box">
-            <div class="d-flex align-items-center gap-3">
-              <i id="feedbackIcon" class="fa-solid fa-circle-check fa-3x"></i>
-              <div>
-                <h5 id="feedbackTitle" class="fw-bold m-0">Respon MujaHeeBot:</h5>
-                <p id="feedbackText" class="m-0 mt-1"></p>
+            <!-- Positive Response Feedback Box -->
+            <div id="feedbackBox" class="feedback-overlay">
+              <div class="d-flex align-items-center gap-2">
+                <i class="fa-solid fa-circle-check text-warning fa-2x"></i>
+                <div>
+                  <h6 class="m-0 fw-bold text-warning">Respon MujaHeeBot:</h6>
+                  <p id="feedbackMsg" class="small m-0 text-light"></p>
+                </div>
               </div>
             </div>
           </div>
@@ -288,161 +303,118 @@
 
     </div>
 
-    <footer class="text-center mt-5 text-muted small">
-      <p>&copy; 2026 SD Muhammadiyah Al Mujahidin Wonosari | Platform Digital Coding & Gamifikasi</p>
+    <!-- Footer -->
+    <footer class="text-center mt-4 text-muted small opacity-75">
+      &copy; 2026 MAZDANY DIGITAL PLATFORM. SD MUHAMMADIYAH AL MUJAHIDIN. ALL RIGHTS RESERVED.
     </footer>
   </div>
 
   <script>
     let challengesData = [];
-    let currentChallenge = null;
-    let userSequence = [];
+    let currentIdx = 0;
+    let userProgram = [];
     let score = 0;
 
     async function init() {
       try {
         const response = await fetch('challenges.json');
         challengesData = await response.json();
+
+        const select = document.getElementById('moduleSelect');
+        select.innerHTML = '';
         
-        document.getElementById('totalLevelBadge').textContent = `${challengesData.length} Level`;
-        renderLevelSidebar();
+        challengesData.forEach((ch, idx) => {
+          const opt = document.createElement('option');
+          opt.value = idx;
+          opt.textContent = `${ch.title}`;
+          select.appendChild(opt);
+        });
+
         loadChallenge(0);
       } catch (err) {
-        console.error("Gagal memuat file challenges.json", err);
+        console.error("Gagal membaca challenges.json", err);
       }
     }
 
-    function renderLevelSidebar() {
-      const container = document.getElementById('levelList');
-      container.innerHTML = '';
-
-      challengesData.forEach((ch, idx) => {
-        const card = document.createElement('div');
-        card.className = `level-card p-3 ${idx === 0 ? 'active' : ''}`;
-        card.id = `level-card-${idx}`;
-        card.onclick = () => {
-          document.querySelectorAll('.level-card').forEach(c => c.classList.remove('active'));
-          card.classList.add('active');
-          loadChallenge(idx);
-        };
-
-        card.innerHTML = `
-          <div class="d-flex justify-content-between align-items-center">
-            <h6 class="fw-bold m-0 text-light">${ch.title}</h6>
-            <small class="badge bg-secondary">${ch.level}</small>
-          </div>
-          <small class="text-muted d-block mt-1">${ch.academic_subject}</small>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    function loadChallenge(index) {
-      currentChallenge = challengesData[index];
-      userSequence = [];
+    function loadChallenge(idx) {
+      currentIdx = parseInt(idx);
+      const ch = challengesData[currentIdx];
+      userProgram = [];
+      
+      document.getElementById('modTitle').textContent = ch.title;
+      document.getElementById('modDesc').textContent = ch.question;
       document.getElementById('feedbackBox').style.display = 'none';
+      
+      updateEditorDisplay();
+      renderGridBoard();
+    }
 
-      document.getElementById('questTitle').textContent = currentChallenge.title;
-      document.getElementById('questQuestion').textContent = currentChallenge.question;
-      document.getElementById('badgeLevel').textContent = currentChallenge.level;
-      document.getElementById('sdgTarget').textContent = currentChallenge.sdg_target;
-      document.getElementById('charValue').textContent = `${currentChallenge.academic_subject} | Nilai: ${currentChallenge.character_value}`;
+    function renderGridBoard() {
+      const board = document.getElementById('gridBoard');
+      board.innerHTML = '';
 
-      const area = document.getElementById('interactiveArea');
-      area.innerHTML = '';
+      for (let i = 0; i < 25; i++) {
+        const cell = document.createElement('div');
+        cell.className = 'grid-cell';
 
-      if (currentChallenge.type === 'drag_drop_code') {
-        renderCodeBlocks(area);
-      } else {
-        renderMultipleChoice(area);
+        if (i === 20) {
+          cell.classList.add('bot');
+          cell.innerHTML = '<i class="fa-solid fa-robot"></i>';
+        } else if (i === 17) {
+          cell.innerHTML = '<i class="fa-solid fa-book text-info"></i>';
+        } else if (i === 8 || i === 13 || i === 18) {
+          cell.innerHTML = '<i class="fa-solid fa-ban text-danger opacity-50"></i>';
+        } else if (i === 4) {
+          cell.classList.add('target');
+          cell.innerHTML = '<i class="fa-solid fa-school fa-lg"></i><span>Kelas</span>';
+        }
+
+        board.appendChild(cell);
       }
     }
 
-    function renderCodeBlocks(container) {
-      container.innerHTML = `
-        <h6 class="fw-bold text-warning mb-2"><i class="fa-solid fa-cubes me-1"></i> Blok Perintah (Klik untuk Menyusun):</h6>
-        <div class="mb-3">
-          ${currentChallenge.initial_blocks.map(block => `
-            <button class="block-btn" onclick="addBlock('${block}')">+ ${block}</button>
-          `).join('')}
-        </div>
-        <h6 class="fw-bold text-success mb-2"><i class="fa-solid fa-code me-1"></i> Logika Urutan MujaHeeBot:</h6>
-        <div id="codeArea" class="code-area mb-3"><i>Belum ada logika perintah. Klik tombol di atas!</i></div>
-        <div class="d-flex gap-2">
-          <button class="btn btn-action flex-grow-1" onclick="runCode()"><i class="fa-solid fa-play me-2"></i> JALANKAN PROGRAM</button>
-          <button class="btn btn-outline-danger px-3" onclick="resetCode()"><i class="fa-solid fa-rotate-right"></i> Reset</button>
-        </div>
-      `;
+    function addCommand(cmd) {
+      userProgram.push(cmd);
+      updateEditorDisplay();
     }
 
-    function addBlock(block) {
-      userSequence.push(block);
-      updateCodeDisplay();
-    }
-
-    function updateCodeDisplay() {
-      const display = document.getElementById('codeArea');
-      if (userSequence.length === 0) {
-        display.innerHTML = '<i>Belum ada logika perintah. Klik tombol di atas!</i>';
+    function updateEditorDisplay() {
+      const editor = document.getElementById('programEditor');
+      if (userProgram.length === 0) {
+        editor.innerHTML = '<span id="placeholderText" class="text-muted small m-auto text-center">Belum ada perintah.<br>Klik tombol di atas untuk menyusun logika MujaHiBot!</span>';
         return;
       }
-      display.innerHTML = userSequence.map((b, i) => `
-        <span class="badge bg-success me-2 p-2 fs-6 mb-1">${i + 1}. ${b}</span>
+
+      editor.innerHTML = userProgram.map((c, i) => `
+        <span class="badge bg-success me-1 p-2 fs-6 fw-normal">${i + 1}. ${c}</span>
       `).join('');
     }
 
     function resetCode() {
-      userSequence = [];
-      updateCodeDisplay();
+      userProgram = [];
+      updateEditorDisplay();
       document.getElementById('feedbackBox').style.display = 'none';
     }
 
-    function runCode() {
-      const isCorrect = JSON.stringify(userSequence) === JSON.stringify(currentChallenge.correct_sequence);
-      showFeedback(isCorrect);
-    }
-
-    function renderMultipleChoice(container) {
-      container.innerHTML = `
-        <h6 class="fw-bold text-warning mb-3"><i class="fa-solid fa-list-check me-1"></i> Pilih Jawaban Logika yang Tepat:</h6>
-        <div>
-          ${currentChallenge.options.map(opt => `
-            <button class="opt-btn" onclick="checkChoice('${opt}')">${opt}</button>
-          `).join('')}
-        </div>
-      `;
-    }
-
-    function checkChoice(selectedOption) {
-      const isCorrect = selectedOption === currentChallenge.correct_answer;
-      showFeedback(isCorrect);
-    }
-
-    function showFeedback(isCorrect) {
+    function executeProgram() {
+      const ch = challengesData[currentIdx];
       const box = document.getElementById('feedbackBox');
-      const text = document.getElementById('feedbackText');
-      const title = document.getElementById('feedbackTitle');
-      const icon = document.getElementById('feedbackIcon');
-      
+      const msg = document.getElementById('feedbackMsg');
+
+      let isCorrect = false;
+      if (ch.type === 'drag_drop_code') {
+        isCorrect = JSON.stringify(userProgram) === JSON.stringify(ch.correct_sequence);
+      } else {
+        isCorrect = userProgram.length > 0;
+      }
+
+      box.style.display = 'block';
       if (isCorrect) {
-        box.style.display = 'block';
-        box.style.backgroundColor = '#065f46';
-        box.style.border = '1px solid #10b981';
-        title.textContent = "MasyaAllah, Luar Biasa!";
-        title.className = "fw-bold text-warning";
-        icon.className = "fa-solid fa-circle-check fa-3x text-warning";
-        text.textContent = currentChallenge.positive_feedback;
-        
+        msg.textContent = ch.positive_feedback || "MasyaAllah! Logika perintahmu sangat tepat!";
         score += 20;
         document.getElementById('scoreDisplay').textContent = score;
       } else {
-        box.style.display = 'block';
-        box.style.backgroundColor = '#7f1d1d';
-        box.style.border = '1px solid #ef4444';
-        title.textContent = "Ayo Coba Lagi!";
-        title.className = "fw-bold text-danger-light";
-        icon.className = "fa-solid fa-circle-xmark fa-3x text-danger";
-        text.textContent = "Logika atau jawabanmu belum pas. Teliti kembali dan coba lagi ya!";
+        msg.textContent = "Hampir tepat! Tinjau kembali susunan blok perintah MujaHeeBot dan coba lagi ya!";
       }
     }
 
