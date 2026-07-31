@@ -113,6 +113,52 @@
       box-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
     }
 
+    /* PETA GRID SIMULASI INTERAKTIF (5x5) */
+    .grid-container {
+      background-color: var(--bg-main);
+      border: 2px solid var(--accent-green);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 20px;
+    }
+
+    .grid-board {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+    }
+
+    .grid-cell {
+      aspect-ratio: 1;
+      background-color: #092e26;
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: var(--accent-green);
+      transition: all 0.3s ease;
+    }
+
+    .grid-cell.bot {
+      background-color: #064e3b;
+      border: 2px solid var(--accent-yellow);
+      color: var(--accent-yellow);
+      box-shadow: 0 0 12px rgba(251, 191, 36, 0.6);
+      transform: scale(1.05);
+    }
+
+    .grid-cell.target {
+      background-color: #14532d;
+      border: 2px dashed var(--accent-yellow);
+      color: var(--accent-yellow);
+      font-size: 0.75rem;
+      font-weight: bold;
+      text-align: center;
+    }
+
     .block-btn {
       background: linear-gradient(135deg, #2563eb, #1d4ed8);
       color: white;
@@ -134,7 +180,7 @@
       background-color: var(--bg-main);
       border: 2px dashed var(--accent-green);
       border-radius: 10px;
-      min-height: 110px;
+      min-height: 100px;
       padding: 15px;
     }
 
@@ -213,7 +259,6 @@
     <div class="welcome-hero mb-4">
       <div class="row align-items-center">
         <div class="col-md-2 text-center mb-3 mb-md-0">
-          <!-- Maskot Robot Ber-Emblem Logo Sekolah -->
           <div class="robot-avatar">
             <i class="fa-solid fa-robot fa-3x text-warning"></i>
             <img src="https://lh3.googleusercontent.com/d/1nBO66TKYu_Nzv4XckDaRZJGCqmbqjWS1" alt="Logo Emblem" class="robot-badge-logo">
@@ -261,10 +306,10 @@
           </div>
 
           <h4 id="questTitle" class="fw-bold text-success mb-2">Judul Tantangan</h4>
-          <p id="questQuestion" class="lead fs-6 mb-4">Deskripsi tantangan akan muncul di sini...</p>
+          <p id="questQuestion" class="lead fs-6 mb-3">Deskripsi tantangan akan muncul di sini...</p>
           
           <!-- Subject & Character Info Box -->
-          <div class="p-3 mb-4 rounded" style="background-color: var(--bg-main); border-left: 4px solid var(--accent-green);">
+          <div class="p-3 mb-3 rounded" style="background-color: var(--bg-main); border-left: 4px solid var(--accent-green);">
             <small class="text-muted d-block mb-1"><i class="fa-solid fa-graduation-cap me-1"></i> Integrasi Materi & Karakter:</small>
             <span id="charValue" class="fw-bold text-light">-</span>
           </div>
@@ -298,6 +343,10 @@
     let currentChallenge = null;
     let userSequence = [];
     let score = 0;
+    
+    // Status Posisi Robot di Peta Grid 5x5
+    let botIndex = 20; // Posisi awal (kiri bawah)
+    let targetIndex = 4; // Posisi tujuan (kanan atas)
 
     async function init() {
       try {
@@ -340,6 +389,7 @@
     function loadChallenge(index) {
       currentChallenge = challengesData[index];
       userSequence = [];
+      botIndex = 20; // Reset posisi awal robot
       document.getElementById('feedbackBox').style.display = 'none';
 
       document.getElementById('questTitle').textContent = currentChallenge.title;
@@ -360,6 +410,17 @@
 
     function renderCodeBlocks(container) {
       container.innerHTML = `
+        <!-- PETA SIMULASI INTERAKTIF GRID 5x5 -->
+        <div class="grid-container">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <small class="fw-bold text-success"><i class="fa-solid fa-map-location-dot me-1"></i> Peta Simulasi MujaHeeBot (Grid 5x5):</small>
+            <small class="text-muted">Awal: Kiri-Bawah | Tujuan: Kelas/Bank Sampah</small>
+          </div>
+          <div id="gridBoard" class="grid-board">
+            <!-- 25 Sel Grid Generated -->
+          </div>
+        </div>
+
         <h6 class="fw-bold text-warning mb-2"><i class="fa-solid fa-cubes me-1"></i> Blok Perintah (Klik untuk Menyusun):</h6>
         <div class="mb-3">
           ${currentChallenge.initial_blocks.map(block => `
@@ -373,6 +434,33 @@
           <button class="btn btn-outline-danger px-3" onclick="resetCode()"><i class="fa-solid fa-rotate-right"></i> Reset</button>
         </div>
       `;
+
+      renderGridMap();
+    }
+
+    function renderGridMap() {
+      const board = document.getElementById('gridBoard');
+      if (!board) return;
+      board.innerHTML = '';
+
+      for (let i = 0; i < 25; i++) {
+        const cell = document.createElement('div');
+        cell.className = 'grid-cell';
+
+        if (i === botIndex) {
+          cell.classList.add('bot');
+          cell.innerHTML = '<i class="fa-solid fa-robot"></i>';
+        } else if (i === 16) {
+          cell.innerHTML = '<i class="fa-solid fa-book text-info"></i>';
+        } else if (i === 8 || i === 12 || i === 18) {
+          cell.innerHTML = '<i class="fa-solid fa-ban text-danger opacity-50"></i>';
+        } else if (i === targetIndex) {
+          cell.classList.add('target');
+          cell.innerHTML = '<i class="fa-solid fa-school fa-lg"></i><span>Tujuan</span>';
+        }
+
+        board.appendChild(cell);
+      }
     }
 
     function addBlock(block) {
@@ -393,12 +481,21 @@
 
     function resetCode() {
       userSequence = [];
+      botIndex = 20; // Reset ke posisi awal
       updateCodeDisplay();
+      renderGridMap();
       document.getElementById('feedbackBox').style.display = 'none';
     }
 
     function runCode() {
       const isCorrect = JSON.stringify(userSequence) === JSON.stringify(currentChallenge.correct_sequence);
+      
+      if (userSequence.length > 0) {
+        // Simulasi gerakan robot melangkah ke tujuan
+        botIndex = targetIndex;
+        renderGridMap();
+      }
+
       showFeedback(isCorrect);
     }
 
