@@ -3,819 +3,576 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MujaHeeBot Coding Quest - SD Muhammadiyah Al Mujahidin</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <title>MujaheeBot Coding Quest</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome untuk Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-main: #0a1f1c;
-            --card-bg: #11352d;
-            --panel-bg: #194d40;
-            --accent-green: #10b981;
-            --accent-yellow: #fbbf24;
-            --accent-blue: #3b82f6;
-            --text-light: #ecfdf5;
-            --grid-border: rgba(16, 185, 129, 0.2);
-        }
-
         body {
-            background-color: var(--bg-main);
-            color: var(--text-light);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            min-height: 100vh;
+            background: linear-gradient(135deg, #021114 0%, #052920 50%, #010b0d 100%);
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
-
-        .navbar-custom {
-            background: linear-gradient(135deg, #0a332a, #051613);
-            border-bottom: 3px solid var(--accent-green);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+        .font-heading-bot {
+            font-family: 'Fredoka', cursive;
         }
-
-        .school-logo {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-            filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.5));
-        }
-
-        .robot-avatar {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #10b981, #047857);
-            border-radius: 50%;
-            border: 3px solid var(--accent-yellow);
-            box-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
-        }
-
-        .robot-badge-logo {
-            position: absolute;
-            bottom: -4px;
-            right: -4px;
-            width: 30px;
-            height: 30px;
-            background: #ffffff;
-            border-radius: 50%;
-            padding: 2px;
-            border: 2px solid var(--accent-green);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-        }
-
-        .welcome-hero {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(251, 191, 36, 0.15)), var(--card-bg);
-            border: 2px solid var(--accent-green);
-            border-radius: 16px;
-            padding: 25px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-        }
-
-        .badge-score {
-            background: linear-gradient(45deg, #fbbf24, #f59e0b);
-            color: #000;
-            font-weight: 800;
-            font-size: 1.15rem;
-            border-radius: 20px;
-            padding: 8px 20px;
-            box-shadow: 0 0 12px rgba(251, 191, 36, 0.5);
-        }
-
-        .quest-card {
-            background: linear-gradient(145deg, var(--card-bg), var(--panel-bg));
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-
-        .level-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--grid-border);
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.25s ease;
-        }
-
-        .level-card:hover {
-            transform: translateX(5px);
-            border-color: var(--accent-yellow);
-            background-color: var(--panel-bg);
-        }
-
-        .level-card.active {
-            border: 2px solid var(--accent-yellow);
-            background-color: var(--panel-bg);
-            box-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
-        }
-
-        .grid-container {
-            background-color: var(--bg-main);
-            border: 2px solid var(--accent-green);
-            border-radius: 12px;
-            padding: 12px;
-            margin-bottom: 20px;
-        }
-
-        .grid-board {
-            display: grid;
-            grid-template-columns: repeat(8, 1fr);
-            gap: 6px;
-        }
-
-        .grid-cell {
-            aspect-ratio: 1;
-            background-color: #0c2b24;
-            border: 1px solid var(--grid-border);
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-green);
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .grid-cell.bot {
-            background-color: #064e3b;
-            border: 2px solid var(--accent-yellow);
-            color: var(--accent-yellow);
-            box-shadow: 0 0 12px rgba(251, 191, 36, 0.6);
-            transform: scale(1.05);
-            z-index: 10;
-        }
-
-        .grid-cell.target {
-            background-color: #14532d;
-            border: 2px dashed var(--accent-yellow);
-            color: var(--accent-yellow);
-            font-size: 0.75rem;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .command-blocks-container {
-            background-color: var(--panel-bg);
-            border: 1px solid var(--accent-green);
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 15px;
-        }
-
-        .block-btn {
-            color: white;
-            border: none;
-            padding: 12px 18px;
-            margin: 6px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-            transition: all 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .block-btn:hover {
-            transform: translateY(-2px) scale(1.03);
-            filter: brightness(1.1);
-        }
-
-        .block-repeat { 
-            background: linear-gradient(135deg, #ca8a04, #a16207); 
-            border: 2px solid rgba(251, 191, 36, 0.5); 
-        }
-
-        .code-area {
-            background-color: var(--bg-main);
-            border: 2px dashed var(--accent-green);
-            border-radius: 10px;
-            min-height: 120px;
-            padding: 15px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            align-content: flex-start;
-        }
-
-        .code-area:empty::before {
-            content: "Belum ada logika perintah. Klik tombol di atas!";
-            color: rgba(236, 253, 245, 0.5);
-            font-style: italic;
-            width: 100%;
-            text-align: center;
-            padding-top: 20px;
-        }
-
-        .code-block-placed {
-            padding: 8px 12px;
-            border-radius: 6px;
-            color: #000;
-            font-weight: 700;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .btn-action {
-            background: linear-gradient(45deg, #10b981, #059669);
-            color: #000;
-            font-weight: 800;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
-        }
-
-        .btn-action:hover {
-            background: linear-gradient(45deg, #34d399, #10b981);
-            transform: translateY(-2px);
-        }
-
-        .feedback-box {
-            display: none;
-            border-radius: 12px;
-            padding: 18px;
-            margin-top: 15px;
-            animation: fadeIn 0.3s ease-in;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .text-success-bright { color: #34d399; }
-        .cell-item { font-size: 1.5rem; }
-
-        /* Styling Modal Login */
-        .modal-content-custom {
-            background: linear-gradient(145deg, var(--card-bg), var(--bg-main));
-            border: 2px solid var(--accent-green);
-            color: var(--text-light);
-            border-radius: 16px;
-        }
-        .modal-content-custom .form-control, 
-        .modal-content-custom .form-select {
-            background-color: #081a17;
-            border: 1px solid var(--accent-green);
-            color: #fff;
-        }
-        .modal-content-custom .form-control:focus, 
-        .modal-content-custom .form-select:focus {
-            background-color: #081a17;
-            border-color: var(--accent-yellow);
-            color: #fff;
-            box-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
-        }
+        .block-item { transition: all 0.2s ease; user-select: none; }
+        .block-item:hover { transform: translateY(-2px); filter: brightness(1.05); }
+        .block-item:active { transform: scale(0.95); }
+        .grid-cell { aspect-ratio: 1/1; transition: background-color 0.3s; }
+        .robot-anim { transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); }
     </style>
 </head>
-<body class="pb-5">
+<body class="text-gray-200 min-h-screen flex flex-col items-center justify-start p-4 sm:p-8 antialiased">
 
-    <!-- Header & Navbar -->
-    <nav class="navbar navbar-custom py-3 mb-4">
-        <div class="container d-flex justify-content-between align-items-center">
-            <div class="d-flex align-items-center gap-3">
-                <img src="https://lh3.googleusercontent.com/d/1nBO66TKYu_Nzv4XckDaRZJGCqmbqjWS1" alt="Logo SD Mujahidin" class="school-logo">
+    <div class="w-full max-w-5xl space-y-6">
+        <!-- Header Game MujahiBot -->
+        <div class="bg-emerald-800 text-white p-4 sm:p-6 rounded-3xl shadow-xl border-2 border-emerald-500 flex flex-wrap justify-between items-center gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-white p-3 rounded-2xl shadow text-emerald-600 text-3xl">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
                 <div>
-                    <h4 class="m-0 fw-bold text-success-bright">MujaHeeBot Quest</h4>
-                    <small class="text-light opacity-75">SD Muhammadiyah Al Mujahidin Wonosari</small>
+                    <h2 class="text-xl sm:text-2xl font-bold font-heading-bot tracking-wide">MujaheeBot Coding Quest</h2>
+                    <p class="text-xs text-emerald-100">Petualangan Logika & Coding SD Al Mujahidin Wonosari</p>
                 </div>
             </div>
-            <div class="d-flex align-items-center gap-3">
-                <!-- User Profile Display -->
-                <div id="userProfileDisplay" class="d-none text-end">
-                    <span id="displayStudentName" class="fw-bold d-block text-warning" style="font-size: 0.95rem;">-</span>
-                    <small id="displayStudentClass" class="text-light opacity-75">-</small>
+            <div class="flex items-center space-x-4">
+                <!-- Level Selector -->
+                <div class="bg-emerald-900/80 rounded-xl px-3 py-1.5 flex items-center space-x-2 border border-emerald-600">
+                    <span class="text-xs text-emerald-200 font-bold hidden sm:inline">Modul:</span>
+                    <select id="levelSelect" onchange="loadLevel(this.value)" class="bg-emerald-950 text-white text-xs font-bold rounded-lg px-2 py-1 outline-none border border-emerald-500 cursor-pointer">
+                        <option value="0">Level 1: Langkah Pertama di Sekolah</option>
+                        <option value="1">Level 2: Aksi Go Green (Loop)</option>
+                        <option value="2">Level 3: Navigasi Perpustakaan (Kondisi)</option>
+                        <option value="3">Level 4: Jelajah Gunungkidul</option>
+                    </select>
                 </div>
-                <button class="btn btn-sm btn-outline-warning rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#loginModal">
-                    <i class="fa-solid fa-user me-1"></i> <span id="loginBtnText">Login Siswa</span>
-                </button>
-                <span class="badge-score"><i class="fa-solid fa-star me-2"></i> Skor: <span id="scoreDisplay">0</span></span>
-            </div>
-        </div>
-    </nav>
-
-    <div class="container">
-        
-        <!-- Welcome Hero Banner -->
-        <div class="welcome-hero mb-4">
-            <div class="row align-items-center">
-                <div class="col-md-2 text-center mb-3 mb-md-0">
-                    <div class="robot-avatar">
-                        <i class="fa-solid fa-robot fa-3x text-warning"></i>
-                        <img src="https://lh3.googleusercontent.com/d/1nBO66TKYu_Nzv4XckDaRZJGCqmbqjWS1" alt="Logo Emblem" class="robot-badge-logo">
-                    </div>
-                </div>
-                <div class="col-md-7">
-                    <h3 class="fw-bold text-warning mb-2"><i class="fa-solid fa-hand-wave me-2"></i> Selamat Datang, <span id="welcomeNameText">Anak-Anak Hebat!</span></h3>
-                    <p class="m-0 fs-6 leading-relaxed">
-                        Siap untuk petualangan seru? Bantu <strong>MujaHeeBot</strong> menyelesaikan 27 misi kompleks di SD Al Mujahidin! Gunakan logika coding-mu untuk melewati rintangan, mengumpulkan barang, dan mencapai tujuan. <em>Rabbani, Unggul, Mendunia!</em>
-                    </p>
-                </div>
-                <div class="col-md-3 text-md-end mt-3 mt-md-0">
-                    <a href="#questSection" class="btn btn-warning fw-bold px-4 py-2 text-dark rounded-pill shadow">
-                        <i class="fa-solid fa-gamepad me-2"></i> Mulai Petualangan!
-                    </a>
+                <!-- Bintang / Skor -->
+                <div class="bg-amber-400 text-amber-950 font-extrabold px-3 py-1.5 rounded-xl flex items-center space-x-1 shadow">
+                    <i class="fa-solid fa-star text-amber-100 text-lg"></i>
+                    <span id="starDisplay" class="text-lg">0</span>
                 </div>
             </div>
         </div>
 
-        <!-- Main Content Grid -->
-        <div id="questSection" class="row g-4">
-            
-            <!-- Left Sidebar: Level List (27 levels) -->
-            <div class="col-lg-3">
-                <div class="quest-card">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h5 class="fw-bold text-warning m-0"><i class="fa-solid fa-map me-2"></i> Pilih Misi</h5>
-                        <span class="badge bg-success">27 Level</span>
+        <!-- Main Container Game MujahiBot -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <!-- Panel Kiri: Kanvas Grid Misi & Instruksi -->
+            <section class="lg:col-span-6 flex flex-col gap-4">
+                <!-- Box Briefing Misi -->
+                <div class="bg-slate-900/90 text-white p-4 rounded-2xl border-2 border-emerald-500/40 shadow-sm flex items-start space-x-3">
+                    <div class="text-3xl text-emerald-400 mt-1">
+                        <i class="fa-solid fa-graduation-cap"></i>
                     </div>
-                    
-                    <div id="levelList" class="d-flex flex-column gap-2" style="max-height: 600px; overflow-y: auto; padding-right: 5px;">
-                        <!-- Dynamic Level Cards generated by JS -->
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Panel: Challenge Workstation -->
-            <div class="col-lg-9">
-                <div class="row g-3">
-                    
-                    <!-- Left Sub-panel: Grid and Goal -->
-                    <div class="col-md-7">
-                        <div class="quest-card h-100">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span id="badgeLevel" class="badge bg-warning text-dark px-3 py-2 fw-bold">Level</span>
-                                <h5 id="questTitle" class="fw-bold text-success-bright m-0 text-end">Judul Tantangan</h5>
-                            </div>
-                            <div class="p-3 mb-3 rounded" style="background-color: rgba(0,0,0,0.2); border-left: 4px solid var(--accent-blue);">
-                                <small class="text-muted d-block mb-1"><i class="fa-solid fa-bullseye me-1"></i> Misi Utama:</small>
-                                <span id="questQuestion" class="fw-bold text-light">-</span>
-                            </div>
-
-                            <!-- LARGE GRID SIMULASI INTERAKTIF 8x8 -->
-                            <div class="grid-container">
-                                <div id="gridBoard" class="grid-board">
-                                    <!-- 64 Cells Generated by JS -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Right Sub-panel: Coding Area -->
-                    <div class="col-md-5">
-                        <div class="quest-card h-100 d-flex flex-column">
-                            
-                            <!-- Command Blocks Area -->
-                            <h6 class="fw-bold text-warning mb-2"><i class="fa-solid fa-cubes me-1"></i> Blok Perintah (Klik untuk Menambah)</h6>
-                            <div id="commandBlocks" class="command-blocks-container">
-                                <!-- Command Buttons Generated by JS -->
-                            </div>
-
-                            <!-- Code Workspace Area -->
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <h6 class="fw-bold text-success-bright m-0"><i class="fa-solid fa-code me-1"></i> Program MujaHeeBot</h6>
-                                <button class="btn btn-sm btn-outline-danger" onclick="resetCode()"><i class="fa-solid fa-trash-can me-1"></i> Hapus Semua</button>
-                            </div>
-                            <div id="codeArea" class="code-area flex-grow-1 mb-3">
-                                <!-- Placed Code Blocks -->
-                            </div>
-
-                            <!-- Run Button -->
-                            <div class="d-flex gap-2 mt-auto">
-                                <button class="btn btn-action flex-grow-1" onclick="runCode()"><i class="fa-solid fa-play me-2"></i> JALANKAN KODE</button>
-                                <button class="btn btn-outline-light px-3" onclick="resetBotPosition()"><i class="fa-solid fa-rotate-right"></i></button>
-                            </div>
-                        </div>
+                    <div class="flex-1">
+                        <h2 id="missionTitle" class="font-heading-bot text-base sm:text-lg font-bold text-emerald-300">Petunjuk Misi</h2>
+                        <p id="missionDesc" class="text-xs sm:text-sm text-slate-300 mt-1">Bantu MujahiBot berjalan menuju tujuan!</p>
                     </div>
                 </div>
 
-                <!-- Feedback Box -->
-                <div id="feedbackBox" class="feedback-box">
-                    <div class="d-flex align-items-center gap-3">
-                        <i id="feedbackIcon" class="fa-solid fa-circle-check fa-3x"></i>
-                        <div>
-                            <h5 id="feedbackTitle" class="fw-bold m-0">Respon MujaHeeBot:</h5>
-                            <p id="feedbackText" class="m-0 mt-1"></p>
+                <!-- Papan Grid Game -->
+                <div class="bg-slate-900 p-4 rounded-3xl border-4 border-emerald-500/50 shadow-lg flex flex-col items-center justify-center relative">
+                    <div id="gridBoard" class="grid gap-1.5 bg-emerald-950/80 p-3 rounded-2xl border-2 border-emerald-600/50 relative overflow-hidden" style="width: 100%; max-width: 420px;">
+                        <!-- Grid cells & items generated dynamically -->
+                    </div>
+
+                    <!-- Floating Feedback Alert -->
+                    <div id="gameAlert" class="hidden absolute inset-0 bg-slate-950/80 backdrop-blur-sm rounded-2xl flex flex-col justify-center items-center p-6 text-center text-white z-20">
+                        <div id="alertIcon" class="text-5xl mb-2 text-yellow-400">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <h3 id="alertTitle" class="text-2xl font-bold font-heading-bot">Luar Biasa!</h3>
+                        <p id="alertBody" class="text-xs sm:text-sm mt-1 text-slate-200 max-w-xs">Kamu berhasil menyelesaikan misi ini!</p>
+                        <div class="flex gap-3 mt-4">
+                            <button onclick="resetGame()" class="bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-xl text-xs font-bold shadow">
+                                <i class="fa-solid fa-rotate-right mr-1"></i> Ulangi
+                            </button>
+                            <button id="btnNextLevel" onclick="nextLevel()" class="bg-emerald-500 hover:bg-emerald-400 text-white px-5 py-2 rounded-xl text-xs font-bold shadow">
+                                Lanjut Level <i class="fa-solid fa-arrow-right ml-1"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
+            </section>
 
-            </div>
-
-        </div>
-
-        <footer class="text-center mt-5 text-muted small border-top pt-4">
-            <p>&copy; 2026 SD Muhammadiyah Al Mujahidin Wonosari | Platform Digital Coding & Gamifikasi Rabbani</p>
-        </footer>
-    </div>
-
-    <!-- MODAL LOGIN SISWA (30 KELAS LENGKAP) -->
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content modal-content-custom">
-                <div class="modal-header border-bottom border-success">
-                    <h5 class="modal-title text-warning fw-bold" id="loginModalLabel">
-                        <i class="fa-solid fa-user-astronaut me-2"></i> Identitas Petualang Bot
-                    </h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            <!-- Panel Kanan: Blok Perintah & Workspace -->
+            <section class="lg:col-span-6 flex flex-col gap-4">
+                <!-- Toolset Blok Kode -->
+                <div class="bg-slate-900/90 p-4 rounded-2xl border-2 border-slate-700/60 shadow-sm">
+                    <h3 class="font-heading-bot text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">
+                        <i class="fa-solid fa-cubes mr-1 text-emerald-400"></i> Blok Perintah (Klik untuk Tambah)
+                    </h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                        <button onclick="addBlock('MOVE')" class="block-item bg-blue-600 hover:bg-blue-500 text-white px-3 py-2.5 rounded-xl font-bold text-xs flex items-center justify-between shadow-sm border-b-4 border-blue-800">
+                            <span><i class="fa-solid fa-arrow-up mr-1.5"></i> Maju 1</span>
+                            <i class="fa-solid fa-plus text-blue-200"></i>
+                        </button>
+                        <button onclick="addBlock('LEFT')" class="block-item bg-indigo-600 hover:bg-indigo-500 text-white px-3 py-2.5 rounded-xl font-bold text-xs flex items-center justify-between shadow-sm border-b-4 border-indigo-800">
+                            <span><i class="fa-solid fa-rotate-left mr-1.5"></i> Belok Kiri</span>
+                            <i class="fa-solid fa-plus text-indigo-200"></i>
+                        </button>
+                        <button onclick="addBlock('RIGHT')" class="block-item bg-indigo-600 hover:bg-indigo-500 text-white px-3 py-2.5 rounded-xl font-bold text-xs flex items-center justify-between shadow-sm border-b-4 border-indigo-800">
+                            <span><i class="fa-solid fa-rotate-right mr-1.5"></i> Belok Kanan</span>
+                            <i class="fa-solid fa-plus text-indigo-200"></i>
+                        </button>
+                        <button onclick="addBlock('ACTION')" class="block-item bg-amber-600 hover:bg-amber-500 text-white px-3 py-2.5 rounded-xl font-bold text-xs flex items-center justify-between shadow-sm border-b-4 border-amber-800">
+                            <span><i class="fa-solid fa-hand mr-1.5"></i> Ambil Objek</span>
+                            <i class="fa-solid fa-plus text-amber-200"></i>
+                        </button>
+                        <button onclick="addBlock('REPEAT_2')" class="block-item bg-purple-600 hover:bg-purple-500 text-white px-3 py-2.5 rounded-xl font-bold text-xs flex items-center justify-between shadow-sm border-b-4 border-purple-800">
+                            <span><i class="fa-solid fa-repeat mr-1.5"></i> Ulangi 2x</span>
+                            <i class="fa-solid fa-plus text-purple-200"></i>
+                        </button>
+                        <button onclick="addBlock('REPEAT_3')" class="block-item bg-purple-700 hover:bg-purple-600 text-white px-3 py-2.5 rounded-xl font-bold text-xs flex items-center justify-between shadow-sm border-b-4 border-purple-900">
+                            <span><i class="fa-solid fa-repeat mr-1.5"></i> Ulangi 3x</span>
+                            <i class="fa-solid fa-plus text-purple-200"></i>
+                        </button>
+                    </div>
                 </div>
-                <form id="loginForm" onsubmit="handleLogin(event)">
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label for="studentName" class="form-label fw-bold">Nama Lengkap Siswa</label>
-                            <input type="text" class="form-control" id="studentName" value="Abror Arqom" placeholder="Masukkan nama siswa..." required>
+
+                <!-- Program Sequence Workspace -->
+                <div class="bg-slate-900/90 p-4 rounded-2xl border-2 border-slate-700/60 shadow-sm flex-1 flex flex-col justify-between min-h-[260px]">
+                    <div>
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="font-heading-bot text-xs font-bold text-slate-400 uppercase tracking-wider">
+                                <i class="fa-solid fa-code mr-1 text-emerald-400"></i> Program MujahiBot
+                            </h3>
+                            <button onclick="clearBlocks()" class="text-xs text-rose-400 font-bold hover:underline">
+                                <i class="fa-solid fa-trash-can mr-1"></i> Hapus Semua
+                            </button>
                         </div>
-                        <div class="mb-3">
-                            <label for="studentClass" class="form-label fw-bold">Kelas / Paralel</label>
-                            <select id="studentClass" class="form-select" required>
-                                <option value="">-- Pilih Kelas --</option>
-
-                                <!-- KELAS 1 -->
-                                <option value="1 Champion">1 Champion</option>
-                                <option value="1 Excellent">1 Excellent</option>
-                                <option value="1 Brilliant">1 Brilliant</option>
-                                <option value="1 Olimpiade">1 Olimpiade</option>
-                                <option value="1 Smart">1 Smart</option>
-
-                                <!-- KELAS 2 -->
-                                <option value="2 Champion">2 Champion</option>
-                                <option value="2 Excellent">2 Excellent</option>
-                                <option value="2 Brilliant">2 Brilliant</option>
-                                <option value="2 Olimpiade">2 Olimpiade</option>
-                                <option value="2 Smart">2 Smart</option>
-
-                                <!-- KELAS 3 -->
-                                <option value="3 Champion">3 Champion</option>
-                                <option value="3 Excellent">3 Excellent</option>
-                                <option value="3 Brilliant">3 Brilliant</option>
-                                <option value="3 Olimpiade">3 Olimpiade</option>
-                                <option value="3 Smart">3 Smart</option>
-
-                                <!-- KELAS 4 -->
-                                <option value="4 Champion">4 Champion</option>
-                                <option value="4 Excellent">4 Excellent</option>
-                                <option value="4 Brilliant">4 Brilliant</option>
-                                <option value="4 Olimpiade" selected>4 Olimpiade</option>
-                                <option value="4 Smart">4 Smart</option>
-
-                                <!-- KELAS 5 -->
-                                <option value="5 Champion">5 Champion</option>
-                                <option value="5 Excellent">5 Excellent</option>
-                                <option value="5 Brilliant">5 Brilliant</option>
-                                <option value="5 Olimpiade">5 Olimpiade</option>
-                                <option value="5 Smart">5 Smart</option>
-
-                                <!-- KELAS 6 -->
-                                <option value="6 Champion">6 Champion</option>
-                                <option value="6 Excellent">6 Excellent</option>
-                                <option value="6 Brilliant">6 Brilliant</option>
-                                <option value="6 Olimpiade">6 Olimpiade</option>
-                                <option value="6 Smart">6 Smart</option>
-                            </select>
+                        <!-- List Program -->
+                        <div id="workspace" class="bg-slate-950/80 rounded-xl p-3 border-2 border-dashed border-slate-700 min-h-[160px] max-h-[220px] overflow-y-auto flex flex-col gap-2">
+                            <div id="emptyTip" class="text-center text-slate-500 text-xs my-auto py-6">
+                                Belum ada perintah.<br>Klik tombol di atas untuk menyusun logika MujahiBot!
+                            </div>
                         </div>
                     </div>
-                    <div class="modal-footer border-top border-success">
-                        <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-warning fw-bold text-dark px-4">Simpan & Mulai</button>
+
+                    <!-- Tombol Kontrol Eksekusi -->
+                    <div class="flex gap-3 mt-4">
+                        <button id="btnRun" onclick="runProgram()" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white py-3 rounded-2xl font-heading-bot font-bold text-base shadow-lg border-b-4 border-emerald-800 flex justify-center items-center space-x-2 transition">
+                            <i class="fa-solid fa-play"></i>
+                            <span>JALANKAN KODE</span>
+                        </button>
+                        <button onclick="resetGame()" class="bg-slate-700 hover:bg-slate-600 text-slate-200 px-4 py-3 rounded-2xl font-bold text-sm border-b-4 border-slate-800 transition">
+                            <i class="fa-solid fa-rotate-left"></i>
+                        </button>
                     </div>
-                </form>
-            </div>
+                </div>
+            </section>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SCRIPT LOGIKA GAME MUJAHEEBOT -->
     <script>
-        // --- COMPLEX CHALLENGES DATA (27 Levels, 8x8 Grid) ---
-        const levels = [
-            { id: 1, title: "Langkah Pertama", goal: "Pandu robot ke Kelas (T) dan ambil Buku (I)!", startPos: [7, 0], targetPos: [0, 7], itemPos: [6, 2], map: [
-                [0,0,0,0,0,0,0,'T'],[0,0,0,0,0,0,0,0],[0,0,0,0,0,1,0,0],[0,0,0,1,1,1,0,0],[0,0,0,0,0,0,0,0],[0,0,1,0,0,0,0,0],[0,0,'I',0,0,0,0,0],['S',0,0,0,0,0,0,0]
-            ], commands: ['Maju 1','Belok Kiri','Belok Kanan','Ambil Objek'] },
-            { id: 2, title: "Labirin Kantin", goal: "Lewati rintangan menuju Kantin (T). Jangan lupa botol air (I)!", startPos: [7, 7], targetPos: [1, 0], itemPos: [4, 4], map: [
-                [0,0,0,0,0,0,0,0],[0,'T',0,0,0,0,0,0],[0,1,1,1,1,1,1,0],[0,0,0,0,0,1,0,0],[0,0,0,0,'I',1,0,0],[0,1,1,1,0,1,0,0],[0,0,0,1,0,0,0,0],[0,0,0,0,0,0,0,'S']
-            ], commands: ['Maju 1','Belok Kiri','Belok Kanan','Ambil Objek'] },
-            { id: 3, title: "Taman Sekolah", goal: "Kumpulkan 2 sampah organik (I) lalu pergi ke Bank Sampah (T)!", startPos: [0, 0], targetPos: [7, 7], itemsPos: [[2, 2], [5, 5]], map: [
-                ['S',0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,'I',0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,'I',0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,'T']
-            ], commands: ['Maju 1','Maju 2','Belok Kiri','Belok Kanan','Ambil Objek','Ulangi 2x'] },
-            { id: 27, title: "Misi Akhir: Wisuda Rabbani", goal: "Hadapi rintangan tersulit, kumpulkan Ijazah (I), dan capai Panggung (T)!", startPos: [7, 0], targetPos: [0, 7], itemsPos: [[3, 3], [1, 6]], map: [
-                [0,0,0,0,0,0,0,'T'],[1,1,1,1,1,1,'I',0],[0,0,0,0,0,0,0,0],[0,0,1,'I',1,0,0,0],[1,0,1,0,1,0,1,0],[0,0,1,0,1,0,0,0],[0,0,0,0,1,0,0,0],['S',1,0,0,0,0,0,0]
-            ], commands: ['Maju 1','Maju 2','Maju 3','Belok Kiri','Belok Kanan','Ambil Objek','Ulangi 2x','Ulangi 3x'] }
+        const LEVELS = [
+            {
+                title: "Modul 1: Langkah Pertama di Sekolah",
+                desc: "Pandu MujahiBot menuju Ruang Kelas. Jangan lupa ambil Buku Pelajaran di jalan!",
+                gridSize: 5,
+                start: { x: 0, y: 4, dir: 'EAST' },
+                goal: { x: 4, y: 0, icon: 'fa-school', label: 'Kelas' },
+                items: [ { x: 2, y: 4, type: 'BOOK', icon: 'fa-book', collected: false } ],
+                obstacles: [ { x: 2, y: 1 }, { x: 2, y: 2 }, { x: 2, y: 3 } ]
+            },
+            {
+                title: "Modul 2: Aksi Go Green Mujahidin",
+                desc: "Bersihkan sampah di lapangan sekolah! Gunakan perintah 'Ambil' dan blok 'Ulangi' agar lebih efisien.",
+                gridSize: 5,
+                start: { x: 0, y: 0, dir: 'SOUTH' },
+                goal: { x: 4, y: 4, icon: 'fa-recycle', label: 'Bank Sampah' },
+                items: [
+                    { x: 0, y: 1, type: 'TRASH', icon: 'fa-trash-can', collected: false },
+                    { x: 0, y: 2, type: 'TRASH', icon: 'fa-trash-can', collected: false },
+                    { x: 0, y: 3, type: 'TRASH', icon: 'fa-trash-can', collected: false }
+                ],
+                obstacles: [ { x: 1, y: 1 }, { x: 3, y: 3 } ]
+            },
+            {
+                title: "Modul 3: Navigasi Cerdas Perpustakaan",
+                desc: "Cari buku materi di Perpustakaan. Hindari genangan air & rapihkan rak buku!",
+                gridSize: 5,
+                start: { x: 0, y: 2, dir: 'EAST' },
+                goal: { x: 4, y: 2, icon: 'fa-book-bookmark', label: 'Perpus' },
+                items: [ { x: 2, y: 2, type: 'BOOK', icon: 'fa-book-open', collected: false } ],
+                obstacles: [ { x: 2, y: 0 }, { x: 2, y: 1 }, { x: 2, y: 3 }, { x: 2, y: 4 } ]
+            },
+            {
+                title: "Modul 4: Jelajah Geopark Gunungkidul",
+                desc: "Petualangan MujahiBot menjelajah Geopark Gunungkidul. Kumpulkan Bintang Misi!",
+                gridSize: 6,
+                start: { x: 0, y: 5, dir: 'NORTH' },
+                goal: { x: 5, y: 0, icon: 'fa-mountain-sun', label: 'Geopark' },
+                items: [
+                    { x: 0, y: 2, type: 'STAR', icon: 'fa-star', collected: false },
+                    { x: 3, y: 2, type: 'STAR', icon: 'fa-star', collected: false },
+                    { x: 5, y: 2, type: 'STAR', icon: 'fa-star', collected: false }
+                ],
+                obstacles: [
+                    { x: 1, y: 5 }, { x: 1, y: 4 }, { x: 1, y: 2 },
+                    { x: 3, y: 0 }, { x: 3, y: 1 }, { x: 4, y: 4 }
+                ]
+            }
         ];
 
-        let currentLevel = null;
-        let score = 0;
-        let currentBotPos = [0, 0]; 
-        let botRotation = 0; 
-        let levelCodeSequence = [];
-        let itemsCollected = [];
-
-        const icons = {
-            'S': '<i class="fa-solid fa-robot text-warning"></i>',
-            'T': '<i class="fa-solid fa-school text-info cell-item"></i>',
-            'I_book': '<i class="fa-solid fa-book text-success cell-item"></i>',
-            'I_trash': '<i class="fa-solid fa-trash-can text-danger cell-item"></i>',
-            'I_water': '<i class="fa-solid fa-bottle-water text-primary cell-item"></i>',
-            'obstacle': '<i class="fa-solid fa-ban text-danger opacity-50"></i>'
+        const DIRS = ['NORTH', 'EAST', 'SOUTH', 'WEST'];
+        const DIR_OFFSETS = {
+            'NORTH': { x: 0, y: -1 },
+            'EAST': { x: 1, y: 0 },
+            'SOUTH': { x: 0, y: 1 },
+            'WEST': { x: -1, y: 0 }
         };
 
-        const commandBlockConfigs = {
-            'Maju 1': { bg: '#2563eb', icon: 'fa-arrow-right' },
-            'Maju 2': { bg: '#2563eb', icon: 'fa-angles-right' },
-            'Maju 3': { bg: '#2563eb', icon: 'fa-person-running' },
-            'Belok Kiri': { bg: '#7c3aed', icon: 'fa-rotate-left' },
-            'Belok Kanan': { bg: '#7c3aed', icon: 'fa-rotate-right' },
-            'Ambil Objek': { bg: '#db2777', icon: 'fa-hand-holding' },
-            'Ulangi 2x': { bg: '#ca8a04', icon: 'fa-repeat', isLoop: true, count: 2 },
-            'Ulangi 3x': { bg: '#ca8a04', icon: 'fa-repeat', isLoop: true, count: 3 }
-        };
+        let currentLevelIdx = 0;
+        let currentLevelData = null;
+        let robotState = { x: 0, y: 0, dirIdx: 1 };
+        let programSequence = [];
+        let isExecuting = false;
+        let totalStars = 0;
+        let audioCtx = null;
 
-        // Inisialisasi
-        window.onload = () => {
-            generateLevelList();
-            loadLevel(1);
-            checkSavedStudent();
-        };
-
-        // Fungsi Login Siswa
-        function handleLogin(e) {
-            e.preventDefault();
-            const name = document.getElementById('studentName').value.trim();
-            const studentClass = document.getElementById('studentClass').value;
-
-            if (name && studentClass) {
-                localStorage.setItem('studentName', name);
-                localStorage.setItem('studentClass', studentClass);
-                updateUserUI(name, studentClass);
-
-                // Tutup Modal Bootstrap
-                const modalEl = document.getElementById('loginModal');
-                const modal = bootstrap.Modal.getInstance(modalEl);
-                if (modal) modal.hide();
+        function playSound(type) {
+            try {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                const now = audioCtx.currentTime;
+                if (type === 'step') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(300, now);
+                    osc.frequency.exponentialRampToValueAtTime(150, now + 0.1);
+                    gain.gain.setValueAtTime(0.2, now);
+                    gain.gain.linearRampToValueAtTime(0.01, now + 0.1);
+                    osc.start(now);
+                    osc.stop(now + 0.1);
+                } else if (type === 'collect') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(523.25, now);
+                    osc.frequency.setValueAtTime(659.25, now + 0.08);
+                    osc.frequency.setValueAtTime(783.99, now + 0.16);
+                    gain.gain.setValueAtTime(0.3, now);
+                    gain.gain.linearRampToValueAtTime(0.01, now + 0.25);
+                    osc.start(now);
+                    osc.stop(now + 0.25);
+                } else if (type === 'win') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(523.25, now);
+                    osc.frequency.setValueAtTime(659.25, now + 0.1);
+                    osc.frequency.setValueAtTime(783.99, now + 0.2);
+                    osc.frequency.setValueAtTime(1046.50, now + 0.3);
+                    gain.gain.setValueAtTime(0.4, now);
+                    gain.gain.linearRampToValueAtTime(0.01, now + 0.5);
+                    osc.start(now);
+                    osc.stop(now + 0.5);
+                } else if (type === 'error') {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(180, now);
+                    osc.frequency.setValueAtTime(110, now + 0.15);
+                    gain.gain.setValueAtTime(0.3, now);
+                    gain.gain.linearRampToValueAtTime(0.01, now + 0.3);
+                    osc.start(now);
+                    osc.stop(now + 0.3);
+                }
+            } catch(e) {
+                console.log("Sound error / disabled");
             }
         }
 
-        function checkSavedStudent() {
-            const savedName = localStorage.getItem('studentName');
-            const savedClass = localStorage.getItem('studentClass');
-            if (savedName && savedClass) {
-                updateUserUI(savedName, savedClass);
-            }
+        function loadLevel(idx) {
+            currentLevelIdx = parseInt(idx);
+            const selectEl = document.getElementById('levelSelect');
+            if (selectEl) selectEl.value = currentLevelIdx;
+            currentLevelData = JSON.parse(JSON.stringify(LEVELS[currentLevelIdx]));
+            const titleEl = document.getElementById('missionTitle');
+            const descEl = document.getElementById('missionDesc');
+            if (titleEl) titleEl.innerText = currentLevelData.title;
+            if (descEl) descEl.innerText = currentLevelData.desc;
+            robotState.x = currentLevelData.start.x;
+            robotState.y = currentLevelData.start.y;
+            robotState.dirIdx = DIRS.indexOf(currentLevelData.start.dir);
+            hideAlert();
+            renderGrid();
+            renderWorkspace();
         }
 
-        function updateUserUI(name, studentClass) {
-            document.getElementById('displayStudentName').textContent = name;
-            document.getElementById('displayStudentClass').textContent = 'Kelas ' + studentClass;
-            document.getElementById('userProfileDisplay').classList.remove('d-none');
-            document.getElementById('welcomeNameText').textContent = name + '!';
-            document.getElementById('loginBtnText').textContent = 'Ganti Profil';
+        function resetGame() {
+            if (isExecuting) return;
+            programSequence = [];
+            loadLevel(currentLevelIdx);
         }
 
-        function generateLevelList() {
-            const container = document.getElementById('levelList');
-            container.innerHTML = '';
-            for (let i = 1; i <= 27; i++) {
-                const isFirst = i === 1;
-                const levelData = levels.find(l => l.id === i) || { title: `Misi ${i}` };
-                const card = document.createElement('div');
-                card.className = `level-card p-3 ${isFirst ? 'active' : ''}`;
-                card.id = `level-card-${i}`;
-                card.onclick = () => loadLevel(i);
-                card.innerHTML = `
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h6 class="fw-bold m-0 text-light">Misi ${i}: ${levelData.title}</h6>
-                        <i class="fa-solid fa-lock text-muted ms-2"></i>
-                    </div>
-                `;
-                container.appendChild(card);
-            }
-        }
-
-        function loadLevel(levelId) {
-            currentLevel = levels.find(l => l.id === levelId) || levels[0];
-            document.getElementById('badgeLevel').textContent = `Misi ${currentLevel.id}`;
-            document.getElementById('questTitle').textContent = currentLevel.title;
-            document.getElementById('questQuestion').textContent = currentLevel.goal;
-            document.getElementById('feedbackBox').style.display = 'none';
-            levelCodeSequence = [];
-            itemsCollected = [];
-            resetCode();
-            renderGridMap();
-            resetBotPosition();
-            renderCommandBlocks();
-            
-            document.querySelectorAll('.level-card').forEach(c => c.classList.remove('active'));
-            const activeCard = document.getElementById(`level-card-${levelId}`);
-            if (activeCard) activeCard.classList.add('active');
-        }
-
-        function renderGridMap() {
+        function renderGrid() {
             const board = document.getElementById('gridBoard');
-            board.innerHTML = '';
-            const mapData = currentLevel.map;
-
-            for (let r = 0; r < 8; r++) {
-                for (let c = 0; c < 8; c++) {
+            if (!board || !currentLevelData) return;
+            board.innerHTML = "";
+            const size = currentLevelData.gridSize;
+            board.style.gridTemplateColumns = `repeat(${size}, minmax(0, 1fr))`;
+            for (let r = 0; r < size; r++) {
+                for (let c = 0; c < size; c++) {
                     const cell = document.createElement('div');
-                    cell.className = 'grid-cell';
-                    cell.id = `cell-${r}-${c}`;
-                    const content = mapData[r][c];
-
-                    if (content === 1) {
-                        cell.innerHTML = icons.obstacle;
-                    } else if (content === 'T') {
-                        cell.classList.add('target');
-                        cell.innerHTML = icons.T;
-                    } else if (content === 'I') {
-                        let itemIcon = icons.I_book;
-                        if (currentLevel.id === 2) itemIcon = icons.I_water;
-                        if (currentLevel.id === 3) itemIcon = icons.I_trash;
-                        cell.innerHTML = itemIcon;
+                    cell.className = 'grid-cell bg-slate-800/80 rounded-xl border border-emerald-600/30 flex items-center justify-center relative shadow-inner text-lg';
+                    cell.dataset.x = c;
+                    cell.dataset.y = r;
+                    const isObs = currentLevelData.obstacles.some(o => o.x === c && o.y === r);
+                    if (isObs) {
+                        cell.classList.add('bg-rose-950/80', 'border-rose-500/50');
+                        cell.innerHTML = '<i class="fa-solid fa-ban text-rose-400"></i>';
+                    }
+                    if (currentLevelData.goal.x === c && currentLevelData.goal.y === r) {
+                        cell.classList.add('bg-amber-950/80', 'border-amber-500/50');
+                        cell.innerHTML = `
+                            <div class="flex flex-col items-center text-amber-400">
+                                <i class="fa-solid ${currentLevelData.goal.icon} text-xl"></i>
+                                <span class="text-[9px] font-bold mt-0.5">${currentLevelData.goal.label}</span>
+                            </div>
+                        `;
+                    }
+                    const item = currentLevelData.items.find(i => i.x === c && i.y === r && !i.collected);
+                    if (item) {
+                        const itemElem = document.createElement('div');
+                        itemElem.className = 'text-cyan-400 animate-bounce text-xl';
+                        itemElem.innerHTML = `<i class="fa-solid ${item.icon}"></i>`;
+                        cell.appendChild(itemElem);
+                    }
+                    if (robotState.x === c && robotState.y === r) {
+                        const robotElem = document.createElement('div');
+                        robotElem.className = 'robot-anim absolute inset-0 flex items-center justify-center text-emerald-400 text-2xl z-10';
+                        let rotDeg = robotState.dirIdx * 90;
+                        robotElem.style.transform = `rotate(${rotDeg}deg)`;
+                        robotElem.innerHTML = `
+                            <div class="relative flex items-center justify-center">
+                                <i class="fa-solid fa-robot drop-shadow"></i>
+                                <i class="fa-solid fa-caret-up text-amber-400 text-xs absolute -top-2"></i>
+                            </div>
+                        `;
+                        cell.appendChild(robotElem);
                     }
                     board.appendChild(cell);
                 }
             }
         }
 
-        function resetBotPosition() {
-            document.querySelectorAll('.grid-cell.bot').forEach(c => {
-                c.classList.remove('bot');
-                c.style.transform = '';
-            });
-            
-            currentBotPos = [...currentLevel.startPos];
-            botRotation = 0; 
-            updateBotVisuals();
+        function addBlock(type) {
+            if (isExecuting) return;
+            programSequence.push(type);
+            renderWorkspace();
+            playSound('step');
         }
 
-        function updateBotVisuals() {
-            document.querySelectorAll('.grid-cell.bot').forEach(c => c.classList.remove('bot'));
-            const cellId = `cell-${currentBotPos[0]}-${currentBotPos[1]}`;
-            const cell = document.getElementById(cellId);
-            if (cell) {
-                cell.classList.add('bot');
-                let botIcon = cell.querySelector('i.fa-robot');
-                if (!botIcon) {
-                    cell.innerHTML = icons.S;
-                    botIcon = cell.querySelector('i.fa-robot');
-                }
-                if (botIcon) {
-                    botIcon.style.transform = `rotate(${botRotation}deg)`;
-                }
+        function removeBlock(idx) {
+            if (isExecuting) return;
+            programSequence.splice(idx, 1);
+            renderWorkspace();
+        }
+
+        function clearBlocks() {
+            if (isExecuting) return;
+            programSequence = [];
+            renderWorkspace();
+        }
+
+        function renderWorkspace() {
+            const ws = document.getElementById('workspace');
+            if (!ws) return;
+            ws.innerHTML = "";
+            if (programSequence.length === 0) {
+                ws.innerHTML = `
+                    <div id="emptyTip" class="text-center text-slate-500 text-xs my-auto py-6">
+                        Belum ada perintah.<br>Klik tombol di atas untuk menyusun logika MujahiBot!
+                    </div>
+                `;
+                return;
             }
-        }
-
-        function renderCommandBlocks() {
-            const container = document.getElementById('commandBlocks');
-            container.innerHTML = '';
-            currentLevel.commands.forEach(cmd => {
-                const config = commandBlockConfigs[cmd];
-                const btn = document.createElement('button');
-                btn.className = 'block-btn';
-                btn.style.background = config.bg;
-                if (config.isLoop) { 
-                    btn.classList.add('block-repeat'); 
-                    btn.innerHTML = `<i class="fa-solid ${config.icon}"></i> ${cmd} ( ... )`; 
-                } else { 
-                    btn.innerHTML = `<i class="fa-solid ${config.icon}"></i> ${cmd}`; 
+            programSequence.forEach((cmd, idx) => {
+                const item = document.createElement('div');
+                item.className = 'flex items-center justify-between p-2 rounded-xl text-xs font-bold text-white shadow-sm border-b-2 ';
+                let label = "";
+                let bgClass = 'bg-slate-700 border-slate-900';
+                switch(cmd) {
+                    case 'MOVE':
+                        label = '<i class="fa-solid fa-arrow-up mr-2"></i> Maju 1 Langkah';
+                        bgClass = 'bg-blue-600 border-blue-800';
+                        break;
+                    case 'LEFT':
+                        label = '<i class="fa-solid fa-rotate-left mr-2"></i> Belok Kiri';
+                        bgClass = 'bg-indigo-600 border-indigo-800';
+                        break;
+                    case 'RIGHT':
+                        label = '<i class="fa-solid fa-rotate-right mr-2"></i> Belok Kanan';
+                        bgClass = 'bg-indigo-600 border-indigo-800';
+                        break;
+                    case 'ACTION':
+                        label = '<i class="fa-solid fa-hand mr-2"></i> Ambil Objek';
+                        bgClass = 'bg-amber-600 border-amber-800';
+                        break;
+                    case 'REPEAT_2':
+                        label = '<i class="fa-solid fa-repeat mr-2"></i> [Ulangi 2x] (Maju 1)';
+                        bgClass = 'bg-purple-600 border-purple-800';
+                        break;
+                    case 'REPEAT_3':
+                        label = '<i class="fa-solid fa-repeat mr-2"></i> [Ulangi 3x] (Maju 1)';
+                        bgClass = 'bg-purple-700 border-purple-900';
+                        break;
                 }
-                btn.onclick = () => addBlockToProgram(cmd);
-                container.appendChild(btn);
+                item.className += bgClass;
+                item.innerHTML = `
+                    <span class="flex items-center">${idx + 1}. ${label}</span>
+                    <button onclick="removeBlock(${idx})" class="text-white/70 hover:text-white px-1">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                `;
+                ws.appendChild(item);
             });
         }
 
-        function addBlockToProgram(cmd) {
-            levelCodeSequence.push(cmd);
-            updateCodeDisplay();
-        }
-
-        function updateCodeDisplay() {
-            const display = document.getElementById('codeArea');
-            display.innerHTML = '';
-            levelCodeSequence.forEach((cmd, idx) => {
-                const config = commandBlockConfigs[cmd];
-                const block = document.createElement('div');
-                block.className = 'code-block-placed';
-                block.style.backgroundColor = config.bg;
-                block.innerHTML = `<span class="text-dark opacity-50">${idx + 1}.</span> <i class="fa-solid ${config.icon}"></i> ${cmd}`;
-                display.appendChild(block);
-            });
-        }
-
-        function resetCode() {
-            levelCodeSequence = [];
-            updateCodeDisplay();
-            resetBotPosition();
-            renderGridMap();
-            itemsCollected = [];
-            document.getElementById('feedbackBox').style.display = 'none';
-        }
-
-        function runCode() {
-            resetBotPosition();
-            renderGridMap();
-            itemsCollected = [];
-            document.getElementById('feedbackBox').style.display = 'none';
-            
-            let success = false;
-            let error = null;
-
-            try {
-                success = executeSequence(levelCodeSequence);
-            } catch (e) {
-                error = e.message;
+        async function runProgram() {
+            if (isExecuting) return;
+            if (programSequence.length === 0) {
+                alert("Tambahkan blok perintah terlebih dahulu!");
+                return;
             }
-
-            showFeedback(success, error);
-        }
-
-        function executeSequence(sequence) {
-            for (let cmd of sequence) {
-                const config = commandBlockConfigs[cmd];
-                if (config && config.isLoop) {
-                    for (let i = 0; i < config.count; i++) {
-                        // Loop simulation
-                    }
+            isExecuting = true;
+            const btnRun = document.getElementById('btnRun');
+            if (btnRun) {
+                btnRun.disabled = true;
+                btnRun.classList.add('opacity-50');
+            }
+            let expandedCommands = [];
+            for (let cmd of programSequence) {
+                if (cmd === 'REPEAT_2') {
+                    expandedCommands.push('MOVE', 'MOVE');
+                } else if (cmd === 'REPEAT_3') {
+                    expandedCommands.push('MOVE', 'MOVE', 'MOVE');
                 } else {
-                    simulateCommand(cmd);
+                    expandedCommands.push(cmd);
                 }
             }
-            const isOnTarget = currentBotPos[0] === currentLevel.targetPos[0] && currentBotPos[1] === currentLevel.targetPos[1];
-            const hasItems = checkItemsCollected();
-            return isOnTarget && hasItems;
-        }
-
-        function simulateCommand(cmd) {
-            let row = currentBotPos[0];
-            let col = currentBotPos[1];
-            let dist = 0;
-            if (cmd.startsWith('Maju')) dist = parseInt(cmd.split(' ')[1]);
-
-            if (dist > 0) {
-                for (let i = 0; i < dist; i++) {
-                    if (botRotation === 0) col++; 
-                    else if (botRotation === 90) row++; 
-                    else if (botRotation === 180) col--; 
-                    else if (botRotation === 270) row--; 
-                    
-                    if (row < 0 || row > 7 || col < 0 || col > 7 || currentLevel.map[row][col] === 1) {
-                        throw new Error("MujaHeeBot menabrak rintangan atau keluar arena!");
+            for (let i = 0; i < expandedCommands.length; i++) {
+                const cmd = expandedCommands[i];
+                let success = await executeCommand(cmd);
+                if (!success) {
+                    playSound('error');
+                    showAlert('Wah, MujahiBot Menabrak!', 'Periksa kembali jalan dan rintangan di papan.', false);
+                    isExecuting = false;
+                    if (btnRun) {
+                        btnRun.disabled = false;
+                        btnRun.classList.remove('opacity-50');
                     }
+                    return;
                 }
-                currentBotPos = [row, col];
-            } else if (cmd === 'Belok Kiri') {
-                botRotation = (botRotation - 90 + 360) % 360;
-            } else if (cmd === 'Belok Kanan') {
-                botRotation = (botRotation + 90) % 360;
-            } else if (cmd === 'Ambil Objek') {
-                if (currentLevel.map[row][col] === 'I') {
-                    itemsCollected.push([row, col]);
-                    document.getElementById(`cell-${row}-${col}`).innerHTML = '';
-                }
+                renderGrid();
+                await sleep(400);
             }
-            updateBotVisuals();
-        }
-
-        function checkItemsCollected() {
-            if (currentLevel.id === 1 || currentLevel.id === 2) return itemsCollected.length >= 1;
-            if (currentLevel.id === 3 || currentLevel.id === 27) return itemsCollected.length >= 2;
-            return true; 
-        }
-
-        function showFeedback(success, error) {
-            const box = document.getElementById('feedbackBox');
-            const text = document.getElementById('feedbackText');
-            const title = document.getElementById('feedbackTitle');
-            const icon = document.getElementById('feedbackIcon');
-            
-            box.style.display = 'block';
-            if (success) {
-                box.style.backgroundColor = '#065f46'; 
-                box.style.border = '1px solid #10b981';
-                title.textContent = "MasyaAllah, Luar Biasa!";
-                title.className = "fw-bold text-warning";
-                icon.className = "fa-solid fa-star fa-3x text-warning";
-                text.textContent = "Misi Berhasil! MujaHeeBot telah mencapai tujuan dengan tepat. Lanjutkan ke misi berikutnya!";
-                score += currentLevel.id * 10;
-                document.getElementById('scoreDisplay').textContent = score;
-                
-                const nextId = currentLevel.id + 1;
-                const nextLock = document.querySelector(`#level-card-${nextId} i.fa-lock`);
-                if(nextId <= 27 && nextLock) nextLock.className = 'fa-solid fa-lock-open text-warning';
+            const uncollected = currentLevelData.items.filter(i => !i.collected);
+            const isAtGoal = robotState.x === currentLevelData.goal.x && robotState.y === currentLevelData.goal.y;
+            if (isAtGoal && uncollected.length === 0) {
+                playSound('win');
+                totalStars += 3;
+                document.getElementById('starDisplay').innerText = totalStars;
+                showAlert('Misi Berhasil! 🎉', 'MujahiBot berhasil menyelesaikan tugasnya dengan sempurna!', true);
+            } else if (isAtGoal && uncollected.length > 0) {
+                playSound('error');
+                showAlert('Hampir Berhasil!', `Kamu sudah di tujuan, tetapi belum mengambil ${uncollected.length} objek sasaran!`, false);
             } else {
-                box.style.backgroundColor = '#7f1d1d'; 
-                box.style.border = '1px solid #ef4444';
-                title.textContent = "Ayo Coba Lagi!";
-                title.className = "fw-bold text-danger-light";
-                icon.className = "fa-solid fa-circle-xmark fa-3x text-danger";
-                text.textContent = error || "Logika perintahmu belum tepat. Pastikan MujaHeeBot mengambil semua item dan berhenti tepat di tujuan tanpa menabrak.";
+                playSound('error');
+                showAlert('Belum Sampai Tujuan!', 'MujahiBot berhenti sebelum mencapai lokasi tujuan.', false);
+            }
+            isExecuting = false;
+            if (btnRun) {
+                btnRun.disabled = false;
+                btnRun.classList.remove('opacity-50');
             }
         }
+
+        function executeCommand(cmd) {
+            return new Promise((resolve) => {
+                if (cmd === 'MOVE') {
+                    const dirName = DIRS[robotState.dirIdx];
+                    const offset = DIR_OFFSETS[dirName];
+                    const nextX = robotState.x + offset.x;
+                    const nextY = robotState.y + offset.y;
+                    if (nextX < 0 || nextX >= currentLevelData.gridSize || nextY < 0 || nextY >= currentLevelData.gridSize) {
+                        resolve(false);
+                        return;
+                    }
+                    const isObs = currentLevelData.obstacles.some(o => o.x === nextX && o.y === nextY);
+                    if (isObs) {
+                        resolve(false);
+                        return;
+                    }
+                    robotState.x = nextX;
+                    robotState.y = nextY;
+                    playSound('step');
+                    resolve(true);
+                } else if (cmd === 'LEFT') {
+                    robotState.dirIdx = (robotState.dirIdx + 3) % 4;
+                    playSound('step');
+                    resolve(true);
+                } else if (cmd === 'RIGHT') {
+                    robotState.dirIdx = (robotState.dirIdx + 1) % 4;
+                    playSound('step');
+                    resolve(true);
+                } else if (cmd === 'ACTION') {
+                    const item = currentLevelData.items.find(i => i.x === robotState.x && i.y === robotState.y && !i.collected);
+                    if (item) {
+                        item.collected = true;
+                        playSound('collect');
+                    }
+                    resolve(true);
+                }
+            });
+        }
+
+        function showAlert(title, body, isWin) {
+            const alertBox = document.getElementById('gameAlert');
+            if (!alertBox) return;
+            document.getElementById('alertTitle').innerText = title;
+            document.getElementById('alertBody').innerText = body;
+            const alertIcon = document.getElementById('alertIcon');
+            if (isWin) {
+                alertIcon.innerHTML = '<i class="fa-solid fa-trophy text-amber-400"></i>';
+                document.getElementById('btnNextLevel').style.display = 'inline-flex';
+            } else {
+                alertIcon.innerHTML = '<i class="fa-solid fa-circle-exclamation text-rose-400"></i>';
+                document.getElementById('btnNextLevel').style.display = 'none';
+            }
+            alertBox.classList.remove('hidden');
+        }
+
+        function hideAlert() {
+            const alertBox = document.getElementById('gameAlert');
+            if (alertBox) alertBox.classList.add('hidden');
+        }
+
+        function nextLevel() {
+            if (currentLevelIdx < LEVELS.length - 1) {
+                loadLevel(currentLevelIdx + 1);
+            } else {
+                alert("Selamat! Kamu telah menyelesaikan semua level di MujaheeBot Coding Quest!");
+                loadLevel(0);
+            }
+        }
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            loadLevel(0);
+        });
     </script>
 </body>
 </html>
