@@ -1,312 +1,677 @@
-const LEVELS = [
-    // ==========================================
-    // BAB 1: DASAR LOGIKA & NAVIGASI SEKOLAH (LEVEL 1 - 5)
-    // ==========================================
-    {
-        title: "Level 1: Langkah Pertama di Sekolah",
-        desc: "Pandu MujahiBot menuju Ruang Kelas. Jangan lupa ambil Buku Pelajaran di jalan!",
-        gridSize: 5,
-        start: { x: 0, y: 4, dir: 'EAST' },
-        goal: { x: 4, y: 0, icon: 'fa-school', label: 'Kelas' },
-        items: [ { x: 2, y: 4, type: 'BOOK', icon: 'fa-book', collected: false } ],
-        obstacles: [ { x: 2, y: 1 }, { x: 2, y: 2 }, { x: 2, y: 3 } ]
-    },
-    {
-        title: "Level 2: Aksi Go Green (Loop Dasar)",
-        desc: "Bersihkan sampah di lapangan sekolah! Gunakan perintah 'Ambil Objek' dan blok 'Ulangi' agar lebih efisien.",
-        gridSize: 5,
-        start: { x: 0, y: 0, dir: 'SOUTH' },
-        goal: { x: 4, y: 4, icon: 'fa-recycle', label: 'Bank Sampah' },
-        items: [
-            { x: 0, y: 1, type: 'TRASH', icon: 'fa-trash-can', collected: false },
-            { x: 0, y: 2, type: 'TRASH', icon: 'fa-trash-can', collected: false },
-            { x: 0, y: 3, type: 'TRASH', icon: 'fa-trash-can', collected: false }
-        ],
-        obstacles: [ { x: 1, y: 1 }, { x: 3, y: 3 } ]
-    },
-    {
-        title: "Level 3: Navigasi Cerdas Perpustakaan",
-        desc: "Cari buku materi di Perpustakaan. Hindari genangan air & rapihkan rak buku!",
-        gridSize: 5,
-        start: { x: 0, y: 2, dir: 'EAST' },
-        goal: { x: 4, y: 2, icon: 'fa-book-bookmark', label: 'Perpus' },
-        items: [ { x: 2, y: 2, type: 'BOOK', icon: 'fa-book-open', collected: false } ],
-        obstacles: [ { x: 2, y: 0 }, { x: 2, y: 1 }, { x: 2, y: 3 }, { x: 2, y: 4 } ]
-    },
-    {
-        title: "Level 4: Jalur Kantin Sehat",
-        desc: "Ambil makanan sehat di kantin sebelum menuju tempat duduk. Hindari meja yang rusak!",
-        gridSize: 5,
-        start: { x: 0, y: 0, dir: 'EAST' },
-        goal: { x: 4, y: 4, icon: 'fa-chair', label: 'Meja Makan' },
-        items: [ { x: 2, y: 0, type: 'FOOD', icon: 'fa-apple-whole', collected: false } ],
-        obstacles: [ { x: 2, y: 1 }, { x: 2, y: 2 }, { x: 2, y: 3 } ]
-    },
-    {
-        title: "Level 5: Patroli Pos Keamanan Sekolah",
-        desc: "Kunjungi 2 pos satpam untuk menyerahkan surat izin sekolah sebelum pintu utama dibuka.",
-        gridSize: 5,
-        start: { x: 4, y: 4, dir: 'NORTH' },
-        goal: { x: 0, y: 0, icon: 'fa-door-open', label: 'Gerbang' },
-        items: [
-            { x: 4, y: 2, type: 'NOTE', icon: 'fa-envelope', collected: false },
-            { x: 2, y: 0, type: 'NOTE', icon: 'fa-envelope', collected: false }
-        ],
-        obstacles: [ { x: 3, y: 2 }, { x: 1, y: 1 } ]
-    },
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MujaheeBot Coding Quest - PGRI POWER 2026 Edition</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome untuk Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #021114 0%, #052920 50%, #010b0d 100%);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .font-heading-bot {
+            font-family: 'Fredoka', cursive;
+        }
+        .block-item { transition: all 0.2s ease; user-select: none; }
+        .block-item:hover { transform: translateY(-2px); filter: brightness(1.05); }
+        .block-item:active { transform: scale(0.95); }
+        .grid-cell { aspect-ratio: 1/1; transition: background-color 0.3s; }
+        .robot-anim { transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    </style>
+</head>
+<body class="text-gray-200 min-h-screen flex flex-col items-center justify-start p-4 sm:p-8 antialiased">
 
-    // ==========================================
-    // BAB 2: MATERI PAI & AKHLAK MAHMUDAH (LEVEL 6 - 10)
-    // ==========================================
-    {
-        title: "Level 6: Persiapan Masjid & Bersuci",
-        desc: "Kumpulkan tempat air wudhu dan sajadah bersih menuju Masjid Al-Mujahidin.",
-        gridSize: 5,
-        start: { x: 0, y: 4, dir: 'EAST' },
-        goal: { x: 4, y: 0, icon: 'fa-kaaba', label: 'Masjid' },
-        items: [
-            { x: 2, y: 4, type: 'WUDHU', icon: 'fa-faucet-drip', collected: false },
-            { x: 2, y: 2, type: 'MAT', icon: 'fa-rug', collected: false }
-        ],
-        obstacles: [ { x: 1, y: 2 }, { x: 3, y: 2 } ]
-    },
-    {
-        title: "Level 7: Jejak Asmaul Husna Al-Khaliq",
-        desc: "Amati ciptaan Allah (tumbuhan dan hewan) di kebun sekolah sebelum masuk laboratorium.",
-        gridSize: 5,
-        start: { x: 0, y: 0, dir: 'SOUTH' },
-        goal: { x: 4, y: 4, icon: 'fa-flask', label: 'Lab IPA' },
-        items: [
-            { x: 0, y: 2, type: 'PLANT', icon: 'fa-seedling', collected: false },
-            { x: 2, y: 4, type: 'BIRD', icon: 'fa-crow', collected: false }
-        ],
-        obstacles: [ { x: 1, y: 2 }, { x: 2, y: 2 }, { x: 3, y: 2 } ]
-    },
-    {
-        title: "Level 8: Detektif Dzarrah Khair (Surah Az-Zalzalah)",
-        desc: "Kumpulkan 3 amalan kebaikan kecil (dzarrah khair) yang tersebar di lorong sekolah!",
-        gridSize: 6,
-        start: { x: 0, y: 5, dir: 'NORTH' },
-        goal: { x: 5, y: 0, icon: 'fa-scale-balanced', label: 'Mizan' },
-        items: [
-            { x: 0, y: 3, type: 'GOOD', icon: 'fa-heart', collected: false },
-            { x: 2, y: 3, type: 'GOOD', icon: 'fa-hand-holding-heart', collected: false },
-            { x: 4, y: 3, type: 'GOOD', icon: 'fa-face-smile', collected: false }
-        ],
-        obstacles: [ { x: 1, y: 1 }, { x: 3, y: 1 }, { x: 5, y: 1 } ]
-    },
-    {
-        title: "Level 9: Jalur Husnuzan & Ukhuwah",
-        desc: "Bantu teman yang kesulitan dan hindari prasangka buruk (suuzan) di area bermain.",
-        gridSize: 6,
-        start: { x: 0, y: 0, dir: 'EAST' },
-        goal: { x: 5, y: 5, icon: 'fa-hands-clapping', label: 'Ukhuwah' },
-        items: [ { x: 3, y: 0, type: 'HELP', icon: 'fa-hands-holding-child', collected: false } ],
-        obstacles: [ { x: 3, y: 1 }, { x: 3, y: 2 }, { x: 3, y: 3 }, { x: 3, y: 4 } ]
-    },
-    {
-        title: "Level 10: Kebun Infak & Sedekah Subuh",
-        desc: "Masukkan koin infak ke dalam kotak amal sebelum menuju panggung utama.",
-        gridSize: 6,
-        start: { x: 5, y: 5, dir: 'WEST' },
-        goal: { x: 0, y: 0, icon: 'fa-award', label: 'Panggung' },
-        items: [
-            { x: 3, y: 5, type: 'COIN', icon: 'fa-coins', collected: false },
-            { x: 3, y: 2, type: 'BOX', icon: 'fa-box-archive', collected: false }
-        ],
-        obstacles: [ { x: 2, y: 4 }, { x: 4, y: 2 } ]
-    },
+    <div class="w-full max-w-5xl space-y-6">
+        <!-- Header Game MujahiBot -->
+        <div class="bg-emerald-800 text-white p-4 sm:p-6 rounded-3xl shadow-xl border-2 border-emerald-500 flex flex-wrap justify-between items-center gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-white p-3 rounded-2xl shadow text-emerald-600 text-3xl">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-bold font-heading-bot tracking-wide">MujaheeBot Coding Quest</h2>
+                    <p class="text-xs text-emerald-100">Akselerasi Transformasi Pendidikan di Era AI & Coding (PGRI POWER 2026)</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <!-- Level Selector -->
+                <div class="bg-emerald-900/80 rounded-xl px-3 py-1.5 flex items-center space-x-2 border border-emerald-600">
+                    <span class="text-xs text-emerald-200 font-bold hidden sm:inline">Pilih Modul:</span>
+                    <select id="levelSelect" onchange="loadLevel(this.value)" class="bg-emerald-950 text-white text-xs font-bold rounded-lg px-2 py-1 outline-none border border-emerald-500 cursor-pointer max-w-[200px] sm:max-w-none">
+                        <!-- Populated dynamically via JS -->
+                    </select>
+                </div>
+                <!-- Bintang / Skor -->
+                <div class="bg-amber-400 text-amber-950 font-extrabold px-3 py-1.5 rounded-xl flex items-center space-x-1 shadow">
+                    <i class="fa-solid fa-star text-amber-100 text-lg"></i>
+                    <span id="starDisplay" class="text-lg">0</span>
+                </div>
+            </div>
+        </div>
 
-    // ==========================================
-    // BAB 3: EXPLORASI GEOPARK & KEARIFAN GUNUNGKIDUL (LEVEL 11 - 15)
-    // ==========================================
-    {
-        title: "Level 11: Misi Eksplorasi Gua Pindul",
-        desc: "Navigasi bot menyusuri aliran air gua. Ambil perlengkapan helm pengaman!",
-        gridSize: 6,
-        start: { x: 0, y: 5, dir: 'NORTH' },
-        goal: { x: 5, y: 0, icon: 'fa-water', label: 'Muara' },
-        items: [ { x: 0, y: 2, type: 'HELMET', icon: 'fa-hardhat', collected: false } ],
-        obstacles: [ { x: 1, y: 5 }, { x: 1, y: 4 }, { x: 1, y: 2 }, { x: 3, y: 0 }, { x: 3, y: 1 } ]
-    },
-    {
-        title: "Level 12: Wisata Pantai Baron & Mercusuar",
-        desc: "Kumpulkan sampel pasir dan air laut untuk penelitian IPA lingkungan.",
-        gridSize: 6,
-        start: { x: 0, y: 0, dir: 'SOUTH' },
-        goal: { x: 5, y: 5, icon: 'fa-tower-observation', label: 'Mercusuar' },
-        items: [
-            { x: 0, y: 3, type: 'WATER', icon: 'fa-vial', collected: false },
-            { x: 3, y: 3, type: 'SAND', icon: 'fa-bucket', collected: false }
-        ],
-        obstacles: [ { x: 2, y: 0 }, { x: 2, y: 1 }, { x: 2, y: 2 }, { x: 4, y: 4 } ]
-    },
-    {
-        title: "Level 13: Konservasi Hutan Wanagama",
-        desc: "Tanam bibit pohon jati untuk menjaga kelestarian alam Gunungkidul.",
-        gridSize: 6,
-        start: { x: 5, y: 0, dir: 'WEST' },
-        goal: { x: 0, y: 5, icon: 'fa-tree', label: 'Pos Perhutani' },
-        items: [ { x: 2, y: 0, type: 'SEED', icon: 'fa-seedling', collected: false } ],
-        obstacles: [ { x: 4, y: 1 }, { x: 3, y: 2 }, { x: 2, y: 3 }, { x: 1, y: 4 } ]
-    },
-    {
-        title: "Level 14: Puncak Nglanggeran (Gunung Purba)",
-        desc: "Mendaki jalur berbatu purba. Kumpulkan kompas penunjuk arah!",
-        gridSize: 6,
-        start: { x: 0, y: 5, dir: 'EAST' },
-        goal: { x: 5, y: 0, icon: 'fa-mountain', label: 'Puncak' },
-        items: [ { x: 3, y: 5, type: 'COMPASS', icon: 'fa-compass', collected: false } ],
-        obstacles: [ { x: 1, y: 3 }, { x: 2, y: 3 }, { x: 3, y: 3 }, { x: 4, y: 3 } ]
-    },
-    {
-        title: "Level 15: Taman Karst Ngingrong",
-        desc: "Eksplorasi lembah karst dan catat batuan unik menggunakan tablet digital.",
-        gridSize: 6,
-        start: { x: 0, y: 0, dir: 'EAST' },
-        goal: { x: 5, y: 5, icon: 'fa-camera-retro', label: 'Dokumentasi' },
-        items: [
-            { x: 2, y: 0, type: 'ROCK', icon: 'fa-gem', collected: false },
-            { x: 4, y: 2, type: 'ROCK', icon: 'fa-gem', collected: false }
-        ],
-        obstacles: [ { x: 1, y: 1 }, { x: 3, y: 3 }, { x: 2, y: 5 } ]
-    },
+        <!-- Main Container Game MujahiBot -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <!-- Panel Kiri: Kanvas Grid Misi & Instruksi -->
+            <section class="lg:col-span-6 flex flex-col gap-4">
+                <!-- Box Briefing Misi -->
+                <div class="bg-slate-900/90 text-white p-4 rounded-2xl border-2 border-emerald-500/40 shadow-sm flex items-start space-x-3">
+                    <div class="text-3xl text-emerald-400 mt-1">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h2 id="missionTitle" class="font-heading-bot text-base sm:text-lg font-bold text-emerald-300">Petunjuk Misi</h2>
+                        <p id="missionDesc" class="text-xs sm:text-sm text-slate-300 mt-1">Bantu MujahiBot berjalan menuju tujuan!</p>
+                    </div>
+                </div>
 
-    // ==========================================
-    // BAB 4: PERANGKAT KERAS KOMPUTER & PERAKITAN PC (LEVEL 16 - 20)
-    // ==========================================
-    {
-        title: "Level 16: Pengambilan Otak Komputer (CPU)",
-        desc: "Ambil komponen CPU di gudang lab komputer sebelum di pasang ke Motherboard.",
-        gridSize: 6,
-        start: { x: 0, y: 5, dir: 'NORTH' },
-        goal: { x: 5, y: 5, icon: 'fa-microchip', label: 'Motherboard' },
-        items: [ { x: 0, y: 1, type: 'CPU', icon: 'fa-brain', collected: false } ],
-        obstacles: [ { x: 2, y: 0 }, { x: 2, y: 1 }, { x: 2, y: 2 }, { x: 2, y: 3 }, { x: 2, y: 4 } ]
-    },
-    {
-        title: "Level 17: Pemasangan Memori Utama (RAM)",
-        desc: "Ambil 2 keping RAM di rak komponen dan tancapkan pada slot memori.",
-        gridSize: 6,
-        start: { x: 0, y: 0, dir: 'SOUTH' },
-        goal: { x: 5, y: 0, icon: 'fa-desktop', label: 'Casing PC' },
-        items: [
-            { x: 0, y: 2, type: 'RAM', icon: 'fa-bolt', collected: false },
-            { x: 3, y: 2, type: 'RAM', icon: 'fa-bolt', collected: false }
-        ],
-        obstacles: [ { x: 1, y: 2 }, { x: 4, y: 2 } ]
-    },
-    {
-        title: "Level 18: Instalasi Storage & Power Supply",
-        desc: "Kumpulkan SSD Storage dan kabel Power Supply untuk menghidupkan PC.",
-        gridSize: 6,
-        start: { x: 5, y: 5, dir: 'WEST' },
-        goal: { x: 0, y: 0, icon: 'fa-plug', label: 'Power On' },
-        items: [
-            { x: 5, y: 2, type: 'SSD', icon: 'fa-hard-drive', collected: false },
-            { x: 2, y: 2, type: 'PSU', icon: 'fa-car-battery', collected: false }
-        ],
-        obstacles: [ { x: 3, y: 5 }, { x: 3, y: 4 }, { x: 3, y: 3 } ]
-    },
-    {
-        title: "Level 19: Manajemen Suhu (Cooler Fan)",
-        desc: "Pasang kipas pendingin agar suhu prosesor tidak panas overheated saat render.",
-        gridSize: 6,
-        start: { x: 0, y: 3, dir: 'EAST' },
-        goal: { x: 5, y: 3, icon: 'fa-temperature-arrow-down', label: 'Stable' },
-        items: [ { x: 2, y: 3, type: 'FAN', icon: 'fa-fan', collected: false } ],
-        obstacles: [ { x: 2, y: 1 }, { x: 2, y: 2 }, { x: 2, y: 4 }, { x: 2, y: 5 } ]
-    },
-    {
-        title: "Level 20: Pengujian Output Display GPU",
-        desc: "Hubungkan kabel GPU ke Monitor Display untuk menampilkan gambar resolusi tinggi.",
-        gridSize: 6,
-        start: { x: 0, y: 0, dir: 'EAST' },
-        goal: { x: 5, y: 5, icon: 'fa-display', label: 'Monitor' },
-        items: [ { x: 3, y: 0, type: 'GPU', icon: 'fa-gamepad', collected: false } ],
-        obstacles: [ { x: 1, y: 1 }, { x: 2, y: 2 }, { x: 3, y: 3 }, { x: 4, y: 4 } ]
-    },
+                <!-- Papan Grid Game -->
+                <div class="bg-slate-900 p-4 rounded-3xl border-4 border-emerald-500/50 shadow-lg flex flex-col items-center justify-center relative">
+                    <div id="gridBoard" class="grid gap-1.5 bg-emerald-950/80 p-3 rounded-2xl border-2 border-emerald-600/50 relative overflow-hidden" style="width: 100%; max-width: 420px;">
+                        <!-- Grid cells & items generated dynamically -->
+                    </div>
 
-    // ==========================================
-    // BAB 5: INNOVASI AI & PGRI POWER CHALLENGE (LEVEL 21 - 27)
-    // ==========================================
-    {
-        title: "Level 21: Misi Generasi Prompt AI (SPARK Framework)",
-        desc: "Kumpulkan 2 modul Prompt AI untuk merancang modul ajar interaktif.",
-        gridSize: 6,
-        start: { x: 0, y: 5, dir: 'NORTH' },
-        goal: { x: 5, y: 0, icon: 'fa-robot', label: 'AI Generator' },
-        items: [
-            { x: 0, y: 2, type: 'PROMPT', icon: 'fa-terminal', collected: false },
-            { x: 3, y: 2, type: 'PROMPT', icon: 'fa-wand-magic-sparkles', collected: false }
-        ],
-        obstacles: [ { x: 1, y: 2 }, { x: 4, y: 2 } ]
-    },
-    {
-        title: "Level 22: Integrasi Erunex & Portofolio Guru",
-        desc: "Kirimkan dokumentasi praktik baik ke portal Erunex PGRI POWER.",
-        gridSize: 6,
-        start: { x: 0, y: 0, dir: 'SOUTH' },
-        goal: { x: 5, y: 5, icon: 'fa-globe', label: 'Erunex.com' },
-        items: [ { x: 0, y: 3, type: 'DOC', icon: 'fa-file-lines', collected: false } ],
-        obstacles: [ { x: 2, y: 0 }, { x: 2, y: 1 }, { x: 2, y: 2 }, { x: 2, y: 3 } ]
-    },
-    {
-        title: "Level 23: Algoritma Asesmen Otomatis",
-        desc: "Uji coba analisis soal otomatis untuk memberikan umpan balik peserta didik.",
-        gridSize: 7,
-        start: { x: 0, y: 6, dir: 'EAST' },
-        goal: { x: 6, y: 0, icon: 'fa-chart-line', label: 'Hasil Analisis' },
-        items: [ { x: 3, y: 6, type: 'TEST', icon: 'fa-list-check', collected: false } ],
-        obstacles: [ { x: 2, y: 2 }, { x: 3, y: 3 }, { x: 4, y: 4 } ]
-    },
-    {
-        title: "Level 24: Koding Scratch & Logika Visual",
-        desc: "Susun blok algoritma Scratch untuk membuat animasi pendidikan interaktif.",
-        gridSize: 7,
-        start: { x: 0, y: 0, dir: 'EAST' },
-        goal: { x: 6, y: 6, icon: 'fa-code', label: 'Scratch Studio' },
-        items: [
-            { x: 3, y: 0, type: 'CODE', icon: 'fa-cubes', collected: false },
-            { x: 3, y: 3, type: 'CODE', icon: 'fa-puzzle-piece', collected: false }
-        ],
-        obstacles: [ { x: 1, y: 2 }, { x: 2, y: 2 }, { x: 4, y: 4 }, { x: 5, y: 4 } ]
-    },
-    {
-        title: "Level 25: Akselerasi Transformasi Era AI",
-        desc: "Harmonisasikan teknologi AI dan karakter siswa menuju Indonesia Emas 2045.",
-        gridSize: 7,
-        start: { x: 6, y: 6, dir: 'NORTH' },
-        goal: { x: 0, y: 0, icon: 'fa-graduation-cap', label: 'Indonesia Emas' },
-        items: [ { x: 3, y: 3, type: 'KNOWLEDGE', icon: 'fa-lightbulb', collected: false } ],
-        obstacles: [ { x: 3, y: 1 }, { x: 3, y: 2 }, { x: 3, y: 4 }, { x: 3, y: 5 } ]
-    },
-    {
-        title: "Level 26: Tantangan Final Anugerah Guru Kreatif",
-        desc: "Simulasi babak final Anugerah Guru Kreatif & Inovatif PGRI POWER 2026 secara daring.",
-        gridSize: 7,
-        start: { x: 0, y: 6, dir: 'NORTH' },
-        goal: { x: 6, y: 0, icon: 'fa-trophy', label: 'Dewan Juri' },
-        items: [
-            { x: 0, y: 2, type: 'PAPER', icon: 'fa-book', collected: false },
-            { x: 3, y: 2, type: 'MEDIA', icon: 'fa-laptop-code', collected: false },
-            { x: 6, y: 2, type: 'CERT', icon: 'fa-certificate', collected: false }
-        ],
-        obstacles: [ { x: 1, y: 4 }, { x: 2, y: 4 }, { x: 4, y: 4 }, { x: 5, y: 4 } ]
-    },
-    {
-        title: "Level 27: Puncak Anugerah PGRI POWER 2026",
-        desc: "Level Puncak! Kumpulkan Bintang Solidaritas PGRI untuk meraih Anugerah Guru Inovatif 2026!",
-        gridSize: 7,
-        start: { x: 0, y: 3, dir: 'EAST' },
-        goal: { x: 6, y: 3, icon: 'fa-crown', label: 'Juara 1 Nasional' },
-        items: [
-            { x: 2, y: 3, type: 'STAR_PGRI', icon: 'fa-star', collected: false },
-            { x: 4, y: 3, type: 'STAR_PGRI', icon: 'fa-star', collected: false }
-        ],
-        obstacles: [
-            { x: 2, y: 1 }, { x: 2, y: 2 }, { x: 2, y: 4 }, { x: 2, y: 5 },
-            { x: 4, y: 1 }, { x: 4, y: 2 }, { x: 4, y: 4 }, { x: 4, y: 5 }
-        ]
-    }
-];
+                    <!-- Floating Feedback Alert -->
+                    <div id="gameAlert" class="hidden absolute inset-0 bg-slate-950/85 backdrop-blur-sm rounded-2xl flex flex-col justify-center items-center p-6 text-center text-white z-20">
+                        <div id="alertIcon" class="text-5xl mb-2 text-yellow-400">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <h3 id="alertTitle" class="text-2xl font-bold font-heading-bot">Luar Biasa!</h3>
+                        <p id="alertBody" class="text-xs sm:text-sm mt-1 text-slate-200 max-w-xs">Kamu berhasil menyelesaikan misi ini!</p>
+                        <div class="flex gap-3 mt-4">
+                            <button onclick="resetGame()" class="bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-xl text-xs font-bold shadow">
+                                <i class="fa-solid fa-rotate-right mr-1"></i> Ulangi
+                            </button>
+                            <button id="btnNextLevel" onclick="nextLevel()" class="bg-emerald-500 hover:bg-emerald-400 text-white px-5 py-2 rounded-xl text-xs font-bold shadow">
+                                Lanjut Level <i class="fa-solid fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Panel Kanan: Blok Perintah & Workspace -->
+            <section class="lg:col-span-6 flex flex-col gap-4">
+                <!-- Toolset Blok Kode -->
+                <div class="bg-slate-900/90 p-4 rounded-2xl border-2 border-slate-700/60 shadow-sm">
+                    <h3 class="font-heading-bot text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">
+                        <i class="fa-solid fa-cubes mr-1 text-emerald-400"></i> Blok Perintah (Klik untuk Tambah)
+                    </h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                        <button onclick="addBlock('MOVE')" class="block-item bg-blue-600 hover:bg-blue-500 text-white px-3 py-2.5 rounded-xl font-bold text-xs flex items-center justify-between shadow-sm border-b-4 border-blue-800">
+                            <span><i class="fa-solid fa-arrow-up mr-1.5"></i> Maju 1</span>
+                            <i class="fa-solid fa-plus text-blue-200"></i>
+                        </button>
+                        <button onclick="addBlock('LEFT')" class="block-item bg-indigo-600 hover:bg-indigo-500 text-white px-3 py-2.5 rounded-xl font-bold text-xs flex items-center justify-between shadow-sm border-b-4 border-indigo-800">
+                            <span><i class="fa-solid fa-rotate-left mr-1.5"></i> Belok Kiri</span>
+                            <i class="fa-solid fa-plus text-indigo-200"></i>
+                        </button>
+                        <button onclick="addBlock('RIGHT')" class="block-item bg-indigo-600 hover:bg-indigo-500 text-white px-3 py-2.5 rounded-xl font-bold text-xs flex items-center justify-between shadow-sm border-b-4 border-indigo-800">
+                            <span><i class="fa-solid fa-rotate-right mr-1.5"></i> Belok Kanan</span>
+                            <i class="fa-solid fa-plus text-indigo-200"></i>
+                        </button>
+                        <button onclick="addBlock('ACTION')" class="block-item bg-amber-600 hover:bg-amber-500 text-white px-3 py-2.5 rounded-xl font-bold text-xs flex items-center justify-between shadow-sm border-b-4 border-amber-800">
+                            <span><i class="fa-solid fa-hand mr-1.5"></i> Ambil Objek</span>
+                            <i class="fa-solid fa-plus text-amber-200"></i>
+                        </button>
+                        <button onclick="addBlock('REPEAT_2')" class="block-item bg-purple-600 hover:bg-purple-500 text-white px-3 py-2.5 rounded-xl font-bold text-xs flex items-center justify-between shadow-sm border-b-4 border-purple-800">
+                            <span><i class="fa-solid fa-repeat mr-1.5"></i> Ulangi 2x</span>
+                            <i class="fa-solid fa-plus text-purple-200"></i>
+                        </button>
+                        <button onclick="addBlock('REPEAT_3')" class="block-item bg-purple-700 hover:bg-purple-600 text-white px-3 py-2.5 rounded-xl font-bold text-xs flex items-center justify-between shadow-sm border-b-4 border-purple-900">
+                            <span><i class="fa-solid fa-repeat mr-1.5"></i> Ulangi 3x</span>
+                            <i class="fa-solid fa-plus text-purple-200"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Program Sequence Workspace -->
+                <div class="bg-slate-900/90 p-4 rounded-2xl border-2 border-slate-700/60 shadow-sm flex-1 flex flex-col justify-between min-h-[260px]">
+                    <div>
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="font-heading-bot text-xs font-bold text-slate-400 uppercase tracking-wider">
+                                <i class="fa-solid fa-code mr-1 text-emerald-400"></i> Program MujahiBot
+                            </h3>
+                            <button onclick="clearBlocks()" class="text-xs text-rose-400 font-bold hover:underline">
+                                <i class="fa-solid fa-trash-can mr-1"></i> Hapus Semua
+                            </button>
+                        </div>
+                        <!-- List Program -->
+                        <div id="workspace" class="bg-slate-950/80 rounded-xl p-3 border-2 border-dashed border-slate-700 min-h-[160px] max-h-[220px] overflow-y-auto flex flex-col gap-2">
+                            <div id="emptyTip" class="text-center text-slate-500 text-xs my-auto py-6">
+                                Belum ada perintah.<br>Klik tombol di atas untuk menyusun logika MujahiBot!
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tombol Kontrol Eksekusi -->
+                    <div class="flex gap-3 mt-4">
+                        <button id="btnRun" onclick="runProgram()" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white py-3 rounded-2xl font-heading-bot font-bold text-base shadow-lg border-b-4 border-emerald-800 flex justify-center items-center space-x-2 transition">
+                            <i class="fa-solid fa-play"></i>
+                            <span>JALANKAN KODE</span>
+                        </button>
+                        <button onclick="resetGame()" class="bg-slate-700 hover:bg-slate-600 text-slate-200 px-4 py-3 rounded-2xl font-bold text-sm border-b-4 border-slate-800 transition">
+                            <i class="fa-solid fa-rotate-left"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- SCRIPT LOGIKA GAME MUJAHEEBOT (27 LEVEL LENGKAP) -->
+    <script>
+        const LEVELS = [
+            // BAB 1: DASAR LOGIKA & NAVIGASI SEKOLAH (LEVEL 1 - 5)
+            {
+                title: "Level 1: Langkah Pertama di Sekolah",
+                desc: "Pandu MujahiBot menuju Ruang Kelas. Jangan lupa ambil Buku Pelajaran di jalan!",
+                gridSize: 5,
+                start: { x: 0, y: 4, dir: 'EAST' },
+                goal: { x: 4, y: 0, icon: 'fa-school', label: 'Kelas' },
+                items: [ { x: 2, y: 4, type: 'BOOK', icon: 'fa-book', collected: false } ],
+                obstacles: [ { x: 2, y: 1 }, { x: 2, y: 2 }, { x: 2, y: 3 } ]
+            },
+            {
+                title: "Level 2: Aksi Go Green (Loop Dasar)",
+                desc: "Bersihkan sampah di lapangan sekolah! Gunakan perintah 'Ambil Objek' dan blok 'Ulangi' agar lebih efisien.",
+                gridSize: 5,
+                start: { x: 0, y: 0, dir: 'SOUTH' },
+                goal: { x: 4, y: 4, icon: 'fa-recycle', label: 'Bank Sampah' },
+                items: [
+                    { x: 0, y: 1, type: 'TRASH', icon: 'fa-trash-can', collected: false },
+                    { x: 0, y: 2, type: 'TRASH', icon: 'fa-trash-can', collected: false },
+                    { x: 0, y: 3, type: 'TRASH', icon: 'fa-trash-can', collected: false }
+                ],
+                obstacles: [ { x: 1, y: 1 }, { x: 3, y: 3 } ]
+            },
+            {
+                title: "Level 3: Navigasi Cerdas Perpustakaan",
+                desc: "Cari buku materi di Perpustakaan. Hindari genangan air & rapihkan rak buku!",
+                gridSize: 5,
+                start: { x: 0, y: 2, dir: 'EAST' },
+                goal: { x: 4, y: 2, icon: 'fa-book-bookmark', label: 'Perpus' },
+                items: [ { x: 2, y: 2, type: 'BOOK', icon: 'fa-book-open', collected: false } ],
+                obstacles: [ { x: 2, y: 0 }, { x: 2, y: 1 }, { x: 2, y: 3 }, { x: 2, y: 4 } ]
+            },
+            {
+                title: "Level 4: Jalur Kantin Sehat",
+                desc: "Ambil makanan sehat di kantin sebelum menuju tempat duduk. Hindari meja yang rusak!",
+                gridSize: 5,
+                start: { x: 0, y: 0, dir: 'EAST' },
+                goal: { x: 4, y: 4, icon: 'fa-chair', label: 'Meja Makan' },
+                items: [ { x: 2, y: 0, type: 'FOOD', icon: 'fa-apple-whole', collected: false } ],
+                obstacles: [ { x: 2, y: 1 }, { x: 2, y: 2 }, { x: 2, y: 3 } ]
+            },
+            {
+                title: "Level 5: Patroli Pos Keamanan Sekolah",
+                desc: "Kunjungi 2 pos satpam untuk menyerahkan surat izin sekolah sebelum pintu utama dibuka.",
+                gridSize: 5,
+                start: { x: 4, y: 4, dir: 'NORTH' },
+                goal: { x: 0, y: 0, icon: 'fa-door-open', label: 'Gerbang' },
+                items: [
+                    { x: 4, y: 2, type: 'NOTE', icon: 'fa-envelope', collected: false },
+                    { x: 2, y: 0, type: 'NOTE', icon: 'fa-envelope', collected: false }
+                ],
+                obstacles: [ { x: 3, y: 2 }, { x: 1, y: 1 } ]
+            },
+
+            // BAB 2: MATERI PAI & AKHLAK MAHMUDAH (LEVEL 6 - 10)
+            {
+                title: "Level 6: Persiapan Masjid & Bersuci",
+                desc: "Kumpulkan tempat air wudhu dan sajadah bersih menuju Masjid Al-Mujahidin.",
+                gridSize: 5,
+                start: { x: 0, y: 4, dir: 'EAST' },
+                goal: { x: 4, y: 0, icon: 'fa-kaaba', label: 'Masjid' },
+                items: [
+                    { x: 2, y: 4, type: 'WUDHU', icon: 'fa-faucet-drip', collected: false },
+                    { x: 2, y: 2, type: 'MAT', icon: 'fa-rug', collected: false }
+                ],
+                obstacles: [ { x: 1, y: 2 }, { x: 3, y: 2 } ]
+            },
+            {
+                title: "Level 7: Jejak Asmaul Husna Al-Khaliq",
+                desc: "Amati ciptaan Allah (tumbuhan dan hewan) di kebun sekolah sebelum masuk laboratorium.",
+                gridSize: 5,
+                start: { x: 0, y: 0, dir: 'SOUTH' },
+                goal: { x: 4, y: 4, icon: 'fa-flask', label: 'Lab IPA' },
+                items: [
+                    { x: 0, y: 2, type: 'PLANT', icon: 'fa-seedling', collected: false },
+                    { x: 2, y: 4, type: 'BIRD', icon: 'fa-crow', collected: false }
+                ],
+                obstacles: [ { x: 1, y: 2 }, { x: 2, y: 2 }, { x: 3, y: 2 } ]
+            },
+            {
+                title: "Level 8: Detektif Dzarrah Khair (Surah Az-Zalzalah)",
+                desc: "Kumpulkan 3 amalan kebaikan kecil (dzarrah khair) yang tersebar di lorong sekolah!",
+                gridSize: 6,
+                start: { x: 0, y: 5, dir: 'NORTH' },
+                goal: { x: 5, y: 0, icon: 'fa-scale-balanced', label: 'Mizan' },
+                items: [
+                    { x: 0, y: 3, type: 'GOOD', icon: 'fa-heart', collected: false },
+                    { x: 2, y: 3, type: 'GOOD', icon: 'fa-hand-holding-heart', collected: false },
+                    { x: 4, y: 3, type: 'GOOD', icon: 'fa-face-smile', collected: false }
+                ],
+                obstacles: [ { x: 1, y: 1 }, { x: 3, y: 1 }, { x: 5, y: 1 } ]
+            },
+            {
+                title: "Level 9: Jalur Husnuzan & Ukhuwah",
+                desc: "Bantu teman yang kesulitan dan hindari prasangka buruk (suuzan) di area bermain.",
+                gridSize: 6,
+                start: { x: 0, y: 0, dir: 'EAST' },
+                goal: { x: 5, y: 5, icon: 'fa-hands-clapping', label: 'Ukhuwah' },
+                items: [ { x: 3, y: 0, type: 'HELP', icon: 'fa-hands-holding-child', collected: false } ],
+                obstacles: [ { x: 3, y: 1 }, { x: 3, y: 2 }, { x: 3, y: 3 }, { x: 3, y: 4 } ]
+            },
+            {
+                title: "Level 10: Kebun Infak & Sedekah Subuh",
+                desc: "Masukkan koin infak ke dalam kotak amal sebelum menuju panggung utama.",
+                gridSize: 6,
+                start: { x: 5, y: 5, dir: 'WEST' },
+                goal: { x: 0, y: 0, icon: 'fa-award', label: 'Panggung' },
+                items: [
+                    { x: 3, y: 5, type: 'COIN', icon: 'fa-coins', collected: false },
+                    { x: 3, y: 2, type: 'BOX', icon: 'fa-box-archive', collected: false }
+                ],
+                obstacles: [ { x: 2, y: 4 }, { x: 4, y: 2 } ]
+            },
+
+            // BAB 3: EXPLORASI GEOPARK & KEARIFAN GUNUNGKIDUL (LEVEL 11 - 15)
+            {
+                title: "Level 11: Misi Eksplorasi Gua Pindul",
+                desc: "Navigasi bot menyusuri aliran air gua. Ambil perlengkapan helm pengaman!",
+                gridSize: 6,
+                start: { x: 0, y: 5, dir: 'NORTH' },
+                goal: { x: 5, y: 0, icon: 'fa-water', label: 'Muara' },
+                items: [ { x: 0, y: 2, type: 'HELMET', icon: 'fa-hardhat', collected: false } ],
+                obstacles: [ { x: 1, y: 5 }, { x: 1, y: 4 }, { x: 1, y: 2 }, { x: 3, y: 0 }, { x: 3, y: 1 } ]
+            },
+            {
+                title: "Level 12: Wisata Pantai Baron & Mercusuar",
+                desc: "Kumpulkan sampel pasir dan air laut untuk penelitian IPA lingkungan.",
+                gridSize: 6,
+                start: { x: 0, y: 0, dir: 'SOUTH' },
+                goal: { x: 5, y: 5, icon: 'fa-tower-observation', label: 'Mercusuar' },
+                items: [
+                    { x: 0, y: 3, type: 'WATER', icon: 'fa-vial', collected: false },
+                    { x: 3, y: 3, type: 'SAND', icon: 'fa-bucket', collected: false }
+                ],
+                obstacles: [ { x: 2, y: 0 }, { x: 2, y: 1 }, { x: 2, y: 2 }, { x: 4, y: 4 } ]
+            },
+            {
+                title: "Level 13: Konservasi Hutan Wanagama",
+                desc: "Tanam bibit pohon jati untuk menjaga kelestarian alam Gunungkidul.",
+                gridSize: 6,
+                start: { x: 5, y: 0, dir: 'WEST' },
+                goal: { x: 0, y: 5, icon: 'fa-tree', label: 'Pos Perhutani' },
+                items: [ { x: 2, y: 0, type: 'SEED', icon: 'fa-seedling', collected: false } ],
+                obstacles: [ { x: 4, y: 1 }, { x: 3, y: 2 }, { x: 2, y: 3 }, { x: 1, y: 4 } ]
+            },
+            {
+                title: "Level 14: Puncak Nglanggeran (Gunung Purba)",
+                desc: "Mendaki jalur berbatu purba. Kumpulkan kompas penunjuk arah!",
+                gridSize: 6,
+                start: { x: 0, y: 5, dir: 'EAST' },
+                goal: { x: 5, y: 0, icon: 'fa-mountain', label: 'Puncak' },
+                items: [ { x: 3, y: 5, type: 'COMPASS', icon: 'fa-compass', collected: false } ],
+                obstacles: [ { x: 1, y: 3 }, { x: 2, y: 3 }, { x: 3, y: 3 }, { x: 4, y: 3 } ]
+            },
+            {
+                title: "Level 15: Taman Karst Ngingrong",
+                desc: "Eksplorasi lembah karst dan catat batuan unik menggunakan tablet digital.",
+                gridSize: 6,
+                start: { x: 0, y: 0, dir: 'EAST' },
+                goal: { x: 5, y: 5, icon: 'fa-camera-retro', label: 'Dokumentasi' },
+                items: [
+                    { x: 2, y: 0, type: 'ROCK', icon: 'fa-gem', collected: false },
+                    { x: 4, y: 2, type: 'ROCK', icon: 'fa-gem', collected: false }
+                ],
+                obstacles: [ { x: 1, y: 1 }, { x: 3, y: 3 }, { x: 2, y: 5 } ]
+            },
+
+            // BAB 4: PERANGKAT KERAS KOMPUTER & PERAKITAN PC (LEVEL 16 - 20)
+            {
+                title: "Level 16: Pengambilan Otak Komputer (CPU)",
+                desc: "Ambil komponen CPU di gudang lab komputer sebelum dipasang ke Motherboard.",
+                gridSize: 6,
+                start: { x: 0, y: 5, dir: 'NORTH' },
+                goal: { x: 5, y: 5, icon: 'fa-microchip', label: 'Motherboard' },
+                items: [ { x: 0, y: 1, type: 'CPU', icon: 'fa-brain', collected: false } ],
+                obstacles: [ { x: 2, y: 0 }, { x: 2, y: 1 }, { x: 2, y: 2 }, { x: 2, y: 3 }, { x: 2, y: 4 } ]
+            },
+            {
+                title: "Level 17: Pemasangan Memori Utama (RAM)",
+                desc: "Ambil 2 keping RAM di rak komponen dan tancapkan pada slot memori.",
+                gridSize: 6,
+                start: { x: 0, y: 0, dir: 'SOUTH' },
+                goal: { x: 5, y: 0, icon: 'fa-desktop', label: 'Casing PC' },
+                items: [
+                    { x: 0, y: 2, type: 'RAM', icon: 'fa-bolt', collected: false },
+                    { x: 3, y: 2, type: 'RAM', icon: 'fa-bolt', collected: false }
+                ],
+                obstacles: [ { x: 1, y: 2 }, { x: 4, y: 2 } ]
+            },
+            {
+                title: "Level 18: Instalasi Storage & Power Supply",
+                desc: "Kumpulkan SSD Storage dan kabel Power Supply untuk menghidupkan PC.",
+                gridSize: 6,
+                start: { x: 5, y: 5, dir: 'WEST' },
+                goal: { x: 0, y: 0, icon: 'fa-plug', label: 'Power On' },
+                items: [
+                    { x: 5, y: 2, type: 'SSD', icon: 'fa-hard-drive', collected: false },
+                    { x: 2, y: 2, type: 'PSU', icon: 'fa-car-battery', collected: false }
+                ],
+                obstacles: [ { x: 3, y: 5 }, { x: 3, y: 4 }, { x: 3, y: 3 } ]
+            },
+            {
+                title: "Level 19: Manajemen Suhu (Cooler Fan)",
+                desc: "Pasang kipas pendingin agar suhu prosesor tidak panas overheated saat render.",
+                gridSize: 6,
+                start: { x: 0, y: 3, dir: 'EAST' },
+                goal: { x: 5, y: 3, icon: 'fa-temperature-arrow-down', label: 'Stable' },
+                items: [ { x: 2, y: 3, type: 'FAN', icon: 'fa-fan', collected: false } ],
+                obstacles: [ { x: 2, y: 1 }, { x: 2, y: 2 }, { x: 2, y: 4 }, { x: 2, y: 5 } ]
+            },
+            {
+                title: "Level 20: Pengujian Output Display GPU",
+                desc: "Hubungkan kabel GPU ke Monitor Display untuk menampilkan gambar resolusi tinggi.",
+                gridSize: 6,
+                start: { x: 0, y: 0, dir: 'EAST' },
+                goal: { x: 5, y: 5, icon: 'fa-display', label: 'Monitor' },
+                items: [ { x: 3, y: 0, type: 'GPU', icon: 'fa-gamepad', collected: false } ],
+                obstacles: [ { x: 1, y: 1 }, { x: 2, y: 2 }, { x: 3, y: 3 }, { x: 4, y: 4 } ]
+            },
+
+            // BAB 5: INNOVASI AI & PGRI POWER CHALLENGE (LEVEL 21 - 27)
+            {
+                title: "Level 21: Misi Generasi Prompt AI (SPARK Framework)",
+                desc: "Kumpulkan 2 modul Prompt AI untuk merancang modul ajar interaktif.",
+                gridSize: 6,
+                start: { x: 0, y: 5, dir: 'NORTH' },
+                goal: { x: 5, y: 0, icon: 'fa-robot', label: 'AI Generator' },
+                items: [
+                    { x: 0, y: 2, type: 'PROMPT', icon: 'fa-terminal', collected: false },
+                    { x: 3, y: 2, type: 'PROMPT', icon: 'fa-wand-magic-sparkles', collected: false }
+                ],
+                obstacles: [ { x: 1, y: 2 }, { x: 4, y: 2 } ]
+            },
+            {
+                title: "Level 22: Integrasi Erunex & Portofolio Guru",
+                desc: "Kirimkan dokumentasi praktik baik ke portal Erunex PGRI POWER.",
+                gridSize: 6,
+                start: { x: 0, y: 0, dir: 'SOUTH' },
+                goal: { x: 5, y: 5, icon: 'fa-globe', label: 'Erunex.com' },
+                items: [ { x: 0, y: 3, type: 'DOC', icon: 'fa-file-lines', collected: false } ],
+                obstacles: [ { x: 2, y: 0 }, { x: 2, y: 1 }, { x: 2, y: 2 }, { x: 2, y: 3 } ]
+            },
+            {
+                title: "Level 23: Algoritma Asesmen Otomatis",
+                desc: "Uji coba analisis soal otomatis untuk memberikan umpan balik peserta didik.",
+                gridSize: 7,
+                start: { x: 0, y: 6, dir: 'EAST' },
+                goal: { x: 6, y: 0, icon: 'fa-chart-line', label: 'Hasil Analisis' },
+                items: [ { x: 3, y: 6, type: 'TEST', icon: 'fa-list-check', collected: false } ],
+                obstacles: [ { x: 2, y: 2 }, { x: 3, y: 3 }, { x: 4, y: 4 } ]
+            },
+            {
+                title: "Level 24: Koding Scratch & Logika Visual",
+                desc: "Susun blok algoritma Scratch untuk membuat animasi pendidikan interaktif.",
+                gridSize: 7,
+                start: { x: 0, y: 0, dir: 'EAST' },
+                goal: { x: 6, y: 6, icon: 'fa-code', label: 'Scratch Studio' },
+                items: [
+                    { x: 3, y: 0, type: 'CODE', icon: 'fa-cubes', collected: false },
+                    { x: 3, y: 3, type: 'CODE', icon: 'fa-puzzle-piece', collected: false }
+                ],
+                obstacles: [ { x: 1, y: 2 }, { x: 2, y: 2 }, { x: 4, y: 4 }, { x: 5, y: 4 } ]
+            },
+            {
+                title: "Level 25: Akselerasi Transformasi Era AI",
+                desc: "Harmonisasikan teknologi AI dan karakter siswa menuju Indonesia Emas 2045.",
+                gridSize: 7,
+                start: { x: 6, y: 6, dir: 'NORTH' },
+                goal: { x: 0, y: 0, icon: 'fa-graduation-cap', label: 'Indonesia Emas' },
+                items: [ { x: 3, y: 3, type: 'KNOWLEDGE', icon: 'fa-lightbulb', collected: false } ],
+                obstacles: [ { x: 3, y: 1 }, { x: 3, y: 2 }, { x: 3, y: 4 }, { x: 3, y: 5 } ]
+            },
+            {
+                title: "Level 26: Tantangan Final Anugerah Guru Kreatif",
+                desc: "Simulasi babak final Anugerah Guru Kreatif & Inovatif PGRI POWER 2026 secara daring.",
+                gridSize: 7,
+                start: { x: 0, y: 6, dir: 'NORTH' },
+                goal: { x: 6, y: 0, icon: 'fa-trophy', label: 'Dewan Juri' },
+                items: [
+                    { x: 0, y: 2, type: 'PAPER', icon: 'fa-book', collected: false },
+                    { x: 3, y: 2, type: 'MEDIA', icon: 'fa-laptop-code', collected: false },
+                    { x: 6, y: 2, type: 'CERT', icon: 'fa-certificate', collected: false }
+                ],
+                obstacles: [ { x: 1, y: 4 }, { x: 2, y: 4 }, { x: 4, y: 4 }, { x: 5, y: 4 } ]
+            },
+            {
+                title: "Level 27: Puncak Anugerah PGRI POWER 2026",
+                desc: "Level Puncak! Kumpulkan Bintang Solidaritas PGRI untuk meraih Anugerah Guru Inovatif 2026!",
+                gridSize: 7,
+                start: { x: 0, y: 3, dir: 'EAST' },
+                goal: { x: 6, y: 3, icon: 'fa-crown', label: 'Juara 1 Nasional' },
+                items: [
+                    { x: 2, y: 3, type: 'STAR_PGRI', icon: 'fa-star', collected: false },
+                    { x: 4, y: 3, type: 'STAR_PGRI', icon: 'fa-star', collected: false }
+                ],
+                obstacles: [
+                    { x: 2, y: 1 }, { x: 2, y: 2 }, { x: 2, y: 4 }, { x: 2, y: 5 },
+                    { x: 4, y: 1 }, { x: 4, y: 2 }, { x: 4, y: 4 }, { x: 4, y: 5 }
+                ]
+            }
+        ];
+
+        const DIRS = ['NORTH', 'EAST', 'SOUTH', 'WEST'];
+        const DIR_OFFSETS = {
+            'NORTH': { x: 0, y: -1 },
+            'EAST': { x: 1, y: 0 },
+            'SOUTH': { x: 0, y: 1 },
+            'WEST': { x: -1, y: 0 }
+        };
+
+        let currentLevelIdx = 0;
+        let currentLevelData = null;
+        let robotState = { x: 0, y: 0, dirIdx: 1 };
+        let programSequence = [];
+        let isExecuting = false;
+        let totalStars = 0;
+        let audioCtx = null;
+
+        function populateSelectOptions() {
+            const selectEl = document.getElementById('levelSelect');
+            if (!selectEl) return;
+            selectEl.innerHTML = "";
+            LEVELS.forEach((lvl, idx) => {
+                const opt = document.createElement('option');
+                opt.value = idx;
+                opt.innerText = `${idx + 1}. ${lvl.title}`;
+                selectEl.appendChild(opt);
+            });
+        }
+
+        function playSound(type) {
+            try {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                const now = audioCtx.currentTime;
+                if (type === 'step') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(300, now);
+                    osc.frequency.exponentialRampToValueAtTime(150, now + 0.1);
+                    gain.gain.setValueAtTime(0.2, now);
+                    gain.gain.linearRampToValueAtTime(0.01, now + 0.1);
+                    osc.start(now);
+                    osc.stop(now + 0.1);
+                } else if (type === 'collect') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(523.25, now);
+                    osc.frequency.setValueAtTime(659.25, now + 0.08);
+                    osc.frequency.setValueAtTime(783.99, now + 0.16);
+                    gain.gain.setValueAtTime(0.3, now);
+                    gain.gain.linearRampToValueAtTime(0.01, now + 0.25);
+                    osc.start(now);
+                    osc.stop(now + 0.25);
+                } else if (type === 'win') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(523.25, now);
+                    osc.frequency.setValueAtTime(659.25, now + 0.1);
+                    osc.frequency.setValueAtTime(783.99, now + 0.2);
+                    osc.frequency.setValueAtTime(1046.50, now + 0.3);
+                    gain.gain.setValueAtTime(0.4, now);
+                    gain.gain.linearRampToValueAtTime(0.01, now + 0.5);
+                    osc.start(now);
+                    osc.stop(now + 0.5);
+                } else if (type === 'error') {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(180, now);
+                    osc.frequency.setValueAtTime(110, now + 0.15);
+                    gain.gain.setValueAtTime(0.3, now);
+                    gain.gain.linearRampToValueAtTime(0.01, now + 0.3);
+                    osc.start(now);
+                    osc.stop(now + 0.3);
+                }
+            } catch(e) {
+                console.log("Audio not active");
+            }
+        }
+
+        function loadLevel(idx) {
+            currentLevelIdx = parseInt(idx);
+            const selectEl = document.getElementById('levelSelect');
+            if (selectEl) selectEl.value = currentLevelIdx;
+            currentLevelData = JSON.parse(JSON.stringify(LEVELS[currentLevelIdx]));
+            const titleEl = document.getElementById('missionTitle');
+            const descEl = document.getElementById('missionDesc');
+            if (titleEl) titleEl.innerText = currentLevelData.title;
+            if (descEl) descEl.innerText = currentLevelData.desc;
+            robotState.x = currentLevelData.start.x;
+            robotState.y = currentLevelData.start.y;
+            robotState.dirIdx = DIRS.indexOf(currentLevelData.start.dir);
+            hideAlert();
+            renderGrid();
+            renderWorkspace();
+        }
+
+        function resetGame() {
+            if (isExecuting) return;
+            programSequence = [];
+            loadLevel(currentLevelIdx);
+        }
+
+        function renderGrid() {
+            const board = document.getElementById('gridBoard');
+            if (!board || !currentLevelData) return;
+            board.innerHTML = "";
+            const size = currentLevelData.gridSize;
+            board.style.gridTemplateColumns = `repeat(${size}, minmax(0, 1fr))`;
+            for (let r = 0; r < size; r++) {
+                for (let c = 0; c < size; c++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'grid-cell bg-slate-800/80 rounded-xl border border-emerald-600/30 flex items-center justify-center relative shadow-inner text-lg';
+                    cell.dataset.x = c;
+                    cell.dataset.y = r;
+                    const isObs = currentLevelData.obstacles.some(o => o.x === c && o.y === r);
+                    if (isObs) {
+                        cell.classList.add('bg-rose-950/80', 'border-rose-500/50');
+                        cell.innerHTML = '<i class="fa-solid fa-ban text-rose-400"></i>';
+                    }
+                    if (currentLevelData.goal.x === c && currentLevelData.goal.y === r) {
+                        cell.classList.add('bg-amber-950/80', 'border-amber-500/50');
+                        cell.innerHTML = `
+                            <div class="flex flex-col items-center text-amber-400">
+                                <i class="fa-solid ${currentLevelData.goal.icon} text-xl"></i>
+                                <span class="text-[9px] font-bold mt-0.5">${currentLevelData.goal.label}</span>
+                            </div>
+                        `;
+                    }
+                    const item = currentLevelData.items.find(i => i.x === c && i.y === r && !i.collected);
+                    if (item) {
+                        const itemElem = document.createElement('div');
+                        itemElem.className = 'text-cyan-400 animate-bounce text-xl';
+                        itemElem.innerHTML = `<i class="fa-solid ${item.icon}"></i>`;
+                        cell.appendChild(itemElem);
+                    }
+                    if (robotState.x === c && robotState.y === r) {
+                        const robotElem = document.createElement('div');
+                        robotElem.className = 'robot-anim absolute inset-0 flex items-center justify-center text-emerald-400 text-2xl z-10';
+                        let rotDeg = robotState.dirIdx * 90;
+                        robotElem.style.transform = `rotate(${rotDeg}deg)`;
+                        robotElem.innerHTML = `
+                            <div class="relative flex items-center justify-center">
+                                <i class="fa-solid fa-robot drop-shadow"></i>
+                                <i class="fa-solid fa-caret-up text-amber-400 text-xs absolute -top-2"></i>
+                            </div>
+                        `;
+                        cell.appendChild(robotElem);
+                    }
+                    board.appendChild(cell);
+                }
+            }
+        }
+
+        function addBlock(type) {
+            if (isExecuting) return;
+            programSequence.push(type);
+            renderWorkspace();
+            playSound('step');
+        }
+
+        function removeBlock(idx) {
+            if (isExecuting) return;
+            programSequence.splice(idx, 1);
+            renderWorkspace();
+        }
+
+        function clearBlocks() {
+            if (isExecuting) return;
+            programSequence = [];
+            renderWorkspace();
+        }
+
+        function renderWorkspace() {
+            const ws = document.getElementById('workspace');
+            if (!ws) return;
+            ws.innerHTML = "";
+            if (programSequence.length === 0) {
+                ws.innerHTML = `
+                    <div id="emptyTip" class="text-center text-slate-500 text-xs my-auto py-6">
+                        Belum ada perintah.<br>Klik tombol di atas untuk menyusun logika MujahiBot!
+                    </div>
+                `;
+                return;
+            }
+            programSequence.forEach((cmd, idx) => {
+                const item = document.createElement('div');
+                item.className = 'flex items-center justify-between p-2 rounded-xl text-xs font-bold text-white shadow-sm border-b-2 ';
+                let label = "";
+                let bgClass = 'bg-slate-700 border-slate-900';
+                switch(cmd) {
+                    case 'MOVE':
+                        label = '<i class="fa-solid fa-arrow-up mr-2"></i> Maju 1 Langkah';
+                        bgClass = 'bg-blue-600 border-blue-800';
+                        break;
+                    case 'LEFT':
+                        label = '<i class="fa-solid fa-rotate-left mr-2"></i> Belok Kiri';
+                        bgClass = 'bg-indigo-600 border-indigo-800';
+                        break;
+                    case 'RIGHT':
+                        label = '<i class="fa-solid fa-rotate-right mr-2"></i> Belok Kanan';
+                        bgClass = '
