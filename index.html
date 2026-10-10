@@ -153,11 +153,11 @@ body {
 .block-btn {
     color: white;
     border: none;
-    padding: 10px 15px;
+    padding: 10px 16px;
     margin: 5px;
     border-radius: 8px;
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     box-shadow: 0 4px 6px rgba(0,0,0,0.2);
     transition: all 0.2s;
     display: inline-flex;
@@ -172,7 +172,7 @@ body {
     background-color: var(--bg-main);
     border: 2px dashed var(--accent-green);
     border-radius: 10px;
-    min-height: 120px;
+    min-height: 100px;
     padding: 15px;
     display: flex;
     flex-wrap: wrap;
@@ -180,19 +180,19 @@ body {
     align-content: flex-start;
 }
 .code-area:empty::before {
-    content: "Belum ada logika perintah. Klik tombol di atas!";
+    content: "Pilih jawaban atau susun perintah di atas!";
     color: rgba(236, 253, 245, 0.5);
     font-style: italic;
     width: 100%;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 15px;
 }
 .code-block-placed {
-    padding: 8px 12px;
+    padding: 8px 14px;
     border-radius: 6px;
     color: #000;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     display: flex;
     align-items: center;
     gap: 6px;
@@ -282,9 +282,9 @@ body {
                 </div>
             </div>
             <div class="col-md-7">
-                <h3 class="fw-bold text-warning mb-2"><i class="fa-solid fa-hand-wave me-2"></i> Selamat Datang, <span id="welcomeNameText">Anak-Anak Hebat Kelas 1!</span></h3>
+                <h3 class="fw-bold text-warning mb-2"><i class="fa-solid fa-hand-wave me-2"></i> Selamat Datang, <span id="welcomeNameText">Anak-Anak Hebat!</span></h3>
                 <p class="m-0 fs-6 leading-relaxed">
-                    Petualangan seru belajar Coding, Matematika, dan Huruf Hijaiyyah bersama <strong>MujaHeeBot</strong>! Selesaikan misi interaktif khusus Kelas 1 dengan feedback suara langsung. <em>Rabbani, Unggul, Mendunia!</em>
+                    Platform Edukasi Coding & Kuis Interaktif (Kelas 1 s.d. Kelas 6) SD Muhammadiyah Al Mujahidin Wonosari. Selesaikan kuis angka, huruf hijaiyyah, hingga tantangan grid robot! <em>Rabbani, Unggul, Mendunia!</em>
                 </p>
             </div>
             <div class="col-md-3 text-md-end mt-3 mt-md-0">
@@ -297,12 +297,12 @@ body {
 
     <!-- Main Content Grid -->
     <div id="questSection" class="row g-4">
-        <!-- Left Sidebar: Level List (Special Grade 1 Quests) -->
+        <!-- Left Sidebar: Level List (30 Levels: 6 Grades x 5 Levels) -->
         <div class="col-lg-3">
             <div class="quest-card">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h5 class="fw-bold text-warning m-0"><i class="fa-solid fa-map me-2"></i> Pilih Misi</h5>
-                    <span class="badge bg-success">Kelas 1</span>
+                    <h5 class="fw-bold text-warning m-0"><i class="fa-solid fa-map me-2"></i> Daftar Misi</h5>
+                    <span class="badge bg-success">30 Level</span>
                 </div>
                 <div id="levelList" class="d-flex flex-column gap-2" style="max-height: 600px; overflow-y: auto; padding-right: 5px;">
                     <!-- Generated dynamically -->
@@ -313,7 +313,7 @@ body {
         <!-- Right Panel: Challenge Workstation -->
         <div class="col-lg-9">
             <div class="row g-3">
-                <!-- Left Sub-panel: Grid and Goal -->
+                <!-- Left Sub-panel: Question / Grid Container -->
                 <div class="col-md-7">
                     <div class="quest-card h-100">
                         <div class="d-flex justify-content-between align-items-center mb-2">
@@ -324,21 +324,28 @@ body {
                             <small class="text-muted d-block mb-1"><i class="fa-solid fa-bullseye me-1"></i> Pertanyaan / Misi Utama:</small>
                             <span id="questQuestion" class="fw-bold text-light fs-5">-</span>
                         </div>
-                        <!-- GRID SIMULASI INTERAKTIF 8x8 -->
-                        <div class="grid-container">
+                        
+                        <!-- GRID ROBOT (Hanya tampil jika tipe misi adalah coding_grid) -->
+                        <div id="gridWrapper" class="grid-container" style="display: none;">
                             <div id="gridBoard" class="grid-board"></div>
+                        </div>
+
+                        <!-- ILUSTRASI KUIS (Tampil jika tipe kuis tebak angka/huruf) -->
+                        <div id="quizBannerWrapper" class="text-center py-5 my-auto" style="background: rgba(0,0,0,0.15); border-radius: 12px; border: 1px dashed var(--accent-green);">
+                            <i id="quizBannerIcon" class="fa-solid fa-brain fa-4x text-warning mb-3"></i>
+                            <h4 id="quizBannerText" class="text-success-bright fw-bold m-0">Pilih Jawaban yang Tepat di Samping!</h4>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right Sub-panel: Coding Area -->
+                <!-- Right Sub-panel: Options / Coding Area -->
                 <div class="col-md-5">
                     <div class="quest-card h-100 d-flex flex-column">
-                        <h6 class="fw-bold text-warning mb-2"><i class="fa-solid fa-cubes me-1"></i> Blok Pilihan Jawaban / Perintah</h6>
+                        <h6 class="fw-bold text-warning mb-2"><i class="fa-solid fa-cubes me-1"></i> <span id="blockAreaTitle">Pilihan Jawaban</span></h6>
                         <div id="commandBlocks" class="command-blocks-container d-flex flex-wrap gap-2"></div>
 
                         <div class="d-flex justify-content-between align-items-center mb-2">
-                            <h6 class="fw-bold text-success-bright m-0"><i class="fa-solid fa-code me-1"></i> Susunan Jawabanmu</h6>
+                            <h6 class="fw-bold text-success-bright m-0"><i class="fa-solid fa-code me-1"></i> <span id="selectedAreaTitle">Jawaban Terpilih</span></h6>
                             <button class="btn btn-sm btn-outline-danger" onclick="resetCode()"><i class="fa-solid fa-trash-can me-1"></i> Hapus</button>
                         </div>
                         <div id="codeArea" class="code-area flex-grow-1 mb-3"></div>
@@ -366,17 +373,17 @@ body {
     </div>
 
     <footer class="text-center mt-5 text-muted small border-top pt-4">
-        <p>&copy; 2026 SD Muhammadiyah Al Mujahidin Wonosari | Platform Digital Coding & Gamifikasi Kelas 1 Rabbani</p>
+        <p>&copy; 2026 SD Muhammadiyah Al Mujahidin Wonosari | Platform Digital Coding & Edukasi Rabbani</p>
     </footer>
 </div>
 
-<!-- MODAL LOGIN SISWA KELAS 1 -->
+<!-- MODAL LOGIN SISWA (30 KELAS LENGKAP) -->
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
 <div class="modal-dialog modal-dialog-centered">
 <div class="modal-content modal-content-custom">
     <div class="modal-header border-bottom border-success">
         <h5 class="modal-title text-warning fw-bold" id="loginModalLabel">
-            <i class="fa-solid fa-user-astronaut me-2"></i> Identitas Petualang Cilik
+            <i class="fa-solid fa-user-astronaut me-2"></i> Identitas Petualang Siswa
         </h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
@@ -387,13 +394,39 @@ body {
                 <input type="text" class="form-control" id="studentName" value="Ananda Hebat" placeholder="Masukkan nama..." required>
             </div>
             <div class="mb-3">
-                <label for="studentClass" class="form-label fw-bold">Kelas</label>
+                <label for="studentClass" class="form-label fw-bold">Kelas / Paralel</label>
                 <select id="studentClass" class="form-select" required>
+                    <option value="">-- Pilih Kelas --</option>
                     <option value="1 Champion" selected>1 Champion</option>
                     <option value="1 Excellent">1 Excellent</option>
                     <option value="1 Brilliant">1 Brilliant</option>
                     <option value="1 Olimpiade">1 Olimpiade</option>
                     <option value="1 Smart">1 Smart</option>
+                    <option value="2 Champion">2 Champion</option>
+                    <option value="2 Excellent">2 Excellent</option>
+                    <option value="2 Brilliant">2 Brilliant</option>
+                    <option value="2 Olimpiade">2 Olimpiade</option>
+                    <option value="2 Smart">2 Smart</option>
+                    <option value="3 Champion">3 Champion</option>
+                    <option value="3 Excellent">3 Excellent</option>
+                    <option value="3 Brilliant">3 Brilliant</option>
+                    <option value="3 Olimpiade">3 Olimpiade</option>
+                    <option value="3 Smart">3 Smart</option>
+                    <option value="4 Champion">4 Champion</option>
+                    <option value="4 Excellent">4 Excellent</option>
+                    <option value="4 Brilliant">4 Brilliant</option>
+                    <option value="4 Olimpiade">4 Olimpiade</option>
+                    <option value="4 Smart">4 Smart</option>
+                    <option value="5 Champion">5 Champion</option>
+                    <option value="5 Excellent">5 Excellent</option>
+                    <option value="5 Brilliant">5 Brilliant</option>
+                    <option value="5 Olimpiade">5 Olimpiade</option>
+                    <option value="5 Smart">5 Smart</option>
+                    <option value="6 Champion">6 Champion</option>
+                    <option value="6 Excellent">6 Excellent</option>
+                    <option value="6 Brilliant">6 Brilliant</option>
+                    <option value="6 Olimpiade">6 Olimpiade</option>
+                    <option value="6 Smart">6 Smart</option>
                 </select>
             </div>
         </div>
@@ -408,53 +441,49 @@ body {
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-// --- DATA LEVEL KHUSUS KELAS 1 (Tebak Angka, Penjumlahan, Huruf Hijaiyyah & Navigasi Coding)
+// --- 30 LEVEL LENGKAP: KELAS 1 SAMPAI KELAS 6 (MASING-MASING 5 LEVEL)
 const levels = [
-    { 
-        id: 1, type: "math_guess", title: "Tebak Angka Dasar", 
-        goal: "Berapa hasil dari 3 + 2? Pilih blok jawaban yang benar!", 
-        question: "3 + 2 = ...?", 
-        answer: "5",
-        commands: ["2", "4", "5", "6"],
-        startPos: [7, 0], targetPos: [0, 7],
-        map: [[0,0,0,0,0,0,0,'T'], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0], ['S',0,0,0,0,0,0,0]]
-    },
-    { 
-        id: 2, type: "math_addition", title: "Penjumlahan Ceria", 
-        goal: "Hitunglah 4 + 4 untuk membantu MujaHeeBot melangkah!", 
-        question: "4 + 4 = ...?", 
-        answer: "8",
-        commands: ["6", "7", "8", "9"],
-        startPos: [7, 0], targetPos: [0, 7],
-        map: [[0,0,0,0,0,0,0,'T'], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0], ['S',0,0,0,0,0,0,0]]
-    },
-    { 
-        id: 3, type: "hijaiyah_guess", title: "Mengenal Huruf Hijaiyyah 1", 
-        goal: "Manakah huruf Alif (ا)? Pilih jawaban yang tepat!", 
-        question: "Pilih huruf: Alif", 
-        answer: "ا",
-        commands: ["ب", "ا", "ت", "ث"],
-        startPos: [7, 0], targetPos: [0, 7],
-        map: [[0,0,0,0,0,0,0,'T'], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0], ['S',0,0,0,0,0,0,0]]
-    },
-    { 
-        id: 4, type: "hijaiyah_guess", title: "Mengenal Huruf Hijaiyyah 2", 
-        goal: "Manakah huruf Ba' (ب)? Pilih jawaban yang tepat!", 
-        question: "Pilih huruf: Ba'", 
-        answer: "ب",
-        commands: ["ا", "ب", "ج", "د"],
-        startPos: [7, 0], targetPos: [0, 7],
-        map: [[0,0,0,0,0,0,0,'T'], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0], ['S',0,0,0,0,0,0,0]]
-    },
-    { 
-        id: 5, type: "coding_grid", title: "Langkah Pertama Robot", 
-        goal: "Pandu MujaHeeBot berjalan maju ke sekolah (T)!", 
-        question: "Gunakan perintah Maju untuk mencapai sekolah!", 
-        answer: ["Maju 1", "Maju 1", "Maju 1"],
-        commands: ["Maju 1", "Belok Kanan", "Belok Kiri"],
-        startPos: [7, 0], targetPos: [7, 3],
-        map: [[0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0], ['S',0,0,'T',0,0,0,0]]
-    }
+    // --- KELAS 1 ---
+    { id: 1, grade: "Kelas 1", type: "quiz", title: "Tebak Angka Dasar", question: "Berapa hasil dari penjumlahan 3 + 2?", answer: "5", commands: ["3", "4", "5", "6"] },
+    { id: 2, grade: "Kelas 1", type: "quiz", title: "Penjumlahan Ceria", question: "Hitunglah benda: 4 + 4 = ...?", answer: "8", commands: ["6", "7", "8", "9"] },
+    { id: 3, grade: "Kelas 1", type: "quiz", title: "Mengenal Huruf Hijaiyyah 1", question: "Manakah huruf Alif (ا) yang benar?", answer: "ا", commands: ["ب", "ا", "ت", "ث"] },
+    { id: 4, grade: "Kelas 1", type: "quiz", title: "Mengenal Huruf Hijaiyyah 2", question: "Manakah huruf Ba' (ب) yang benar?", answer: "ب", commands: ["ا", "ب", "ج", "د"] },
+    { id: 5, grade: "Kelas 1", type: "coding_grid", title: "Langkah Pertama Robot", question: "Pandu MujaHeeBot berjalan maju ke sekolah (T)!", answer: ["Maju 1", "Maju 1", "Maju 1"], commands: ["Maju 1", "Belok Kanan", "Belok Kiri"], startPos: [7, 0], targetPos: [7, 3], map: [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],['S',0,0,'T',0,0,0,0]] },
+
+    // --- KELAS 2 ---
+    { id: 6, grade: "Kelas 2", type: "quiz", title: "Tebak Angka Puluhan", question: "Berapa hasil dari 15 + 10?", answer: "25", commands: ["20", "25", "30", "35"] },
+    { id: 7, grade: "Kelas 2", type: "quiz", title: "Pengurangan Sederhana", question: "Berapa hasil dari 18 - 7?", answer: "11", commands: ["9", "10", "11", "12"] },
+    { id: 8, grade: "Kelas 2", type: "quiz", title: "Sambung Huruf Hijaiyyah", question: "Manakah huruf Jim (ج)?", answer: "ج", commands: ["ح", "ج", "خ", "د"] },
+    { id: 9, grade: "Kelas 2", type: "quiz", title: "Kosa Kata Islami", question: "Arti dari kata 'Bismillah' adalah...?", answer: "Dengan nama Allah", commands: ["Alhamdulillah", "Dengan nama Allah", "Allahu Akbar", "InsyaAllah"] },
+    { id: 10, grade: "Kelas 2", type: "coding_grid", title: "Labirin Kantin Sekolah", question: "Bantu robot melewati rintangan menuju Kantin (T)!", answer: ["Maju 2", "Belok Kanan", "Maju 1"], commands: ["Maju 1", "Maju 2", "Belok Kiri", "Belok Kanan"], startPos: [7, 0], targetPos: [5, 2], map: [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,'T',0,0,0,0,0],[0,1,0,0,0,0,0,0],['S',0,0,0,0,0,0,0]] },
+
+    // --- KELAS 3 ---
+    { id: 11, grade: "Kelas 3", type: "quiz", title: "Perkalian Dasar", question: "Berapa hasil dari 4 × 5?", answer: "20", commands: ["15", "18", "20", "25"] },
+    { id: 12, grade: "Kelas 3", type: "quiz", title: "Pembagian Dasar", question: "Berapa hasil dari 24 ÷ 3?", answer: "8", commands: ["6", "7", "8", "9"] },
+    { id: 13, grade: "Kelas 3", type: "quiz", title: "Hukum Bacaan Mad", question: "Mad Thabi'i dibaca panjang berapa harakat?", answer: "2 harakat", commands: ["1 harakat", "2 harakat", "4 harakat", "6 harakat"] },
+    { id: 14, grade: "Kelas 3", type: "quiz", title: "Rukun Islam", question: "Rukun Islam yang kedua adalah...?", answer: "Shalat", commands: ["Syahadat", "Shalat", "Zakat", "Haji"] },
+    { id: 15, grade: "Kelas 3", type: "coding_grid", title: "Taman Literasi Al Mujahidin", question: "Gunakan perintah terstruktur mencapai titik (T)!", answer: ["Maju 3", "Belok Kiri", "Maju 2"], commands: ["Maju 1", "Maju 2", "Maju 3", "Belok Kiri", "Belok Kanan"], startPos: [7, 0], targetPos: [5, 3], map: [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,'T',0,0,0,0],[0,0,0,0,0,0,0,0],['S',0,0,0,0,0,0,0]] },
+
+    // --- KELAS 4 ---
+    { id: 16, grade: "Kelas 4", type: "quiz", title: "Pecahan Senilai", question: "Bentuk sederhana dari pecahan 4/8 adalah...?", answer: "1/2", commands: ["1/3", "1/2", "3/4", "2/3"] },
+    { id: 17, grade: "Kelas 4", type: "quiz", title: "Sains: Wujud Benda", question: "Perubahan wujud dari cair menjadi padat disebut...?", answer: "Membeku", commands: ["Mencair", "Membeku", "Menguap", "Menyublim"] },
+    { id: 18, grade: "Kelas 4", type: "quiz", title: "Tajwid: Nun Sukin / Tanwin", question: "Dibaca apakah hukum nun sukun bertemu huruf Ba' (ب)?", answer: "Iqlab", commands: ["Idgham", "Iqlab", "Izhar", "Ikhfa"] },
+    { id: 19, grade: "Kelas 4", type: "quiz", title: "Sejarah Nabi & Rasul", question: "Nabi yang mendapat mukjizat tongkat membelah laut adalah...?", answer: "Nabi Musa AS", commands: ["Nabi Ibrahim AS", "Nabi Musa AS", "Nabi Isa AS", "Nabi Nuh AS"] },
+    { id: 20, grade: "Kelas 4", type: "coding_grid", title: "Misi Algoritma Kompleks 4", question: "Susun rute terarah menuju target (T)!", answer: ["Maju 3", "Belok Kanan", "Maju 3"], commands: ["Maju 1", "Maju 2", "Maju 3", "Belok Kiri", "Belok Kanan"], startPos: [7, 0], targetPos: [4, 3], map: [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,'T',0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],['S',0,0,0,0,0,0,0]] },
+
+    // --- KELAS 5 ---
+    { id: 21, grade: "Kelas 5", type: "quiz", title: "Matematika: Volume Bangun", question: "Volume kubus dengan sisi 5 cm adalah...?", answer: "125 cm³", commands: ["25 cm³", "75 cm³", "125 cm³", "150 cm³"] },
+    { id: 22, grade: "Kelas 5", type: "quiz", title: "Sains: Sistem Pernapasan", question: "Alat pernapasan utama pada manusia adalah...?", answer: "Paru-paru", commands: ["Jantung", "Hati", "Paru-paru", "Ginjal"] },
+    { id: 23, grade: "Kelas 5", type: "quiz", title: "Fiqih: Ketentuan Puasa", question: "Hal yang membatalkan puasa di siang hari adalah...?", answer: "Makan dan minum dengan sengaja", commands: ["Tidur siang", "Makan dan minum dengan sengaja", "Lupa makan", "Mandi"] },
+    { id: 24, grade: "Kelas 5", type: "quiz", title: "Bahasa Arab Dasar", question: "Apa bahasa Arabnya 'Buku'?", answer: "Kitabun", commands: ["Qalamun", "Kitabun", "Maktabun", "Baitun"] },
+    { id: 25, grade: "Kelas 5", type: "coding_grid", title: "Navigasi Gedung Al Mujahidin", question: "Gunakan logika looping/maju untuk mencapai titik akhir (T)!", answer: ["Maju 3", "Belok Kiri", "Maju 3"], commands: ["Maju 1", "Maju 2", "Maju 3", "Belok Kiri", "Belok Kanan"], startPos: [7, 0], targetPos: [4, 3], map: [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,'T',0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],['S',0,0,0,0,0,0,0]] },
+
+    // --- KELAS 6 ---
+    { id: 26, grade: "Kelas 6", type: "quiz", title: "Matematika: Statistika", question: "Rata-rata (mean) dari data: 8, 9, 7, 8, 8 adalah...?", answer: "8", commands: ["7", "7.5", "8", "8.5"] },
+    { id: 27, grade: "Kelas 6", type: "quiz", title: "Sains: Tata Surya", question: "Planet terdekat dari matahari adalah...?", answer: "Merkurius", commands: ["Venus", "Merkurius", "Bumi", "Mars"] },
+    { id: 28, grade: "Kelas 6", type: "quiz", title: "Akidah Akhlak", question: "Sifat wajib bagi Allah yang berarti Maha Kuasa adalah...?", answer: "Qudrat", commands: ["Wujud", "Qudrat", "Ilmu", "Hayat"] },
+    { id: 29, grade: "Kelas 6", type: "quiz", title: "Logika Pemrograman Dasar", question: "Simbol apa yang digunakan untuk mengulang perintah dalam logika coding?", answer: "Loop / Perulangan", commands: ["Variabel", "Loop / Perulangan", "Kondisi If", "Array"] },
+    { id: 30, grade: "Kelas 6", type: "coding_grid", title: "Misi Akhir Wisuda Rabbani", question: "Tantangan akhir robot melintasi arena menuju Panggung Utama (T)!", answer: ["Maju 4", "Belok Kanan", "Maju 4"], commands: ["Maju 1", "Maju 2", "Maju 4", "Belok Kiri", "Belok Kanan"], startPos: [7, 0], targetPos: [3, 4], map: [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,'T',0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],['S',0,0,0,0,0,0,0]] }
 ];
 
 let currentLevel = levels[0];
@@ -469,33 +498,14 @@ const icons = {
     'obstacle': '<i class="fa-solid fa-ban text-danger opacity-50"></i>'
 };
 
-const commandConfigs = {
-    "5": { bg: '#2563eb', icon: 'fa-star' },
-    "8": { bg: '#2563eb', icon: 'fa-star' },
-    "2": { bg: '#dc2626', icon: 'fa-circle-xmark' },
-    "4": { bg: '#dc2626', icon: 'fa-circle-xmark' },
-    "6": { bg: '#dc2626', icon: 'fa-circle-xmark' },
-    "7": { bg: '#dc2626', icon: 'fa-circle-xmark' },
-    "9": { bg: '#dc2626', icon: 'fa-circle-xmark' },
-    "ا": { bg: '#10b981', icon: 'fa-font' },
-    "ب": { bg: '#7c3aed', icon: 'fa-font' },
-    "ج": { bg: '#dc2626', icon: 'fa-font' },
-    "د": { bg: '#dc2626', icon: 'fa-font' },
-    "ت": { bg: '#dc2626', icon: 'fa-font' },
-    "ث": { bg: '#dc2626', icon: 'fa-font' },
-    "Maju 1": { bg: '#2563eb', icon: 'fa-arrow-right' },
-    "Belok Kanan": { bg: '#7c3aed', icon: 'fa-rotate-right' },
-    "Belok Kiri": { bg: '#7c3aed', icon: 'fa-rotate-left' }
-};
-
 // Fungsi Suara Menggunakan Web Speech API (Browser Native TTS)
 function speakFeedback(text) {
     if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel(); // Hentikan suara sebelumnya
+        window.speechSynthesis.cancel();
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = 'id-ID';
-        utterance.rate = 0.9; // Kecepatan pas untuk anak-anak
-        utterance.pitch = 1.1; // Nada riang
+        utterance.rate = 0.9;
+        utterance.pitch = 1.1;
         window.speechSynthesis.speak(utterance);
     }
 }
@@ -541,14 +551,15 @@ function generateLevelList() {
     container.innerHTML = "";
     levels.forEach((lvl, idx) => {
         const card = document.createElement('div');
-        card.className = `level-card p-3 ${idx === 0 ? 'active' : ''}`;
+        card.className = `level-card p-2 px-3 ${idx === 0 ? 'active' : ''}`;
         card.id = `level-card-${lvl.id}`;
         card.onclick = () => loadLevel(lvl.id);
         card.innerHTML = `
             <div class="d-flex justify-content-between align-items-center">
-                <h6 class="fw-bold m-0 text-light">Level ${lvl.id}: ${lvl.title}</h6>
-                <i class="fa-solid fa-star text-warning ms-2"></i>
+                <small class="text-warning fw-bold">${lvl.grade}</small>
+                <i class="fa-solid fa-star text-warning" style="font-size: 0.8rem;"></i>
             </div>
+            <h6 class="fw-bold m-0 text-light" style="font-size: 0.9rem;">Misi ${lvl.id}: ${lvl.title}</h6>
         `;
         container.appendChild(card);
     });
@@ -556,14 +567,35 @@ function generateLevelList() {
 
 function loadLevel(levelId) {
     currentLevel = levels.find(l => l.id === levelId) || levels[0];
-    document.getElementById('badgeLevel').textContent = `Level ${currentLevel.id}`;
+    document.getElementById('badgeLevel').textContent = `${currentLevel.grade} - Misi ${currentLevel.id}`;
     document.getElementById('questTitle').textContent = currentLevel.title;
     document.getElementById('questQuestion').textContent = currentLevel.question;
     document.getElementById('feedbackBox').style.display = 'none';
+    
     levelCodeSequence = [];
     resetCode();
-    renderGridMap();
-    resetBotPosition();
+
+    // Tampilkan / Sembunyikan Grid Robot vs Kuis Interaktif secara Sinkron
+    const gridWrapper = document.getElementById('gridWrapper');
+    const quizBannerWrapper = document.getElementById('quizBannerWrapper');
+    const blockAreaTitle = document.getElementById('blockAreaTitle');
+    const selectedAreaTitle = document.getElementById('selectedAreaTitle');
+
+    if (currentLevel.type === 'coding_grid') {
+        gridWrapper.style.display = 'block';
+        quizBannerWrapper.style.display = 'none';
+        blockAreaTitle.textContent = "Blok Perintah Robot";
+        selectedAreaTitle.textContent = "Program Robot";
+        renderGridMap();
+        resetBotPosition();
+    } else {
+        gridWrapper.style.display = 'none';
+        quizBannerWrapper.style.display = 'block';
+        document.getElementById('quizBannerText').textContent = `Misi ${currentLevel.grade}: Pilih Jawaban di Samping!`;
+        blockAreaTitle.textContent = "Pilihan Jawaban";
+        selectedAreaTitle.textContent = "Jawaban Terpilih";
+    }
+
     renderCommandBlocks();
 
     document.querySelectorAll('.level-card').forEach(c => c.classList.remove('active'));
@@ -591,12 +623,14 @@ function renderGridMap() {
 }
 
 function resetBotPosition() {
+    if (currentLevel.type !== 'coding_grid') return;
     currentBotPos = [...currentLevel.startPos];
     botRotation = 0;
     updateBotVisuals();
 }
 
 function updateBotVisuals() {
+    if (currentLevel.type !== 'coding_grid') return;
     document.querySelectorAll('.grid-cell.bot').forEach(c => c.classList.remove('bot'));
     const cellId = `cell-${currentBotPos[0]}-${currentBotPos[1]}`;
     const cell = document.getElementById(cellId);
@@ -612,19 +646,18 @@ function renderCommandBlocks() {
     const container = document.getElementById('commandBlocks');
     container.innerHTML = "";
     currentLevel.commands.forEach(cmd => {
-        const config = commandConfigs[cmd] || { bg: '#10b981', icon: 'fa-cube' };
         const btn = document.createElement('button');
         btn.className = 'block-btn';
-        btn.style.background = config.bg;
-        btn.innerHTML = `<i class="fa-solid ${config.icon}"></i> ${cmd}`;
+        btn.style.background = currentLevel.type === 'coding_grid' ? '#2563eb' : '#059669';
+        btn.innerHTML = `<i class="fa-solid fa-cube me-1"></i> ${cmd}`;
         btn.onclick = () => addBlockToProgram(cmd);
         container.appendChild(btn);
     });
 }
 
 function addBlockToProgram(cmd) {
-    if (currentLevel.type.includes('guess') && levelCodeSequence.length > 0) {
-        levelCodeSequence = []; // Mode tebak cukup pilih 1 jawaban utama
+    if (currentLevel.type === 'quiz') {
+        levelCodeSequence = []; // Kuis cukup pilih 1 jawaban utama
     }
     levelCodeSequence.push(cmd);
     updateCodeDisplay();
@@ -634,11 +667,10 @@ function updateCodeDisplay() {
     const display = document.getElementById('codeArea');
     display.innerHTML = "";
     levelCodeSequence.forEach((cmd, idx) => {
-        const config = commandConfigs[cmd] || { bg: '#10b981', icon: 'fa-cube' };
         const block = document.createElement('div');
         block.className = 'code-block-placed';
-        block.style.backgroundColor = config.bg;
-        block.innerHTML = `<span class="text-dark opacity-50">${idx + 1}.</span> <i class="fa-solid ${config.icon}"></i> ${cmd}`;
+        block.style.backgroundColor = '#fbbf24';
+        block.innerHTML = `<span class="text-dark opacity-50">${idx + 1}.</span> ${cmd}`;
         display.appendChild(block);
     });
 }
@@ -652,14 +684,13 @@ function resetCode() {
 
 function runCode() {
     let success = false;
-    if (currentLevel.type.includes('guess') || currentLevel.type.includes('addition')) {
+    if (currentLevel.type === 'quiz') {
         if (levelCodeSequence.length === 0) {
             showFeedback(false, "Pilih salah satu jawaban terlebih dahulu!");
             return;
         }
         success = (levelCodeSequence[0] === currentLevel.answer);
-    } else {
-        // Simulasi coding grid
+    } else if (currentLevel.type === 'coding_grid') {
         if (JSON.stringify(levelCodeSequence) === JSON.stringify(currentLevel.answer)) {
             success = true;
             currentBotPos = [...currentLevel.targetPos];
@@ -684,12 +715,11 @@ function showFeedback(success, customMsg = "") {
         title.textContent = "Kamu Hebat!";
         title.className = "fw-bold text-warning";
         icon.className = "fa-solid fa-star fa-3x text-warning";
-        text.textContent = "Jawabanmu benar! MasyaAllah, hebat sekali anak sholeh dan sholehah!";
+        text.textContent = "Jawabanmu benar! MasyaAllah, hebat sekali!";
         
-        // Suara interaktif feedback benar
         speakFeedback("Kamu hebat!");
 
-        score += 20;
+        score += 15;
         document.getElementById('scoreDisplay').textContent = score;
     } else {
         box.style.backgroundColor = '#7f1d1d';
@@ -699,7 +729,6 @@ function showFeedback(success, customMsg = "") {
         icon.className = "fa-solid fa-circle-xmark fa-3x text-danger";
         text.textContent = customMsg || "Belum tepat sayang, ayo coba ulangi lagi dengan teliti!";
         
-        // Suara interaktif feedback salah
         speakFeedback("Salah, coba ulangi lagi.");
     }
 }
