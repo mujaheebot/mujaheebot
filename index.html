@@ -4,426 +4,394 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MujaHeeBot Coding Quest | SD Muhammadiyah Al Mujahidin Wonosari</title>
-<meta name="description" content="Belajar coding, matematika, sains, agama Islam, Kemuhammadiyahan, dan bahasa Arab bersama MujaHeeBot.">
+<meta name="description" content="Peta misi coding, matematika, sains, Al Islam, Kemuhammadiyahan, dan bahasa Arab bersama robot MujaHeeBot.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Fredoka:wght@400;500;600;700&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Fredoka:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{
-  --navy:#14263a; --yellow:#f7d23e; --sky:#dff1ff; --white:#fff;
-  --blue:#3b8bd9; --green:#3fae5a; --purple:#8e5bc4; --orange:#f2802b; --red:#e04b3f; --copper:#c9803f;
-  --shadow:5px 5px 0 var(--navy);
-}
+:root{--navy:#14263a;--blue:#1e7bff;--green:#00b365;--lime:#7ed321;--cyan:#45f0f0;--mint:#c3ebe5;--purple:#6b4bd8;--yellow:#f7d23e;--line:#e3e8f0;--muted:#6b7686}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;color:var(--navy);font-family:'Nunito',system-ui,sans-serif;font-weight:700;font-size:17px;line-height:1.55;
-  background:var(--sky) radial-gradient(rgba(20,38,58,.12) 1.5px,transparent 1.5px) 0 0/24px 24px;min-height:100vh}
+body{margin:0;background:#fff;color:#1d2433;font:700 16px/1.5 'Nunito',system-ui,sans-serif}
 h1,h2,h3,h4{font-family:'Fredoka',sans-serif;margin:0;line-height:1.15}
 button{font:inherit;color:inherit;cursor:pointer}
-:focus-visible{outline:4px solid var(--blue);outline-offset:2px}
-.wrap{max-width:1120px;margin:0 auto;padding:0 18px}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
 .ar{font-family:'Amiri',serif;font-size:1.7em;line-height:1.3}
+.sp{margin-left:auto}
 
-/* Header */
-header{background:var(--yellow);border-bottom:4px solid var(--navy);position:sticky;top:0;z-index:20}
-.bar{display:flex;align-items:center;gap:14px;padding:10px 0;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:12px;margin-right:auto}
-.logo{width:58px;height:58px;border-radius:50%;background:#fff;border:3px solid var(--navy);object-fit:contain;padding:2px;display:grid;place-items:center;overflow:hidden}
-.logo svg{width:44px;height:44px}
-.brand h1{font-size:1.35rem}
-.brand small{display:block;font-size:.78rem;font-weight:700;opacity:.8}
-.pill{background:#fff;border:3px solid var(--navy);border-radius:999px;padding:6px 16px;font-family:'Fredoka';font-weight:600;box-shadow:3px 3px 0 var(--navy);display:flex;gap:8px;align-items:center}
-.btn{background:var(--green);color:#fff;border:3px solid var(--navy);border-radius:14px;padding:10px 20px;font-family:'Fredoka';font-weight:600;font-size:1.05rem;box-shadow:4px 4px 0 var(--navy);transition:transform .12s,box-shadow .12s}
-.btn:hover{transform:translate(-1px,-1px);box-shadow:6px 6px 0 var(--navy)}
-.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--navy)}
-.btn.alt{background:#fff;color:var(--navy)} .btn.warn{background:var(--yellow);color:var(--navy)} .btn.red{background:var(--red)}
-.btn:disabled{opacity:.5;cursor:not-allowed}
+/* Navigasi */
+.nav{border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:30}
+.nav .in{max-width:1200px;margin:auto;padding:8px 20px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--navy);font:700 1.5rem 'Fredoka'}
+.lg{width:46px;height:46px;border-radius:50%;border:2px solid var(--navy);overflow:hidden;display:grid;place-items:center;background:#fff}
+.lg img{width:100%;height:100%;object-fit:contain}.lg svg{width:34px;height:34px}
+.tab{color:#7aa7ff;text-decoration:none;font-weight:800}.tab.on,.tab:hover{color:var(--blue)}
+.user{display:flex;align-items:center;gap:10px;border:0;background:none;font-weight:800}
+.av{width:42px;height:42px;border-radius:50%;background:var(--yellow);display:grid;place-items:center}.av svg{width:28px;height:28px}
 
-/* Hero */
-.hero{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:center;padding:36px 0 26px}
-.hero h2{font-size:clamp(2rem,5vw,3.2rem);margin-bottom:12px}
-.hero p{max-width:52ch;margin:0 0 20px}
-.hero-art{background:var(--yellow);border:4px solid var(--navy);border-radius:50%;aspect-ratio:1;max-width:360px;margin:auto;display:grid;place-items:center;box-shadow:8px 8px 0 var(--navy);position:relative;width:100%}
-.hero-art svg{width:68%;animation:float 3.5s ease-in-out infinite}
-.hero-art .orb{position:absolute;width:62px;height:62px;border-radius:50%;border:4px solid var(--navy);display:grid;place-items:center;font-size:1.7rem;background:var(--c)}
-@keyframes float{50%{transform:translateY(-12px)}}
-.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
-.chip{border:3px solid var(--navy);border-radius:999px;padding:3px 14px;background:var(--c);color:#fff;font-family:'Fredoka';font-weight:500;font-size:.95rem}
+/* Beranda */
+.hero{display:grid;grid-template-columns:150px 1fr;gap:24px;align-items:center;padding:26px 20px}
+.hbot{background:var(--yellow);border:3px solid var(--navy);border-radius:50%;width:150px;height:150px;display:grid;place-items:center}
+.hbot svg{width:96px;animation:fl 3s ease-in-out infinite}
+@keyframes fl{50%{transform:translateY(-8px)}}
+.hero h1{font-size:clamp(1.6rem,4vw,2.4rem)}.hero p{margin:6px 0 14px;color:var(--muted);max-width:60ch}
+.stats{display:flex;gap:10px;flex-wrap:wrap}
+.st{border:1px solid var(--line);border-radius:14px;padding:8px 16px;background:#fff}
+.st small{display:block;color:var(--muted);font-size:.78rem}.st b{font:600 1.2rem 'Fredoka'}
 
-/* Cards */
-.card{background:#fff;border:3px solid var(--navy);border-radius:20px;box-shadow:var(--shadow);padding:20px}
-section.block{padding:14px 0 26px}
-.sec-title{font-size:1.7rem;margin-bottom:14px}
+/* Bar kelas */
+.bar2{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding-top:6px;padding-bottom:14px}
+.bar2 h2{font-size:1.5rem;margin-right:8px}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.pb,.seg button,select.pb{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 16px;font-weight:800;font-size:.92rem}
+.seg button[aria-pressed=true]{background:var(--blue);border-color:var(--blue);color:#fff}
+.pb:hover{background:#f2f7ff}
+.cta{background:var(--blue);color:#fff;border:0;border-radius:999px;padding:9px 22px;font-weight:800}.cta:hover{filter:brightness(1.08)}
+.cta:disabled{opacity:.5}
 
-/* Filter */
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
-.filters button{border:3px solid var(--navy);background:#fff;border-radius:999px;padding:6px 16px;font-family:'Fredoka';font-weight:500;box-shadow:3px 3px 0 var(--navy)}
-.filters button[aria-pressed=true]{background:var(--navy);color:#fff}
+/* Peta */
+.mapwrap{height:74vh;min-height:420px;overflow:auto;border-radius:20px;background:var(--mint);position:relative}
+.map{position:relative;width:100%;overflow:hidden;
+ background:repeating-linear-gradient(0deg,transparent 0 21px,rgba(255,255,255,.55) 21px 24px),repeating-linear-gradient(90deg,transparent 0 40px,rgba(255,255,255,.45) 40px 43px),var(--mint)}
+.gr{position:absolute;background:var(--green);border-radius:46%;border-top:12px solid var(--lime)}
+.river{position:absolute;left:64%;width:6%;top:0;bottom:0;background:var(--cyan)}
+.path{position:absolute;left:50%;margin-left:-9px;width:18px;top:0;bottom:0;background:#e6f7f3}
+.dc{position:absolute;pointer-events:none}.dc svg{width:100%;height:auto;display:block}
+.nd{position:absolute;left:50%;margin-left:-38px;width:76px;height:76px;border-radius:50%;border:0;padding:0;background:conic-gradient(var(--blue) calc(var(--p)*1%),#cfe3ff 0);display:grid;place-items:center;box-shadow:0 0 0 5px #fff;transition:transform .15s}
+.nd:hover{transform:scale(1.08)}.nd.dim{opacity:.3}
+.ni{width:62px;height:62px;border-radius:50%;background:var(--blue);border:4px solid #fff;display:grid;place-items:center;color:#fff;font:700 1.7rem 'Fredoka';text-shadow:0 2px 0 rgba(0,0,0,.2)}
+.nd.done .ni{background:var(--purple);font-size:1.6rem}
+.nd.now{animation:pu 1.6s infinite}
+@keyframes pu{50%{box-shadow:0 0 0 12px rgba(30,123,255,.25)}}
+.bd{position:absolute;right:-8px;top:-8px;width:30px;height:30px;border-radius:50%;border:3px solid #fff;display:grid;place-items:center;font-size:.9rem;color:#fff;font-family:'Amiri'}
+.walker{position:absolute;width:46px;animation:fl 1.2s ease-in-out infinite;z-index:3}
+.pop{position:absolute;z-index:10;left:calc(50% + 66px);width:min(430px,46%);background:#fff;border-radius:22px;padding:20px 22px;box-shadow:0 12px 40px rgba(20,38,58,.25)}
+.pop small{color:var(--blue);font-weight:800;font-size:1rem}
+.pop h3{font-size:1.4rem;margin:6px 0 4px}.pop h3 span{color:#f5a300;font-size:1rem;margin-left:6px}
+.pop p{color:var(--muted);margin:0 0 10px}.pop .mt{color:var(--muted);font-size:.9rem;display:flex;gap:16px;margin-bottom:12px}
+.pop .acts{display:flex;gap:8px;flex-wrap:wrap}.plan{display:none;background:#f2f7ff;border-radius:12px;padding:10px 12px;margin-bottom:10px;font-size:.92rem}
+.pop .x{position:absolute;right:14px;top:12px;border:1px solid var(--line);background:#fff;border-radius:10px;width:32px;height:32px}
 
-/* Map */
-.grade{display:grid;grid-template-columns:110px 1fr;gap:14px;align-items:center;margin-bottom:12px}
-.grade h3{background:var(--yellow);border:3px solid var(--navy);border-radius:14px;padding:8px;text-align:center;font-size:1.15rem}
-.nodes{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
-.node{position:relative;background:#fff;border:3px solid var(--navy);border-top:10px solid var(--c);border-radius:14px;padding:8px 6px 8px;text-align:center;box-shadow:3px 3px 0 var(--navy);transition:transform .12s;min-height:92px}
-.node:hover{transform:translateY(-3px)}
-.node.cur{background:#fff6c7;box-shadow:3px 3px 0 var(--navy),0 0 0 4px var(--blue)}
-.node.dim{opacity:.28}
-.node .ic{font-size:1.5rem;line-height:1.1;display:block}
-.node .ic.a{font-family:'Amiri';font-size:1.9rem}
-.node span.t{display:block;font-size:.76rem;line-height:1.2;margin-top:3px}
-.node .ok{position:absolute;right:-8px;top:-18px;width:26px;height:26px;border-radius:50%;background:var(--green);border:3px solid var(--navy);color:#fff;font-size:.8rem;display:none;place-items:center}
-.node.done .ok{display:grid}
-
-/* Mission */
-.mission{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.tag{display:inline-block;background:var(--c);color:#fff;border:3px solid var(--navy);border-radius:999px;padding:2px 14px;font-family:'Fredoka';font-weight:500;font-size:.95rem}
-.materi{background:#fff6c7;border:3px dashed var(--navy);border-radius:14px;padding:12px 14px;margin:14px 0}
-.materi b{font-family:'Fredoka';display:block}
-.q{font-size:1.25rem;font-weight:800}
-.opts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
-.opt{background:#fff;border:3px solid var(--navy);border-radius:14px;padding:14px 10px;box-shadow:4px 4px 0 var(--navy);font-weight:800;transition:transform .12s}
-.opt:hover:not(:disabled){transform:translate(-1px,-1px);background:#eef7ff}
-.opt.right{background:var(--green);color:#fff} .opt.wrong{background:var(--red);color:#fff;animation:shake .35s}
-@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
-.board{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;background:var(--navy);padding:4px;border-radius:14px;max-width:420px;margin:0 auto}
-.cell{aspect-ratio:1;background:#bfe9c8;border-radius:8px;display:grid;place-items:center;position:relative;font-size:clamp(1rem,4vw,1.6rem)}
-.cell:nth-child(even){background:#d6f3dc}
-.cell.goal{background:#ffe7a1}
-.cell.bump{background:#ffb3ab}
-.cell svg{width:82%;height:82%}
-.cell .dir{position:absolute;left:50%;top:1px;width:0;height:0;margin-left:-6px;border:6px solid transparent;border-bottom:9px solid var(--red);border-top:0;transform-origin:6px calc(50% + 0px)}
-.palette,.prog{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 14px}
-.blk{border:3px solid var(--navy);border-radius:10px;padding:6px 12px;background:var(--blue);color:#fff;font-family:'Fredoka';font-weight:500;box-shadow:3px 3px 0 var(--navy)}
-.blk.rep{background:var(--purple)} .blk.turn{background:var(--orange)} .blk.go{background:var(--green)}
-.prog{min-height:64px;background:#f1f7ff;border:3px dashed var(--navy);border-radius:14px;padding:10px;align-content:flex-start}
-.prog:empty::before{content:"Klik blok di atas untuk menyusun program";opacity:.55;font-weight:600}
-.prog .blk{background:var(--yellow);color:var(--navy)} .prog .blk.rep{background:#d9c4f2}
-.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.fb{display:none;margin-top:16px;padding:14px 16px;border:3px solid var(--navy);border-radius:14px;gap:12px;align-items:center}
-.fb.ok{background:#c9f2d3;display:flex} .fb.no{background:#ffd5d0;display:flex}
-.fb svg{width:46px;height:46px;flex:none}
-.fb h4{font-size:1.2rem}
-
-/* Dialog */
-dialog{border:4px solid var(--navy);border-radius:20px;padding:0;box-shadow:8px 8px 0 var(--navy);max-width:440px;width:92%}
-dialog::backdrop{background:rgba(20,38,58,.6)}
-dialog form{padding:22px;display:grid;gap:12px}
-label{font-family:'Fredoka';font-weight:500}
-input,select{width:100%;padding:10px 12px;border:3px solid var(--navy);border-radius:12px;font:inherit}
-footer{border-top:4px solid var(--navy);background:var(--navy);color:#fff;text-align:center;padding:22px 12px;margin-top:20px;font-size:.92rem}
-
-@media(max-width:860px){
-  .hero,.mission{grid-template-columns:1fr}
-  .grade{grid-template-columns:1fr}.grade h3{text-align:left;padding-left:14px}
-  .nodes{grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
-  .node{padding:6px 2px;min-height:84px}.node span.t{font-size:.66rem}
+/* Misi */
+dialog{border:0;border-radius:24px;padding:0;width:96%;max-width:1000px;max-height:94vh;box-shadow:0 20px 60px rgba(20,38,58,.4)}
+dialog::backdrop{background:rgba(20,38,58,.55)}
+.mission{display:grid;grid-template-columns:1fr 1fr;gap:22px;padding:26px}
+.close{position:absolute;right:14px;top:12px;border:1px solid var(--line);background:#fff;border-radius:50%;width:38px;height:38px;z-index:2}
+.tag{display:inline-block;color:#fff;border-radius:999px;padding:2px 14px;font:500 .95rem 'Fredoka'}
+.materi{background:#eef5ff;border-left:6px solid var(--blue);border-radius:12px;padding:12px 14px;margin:12px 0}
+.materi b{font-family:'Fredoka';display:block;color:var(--blue)}
+.q{font-size:1.2rem;font-weight:800;margin:0 0 12px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opt{background:#fff;border:2px solid var(--line);border-radius:14px;padding:14px 8px;font-weight:800;transition:.12s}
+.opt:hover:not(:disabled){border-color:var(--blue);background:#f2f7ff}
+.opt.right{background:var(--green);color:#fff;border-color:var(--green)}.opt.wrong{background:#e04b3f;color:#fff;border-color:#e04b3f;animation:sh .35s}
+@keyframes sh{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.board{display:grid;grid-template-columns:repeat(6,1fr);gap:3px;background:#0b8f52;padding:3px;border-radius:14px;max-width:400px;margin:auto}
+.cell{aspect-ratio:1;background:#7fe3a6;border-radius:6px;display:grid;place-items:center;position:relative;font-size:clamp(1rem,4vw,1.5rem)}
+.cell:nth-child(even){background:#97ecb7}.cell.goal{background:#ffe48a}.cell.bump{background:#ff9d93}
+.cell svg{width:80%;height:80%}.dir{position:absolute;inset:0;display:flex;justify-content:center;font-style:normal;color:#e04b3f;font-size:.7rem;line-height:1}
+.pal,.prog{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 14px}
+.blk{border:0;border-radius:10px;padding:7px 14px;color:#fff;font:500 1rem 'Fredoka';box-shadow:0 3px 0 rgba(0,0,0,.2)}
+.blk.go{background:var(--green)}.blk.turn{background:#f2802b}.blk.rep{background:#8e5bc4}
+.prog{min-height:62px;background:#f2f7ff;border:2px dashed #b9d2ff;border-radius:14px;padding:10px;align-content:flex-start}
+.prog:empty::before{content:"Klik blok di atas untuk menyusun program";color:var(--muted);font-weight:600}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.fb{display:none;margin:0 26px 26px;padding:14px 16px;border-radius:16px;gap:12px;align-items:center}
+.fb.ok{display:flex;background:#d7f6e3}.fb.no{display:flex;background:#ffe1dd}.fb svg{width:46px;flex:none}.fb h4{font-size:1.2rem}
+dialog form{padding:24px;display:grid;gap:12px}
+label{font:500 1rem 'Fredoka'}input,select{width:100%;padding:10px 12px;border:2px solid var(--line);border-radius:12px;font:inherit}
+footer{background:var(--navy);color:#fff;text-align:center;padding:20px 12px;margin-top:30px;font-size:.9rem}
+@media(max-width:800px){
+ .hero,.mission{grid-template-columns:1fr}.hero{justify-items:center;text-align:center}.stats{justify-content:center}
+ .river{display:none}.pop{left:12px;right:12px;width:auto}.tab{display:none}
 }
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 
 <!-- Robot tanpa mata dan tanpa mulut -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="bot" viewBox="0 0 100 118">
-    <g stroke="#14263a" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
-      <path d="M50 4v13" fill="none"/><circle cx="50" cy="5" r="4" fill="#f7d23e"/>
-      <rect x="29" y="17" width="42" height="30" rx="11" fill="#d7e0e8"/>
-      <path d="M31 28q19-8 38 0" fill="none" stroke-width="3"/>
-      <rect x="21" y="27" width="8" height="12" rx="3" fill="#c9803f"/><rect x="71" y="27" width="8" height="12" rx="3" fill="#c9803f"/>
-      <rect x="43" y="47" width="14" height="6" fill="#9aa8b5"/>
-      <rect x="11" y="55" width="13" height="34" rx="6" fill="#d7e0e8"/><rect x="76" y="55" width="13" height="34" rx="6" fill="#d7e0e8"/>
-      <rect x="25" y="53" width="50" height="38" rx="11" fill="currentColor"/>
-      <circle cx="50" cy="72" r="11" fill="#f7d23e"/><path d="M50 65v7l5 3" fill="none" stroke-width="3"/>
-      <rect x="31" y="91" width="15" height="17" rx="5" fill="#c9803f"/><rect x="54" y="91" width="15" height="17" rx="5" fill="#c9803f"/>
-      <rect x="26" y="107" width="22" height="8" rx="4" fill="#9aa8b5"/><rect x="52" y="107" width="22" height="8" rx="4" fill="#9aa8b5"/>
-    </g>
-  </symbol>
+ <symbol id="bot" viewBox="0 0 100 118"><g stroke="#14263a" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <path d="M50 4v13" fill="none"/><circle cx="50" cy="5" r="4" fill="#f7d23e"/>
+  <rect x="29" y="17" width="42" height="30" rx="11" fill="#d7e0e8"/><path d="M31 28q19-8 38 0" fill="none" stroke-width="3"/>
+  <rect x="21" y="27" width="8" height="12" rx="3" fill="#c9803f"/><rect x="71" y="27" width="8" height="12" rx="3" fill="#c9803f"/>
+  <rect x="43" y="47" width="14" height="6" fill="#9aa8b5"/>
+  <rect x="11" y="55" width="13" height="34" rx="6" fill="#d7e0e8"/><rect x="76" y="55" width="13" height="34" rx="6" fill="#d7e0e8"/>
+  <rect x="25" y="53" width="50" height="38" rx="11" fill="currentColor"/>
+  <circle cx="50" cy="72" r="11" fill="#f7d23e"/><path d="M50 65v7l5 3" fill="none" stroke-width="3"/>
+  <rect x="31" y="91" width="15" height="17" rx="5" fill="#c9803f"/><rect x="54" y="91" width="15" height="17" rx="5" fill="#c9803f"/>
+  <rect x="26" y="107" width="22" height="8" rx="4" fill="#9aa8b5"/><rect x="52" y="107" width="22" height="8" rx="4" fill="#9aa8b5"/>
+ </g></symbol>
 </svg>
 
-<header>
-  <div class="wrap bar">
-    <div class="brand">
-      <div class="logo" id="logoBox"><img id="logoImg" src="logo_mujahebot.jpg" alt="Logo MujaHeeBot" width="58" height="58" style="width:100%;height:100%;object-fit:contain"></div>
-      <div><h1>MujaHeeBot Quest</h1><small>SD Muhammadiyah Al Mujahidin Wonosari</small></div>
-    </div>
-    <div class="pill" title="Pangkat"><span id="rank">Teknisi Cilik</span></div>
-    <div class="pill">⭐ Skor <span id="score">0</span></div>
-    <button class="btn warn" id="loginBtn" style="padding:8px 16px">Masuk Siswa</button>
+<nav class="nav"><div class="in">
+ <a class="brand" href="#beranda"><span class="lg" id="lg"><img id="logoImg" src="logo_mujahebot.jpg" alt="Logo MujaHeeBot"></span>mujahebot</a>
+ <a class="tab" href="#beranda">🏠 Beranda</a><a class="tab on" href="#peta">🎮 Tantangan</a>
+ <button class="user sp" id="user"><span id="un">Masuk Siswa</span><span class="av"><svg viewBox="0 0 100 118" style="color:#3b8bd9"><use href="#bot"/></svg></span></button>
+</div></nav>
+
+<section id="beranda" class="wrap hero">
+ <div class="hbot"><svg viewBox="0 0 100 118" style="color:#3b8bd9" role="img" aria-label="Robot MujaHeeBot"><use href="#bot"/></svg></div>
+ <div>
+  <h1>Halo, <span id="hello">Anak Hebat</span>!</h1>
+  <p>Pandu robot MujaHeeBot memecahkan masalah sambil belajar coding, matematika, sains, Al Islam, Kemuhammadiyahan, dan bahasa Arab. Rabbani, Unggul, Mendunia!</p>
+  <div class="stats">
+   <div class="st"><small>Skor</small><b>⭐ <span id="sc">0</span></b></div>
+   <div class="st"><small>Pangkat</small><b id="rk">Teknisi Cilik</b></div>
+   <div class="st"><small>Misi selesai</small><b id="dn">0/72</b></div>
   </div>
-</header>
+ </div>
+</section>
 
-<main class="wrap">
-  <section class="hero">
-    <div>
-      <h2>Belajar Coding Bersama MujaHeeBot!</h2>
-      <p>Halo, <b id="hello">Anak Hebat</b>! Pandu robot MujaHeeBot memecahkan masalah sambil belajar matematika, sains, agama Islam, Kemuhammadiyahan, dan bahasa Arab. 30 misi dari kelas 1 sampai kelas 6 menunggumu. <em>Rabbani, Unggul, Mendunia!</em></p>
-      <div class="chips">
-        <span class="chip" style="--c:var(--blue)">Matematika</span><span class="chip" style="--c:var(--green)">Sains</span>
-        <span class="chip" style="--c:var(--purple)">Al Islam & Kemuhammadiyahan</span><span class="chip" style="--c:var(--orange)">Bahasa Arab</span><span class="chip" style="--c:var(--red)">Coding</span>
-      </div>
-      <a href="#peta"><button class="btn" type="button">Mulai Misi</button></a>
-      <button class="btn alt" type="button" id="resetAll">Ulang dari Awal</button>
-    </div>
-    <div class="hero-art">
-      <svg viewBox="0 0 100 118" style="color:#3b8bd9" role="img" aria-label="Robot MujaHeeBot"><use href="#bot"/></svg>
-      <span class="orb" style="--c:var(--purple);left:2%;top:14%">🕌</span>
-      <span class="orb" style="--c:var(--green);right:0;top:20%">🔬</span>
-      <span class="orb" style="--c:var(--orange);left:6%;bottom:12%"><span class="ar" style="font-size:1.6rem">ع</span></span>
-      <span class="orb" style="--c:var(--red);right:6%;bottom:10%">🧩</span>
-    </div>
-  </section>
-
-  <section class="block" id="peta">
-    <h2 class="sec-title">Peta Misi</h2>
-    <div class="filters" id="filters" role="group" aria-label="Filter mata pelajaran"></div>
-    <div id="map"></div>
-  </section>
-
-  <section class="block" id="misi">
-    <div class="card mission" id="mission"></div>
-    <div id="fb" class="fb" role="status" aria-live="polite"></div>
-  </section>
+<main id="peta" class="wrap">
+ <div class="bar2">
+  <h2>Peta Misi</h2><div class="seg" id="grades" role="group" aria-label="Pilih kelas"></div>
+  <select class="pb" id="subf" aria-label="Filter mapel"></select>
+  <button class="pb sp" id="shuf">🎲 Acak Soal Baru</button>
+  <button class="pb" id="resetAll">Ulang Progres</button>
+ </div>
+ <div class="mapwrap" id="mw"><div class="map" id="map"></div></div>
 </main>
 
 <footer>&copy; 2026 SD Muhammadiyah Al Mujahidin Wonosari. Platform Edukasi Coding Islami MujaHeeBot.</footer>
 
-<dialog id="dlg">
-  <form method="dialog" id="loginForm">
-    <h3>Identitas Petualang</h3>
-    <div><label for="nm">Nama siswa</label><input id="nm" required maxlength="40" placeholder="Tulis namamu"></div>
-    <div><label for="cl">Kelas</label><select id="cl" required></select></div>
-    <div class="row" style="justify-content:flex-end"><button type="button" class="btn alt" id="cancelLogin">Batal</button><button class="btn" value="ok">Simpan</button></div>
-  </form>
-</dialog>
+<dialog id="md"><button class="close" id="mc" aria-label="Tutup">✕</button><div class="mission" id="mission"></div><div id="fb" class="fb" role="status" aria-live="polite"></div></dialog>
+
+<dialog id="dlg"><form method="dialog" id="lf">
+ <h3>Identitas Petualang</h3>
+ <div><label for="nm">Nama siswa</label><input id="nm" required maxlength="40" placeholder="Tulis namamu"></div>
+ <div><label for="cl">Kelas</label><select id="cl" required></select></div>
+ <div class="row" style="justify-content:flex-end"><button type="button" class="pb" id="cx">Batal</button><button class="cta">Simpan</button></div>
+</form></dialog>
 
 <script>
-const SUB={
-  mat:{n:'Matematika',c:'--blue',i:'➕'},
-  sns:{n:'Sains',c:'--green',i:'🔬'},
-  agm:{n:'Al Islam & Kemuhammadiyahan',c:'--purple',i:'🕌'},
-  arb:{n:'Bahasa Arab',c:'--orange',i:'ع'},
-  cod:{n:'Coding',c:'--red',i:'🧩'}
-};
-// q(kelas, mapel, judul, materi, pertanyaan, pilihan, jawaban)
-const q=(g,s,t,m,qq,o,a)=>({g,s,t,m,q:qq,o,a,type:'quiz'});
-// c(kelas, judul, materi, misi, grid)
-const c=(g,t,m,qq,grid)=>({g,s:'cod',t,m,q:qq,type:'code',grid});
-const L=[
- q(1,'mat','Gabung Bintang','Menjumlah artinya menggabungkan. Hitung maju dari angka terbesar: 3, lalu 4, 5.','Berapa hasil 3 + 2?',['4','5','6','7'],'5'),
- q(1,'sns','Napas Sehat','Kita bernapas memakai hidung. Udara masuk lewat hidung menuju paru-paru.','Anggota tubuh yang dipakai untuk bernapas adalah...',['Hidung','Kaki','Telinga','Jari'],'Hidung'),
- q(1,'agm','Doa Sebelum Makan','Setiap memulai kebaikan, kita membaca basmalah agar Allah memberi berkah.','Sebelum makan kita membaca...',['Bismillah','Selamat tidur','Terima kasih','Sampai jumpa'],'Bismillah'),
- q(1,'arb','Huruf Hijaiyyah','Huruf pertama hijaiyyah adalah Alif (ا). Bentuknya seperti garis tegak lurus.','Manakah huruf Alif?',['ب','ا','ت','ث'],'ا'),
- c(1,'Robot Berangkat Sekolah','Algoritma adalah urutan langkah yang rapi. Robot hanya menurut perintah satu per satu.','Pandu robot maju ke masjid sekolah. Perintah Maju membuat robot melangkah satu kotak.',
-   {s:[5,0,1],g:[5,3],o:[[4,1],[3,2]],k:[],gi:'🕌',max:6}),
-
- q(2,'mat','Puluhan Ceria','Jumlahkan puluhan dan satuan. 15 berarti 1 puluhan dan 5 satuan, ditambah 1 puluhan.','Berapa hasil 15 + 10?',['20','25','30','35'],'25'),
- q(2,'sns','Hewan Bertelur','Hewan ovipar berkembang biak dengan bertelur, misalnya ayam, bebek, dan burung.','Hewan yang berkembang biak dengan bertelur adalah...',['Ayam','Kucing','Sapi','Kambing'],'Ayam'),
- q(2,'agm','Rukun Islam','Rukun Islam ada lima. Yang pertama adalah mengucap dua kalimat syahadat.','Rukun Islam yang pertama adalah...',['Syahadat','Shalat','Zakat','Haji'],'Syahadat'),
- q(2,'arb','Kosakata Islami','Bismillah berasal dari kata "bi" (dengan), "ismi" (nama), dan "Allah".','Arti Bismillah adalah...',['Segala puji bagi Allah','Dengan nama Allah','Allah Maha Besar','Jika Allah menghendaki'],'Dengan nama Allah'),
- c(2,'Jalan Menuju Masjid','Ada rintangan di jalan. Robot harus belok. Perintah Kiri dan Kanan memutar robot, panah merah menunjukkan arah hadapnya.','Ambil 1 bintang ilmu, lalu sampai di masjid. Hindari batu!',
-   {s:[5,0,0],g:[3,2],o:[[4,1],[5,2],[2,1]],k:[[3,1]],gi:'🕌',max:8}),
-
- q(3,'mat','Kali Bintang','Perkalian adalah penjumlahan berulang. 4 × 5 = 5 + 5 + 5 + 5.','Berapa hasil 4 × 5?',['15','18','20','25'],'20'),
- q(3,'sns','Tumbuhan Hebat','Tumbuhan hijau membuat makanan sendiri dengan bantuan cahaya matahari. Prosesnya disebut fotosintesis.','Proses tumbuhan membuat makanan sendiri disebut...',['Respirasi','Fotosintesis','Evaporasi','Adaptasi'],'Fotosintesis'),
- q(3,'agm','Kenali Muhammadiyah','Muhammadiyah adalah organisasi Islam yang mengajak umat berilmu dan beramal. Pendirinya KH Ahmad Dahlan.','Pendiri Muhammadiyah adalah...',['KH Ahmad Dahlan','KH Hasyim Asyari','Ir. Soekarno','Ki Hajar Dewantara'],'KH Ahmad Dahlan'),
- q(3,'arb','Tajwid Mad','Mad Thabi\'i terjadi saat ada alif, waw, atau ya mati setelah harakat yang sesuai. Dibaca sepanjang 2 harakat.','Mad Thabi\'i dibaca berapa harakat?',['1 harakat','2 harakat','4 harakat','6 harakat'],'2 harakat'),
- c(3,'Taman Literasi','Pecah masalah besar menjadi langkah kecil. Dua bintang ilmu: 1 + 1 = 2. Kumpulkan keduanya dulu!','Kumpulkan 2 bintang ilmu, lalu menuju perpustakaan.',
-   {s:[5,0,0],g:[2,3],o:[[3,1],[4,2],[2,4],[1,1]],k:[[3,0],[2,1]],gi:'📚',max:9}),
-
- q(4,'mat','Pecahan Senilai','Bagi pembilang dan penyebut dengan angka yang sama. 4/8 dibagi 4 menjadi 1/2.','Bentuk paling sederhana dari 4/8 adalah...',['1/3','1/2','3/4','2/3'],'1/2'),
- q(4,'sns','Wujud Benda','Air cair yang didinginkan sampai 0 derajat Celsius berubah menjadi es.','Perubahan wujud dari cair menjadi padat disebut...',['Mencair','Membeku','Menguap','Menyublim'],'Membeku'),
- q(4,'agm','Sejarah Muhammadiyah','KH Ahmad Dahlan mendirikan Muhammadiyah di Yogyakarta pada 18 November 1912.','Muhammadiyah didirikan pada tahun...',['1812','1912','1945','2012'],'1912'),
- q(4,'arb','Tajwid Nun Sukun','Nun sukun atau tanwin bertemu huruf Ba (ب) dibaca dengung dan berubah menjadi mim. Hukumnya Iqlab.','Nun sukun bertemu huruf Ba (ب) hukumnya...',['Idgham','Iqlab','Izhar','Ikhfa'],'Iqlab'),
- c(4,'Mengulang Itu Hemat','Perulangan (loop) menghemat blok. Daripada Maju 4 kali, pakai Ulang 4x lalu Maju.','Ambil 2 bintang ilmu dan sampai di ruang kelas. Coba pakai blok Ulang!',
-   {s:[5,0,0],g:[1,4],o:[[2,2],[3,3],[4,1],[0,4]],k:[[3,0],[1,2]],gi:'🏫',max:6}),
-
- q(5,'mat','Volume Kubus','Volume kubus = sisi × sisi × sisi. Sisi 5 cm berarti 5 × 5 × 5.','Volume kubus bersisi 5 cm adalah...',['25 cm³','75 cm³','125 cm³','150 cm³'],'125 cm³'),
- q(5,'sns','Sistem Pernapasan','Udara masuk ke hidung, lewat tenggorokan, lalu menuju paru-paru tempat oksigen diserap darah.','Alat pernapasan utama manusia adalah...',['Jantung','Hati','Paru-paru','Ginjal'],'Paru-paru'),
- q(5,'agm','Teologi Al-Ma\'un','KH Ahmad Dahlan mengajarkan Surat Al-Ma\'un berulang-ulang agar santri peduli dan menolong anak yatim serta kaum miskin.','Surat yang diamalkan KH Ahmad Dahlan untuk peduli anak yatim dan fakir miskin adalah...',['Al-Ikhlas','Al-Ma\'un','Al-Fatihah','An-Nas'],'Al-Ma\'un'),
- q(5,'arb','Mufradat Sekolah','Dalam bahasa Arab, buku adalah kitab. Kitabun artinya sebuah buku.','Bahasa Arab dari "buku" adalah...',['Qalamun','Kitabun','Maktabun','Baitun'],'Kitabun'),
- c(5,'Tangga Algoritma','Pola yang berulang membantu memecahkan masalah. Kali ini robot melangkah naik seperti tangga.','Naik tangga ke taman, ambil 1 bintang ilmu di tengah jalan.',
-   {s:[5,0,0],g:[3,2],o:[[4,2],[3,0],[5,1],[2,1]],k:[[4,1]],gi:'🌳',max:9}),
-
- q(6,'mat','Statistika','Rata-rata (mean) = jumlah semua data dibagi banyak data. 8+9+7+8+8 = 40, lalu 40 ÷ 5.','Rata-rata data 8, 9, 7, 8, 8 adalah...',['7','7,5','8','8,5'],'8'),
- q(6,'sns','Tata Surya','Matahari adalah pusat tata surya. Planet paling dekat dengan matahari adalah yang berukuran terkecil.','Planet terdekat dari matahari adalah...',['Venus','Merkurius','Bumi','Mars'],'Merkurius'),
- q(6,'agm','Aisyiyah','Aisyiyah adalah organisasi perempuan Muhammadiyah yang bergerak di bidang pendidikan, kesehatan, dan sosial.','Organisasi perempuan Muhammadiyah bernama...',['Nasyiatul Aisyiyah','Aisyiyah','Hizbul Wathan','Tapak Suci'],'Aisyiyah'),
- q(6,'arb','Ungkapan Terima Kasih','Ucapan terima kasih dalam bahasa Arab adalah Syukran. Jawabannya "Afwan" yang berarti sama-sama.','Arti kata "Syukran" adalah...',['Maaf','Terima kasih','Selamat pagi','Tolong'],'Terima kasih'),
- c(6,'Misi Wisuda Rabbani','Gabungkan belok dan perulangan. Susun program sependek mungkin!','Ambil 2 bintang ilmu dan sampai di panggung wisuda. Rintangan ada di sekitar jalur.',
-   {s:[5,0,0],g:[0,5],o:[[4,1],[3,3],[1,2],[2,4],[4,4]],k:[[5,2],[2,5]],gi:'🎓',max:7})
-];
-L.forEach((l,i)=>l.id=i+1);
-
-const DIRS=[[-1,0],[0,1],[1,0],[0,-1]];
 const $=id=>document.getElementById(id);
-let S={name:'',cls:'',score:0,done:{}},cur=1,filter='all',prog=[],busy=false;
-
-function load(){try{const d=JSON.parse(localStorage.getItem('mujahebot')||'null');if(d)S=Object.assign(S,d)}catch(e){}}
-function save(){try{localStorage.setItem('mujahebot',JSON.stringify(S))}catch(e){}}
-function speak(t){try{if('speechSynthesis' in window){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='id-ID';u.rate=.95;speechSynthesis.speak(u)}}catch(e){}}
+const SUB={mat:{n:'Matematika',c:'#2f7df6',i:'➕'},sns:{n:'Sains',c:'#14b86a',i:'🔬'},agm:{n:'Al Islam & Kemuhammadiyahan',c:'#8e5bc4',i:'🕌'},arb:{n:'Bahasa Arab',c:'#f2802b',i:'ع'},cod:{n:'Coding',c:'#e04b3f',i:'🧩'}};
+const DIRS=[[-1,0],[0,1],[1,0],[0,-1]];
+const T=['mat','sns','agm','arb','cod','mat','sns','agm','arb','cod','mat','cod']; // 12 misi per kelas = 72 misi
+const NM=12,TOT=72,ROW=150;
+const rng=a=>()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
+const shuf=(a,r)=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const botSvg=c=>`<svg viewBox="0 0 100 118" style="color:${c}"><use href="#bot"/></svg>`;
 const isAr=s=>/[\u0600-\u06FF]/.test(s);
-const botSvg=(col)=>`<svg viewBox="0 0 100 118" style="color:${col}"><use href="#bot"/></svg>`;
 
-function header(){
-  $('score').textContent=S.score;
-  const r=S.score>=400?'Rabbani Hero':S.score>=250?'Master Robot':S.score>=100?'Insinyur Muda':'Teknisi Cilik';
-  $('rank').textContent=r;
-  $('hello').textContent=S.name||'Anak Hebat';
-  $('loginBtn').textContent=S.name?'Ganti Profil':'Masuk Siswa';
+/* Bank soal: pertanyaan|benar|salah1|salah2|salah3|materi (tiap mapel 3 jenjang x 4 soal) */
+const BK={
+sns:[[
+'Hewan yang berkembang biak dengan bertelur adalah...|Ayam|Kucing|Sapi|Kambing|Hewan ovipar berkembang biak dengan bertelur.',
+'Bagian tumbuhan yang menyerap air dari tanah adalah...|Akar|Daun|Bunga|Buah|Akar menyerap air dan mineral.',
+'Benda yang memberi cahaya dan panas pada siang hari adalah...|Matahari|Bulan|Awan|Pelangi|Matahari adalah sumber cahaya dan panas bumi.',
+'Indra untuk mencium bau adalah...|Hidung|Mata|Telinga|Kaki|Hidung adalah indra penciuman.'],[
+'Proses tumbuhan membuat makanan sendiri disebut...|Fotosintesis|Respirasi|Evaporasi|Adaptasi|Tumbuhan hijau memakai cahaya matahari untuk membuat makanan.',
+'Perubahan wujud dari cair menjadi padat disebut...|Membeku|Mencair|Menguap|Menyublim|Air didinginkan sampai 0 derajat Celsius menjadi es.',
+'Gaya yang menarik benda jatuh ke bumi adalah gaya...|Gravitasi|Magnet|Gesek|Otot|Gravitasi bumi menarik semua benda ke bawah.',
+'Perubahan wujud dari cair menjadi gas disebut...|Menguap|Membeku|Mengembun|Mencair|Air yang dipanaskan akan menguap.'],[
+'Alat pernapasan utama manusia adalah...|Paru-paru|Jantung|Hati|Ginjal|Paru-paru menyerap oksigen dari udara.',
+'Planet terdekat dari matahari adalah...|Merkurius|Venus|Bumi|Mars|Merkurius adalah planet terkecil dan terdekat dengan matahari.',
+'Bumi berputar pada porosnya sehingga terjadi...|Siang dan malam|Pergantian musim|Pasang surut|Gerhana|Perputaran bumi disebut rotasi.',
+'Zat hijau daun yang berperan dalam fotosintesis disebut...|Klorofil|Stomata|Hemoglobin|Kutikula|Klorofil menangkap cahaya matahari.']],
+agm:[[
+'Sebelum makan kita membaca...|Bismillah|Selamat tidur|Terima kasih|Sampai jumpa|Memulai kebaikan dengan basmalah agar diberkahi Allah.',
+'Rukun Islam yang pertama adalah...|Syahadat|Shalat|Zakat|Haji|Rukun Islam ada lima, dimulai dari dua kalimat syahadat.',
+'Jumlah shalat wajib sehari semalam adalah...|5|3|4|6|Subuh, Zuhur, Asar, Magrib, dan Isya.',
+'Kitab suci umat Islam adalah...|Al-Qur\'an|Injil|Taurat|Zabur|Al-Qur\'an diturunkan kepada Nabi Muhammad SAW.'],[
+'Pendiri Muhammadiyah adalah...|KH Ahmad Dahlan|KH Hasyim Asyari|Ir. Soekarno|Ki Hajar Dewantara|Muhammadiyah mengajak umat berilmu dan beramal.',
+'Muhammadiyah didirikan pada tahun...|1912|1812|1945|2012|KH Ahmad Dahlan mendirikannya di Yogyakarta pada 18 November 1912.',
+'Rasulullah SAW lahir di kota...|Makkah|Madinah|Yogyakarta|Kairo|Nabi Muhammad SAW lahir di Makkah.',
+'Rukun Islam yang kedua adalah...|Shalat|Syahadat|Zakat|Haji|Setelah syahadat, kita menegakkan shalat.'],[
+'Surat yang diamalkan KH Ahmad Dahlan untuk peduli anak yatim adalah...|Al-Ma\'un|Al-Ikhlas|Al-Fatihah|An-Nas|Al-Ma\'un mengajarkan kepedulian kepada yatim dan fakir miskin.',
+'Organisasi perempuan Muhammadiyah bernama...|Aisyiyah|Tapak Suci|Hizbul Wathan|Ikatan Pelajar|Aisyiyah bergerak di bidang pendidikan, kesehatan, dan sosial.',
+'Kepanduan Muhammadiyah bernama...|Hizbul Wathan|Tapak Suci|Aisyiyah|Nasyiah|Hizbul Wathan melatih disiplin dan cinta tanah air.',
+'Sifat wajib Allah yang berarti Maha Kuasa adalah...|Qudrat|Wujud|Ilmu|Hayat|Qudrat berarti kuasa.']],
+arb:[[
+'Arti Bismillah adalah...|Dengan nama Allah|Segala puji bagi Allah|Allah Maha Besar|Jika Allah menghendaki|Bi berarti dengan, ismi berarti nama.',
+'Bahasa Arab dari "ibu" adalah...|Ummun|Abun|Akhun|Ukhtun|Abun artinya ayah, Ummun artinya ibu.',
+'Bahasa Arab dari "buku" adalah...|Kitabun|Qalamun|Baitun|Babun|Qalamun pena, Baitun rumah, Babun pintu.',
+'Bahasa Arab dari "rumah" adalah...|Baitun|Kitabun|Qalamun|Babun|Baitun artinya rumah.'],[
+'Mad Thabi\'i dibaca berapa harakat?|2 harakat|1 harakat|4 harakat|6 harakat|Mad Thabi\'i dibaca panjang 2 harakat.',
+'Nun sukun bertemu huruf Ba (ب) hukumnya...|Iqlab|Idgham|Izhar|Ikhfa|Iqlab dibaca dengung dan berubah menjadi mim.',
+'Arti kata "Madrasatun" adalah...|Sekolah|Masjid|Pasar|Rumah|Madrasatun berarti sekolah.',
+'Arti kata "Syukran" adalah...|Terima kasih|Maaf|Tolong|Selamat pagi|Syukran dipakai untuk berterima kasih.'],[
+'Arti "Shabahal khair" adalah...|Selamat pagi|Selamat malam|Terima kasih|Sampai jumpa|Ucapan salam di pagi hari.',
+'Jawaban dari "Syukran" adalah...|Afwan|Naam|Laa|Marhaban|Afwan berarti sama-sama.',
+'Arti "Marhaban" adalah...|Selamat datang|Maaf|Terima kasih|Selamat tinggal|Marhaban dipakai menyambut tamu.',
+'Bahasa Arab dari angka "satu" adalah...|Wahid|Itsnan|Tsalatsah|Arba\'ah|Wahid satu, Itsnan dua, Tsalatsah tiga.']]
+};
+const AL='ا:Alif,ب:Ba,ت:Ta,ث:Tsa,ج:Jim,ح:Ha,خ:Kha,د:Dal,ذ:Dzal,ر:Ra,ز:Zay,س:Sin,ش:Syin,ص:Shad,ض:Dhad,ط:Tha,ظ:Zha,ع:Ain,غ:Ghain,ف:Fa,ق:Qaf,ك:Kaf,ل:Lam,م:Mim,ن:Nun,و:Waw,ي:Ya'.split(',').map(x=>x.split(':'));
+
+function arl(r){const a=AL[Math.floor(r()*AL.length)],p=shuf(AL.filter(x=>x!==a),r).slice(0,3),m='Huruf hijaiyyah berjumlah 28. Perhatikan bentuk dan titiknya.';
+ return r()<.5?{q:`Manakah huruf ${a[1]}?`,a:a[0],o:[a[0],...p.map(x=>x[0])],m}:{q:`Huruf ${a[0]} dibaca...?`,a:a[1],o:[a[1],...p.map(x=>x[1])],m}}
+function nopts(a,u){const s=new Set([a]);for(const d of[1,-1,2,-2,3,5,-3,10]){if(s.size>=4)break;if(a+d>0)s.add(a+d)}return[...s].map(x=>x+u)}
+function mat(g,r,k){
+ const n=(a,b)=>a+Math.floor(r()*(b-a+1)),o2=k%2;let q,a,u='',m,o;
+ if(g==1){const x=n(1,9),y=n(1,9);q=`${x} + ${y} = ...?`;a=x+y;m='Menjumlah artinya menggabungkan. Hitung maju dari angka yang lebih besar.'}
+ else if(g==2){const x=n(20,70),y=n(11,25);if(o2){q=`${x+y} - ${y} = ...?`;a=x;m='Pengurangan adalah kebalikan dari penjumlahan.'}else{q=`${x} + ${y} = ...?`;a=x+y;m='Jumlahkan satuan dulu, lalu puluhan.'}}
+ else if(g==3){const x=n(3,9),y=n(3,9);if(o2){q=`${x*y} ÷ ${y} = ...?`;a=x;m='Pembagian adalah kebalikan dari perkalian.'}else{q=`${x} × ${y} = ...?`;a=x*y;m='Perkalian adalah penjumlahan berulang.'}}
+ else if(g==4){if(o2){const F=[[1,2],[1,3],[2,3],[1,4],[3,4],[2,5]],[p,d]=F[n(0,5)],f=n(2,4);q=`Bentuk paling sederhana dari ${p*f}/${d*f} adalah...?`;a=p+'/'+d;o=[a,p+'/'+(d+1),(p+1)+'/'+d,d+'/'+p];m='Bagi pembilang dan penyebut dengan angka yang sama.'}
+  else{const x=n(12,25),y=n(3,9);q=`${x} × ${y} = ...?`;a=x*y;m='Kalikan satuan, lalu puluhan, kemudian jumlahkan.'}}
+ else if(g==5){if(o2){const s=n(2,6);q=`Volume kubus dengan sisi ${s} cm adalah...?`;a=s**3;u=' cm³';m='Volume kubus = sisi × sisi × sisi.'}else{const p=n(6,15),l=n(3,9);q=`Luas persegi panjang ${p} cm × ${l} cm adalah...?`;a=p*l;u=' cm²';m='Luas persegi panjang = panjang × lebar.'}}
+ else{if(o2){const m0=n(6,9),ar=shuf([-2,-1,0,1,2],r).map(d=>m0+d);q=`Rata-rata data ${ar.join(', ')} adalah...?`;a=m0;m='Rata-rata = jumlah data dibagi banyak data.'}
+  else{const p=[10,20,25,50][n(0,3)],x=[40,80,120,200][n(0,3)];q=`${p}% dari ${x} adalah...?`;a=x*p/100;m='Persen berarti per seratus. 50% sama dengan setengah.'}}
+ return{q,a:a+u,o:o||nopts(a,u),m}}
+
+/* Generator misi coding: jalur acak dijamin bisa diselesaikan */
+const GN=[['Robot Berangkat Sekolah','🏫'],['Jalan Menuju Masjid','🕌'],['Taman Literasi','📚'],['Laboratorium Sains','🔬'],['Kebun Sekolah','🌳'],['Panggung Rabbani','🎓']];
+function cost(L){const c=Math.floor(L/5)*2+(L%5>=2?2:L%5);return Math.min(L,c)}
+function gen(r,g,boss){
+ for(let t=0;t<60;t++){
+  const len=Math.min(14,3+g+Math.floor(r()*3)+(boss?3:0));let p=[[5,0]],ds=[],cd=0;
+  for(let s=0;s<len;s++){const[pr,pc]=p[p.length-1];
+   const ok=[0,1,2,3].filter(x=>{const a=pr+DIRS[x][0],b=pc+DIRS[x][1];return a>=0&&a<6&&b>=0&&b<6&&!p.some(z=>z[0]==a&&z[1]==b)});
+   if(!ok.length)break;cd=ok.includes(cd)&&r()<.55?cd:ok[Math.floor(r()*ok.length)];p.push([pr+DIRS[cd][0],pc+DIRS[cd][1]]);ds.push(cd)}
+  if(ds.length<len-1||ds.length<3)continue;
+  let d=0,acts=[];ds.forEach(x=>{const f=(x-d+4)%4;if(f==1)acts.push('R');if(f==3)acts.push('L');if(f==2)acts.push('R','R');acts.push('F');d=x});
+  let comp=0,i=0;while(i<acts.length){let j=i;while(acts[j]==acts[i])j++;comp+=cost(j-i);i=j}
+  const mid=shuf(p.slice(1,-1).map((_,i)=>i+1),r),k=mid.slice(0,g<3?1:2).map(i=>p[i]);
+  const free=[];for(let a=0;a<6;a++)for(let b=0;b<6;b++)if(!p.some(z=>z[0]==a&&z[1]==b))free.push([a,b]);
+  return{s:[5,0,0],g:p[p.length-1],k,o:shuf(free,r).slice(0,3+Math.floor(g/2)),max:(g<4?acts.length:comp)+1,gi:GN[Math.floor(r()*GN.length)]}}
 }
 
-function renderFilters(){
-  const f=$('filters');f.innerHTML='';
-  [['all','Semua'],...Object.entries(SUB).map(([k,v])=>[k,v.n])].forEach(([k,n])=>{
-    const b=document.createElement('button');b.textContent=n;b.setAttribute('aria-pressed',filter===k);
-    b.onclick=()=>{filter=k;renderFilters();renderMap()};f.appendChild(b);
-  });
-}
+let S={name:'',cls:'',score:0,done:{},seed:1,grade:1},M=[],cur=null,filter='all',prog=[],busy=false,popId=0;
+function load(){try{const d=JSON.parse(localStorage.getItem('mujahebot2')||'null');if(d)S=Object.assign(S,d)}catch(e){}}
+function save(){try{localStorage.setItem('mujahebot2',JSON.stringify(S))}catch(e){}}
+function speak(t){try{if('speechSynthesis' in window){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='id-ID';u.rate=.95;speechSynthesis.speak(u)}}catch(e){}}
+
+function mk(g,i){
+ const s=T[i],r=rng(S.seed*9973+g*131+i*17),k=T.slice(0,i).filter(x=>x==s).length,band=g<3?0:g<5?1:2;
+ let o={g,i,s,id:(g-1)*NM+i+1,type:'quiz',t:SUB[s].n.split(' ')[0]};
+ if(s=='cod'){const boss=i==11,G=gen(r,g,boss);
+  Object.assign(o,{type:'code',grid:G,t:boss?`Tantangan Akhir Kelas ${g}`:G.gi[0],
+   m:g<4?'Algoritma adalah urutan langkah yang rapi. Maju melangkah satu kotak, Kiri dan Kanan memutar robot.':'Gunakan blok Ulang agar programmu lebih pendek. Ulang 3x lalu Maju berarti melangkah 3 kotak.',
+   q:`Ambil ${G.k.length} bintang ilmu lalu sampai di ${G.gi[0]} ${G.gi[1]}. Hindari batu! Maksimal ${G.max} blok.`})}
+ else{let it;
+  if(s=='mat')it=mat(g,r,k);else if(s=='arb'&&g<3&&k==0)it=arl(r);
+  else{const p=BK[s][band][(k+S.seed+g)%4].split('|');it={q:p[0],a:p[1],o:p.slice(1,5),m:p[5]}}
+  o.t=({mat:'Hitung Cepat',sns:'Sains Seru',agm:'Cahaya Islam',arb:'Arab Asyik'})[s]+' '+(k+1);
+  Object.assign(o,{q:it.q,a:it.a,o:shuf(it.o,r),m:it.m})}
+ return o}
+const build=()=>{M=[];for(let g=1;g<=6;g++)for(let i=0;i<NM;i++)M.push(mk(g,i))};
+const dk=id=>S.seed+':'+id,isDone=id=>!!S.done[dk(id)];
+
+function head(){
+ const dn=M.filter(m=>isDone(m.id)).length;
+ $('sc').textContent=S.score;$('dn').textContent=dn+'/'+TOT;$('hello').textContent=S.name||'Anak Hebat';$('un').textContent=S.name||'Masuk Siswa';
+ $('rk').textContent=S.score>=800?'Rabbani Hero':S.score>=400?'Master Robot':S.score>=150?'Insinyur Muda':'Teknisi Cilik'}
+
+const DEC={
+ tree:c=>`<svg viewBox="0 0 40 62"><rect x="18" y="32" width="5" height="26" rx="2" fill="#2b2f6b"/><circle cx="20" cy="20" r="18" fill="${c}"/><circle cx="13" cy="14" r="2.5" fill="#fff" opacity=".55"/><circle cx="27" cy="24" r="2.5" fill="#ff9d2e"/></svg>`,
+ bld:()=>{let w='';for(let y=0;y<3;y++)for(let x=0;x<4;x++)w+=`<rect x="${10+x*19}" y="${42+y*17}" width="11" height="9" fill="#3a7a8c"/>`;return`<svg viewBox="0 0 100 100"><rect x="3" y="30" width="94" height="68" rx="3" fill="#fff" stroke="#a9d9d0" stroke-width="3"/><rect x="3" y="12" width="94" height="22" rx="3" fill="#4a47a3"/>${w}</svg>`},
+ sol:()=>{let w='';for(let y=0;y<3;y++)for(let x=0;x<3;x++)w+=`<rect x="${4+x*31}" y="${4+y*31}" width="28" height="28" rx="4" fill="#38378a" stroke="#6462c4" stroke-width="2"/>`;return`<svg viewBox="0 0 100 100">${w}</svg>`},
+ pond:()=>`<svg viewBox="0 0 120 70"><ellipse cx="60" cy="38" rx="56" ry="30" fill="#45f0f0"/><ellipse cx="42" cy="34" rx="8" ry="4" fill="#5cc96a"/></svg>`
+};
 
 function renderMap(){
-  const m=$('map');m.innerHTML='';
-  for(let g=1;g<=6;g++){
-    const row=document.createElement('div');row.className='grade';
-    row.innerHTML=`<h3>Kelas ${g}</h3><div class="nodes"></div>`;
-    const nodes=row.querySelector('.nodes');
-    L.filter(l=>l.g===g).forEach(l=>{
-      const s=SUB[l.s];const b=document.createElement('button');
-      b.className='node'+(l.id===cur?' cur':'')+(S.done[l.id]?' done':'')+(filter!=='all'&&filter!==l.s?' dim':'');
-      b.style.setProperty('--c',`var(${s.c})`);
-      b.setAttribute('aria-label',`Misi ${l.id}: ${l.t}, ${s.n}`);
-      b.innerHTML=`<i class="ok">✓</i><span class="ic${l.s==='arb'?' a':''}">${s.i}</span><span class="t">${l.t}</span>`;
-      b.onclick=()=>{cur=l.id;prog=[];renderMap();renderMission();$('misi').scrollIntoView({behavior:'smooth'})};
-      nodes.appendChild(b);
-    });
-    m.appendChild(row);
-  }
-}
+ const g=S.grade,H=NM*ROW+150,r=rng(g*77+3),map=$('map');map.style.height=H+'px';
+ let h='<div class="river"></div><div class="path"></div>',first=-1;
+ for(let i=0;i<NM;i++){const y=70+i*ROW;
+  h+=`<div class="gr" style="top:${y-40}px;height:${170+r()*40}px;${i%2?'left:56%;width:46%':'left:-6%;width:44%'}"></div>`;
+  const kinds=['tree','tree','bld','sol','tree','pond'];
+  for(const side of[0,1]){const kd=kinds[Math.floor(r()*kinds.length)],w=kd=='tree'?42+r()*26:kd=='pond'?90:64+r()*30,x=side?60+r()*24:3+r()*20;
+   h+=`<div class="dc" style="left:${x}%;top:${y+r()*60-10}px;width:${w}px">${kd=='tree'?DEC.tree(['#7ed321','#3fae5a','#a5e03a'][Math.floor(r()*3)]):DEC[kd]()}</div>`}}
+ const list=M.filter(m=>m.g==g);
+ list.forEach((m,i)=>{if(first<0&&!isDone(m.id))first=i});
+ list.forEach((m,i)=>{const y=70+i*ROW,d=isDone(m.id),s=SUB[m.s];
+  h+=`<button class="nd${d?' done':''}${i==first?' now':''}${filter!='all'&&filter!=m.s?' dim':''}" style="top:${y}px;--p:${d?100:0}" data-id="${m.id}" aria-label="Misi ${m.id}: ${m.t}, ${s.n}"><span class="ni">${d?'⭐':m.id}</span><span class="bd" style="background:${s.c}">${s.i}</span></button>`;
+  if(i==first)h+=`<div class="walker" style="left:calc(50% - 140px);top:${y+10}px">${botSvg('#3b8bd9')}</div>`;
+  if(m.id==popId){const mob=innerWidth<=800;
+   h+=`<div class="pop" style="top:${mob?y+84:y-14}px"><button class="x" data-x="1" aria-label="Tutup">✕</button>
+    <small>Tantangan · ${s.n}</small><h3>${m.t}<span>⭐ ${d?(m.type=='code'?25:15):0}/${m.type=='code'?25:15}</span></h3>
+    <p>${m.type=='code'?m.q.split('. ')[0]+'.':m.m.split('. ')[0]+'.'}</p>
+    <div class="plan" id="plan"><b>Materi:</b> ${m.m}</div>
+    <div class="mt"><span>🕒 ${m.type=='code'?'3':'1'} menit</span><span>📍 1 Aktivitas</span></div>
+    <div class="acts"><button class="cta" data-go="${m.id}">Masuk →</button><button class="pb" data-plan="1">Rencana Pelajaran</button></div></div>`}});
+ map.innerHTML=h;
+ map.querySelectorAll('.nd').forEach(b=>b.onclick=()=>{popId=popId==+b.dataset.id?0:+b.dataset.id;renderMap()});
+ const gx=map.querySelector('[data-go]');if(gx)gx.onclick=()=>openM(+gx.dataset.go);
+ const px=map.querySelector('[data-x]');if(px)px.onclick=()=>{popId=0;renderMap()};
+ const pl=map.querySelector('[data-plan]');if(pl)pl.onclick=()=>{const e=$('plan');e.style.display=e.style.display=='block'?'none':'block'};
+ return Math.max(first,0)*ROW}
 
-function renderMission(){
-  const l=L[cur-1],s=SUB[l.s];$('fb').className='fb';$('fb').innerHTML='';
-  const info=`<div>
-    <span class="tag" style="--c:var(${s.c})">Kelas ${l.g} · ${s.n}</span>
-    <h2 style="margin:10px 0 0;font-size:1.7rem">Misi ${l.id}: ${l.t}</h2>
-    <div class="materi"><b>Materi singkat</b>${l.m}</div>
-    <p class="q">${l.q}</p>
-    ${l.type==='code'?'<div id="board" class="board" aria-label="Papan robot"></div>':'<div style="text-align:center;padding:10px"><div style="width:140px;margin:auto">'+botSvg(`var(${s.c})`)+'</div></div>'}
-  </div>`;
-  let work='';
-  if(l.type==='quiz'){
-    work=`<div><h3 style="margin-bottom:12px">Pilih jawabanmu</h3><div class="opts">${l.o.map(o=>`<button class="opt${isAr(o)?' ar':''}" data-v="${o.replace(/"/g,'&quot;')}">${o}</button>`).join('')}</div></div>`;
-  }else{
-    work=`<div><h3>Blok perintah</h3><div class="palette" id="pal"></div>
-      <h3>Programmu <small style="font-weight:600">(klik blok untuk menghapus)</small></h3><div class="prog" id="prog"></div>
-      <div class="row"><button class="btn" id="run">▶ Jalankan</button><button class="btn alt" id="clr">Hapus Semua</button></div>
-      <p style="font-size:.9rem;margin:10px 0 0">Maksimal ${l.grid.max} blok. Blok Ulang menjalankan blok setelahnya beberapa kali.</p></div>`;
-  }
-  $('mission').innerHTML=info+work;
-  if(l.type==='quiz'){
-    document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>answer(b,l));
-  }else{
-    const pal=$('pal');
-    [['Maju','F','go'],['Kiri','L','turn'],['Kanan','R','turn'],['Ulang 2x',2,'rep'],['Ulang 3x',3,'rep'],['Ulang 4x',4,'rep'],['Ulang 5x',5,'rep']].forEach(([n,a,k])=>{
-      const b=document.createElement('button');b.className='blk '+k;b.textContent=n;
-      b.onclick=()=>{if(busy)return;if(prog.length>=l.grid.max){return fbMsg(false,'Blok penuh','Hapus beberapa blok atau pakai Ulang agar lebih hemat.')}prog.push({n,a,k});drawProg()};
-      pal.appendChild(b);
-    });
-    $('run').onclick=()=>runProg(l);$('clr').onclick=()=>{if(busy)return;prog=[];drawProg();drawBoard(l,initState(l))};
-    drawProg();drawBoard(l,initState(l));
-  }
-}
+function renderBar(){
+ const gs=$('grades');gs.innerHTML='';
+ for(let g=1;g<=6;g++){const b=document.createElement('button');b.textContent='Kelas '+g;b.setAttribute('aria-pressed',S.grade==g);b.onclick=()=>{S.grade=g;popId=0;save();renderBar();renderMap();$('mw').scrollTop=0};gs.appendChild(b)}
+ $('subf').innerHTML='<option value="all">Semua mapel</option>'+Object.entries(SUB).map(([k,v])=>`<option value="${k}"${filter==k?' selected':''}>${v.n}</option>`).join('')}
 
-function fbMsg(ok,title,text){
-  const f=$('fb');f.className='fb '+(ok?'ok':'no');
-  f.innerHTML=botSvg(ok?'#3fae5a':'#e04b3f')+`<div><h4>${title}</h4><div>${text}</div></div>`;
-  speak(ok?'Masya Allah, hebat!':'Belum tepat. Ayo coba lagi.');
-}
-function reward(l,pts){
-  if(!S.done[l.id]){S.done[l.id]=true;S.score+=pts;save();header();renderMap()}
-}
-function nextBtn(){
-  if(cur<L.length){const b=document.createElement('button');b.className='btn warn';b.textContent='Misi berikutnya';b.style.marginTop='10px';
-    b.onclick=()=>{cur++;prog=[];renderMap();renderMission()};$('fb').lastElementChild.appendChild(b)}
-}
-
-function answer(btn,l){
-  if(btn.disabled)return;
-  if(btn.dataset.v===l.a){
-    document.querySelectorAll('.opt').forEach(b=>b.disabled=true);btn.classList.add('right');
-    const first=!S.done[l.id];reward(l,15);
-    fbMsg(true,'Jawabanmu benar!',first?'Kamu mendapat +15 poin. Masya Allah!':'Benar lagi! Poin sudah pernah kamu dapat.');nextBtn();
-  }else{
-    btn.classList.add('wrong');setTimeout(()=>btn.classList.remove('wrong'),400);
-    fbMsg(false,'Belum tepat','Baca lagi materi singkat di atas, lalu coba jawaban lain.');
-  }
-}
+/* Misi */
+function openM(id){cur=M[id-1];S.grade=cur.g;prog=[];busy=false;renderBar();renderMap();renderM();if(!$('md').open)$('md').showModal()}
+function renderM(){
+ const l=cur,s=SUB[l.s];$('fb').className='fb';$('fb').innerHTML='';
+ const info=`<div><span class="tag" style="background:${s.c}">Kelas ${l.g} · ${s.n}</span>
+  <h2 style="margin:10px 0 0;font-size:1.7rem">Misi ${l.id}: ${l.t}</h2>
+  <div class="materi"><b>Materi singkat</b>${l.m}</div><p class="q">${l.q}</p>
+  ${l.type=='code'?'<div id="board" class="board" aria-label="Papan robot"></div>':`<div style="width:130px;margin:10px auto">${botSvg(s.c)}</div>`}</div>`;
+ let w;
+ if(l.type=='quiz')w=`<div><h3 style="margin-bottom:12px">Pilih jawabanmu</h3><div class="opts">${l.o.map(o=>`<button class="opt${isAr(o)?' ar':''}" data-v="${o.replace(/"/g,'&quot;')}">${o}</button>`).join('')}</div></div>`;
+ else w=`<div><h3>Blok perintah</h3><div class="pal" id="pal"></div><h3>Programmu <small style="font-weight:600">(klik blok untuk menghapus)</small></h3><div class="prog" id="prog"></div>
+  <div class="row"><button class="cta" id="run">▶ Jalankan</button><button class="pb" id="clr">Hapus Semua</button></div></div>`;
+ $('mission').innerHTML=info+w;
+ if(l.type=='quiz'){document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>answer(b))}
+ else{[['Maju','F','go'],['Kiri','L','turn'],['Kanan','R','turn'],['Ulang 2x',2,'rep'],['Ulang 3x',3,'rep'],['Ulang 4x',4,'rep'],['Ulang 5x',5,'rep']].forEach(([n,a,k])=>{
+   const b=document.createElement('button');b.className='blk '+k;b.textContent=n;
+   b.onclick=()=>{if(busy)return;if(prog.length>=l.grid.max)return fbMsg(false,'Blok penuh','Hapus beberapa blok, atau pakai blok Ulang agar lebih hemat.');prog.push({n,a,k});drawProg()};$('pal').appendChild(b)});
+  $('run').onclick=run;$('clr').onclick=()=>{if(busy)return;prog=[];drawProg();drawBoard(init())};drawProg();drawBoard(init())}}
+function fbMsg(ok,t,x){const f=$('fb');f.className='fb '+(ok?'ok':'no');f.innerHTML=botSvg(ok?'#3fae5a':'#e04b3f')+`<div><h4>${t}</h4><div>${x}</div></div>`;speak(ok?'Masya Allah, hebat!':'Belum tepat. Ayo coba lagi.')}
+function reward(pts){const k=dk(cur.id);if(S.done[k])return false;S.done[k]=1;S.score+=pts;save();head();renderMap();return true}
+function nextBtn(){if(cur.id<TOT){const b=document.createElement('button');b.className='cta';b.textContent='Misi berikutnya →';b.style.marginTop='8px';b.onclick=()=>openM(cur.id+1);$('fb').lastElementChild.appendChild(b)}}
+function answer(btn){
+ if(btn.disabled)return;
+ if(btn.dataset.v===cur.a){document.querySelectorAll('.opt').forEach(b=>b.disabled=true);btn.classList.add('right');
+  const f=reward(15);fbMsg(true,'Jawabanmu benar!',f?'Kamu mendapat +15 poin. Masya Allah!':'Benar lagi! Poin misi ini sudah pernah kamu dapat.');nextBtn()}
+ else{btn.classList.add('wrong');setTimeout(()=>btn.classList.remove('wrong'),400);fbMsg(false,'Belum tepat','Baca lagi materi singkat, lalu coba jawaban lain.')}}
 
 /* Coding */
-function initState(l){return{r:l.grid.s[0],c:l.grid.s[1],d:l.grid.s[2],got:[],bump:null}}
-function drawProg(){
-  const p=$('prog');p.innerHTML='';
-  prog.forEach((t,i)=>{const b=document.createElement('button');b.className='blk '+t.k;b.textContent=t.n;b.onclick=()=>{if(busy)return;prog.splice(i,1);drawProg()};p.appendChild(b)});
-}
-function drawBoard(l,st){
-  const g=l.grid,b=$('board');b.innerHTML='';
-  for(let r=0;r<6;r++)for(let c=0;c<6;c++){
-    const d=document.createElement('div');d.className='cell';
-    const isG=r===g.g[0]&&c===g.g[1];
-    if(isG){d.classList.add('goal');d.textContent=g.gi}
-    else if(g.o.some(o=>o[0]===r&&o[1]===c))d.textContent='🪨';
-    else if(g.k.some((k,i)=>k[0]===r&&k[1]===c&&!st.got.includes(i)))d.textContent='⭐';
-    if(st.r===r&&st.c===c){
-      d.innerHTML=botSvg('#3b8bd9')+`<i class="dir" style="transform:rotate(${st.d*90}deg) translateY(0);top:-1px;left:50%"></i>`;
-      const a=d.querySelector('.dir');a.style.cssText=`position:absolute;width:0;height:0;border:7px solid transparent;border-bottom:10px solid #e04b3f;border-top:0;`+
-        ['left:calc(50% - 7px);top:0;','right:0;top:calc(50% - 5px);transform:rotate(90deg);','left:calc(50% - 7px);bottom:0;transform:rotate(180deg);','left:0;top:calc(50% - 5px);transform:rotate(-90deg);'][st.d];
-      if(st.bump)d.classList.add('bump');
-    }
-    b.appendChild(d);
-  }
-}
+const init=()=>({r:cur.grid.s[0],c:cur.grid.s[1],d:0,got:[],bump:false});
+function drawProg(){const p=$('prog');p.innerHTML='';prog.forEach((t,i)=>{const b=document.createElement('button');b.className='blk '+t.k;b.textContent=t.n;b.onclick=()=>{if(busy)return;prog.splice(i,1);drawProg()};p.appendChild(b)})}
+function drawBoard(st){
+ const g=cur.grid,b=$('board');b.innerHTML='';
+ for(let r=0;r<6;r++)for(let c=0;c<6;c++){const d=document.createElement('div');d.className='cell';
+  if(r==g.g[0]&&c==g.g[1]){d.classList.add('goal');d.textContent=g.gi[1]}
+  else if(g.o.some(o=>o[0]==r&&o[1]==c))d.textContent='🪨';
+  else if(g.k.some((k,i)=>k[0]==r&&k[1]==c&&!st.got.includes(i)))d.textContent='⭐';
+  if(st.r==r&&st.c==c){d.innerHTML=botSvg('#3b8bd9')+`<i class="dir" style="transform:rotate(${st.d*90}deg)">▲</i>`;if(st.bump)d.classList.add('bump')}
+  b.appendChild(d)}}
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-async function runProg(l){
-  if(busy)return;
-  if(!prog.length)return fbMsg(false,'Programmu masih kosong','Klik blok perintah untuk menyusun program.');
-  const acts=[];
-  for(let i=0;i<prog.length;i++){
-    const t=prog[i];
-    if(t.k==='rep'){const n=prog[i+1];if(!n||n.k==='rep')return fbMsg(false,'Blok Ulang belum lengkap','Letakkan Maju, Kiri, atau Kanan tepat setelah blok Ulang.');
-      for(let k=0;k<t.a;k++)acts.push(n.a);i++}
-    else acts.push(t.a);
-  }
-  busy=true;$('run').disabled=true;$('fb').className='fb';
-  const g=l.grid;let st=initState(l);drawBoard(l,st);await sleep(400);let crashed=false;
-  for(const a of acts){
-    if(a==='L')st.d=(st.d+3)%4;else if(a==='R')st.d=(st.d+1)%4;
-    else{
-      const nr=st.r+DIRS[st.d][0],nc=st.c+DIRS[st.d][1];
-      if(nr<0||nc<0||nr>5||nc>5||g.o.some(o=>o[0]===nr&&o[1]===nc)){st.bump=true;crashed=true;drawBoard(l,st);break}
-      st.r=nr;st.c=nc;g.k.forEach((k,i)=>{if(k[0]===nr&&k[1]===nc&&!st.got.includes(i))st.got.push(i)});
-    }
-    drawBoard(l,st);await sleep(450);
-  }
-  busy=false;$('run').disabled=false;
-  const atGoal=st.r===g.g[0]&&st.c===g.g[1],all=st.got.length===g.k.length;
-  if(crashed)fbMsg(false,'Robot menabrak!','Robot membentur batu atau tepi papan. Periksa lagi urutan belok dan langkahmu.');
-  else if(atGoal&&all){const first=!S.done[l.id];reward(l,25);fbMsg(true,'Misi selesai!',first?'Programmu benar. Kamu mendapat +25 poin!':'Programmu benar lagi!');nextBtn()}
-  else if(atGoal)fbMsg(false,'Bintang belum lengkap',`Robot sampai, tetapi baru mengambil ${st.got.length} dari ${g.k.length} bintang ilmu.`);
-  else fbMsg(false,'Belum sampai tujuan','Robot berhenti sebelum sampai. Tambah atau ubah blokmu.');
-}
+async function run(){
+ if(busy)return;const l=cur,g=l.grid;
+ if(!prog.length)return fbMsg(false,'Programmu masih kosong','Klik blok perintah untuk menyusun program.');
+ const acts=[];
+ for(let i=0;i<prog.length;i++){const t=prog[i];
+  if(t.k=='rep'){const n=prog[i+1];if(!n||n.k=='rep')return fbMsg(false,'Blok Ulang belum lengkap','Letakkan Maju, Kiri, atau Kanan tepat setelah blok Ulang.');for(let k=0;k<t.a;k++)acts.push(n.a);i++}else acts.push(t.a)}
+ busy=true;$('run').disabled=true;$('fb').className='fb';
+ const st=init();drawBoard(st);await sleep(400);let crash=false;
+ for(const a of acts){
+  if(a=='L')st.d=(st.d+3)%4;else if(a=='R')st.d=(st.d+1)%4;
+  else{const nr=st.r+DIRS[st.d][0],nc=st.c+DIRS[st.d][1];
+   if(nr<0||nc<0||nr>5||nc>5||g.o.some(o=>o[0]==nr&&o[1]==nc)){st.bump=true;crash=true;drawBoard(st);break}
+   st.r=nr;st.c=nc;g.k.forEach((k,i)=>{if(k[0]==nr&&k[1]==nc&&!st.got.includes(i))st.got.push(i)})}
+  drawBoard(st);await sleep(420)}
+ busy=false;$('run').disabled=false;
+ const at=st.r==g.g[0]&&st.c==g.g[1];
+ if(crash)fbMsg(false,'Robot menabrak!','Robot membentur batu atau tepi papan. Periksa lagi urutan belok dan langkahmu.');
+ else if(at&&st.got.length==g.k.length){const f=reward(25);fbMsg(true,'Misi selesai!',f?'Programmu benar. Kamu mendapat +25 poin!':'Programmu benar lagi!');nextBtn()}
+ else if(at)fbMsg(false,'Bintang belum lengkap',`Robot sampai, tetapi baru mengambil ${st.got.length} dari ${g.k.length} bintang ilmu.`);
+ else fbMsg(false,'Belum sampai tujuan','Robot berhenti sebelum sampai. Tambah atau ubah blokmu.')}
 
-/* Login */
-function initLogin(){
-  const sel=$('cl');sel.innerHTML='<option value="">Pilih kelas</option>';
-  for(let g=1;g<=6;g++)['Champion','Excellent','Brilliant','Olimpiade','Smart'].forEach(n=>sel.insertAdjacentHTML('beforeend',`<option>${g} ${n}</option>`));
-  $('loginBtn').onclick=()=>{$('nm').value=S.name;$('cl').value=S.cls;$('dlg').showModal()};
-  $('cancelLogin').onclick=()=>$('dlg').close();
-  $('loginForm').addEventListener('submit',()=>{S.name=$('nm').value.trim();S.cls=$('cl').value;save();header()});
-  $('resetAll').onclick=()=>{if(confirm('Hapus semua kemajuan di perangkat ini?')){S={name:S.name,cls:S.cls,score:0,done:{}};save();cur=1;header();renderMap();renderMission()}};
-}
+/* Profil dan kontrol */
+function initUI(){
+ const sel=$('cl');sel.innerHTML='<option value="">Pilih kelas</option>';
+ for(let g=1;g<=6;g++)['Champion','Excellent','Brilliant','Olimpiade','Smart'].forEach(n=>sel.insertAdjacentHTML('beforeend',`<option>${g} ${n}</option>`));
+ $('user').onclick=()=>{$('nm').value=S.name;$('cl').value=S.cls;$('dlg').showModal()};
+ $('cx').onclick=()=>$('dlg').close();
+ $('lf').addEventListener('submit',()=>{S.name=$('nm').value.trim();S.cls=$('cl').value;if(S.cls)S.grade=+S.cls[0];save();head();renderBar();renderMap()});
+ $('mc').onclick=()=>$('md').close();$('md').addEventListener('close',()=>{try{speechSynthesis.cancel()}catch(e){}renderMap()});
+ $('subf').onchange=e=>{filter=e.target.value;renderMap()};
+ $('shuf').onclick=()=>{S.seed=Math.floor(Math.random()*90000)+2;popId=0;save();build();head();renderMap();$('mw').scrollTop=0};
+ $('resetAll').onclick=()=>{if(confirm('Hapus semua progres di perangkat ini?')){S.score=0;S.done={};save();head();renderMap()}};
+ $('logoImg').onerror=()=>{$('lg').innerHTML=botSvg('#3b8bd9')}}
 
-/* Logo cadangan jika file gambar tidak ditemukan */
-$('logoImg').onerror=function(){$('logoBox').innerHTML=botSvg('#3b8bd9')};
-
-load();header();initLogin();renderFilters();renderMap();renderMission();
+load();build();initUI();head();renderBar();$('mw').scrollTop=renderMap()-40;
 </script>
 </body>
 </html>
