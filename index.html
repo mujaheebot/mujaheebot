@@ -2,736 +2,428 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MujaHeeBot Coding Quest - SD Muhammadiyah Al Mujahidin</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MujaHeeBot Coding Quest | SD Muhammadiyah Al Mujahidin Wonosari</title>
+<meta name="description" content="Belajar coding, matematika, sains, agama Islam, Kemuhammadiyahan, dan bahasa Arab bersama MujaHeeBot.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Fredoka:wght@400;500;600;700&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
 <style>
-:root {
-    --bg-main: #0a1f1c;
-    --card-bg: #11352d;
-    --panel-bg: #194d40;
-    --accent-green: #10b981;
-    --accent-yellow: #fbbf24;
-    --accent-blue: #3b82f6;
-    --text-light: #ecfdf5;
-    --grid-border: rgba(16, 185, 129, 0.2);
+:root{
+  --navy:#14263a; --yellow:#f7d23e; --sky:#dff1ff; --white:#fff;
+  --blue:#3b8bd9; --green:#3fae5a; --purple:#8e5bc4; --orange:#f2802b; --red:#e04b3f; --copper:#c9803f;
+  --shadow:5px 5px 0 var(--navy);
 }
-body {
-    background-color: var(--bg-main);
-    color: var(--text-light);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    min-height: 100vh;
-}
-.navbar-custom {
-    background: linear-gradient(135deg, #0a332a, #051613);
-    border-bottom: 3px solid var(--accent-green);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.6);
-}
-.school-logo {
-    width: 55px;
-    height: 55px;
-    object-fit: contain;
-    filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.5));
-    border-radius: 50%;
-    background: #fff;
-    padding: 3px;
-}
-.robot-avatar {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, #10b981, #047857);
-    border-radius: 50%;
-    border: 3px solid var(--accent-yellow);
-    box-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
-}
-.robot-badge-logo {
-    position: absolute;
-    bottom: -4px;
-    right: -4px;
-    width: 30px;
-    height: 30px;
-    background: #ffffff;
-    border-radius: 50%;
-    padding: 2px;
-    border: 2px solid var(--accent-green);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-    object-fit: contain;
-}
-.welcome-hero {
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(251, 191, 36, 0.15)), var(--card-bg);
-    border: 2px solid var(--accent-green);
-    border-radius: 16px;
-    padding: 25px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-}
-.badge-score {
-    background: linear-gradient(45deg, #fbbf24, #f59e0b);
-    color: #000;
-    font-weight: 800;
-    font-size: 1.15rem;
-    border-radius: 20px;
-    padding: 8px 20px;
-    box-shadow: 0 0 12px rgba(251, 191, 36, 0.5);
-}
-.quest-card {
-    background: linear-gradient(145deg, var(--card-bg), var(--panel-bg));
-    border: 1px solid rgba(16, 185, 129, 0.3);
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-}
-.level-card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--grid-border);
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.25s ease;
-}
-.level-card:hover {
-    transform: translateX(5px);
-    border-color: var(--accent-yellow);
-    background-color: var(--panel-bg);
-}
-.level-card.active {
-    border: 2px solid var(--accent-yellow);
-    background-color: var(--panel-bg);
-    box-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
-}
-.grid-container {
-    background-color: var(--bg-main);
-    border: 2px solid var(--accent-green);
-    border-radius: 12px;
-    padding: 12px;
-    margin-bottom: 20px;
-}
-.grid-board {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    gap: 6px;
-}
-.grid-cell {
-    aspect-ratio: 1;
-    background-color: #0c2b24;
-    border: 1px solid var(--grid-border);
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: var(--accent-green);
-    transition: all 0.3s ease;
-    position: relative;
-}
-.grid-cell.bot {
-    background-color: #064e3b;
-    border: 2px solid var(--accent-yellow);
-    color: var(--accent-yellow);
-    box-shadow: 0 0 12px rgba(251, 191, 36, 0.6);
-    transform: scale(1.05);
-    z-index: 10;
-}
-.grid-cell.target {
-    background-color: #14532d;
-    border: 2px dashed var(--accent-yellow);
-    color: var(--accent-yellow);
-    font-size: 0.75rem;
-    font-weight: bold;
-    text-align: center;
-}
-.command-blocks-container {
-    background-color: var(--panel-bg);
-    border: 1px solid var(--accent-green);
-    border-radius: 12px;
-    padding: 15px;
-    margin-bottom: 15px;
-}
-.block-btn {
-    color: white;
-    border: none;
-    padding: 10px 16px;
-    margin: 5px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    transition: all 0.2s;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-}
-.block-btn:hover {
-    transform: translateY(-2px) scale(1.03);
-    filter: brightness(1.1);
-}
-.code-area {
-    background-color: var(--bg-main);
-    border: 2px dashed var(--accent-green);
-    border-radius: 10px;
-    min-height: 100px;
-    padding: 15px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    align-content: flex-start;
-}
-.code-area:empty::before {
-    content: "Pilih jawaban atau susun perintah di atas!";
-    color: rgba(236, 253, 245, 0.5);
-    font-style: italic;
-    width: 100%;
-    text-align: center;
-    padding-top: 15px;
-}
-.code-block-placed {
-    padding: 8px 14px;
-    border-radius: 6px;
-    color: #000;
-    font-weight: 700;
-    font-size: 0.95rem;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-.btn-action {
-    background: linear-gradient(45deg, #10b981, #059669);
-    color: #000;
-    font-weight: 800;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 10px;
-    font-size: 1.1rem;
-    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
-}
-.btn-action:hover {
-    background: linear-gradient(45deg, #34d399, #10b981);
-    transform: translateY(-2px);
-}
-.feedback-box {
-    display: none;
-    border-radius: 12px;
-    padding: 18px;
-    margin-top: 15px;
-    animation: fadeIn 0.3s ease-in;
-}
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-.text-success-bright { color: #34d399; }
-.cell-item { font-size: 1.5rem; }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--navy);font-family:'Nunito',system-ui,sans-serif;font-weight:700;font-size:17px;line-height:1.55;
+  background:var(--sky) radial-gradient(rgba(20,38,58,.12) 1.5px,transparent 1.5px) 0 0/24px 24px;min-height:100vh}
+h1,h2,h3,h4{font-family:'Fredoka',sans-serif;margin:0;line-height:1.15}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:4px solid var(--blue);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 18px}
+.ar{font-family:'Amiri',serif;font-size:1.7em;line-height:1.3}
 
-.modal-content-custom {
-    background: linear-gradient(145deg, var(--card-bg), var(--bg-main));
-    border: 2px solid var(--accent-green);
-    color: var(--text-light);
-    border-radius: 16px;
+/* Header */
+header{background:var(--yellow);border-bottom:4px solid var(--navy);position:sticky;top:0;z-index:20}
+.bar{display:flex;align-items:center;gap:14px;padding:10px 0;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;margin-right:auto}
+.logo{width:58px;height:58px;border-radius:50%;background:#fff;border:3px solid var(--navy);object-fit:contain;padding:2px;display:grid;place-items:center;overflow:hidden}
+.logo svg{width:44px;height:44px}
+.brand h1{font-size:1.35rem}
+.brand small{display:block;font-size:.78rem;font-weight:700;opacity:.8}
+.pill{background:#fff;border:3px solid var(--navy);border-radius:999px;padding:6px 16px;font-family:'Fredoka';font-weight:600;box-shadow:3px 3px 0 var(--navy);display:flex;gap:8px;align-items:center}
+.btn{background:var(--green);color:#fff;border:3px solid var(--navy);border-radius:14px;padding:10px 20px;font-family:'Fredoka';font-weight:600;font-size:1.05rem;box-shadow:4px 4px 0 var(--navy);transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translate(-1px,-1px);box-shadow:6px 6px 0 var(--navy)}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--navy)}
+.btn.alt{background:#fff;color:var(--navy)} .btn.warn{background:var(--yellow);color:var(--navy)} .btn.red{background:var(--red)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:center;padding:36px 0 26px}
+.hero h2{font-size:clamp(2rem,5vw,3.2rem);margin-bottom:12px}
+.hero p{max-width:52ch;margin:0 0 20px}
+.hero-art{background:var(--yellow);border:4px solid var(--navy);border-radius:50%;aspect-ratio:1;max-width:360px;margin:auto;display:grid;place-items:center;box-shadow:8px 8px 0 var(--navy);position:relative;width:100%}
+.hero-art svg{width:68%;animation:float 3.5s ease-in-out infinite}
+.hero-art .orb{position:absolute;width:62px;height:62px;border-radius:50%;border:4px solid var(--navy);display:grid;place-items:center;font-size:1.7rem;background:var(--c)}
+@keyframes float{50%{transform:translateY(-12px)}}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.chip{border:3px solid var(--navy);border-radius:999px;padding:3px 14px;background:var(--c);color:#fff;font-family:'Fredoka';font-weight:500;font-size:.95rem}
+
+/* Cards */
+.card{background:#fff;border:3px solid var(--navy);border-radius:20px;box-shadow:var(--shadow);padding:20px}
+section.block{padding:14px 0 26px}
+.sec-title{font-size:1.7rem;margin-bottom:14px}
+
+/* Filter */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.filters button{border:3px solid var(--navy);background:#fff;border-radius:999px;padding:6px 16px;font-family:'Fredoka';font-weight:500;box-shadow:3px 3px 0 var(--navy)}
+.filters button[aria-pressed=true]{background:var(--navy);color:#fff}
+
+/* Map */
+.grade{display:grid;grid-template-columns:110px 1fr;gap:14px;align-items:center;margin-bottom:12px}
+.grade h3{background:var(--yellow);border:3px solid var(--navy);border-radius:14px;padding:8px;text-align:center;font-size:1.15rem}
+.nodes{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.node{position:relative;background:#fff;border:3px solid var(--navy);border-top:10px solid var(--c);border-radius:14px;padding:8px 6px 8px;text-align:center;box-shadow:3px 3px 0 var(--navy);transition:transform .12s;min-height:92px}
+.node:hover{transform:translateY(-3px)}
+.node.cur{background:#fff6c7;box-shadow:3px 3px 0 var(--navy),0 0 0 4px var(--blue)}
+.node.dim{opacity:.28}
+.node .ic{font-size:1.5rem;line-height:1.1;display:block}
+.node .ic.a{font-family:'Amiri';font-size:1.9rem}
+.node span.t{display:block;font-size:.76rem;line-height:1.2;margin-top:3px}
+.node .ok{position:absolute;right:-8px;top:-18px;width:26px;height:26px;border-radius:50%;background:var(--green);border:3px solid var(--navy);color:#fff;font-size:.8rem;display:none;place-items:center}
+.node.done .ok{display:grid}
+
+/* Mission */
+.mission{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.tag{display:inline-block;background:var(--c);color:#fff;border:3px solid var(--navy);border-radius:999px;padding:2px 14px;font-family:'Fredoka';font-weight:500;font-size:.95rem}
+.materi{background:#fff6c7;border:3px dashed var(--navy);border-radius:14px;padding:12px 14px;margin:14px 0}
+.materi b{font-family:'Fredoka';display:block}
+.q{font-size:1.25rem;font-weight:800}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+.opt{background:#fff;border:3px solid var(--navy);border-radius:14px;padding:14px 10px;box-shadow:4px 4px 0 var(--navy);font-weight:800;transition:transform .12s}
+.opt:hover:not(:disabled){transform:translate(-1px,-1px);background:#eef7ff}
+.opt.right{background:var(--green);color:#fff} .opt.wrong{background:var(--red);color:#fff;animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.board{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;background:var(--navy);padding:4px;border-radius:14px;max-width:420px;margin:0 auto}
+.cell{aspect-ratio:1;background:#bfe9c8;border-radius:8px;display:grid;place-items:center;position:relative;font-size:clamp(1rem,4vw,1.6rem)}
+.cell:nth-child(even){background:#d6f3dc}
+.cell.goal{background:#ffe7a1}
+.cell.bump{background:#ffb3ab}
+.cell svg{width:82%;height:82%}
+.cell .dir{position:absolute;left:50%;top:1px;width:0;height:0;margin-left:-6px;border:6px solid transparent;border-bottom:9px solid var(--red);border-top:0;transform-origin:6px calc(50% + 0px)}
+.palette,.prog{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 14px}
+.blk{border:3px solid var(--navy);border-radius:10px;padding:6px 12px;background:var(--blue);color:#fff;font-family:'Fredoka';font-weight:500;box-shadow:3px 3px 0 var(--navy)}
+.blk.rep{background:var(--purple)} .blk.turn{background:var(--orange)} .blk.go{background:var(--green)}
+.prog{min-height:64px;background:#f1f7ff;border:3px dashed var(--navy);border-radius:14px;padding:10px;align-content:flex-start}
+.prog:empty::before{content:"Klik blok di atas untuk menyusun program";opacity:.55;font-weight:600}
+.prog .blk{background:var(--yellow);color:var(--navy)} .prog .blk.rep{background:#d9c4f2}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.fb{display:none;margin-top:16px;padding:14px 16px;border:3px solid var(--navy);border-radius:14px;gap:12px;align-items:center}
+.fb.ok{background:#c9f2d3;display:flex} .fb.no{background:#ffd5d0;display:flex}
+.fb svg{width:46px;height:46px;flex:none}
+.fb h4{font-size:1.2rem}
+
+/* Dialog */
+dialog{border:4px solid var(--navy);border-radius:20px;padding:0;box-shadow:8px 8px 0 var(--navy);max-width:440px;width:92%}
+dialog::backdrop{background:rgba(20,38,58,.6)}
+dialog form{padding:22px;display:grid;gap:12px}
+label{font-family:'Fredoka';font-weight:500}
+input,select{width:100%;padding:10px 12px;border:3px solid var(--navy);border-radius:12px;font:inherit}
+footer{border-top:4px solid var(--navy);background:var(--navy);color:#fff;text-align:center;padding:22px 12px;margin-top:20px;font-size:.92rem}
+
+@media(max-width:860px){
+  .hero,.mission{grid-template-columns:1fr}
+  .grade{grid-template-columns:1fr}.grade h3{text-align:left;padding-left:14px}
+  .nodes{grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+  .node{padding:6px 2px;min-height:84px}.node span.t{font-size:.66rem}
 }
-.modal-content-custom .form-control,
-.modal-content-custom .form-select {
-    background-color: #081a17;
-    border: 1px solid var(--accent-green);
-    color: #fff;
-}
-.modal-content-custom .form-control:focus,
-.modal-content-custom .form-select:focus {
-    background-color: #081a17;
-    border-color: var(--accent-yellow);
-    color: #fff;
-    box-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
-}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
-<body class="pb-5">
+<body>
 
-<!-- Header & Navbar -->
-<nav class="navbar navbar-custom py-3 mb-4">
-<div class="container d-flex justify-content-between align-items-center">
-    <div class="d-flex align-items-center gap-3">
-        <img src="https://lh3.googleusercontent.com/d/1B_M_i63n6p7h9c-kI8M69t5m4Lh9S0R5" alt="Logo Mujahebot" class="school-logo" onerror="this.src='https://lh3.googleusercontent.com/d/1nBO66TKYu_Nzv4XckDaRZJGCqmbqjWS1'">
-        <div>
-            <h4 class="m-0 fw-bold text-success-bright">MujaHeeBot Quest</h4>
-            <small class="text-light opacity-75">SD Muhammadiyah Al Mujahidin Wonosari</small>
-        </div>
+<!-- Robot tanpa mata dan tanpa mulut -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="bot" viewBox="0 0 100 118">
+    <g stroke="#14263a" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M50 4v13" fill="none"/><circle cx="50" cy="5" r="4" fill="#f7d23e"/>
+      <rect x="29" y="17" width="42" height="30" rx="11" fill="#d7e0e8"/>
+      <path d="M31 28q19-8 38 0" fill="none" stroke-width="3"/>
+      <rect x="21" y="27" width="8" height="12" rx="3" fill="#c9803f"/><rect x="71" y="27" width="8" height="12" rx="3" fill="#c9803f"/>
+      <rect x="43" y="47" width="14" height="6" fill="#9aa8b5"/>
+      <rect x="11" y="55" width="13" height="34" rx="6" fill="#d7e0e8"/><rect x="76" y="55" width="13" height="34" rx="6" fill="#d7e0e8"/>
+      <rect x="25" y="53" width="50" height="38" rx="11" fill="currentColor"/>
+      <circle cx="50" cy="72" r="11" fill="#f7d23e"/><path d="M50 65v7l5 3" fill="none" stroke-width="3"/>
+      <rect x="31" y="91" width="15" height="17" rx="5" fill="#c9803f"/><rect x="54" y="91" width="15" height="17" rx="5" fill="#c9803f"/>
+      <rect x="26" y="107" width="22" height="8" rx="4" fill="#9aa8b5"/><rect x="52" y="107" width="22" height="8" rx="4" fill="#9aa8b5"/>
+    </g>
+  </symbol>
+</svg>
+
+<header>
+  <div class="wrap bar">
+    <div class="brand">
+      <div class="logo" id="logoBox"><img id="logoImg" src="logo_mujahebot.jpg" alt="Logo MujaHeeBot" width="58" height="58" style="width:100%;height:100%;object-fit:contain"></div>
+      <div><h1>MujaHeeBot Quest</h1><small>SD Muhammadiyah Al Mujahidin Wonosari</small></div>
     </div>
-    <div class="d-flex align-items-center gap-3">
-        <div id="userProfileDisplay" class="d-none text-end">
-            <span id="displayStudentName" class="fw-bold d-block text-warning" style="font-size: 0.95rem;">-</span>
-            <small id="displayStudentClass" class="text-light opacity-75">-</small>
-        </div>
-        <button class="btn btn-sm btn-outline-warning rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#loginModal">
-            <i class="fa-solid fa-user me-1"></i> <span id="loginBtnText">Login Siswa</span>
-        </button>
-        <span class="badge-score"><i class="fa-solid fa-star me-2"></i> Skor: <span id="scoreDisplay">0</span></span>
+    <div class="pill" title="Pangkat"><span id="rank">Teknisi Cilik</span></div>
+    <div class="pill">⭐ Skor <span id="score">0</span></div>
+    <button class="btn warn" id="loginBtn" style="padding:8px 16px">Masuk Siswa</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <h2>Belajar Coding Bersama MujaHeeBot!</h2>
+      <p>Halo, <b id="hello">Anak Hebat</b>! Pandu robot MujaHeeBot memecahkan masalah sambil belajar matematika, sains, agama Islam, Kemuhammadiyahan, dan bahasa Arab. 30 misi dari kelas 1 sampai kelas 6 menunggumu. <em>Rabbani, Unggul, Mendunia!</em></p>
+      <div class="chips">
+        <span class="chip" style="--c:var(--blue)">Matematika</span><span class="chip" style="--c:var(--green)">Sains</span>
+        <span class="chip" style="--c:var(--purple)">Al Islam & Kemuhammadiyahan</span><span class="chip" style="--c:var(--orange)">Bahasa Arab</span><span class="chip" style="--c:var(--red)">Coding</span>
+      </div>
+      <a href="#peta"><button class="btn" type="button">Mulai Misi</button></a>
+      <button class="btn alt" type="button" id="resetAll">Ulang dari Awal</button>
     </div>
-</div>
-</nav>
-
-<div class="container">
-    <!-- Welcome Hero Banner -->
-    <div class="welcome-hero mb-4">
-        <div class="row align-items-center">
-            <div class="col-md-2 text-center mb-3 mb-md-0">
-                <div class="robot-avatar">
-                    <i class="fa-solid fa-robot fa-3x text-warning"></i>
-                    <img src="https://lh3.googleusercontent.com/d/1B_M_i63n6p7h9c-kI8M69t5m4Lh9S0R5" alt="Logo Emblem" class="robot-badge-logo" onerror="this.src='https://lh3.googleusercontent.com/d/1nBO66TKYu_Nzv4XckDaRZJGCqmbqjWS1'">
-                </div>
-            </div>
-            <div class="col-md-7">
-                <h3 class="fw-bold text-warning mb-2"><i class="fa-solid fa-hand-wave me-2"></i> Selamat Datang, <span id="welcomeNameText">Anak-Anak Hebat!</span></h3>
-                <p class="m-0 fs-6 leading-relaxed">
-                    Platform Edukasi Coding & Kuis Interaktif (Kelas 1 s.d. Kelas 6) SD Muhammadiyah Al Mujahidin Wonosari. Selesaikan kuis angka, huruf hijaiyyah, hingga tantangan grid robot! <em>Rabbani, Unggul, Mendunia!</em>
-                </p>
-            </div>
-            <div class="col-md-3 text-md-end mt-3 mt-md-0">
-                <a href="#questSection" class="btn btn-warning fw-bold px-4 py-2 text-dark rounded-pill shadow">
-                    <i class="fa-solid fa-gamepad me-2"></i> Mulai Misi!
-                </a>
-            </div>
-        </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 100 118" style="color:#3b8bd9" role="img" aria-label="Robot MujaHeeBot"><use href="#bot"/></svg>
+      <span class="orb" style="--c:var(--purple);left:2%;top:14%">🕌</span>
+      <span class="orb" style="--c:var(--green);right:0;top:20%">🔬</span>
+      <span class="orb" style="--c:var(--orange);left:6%;bottom:12%"><span class="ar" style="font-size:1.6rem">ع</span></span>
+      <span class="orb" style="--c:var(--red);right:6%;bottom:10%">🧩</span>
     </div>
+  </section>
 
-    <!-- Main Content Grid -->
-    <div id="questSection" class="row g-4">
-        <!-- Left Sidebar: Level List (30 Levels: 6 Grades x 5 Levels) -->
-        <div class="col-lg-3">
-            <div class="quest-card">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h5 class="fw-bold text-warning m-0"><i class="fa-solid fa-map me-2"></i> Daftar Misi</h5>
-                    <span class="badge bg-success">30 Level</span>
-                </div>
-                <div id="levelList" class="d-flex flex-column gap-2" style="max-height: 600px; overflow-y: auto; padding-right: 5px;">
-                    <!-- Generated dynamically -->
-                </div>
-            </div>
-        </div>
+  <section class="block" id="peta">
+    <h2 class="sec-title">Peta Misi</h2>
+    <div class="filters" id="filters" role="group" aria-label="Filter mata pelajaran"></div>
+    <div id="map"></div>
+  </section>
 
-        <!-- Right Panel: Challenge Workstation -->
-        <div class="col-lg-9">
-            <div class="row g-3">
-                <!-- Left Sub-panel: Question / Grid Container -->
-                <div class="col-md-7">
-                    <div class="quest-card h-100">
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <span id="badgeLevel" class="badge bg-warning text-dark px-3 py-2 fw-bold">Level</span>
-                            <h5 id="questTitle" class="fw-bold text-success-bright m-0 text-end">Judul Tantangan</h5>
-                        </div>
-                        <div class="p-3 mb-3 rounded" style="background-color: rgba(0,0,0,0.2); border-left: 4px solid var(--accent-blue);">
-                            <small class="text-muted d-block mb-1"><i class="fa-solid fa-bullseye me-1"></i> Pertanyaan / Misi Utama:</small>
-                            <span id="questQuestion" class="fw-bold text-light fs-5">-</span>
-                        </div>
-                        
-                        <!-- GRID ROBOT (Hanya tampil jika tipe misi adalah coding_grid) -->
-                        <div id="gridWrapper" class="grid-container" style="display: none;">
-                            <div id="gridBoard" class="grid-board"></div>
-                        </div>
+  <section class="block" id="misi">
+    <div class="card mission" id="mission"></div>
+    <div id="fb" class="fb" role="status" aria-live="polite"></div>
+  </section>
+</main>
 
-                        <!-- ILUSTRASI KUIS (Tampil jika tipe kuis tebak angka/huruf) -->
-                        <div id="quizBannerWrapper" class="text-center py-5 my-auto" style="background: rgba(0,0,0,0.15); border-radius: 12px; border: 1px dashed var(--accent-green);">
-                            <i id="quizBannerIcon" class="fa-solid fa-brain fa-4x text-warning mb-3"></i>
-                            <h4 id="quizBannerText" class="text-success-bright fw-bold m-0">Pilih Jawaban yang Tepat di Samping!</h4>
-                        </div>
-                    </div>
-                </div>
+<footer>&copy; 2026 SD Muhammadiyah Al Mujahidin Wonosari. Platform Edukasi Coding Islami MujaHeeBot.</footer>
 
-                <!-- Right Sub-panel: Options / Coding Area -->
-                <div class="col-md-5">
-                    <div class="quest-card h-100 d-flex flex-column">
-                        <h6 class="fw-bold text-warning mb-2"><i class="fa-solid fa-cubes me-1"></i> <span id="blockAreaTitle">Pilihan Jawaban</span></h6>
-                        <div id="commandBlocks" class="command-blocks-container d-flex flex-wrap gap-2"></div>
+<dialog id="dlg">
+  <form method="dialog" id="loginForm">
+    <h3>Identitas Petualang</h3>
+    <div><label for="nm">Nama siswa</label><input id="nm" required maxlength="40" placeholder="Tulis namamu"></div>
+    <div><label for="cl">Kelas</label><select id="cl" required></select></div>
+    <div class="row" style="justify-content:flex-end"><button type="button" class="btn alt" id="cancelLogin">Batal</button><button class="btn" value="ok">Simpan</button></div>
+  </form>
+</dialog>
 
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <h6 class="fw-bold text-success-bright m-0"><i class="fa-solid fa-code me-1"></i> <span id="selectedAreaTitle">Jawaban Terpilih</span></h6>
-                            <button class="btn btn-sm btn-outline-danger" onclick="resetCode()"><i class="fa-solid fa-trash-can me-1"></i> Hapus</button>
-                        </div>
-                        <div id="codeArea" class="code-area flex-grow-1 mb-3"></div>
-
-                        <!-- Run Button -->
-                        <div class="d-flex gap-2 mt-auto">
-                            <button class="btn btn-action flex-grow-1" onclick="runCode()"><i class="fa-solid fa-play me-2"></i> CEK JAWABAN</button>
-                            <button class="btn btn-outline-light px-3" title="Ulangi" onclick="resetBotPosition()"><i class="fa-solid fa-rotate-right"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Feedback Box -->
-            <div id="feedbackBox" class="feedback-box">
-                <div class="d-flex align-items-center gap-3">
-                    <i id="feedbackIcon" class="fa-solid fa-circle-check fa-3x"></i>
-                    <div>
-                        <h5 id="feedbackTitle" class="fw-bold m-0">Respon MujaHeeBot:</h5>
-                        <p id="feedbackText" class="m-0 mt-1 fs-5"></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <footer class="text-center mt-5 text-muted small border-top pt-4">
-        <p>&copy; 2026 SD Muhammadiyah Al Mujahidin Wonosari | Platform Digital Coding & Edukasi Rabbani</p>
-    </footer>
-</div>
-
-<!-- MODAL LOGIN SISWA (30 KELAS LENGKAP) -->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered">
-<div class="modal-content modal-content-custom">
-    <div class="modal-header border-bottom border-success">
-        <h5 class="modal-title text-warning fw-bold" id="loginModalLabel">
-            <i class="fa-solid fa-user-astronaut me-2"></i> Identitas Petualang Siswa
-        </h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-    </div>
-    <form id="loginForm" onsubmit="handleLogin(event)">
-        <div class="modal-body">
-            <div class="mb-3">
-                <label for="studentName" class="form-label fw-bold">Nama Lengkap Siswa</label>
-                <input type="text" class="form-control" id="studentName" value="Ananda Hebat" placeholder="Masukkan nama..." required>
-            </div>
-            <div class="mb-3">
-                <label for="studentClass" class="form-label fw-bold">Kelas / Paralel</label>
-                <select id="studentClass" class="form-select" required>
-                    <option value="">-- Pilih Kelas --</option>
-                    <option value="1 Champion" selected>1 Champion</option>
-                    <option value="1 Excellent">1 Excellent</option>
-                    <option value="1 Brilliant">1 Brilliant</option>
-                    <option value="1 Olimpiade">1 Olimpiade</option>
-                    <option value="1 Smart">1 Smart</option>
-                    <option value="2 Champion">2 Champion</option>
-                    <option value="2 Excellent">2 Excellent</option>
-                    <option value="2 Brilliant">2 Brilliant</option>
-                    <option value="2 Olimpiade">2 Olimpiade</option>
-                    <option value="2 Smart">2 Smart</option>
-                    <option value="3 Champion">3 Champion</option>
-                    <option value="3 Excellent">3 Excellent</option>
-                    <option value="3 Brilliant">3 Brilliant</option>
-                    <option value="3 Olimpiade">3 Olimpiade</option>
-                    <option value="3 Smart">3 Smart</option>
-                    <option value="4 Champion">4 Champion</option>
-                    <option value="4 Excellent">4 Excellent</option>
-                    <option value="4 Brilliant">4 Brilliant</option>
-                    <option value="4 Olimpiade">4 Olimpiade</option>
-                    <option value="4 Smart">4 Smart</option>
-                    <option value="5 Champion">5 Champion</option>
-                    <option value="5 Excellent">5 Excellent</option>
-                    <option value="5 Brilliant">5 Brilliant</option>
-                    <option value="5 Olimpiade">5 Olimpiade</option>
-                    <option value="5 Smart">5 Smart</option>
-                    <option value="6 Champion">6 Champion</option>
-                    <option value="6 Excellent">6 Excellent</option>
-                    <option value="6 Brilliant">6 Brilliant</option>
-                    <option value="6 Olimpiade">6 Olimpiade</option>
-                    <option value="6 Smart">6 Smart</option>
-                </select>
-            </div>
-        </div>
-        <div class="modal-footer border-top border-success">
-            <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Batal</button>
-            <button type="submit" class="btn btn-warning fw-bold text-dark px-4">Simpan & Mulai</button>
-        </div>
-    </form>
-</div>
-</div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-// --- 30 LEVEL LENGKAP: KELAS 1 SAMPAI KELAS 6 (MASING-MASING 5 LEVEL)
-const levels = [
-    // --- KELAS 1 ---
-    { id: 1, grade: "Kelas 1", type: "quiz", title: "Tebak Angka Dasar", question: "Berapa hasil dari penjumlahan 3 + 2?", answer: "5", commands: ["3", "4", "5", "6"] },
-    { id: 2, grade: "Kelas 1", type: "quiz", title: "Penjumlahan Ceria", question: "Hitunglah benda: 4 + 4 = ...?", answer: "8", commands: ["6", "7", "8", "9"] },
-    { id: 3, grade: "Kelas 1", type: "quiz", title: "Mengenal Huruf Hijaiyyah 1", question: "Manakah huruf Alif (ا) yang benar?", answer: "ا", commands: ["ب", "ا", "ت", "ث"] },
-    { id: 4, grade: "Kelas 1", type: "quiz", title: "Mengenal Huruf Hijaiyyah 2", question: "Manakah huruf Ba' (ب) yang benar?", answer: "ب", commands: ["ا", "ب", "ج", "د"] },
-    { id: 5, grade: "Kelas 1", type: "coding_grid", title: "Langkah Pertama Robot", question: "Pandu MujaHeeBot berjalan maju ke sekolah (T)!", answer: ["Maju 1", "Maju 1", "Maju 1"], commands: ["Maju 1", "Belok Kanan", "Belok Kiri"], startPos: [7, 0], targetPos: [7, 3], map: [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],['S',0,0,'T',0,0,0,0]] },
+const SUB={
+  mat:{n:'Matematika',c:'--blue',i:'➕'},
+  sns:{n:'Sains',c:'--green',i:'🔬'},
+  agm:{n:'Al Islan & Kemuhammadiyahan',c:'--purple',i:'🕌'},
+  arb:{n:'Bahasa Arab',c:'--orange',i:'ع'},
+  cod:{n:'Coding',c:'--red',i:'🧩'}
+};
+// q(kelas, mapel, judul, materi, pertanyaan, pilihan, jawaban)
+const q=(g,s,t,m,qq,o,a)=>({g,s,t,m,q:qq,o,a,type:'quiz'});
+// c(kelas, judul, materi, misi, grid)
+const c=(g,t,m,qq,grid)=>({g,s:'cod',t,m,q:qq,type:'code',grid});
+const L=[
+ q(1,'mat','Gabung Bintang','Menjumlah artinya menggabungkan. Hitung maju dari angka terbesar: 3, lalu 4, 5.','Berapa hasil 3 + 2?',['4','5','6','7'],'5'),
+ q(1,'sns','Napas Sehat','Kita bernapas memakai hidung. Udara masuk lewat hidung menuju paru-paru.','Anggota tubuh yang dipakai untuk bernapas adalah...',['Hidung','Kaki','Telinga','Jari'],'Hidung'),
+ q(1,'agm','Doa Sebelum Makan','Setiap memulai kebaikan, kita membaca basmalah agar Allah memberi berkah.','Sebelum makan kita membaca...',['Bismillah','Selamat tidur','Terima kasih','Sampai jumpa'],'Bismillah'),
+ q(1,'arb','Huruf Hijaiyyah','Huruf pertama hijaiyyah adalah Alif (ا). Bentuknya seperti garis tegak lurus.','Manakah huruf Alif?',['ب','ا','ت','ث'],'ا'),
+ c(1,'Robot Berangkat Sekolah','Algoritma adalah urutan langkah yang rapi. Robot hanya menurut perintah satu per satu.','Pandu robot maju ke masjid sekolah. Perintah Maju membuat robot melangkah satu kotak.',
+   {s:[5,0,1],g:[5,3],o:[[4,1],[3,2]],k:[],gi:'🕌',max:6}),
 
-    // --- KELAS 2 ---
-    { id: 6, grade: "Kelas 2", type: "quiz", title: "Tebak Angka Puluhan", question: "Berapa hasil dari 15 + 10?", answer: "25", commands: ["20", "25", "30", "35"] },
-    { id: 7, grade: "Kelas 2", type: "quiz", title: "Pengurangan Sederhana", question: "Berapa hasil dari 18 - 7?", answer: "11", commands: ["9", "10", "11", "12"] },
-    { id: 8, grade: "Kelas 2", type: "quiz", title: "Sambung Huruf Hijaiyyah", question: "Manakah huruf Jim (ج)?", answer: "ج", commands: ["ح", "ج", "خ", "د"] },
-    { id: 9, grade: "Kelas 2", type: "quiz", title: "Kosa Kata Islami", question: "Arti dari kata 'Bismillah' adalah...?", answer: "Dengan nama Allah", commands: ["Alhamdulillah", "Dengan nama Allah", "Allahu Akbar", "InsyaAllah"] },
-    { id: 10, grade: "Kelas 2", type: "coding_grid", title: "Labirin Kantin Sekolah", question: "Bantu robot melewati rintangan menuju Kantin (T)!", answer: ["Maju 2", "Belok Kanan", "Maju 1"], commands: ["Maju 1", "Maju 2", "Belok Kiri", "Belok Kanan"], startPos: [7, 0], targetPos: [5, 2], map: [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,'T',0,0,0,0,0],[0,1,0,0,0,0,0,0],['S',0,0,0,0,0,0,0]] },
+ q(2,'mat','Puluhan Ceria','Jumlahkan puluhan dan satuan. 15 berarti 1 puluhan dan 5 satuan, ditambah 1 puluhan.','Berapa hasil 15 + 10?',['20','25','30','35'],'25'),
+ q(2,'sns','Hewan Bertelur','Hewan ovipar berkembang biak dengan bertelur, misalnya ayam, bebek, dan burung.','Hewan yang berkembang biak dengan bertelur adalah...',['Ayam','Kucing','Sapi','Kambing'],'Ayam'),
+ q(2,'agm','Rukun Islam','Rukun Islam ada lima. Yang pertama adalah mengucap dua kalimat syahadat.','Rukun Islam yang pertama adalah...',['Syahadat','Shalat','Zakat','Haji'],'Syahadat'),
+ q(2,'arb','Kosakata Islami','Bismillah berasal dari kata "bi" (dengan), "ismi" (nama), dan "Allah".','Arti Bismillah adalah...',['Segala puji bagi Allah','Dengan nama Allah','Allah Maha Besar','Jika Allah menghendaki'],'Dengan nama Allah'),
+ c(2,'Jalan Menuju Masjid','Ada rintangan di jalan. Robot harus belok. Perintah Kiri dan Kanan memutar robot, panah merah menunjukkan arah hadapnya.','Ambil 1 bintang ilmu, lalu sampai di masjid. Hindari batu!',
+   {s:[5,0,0],g:[3,2],o:[[4,1],[5,2],[2,1]],k:[[3,1]],gi:'🕌',max:8}),
 
-    // --- KELAS 3 ---
-    { id: 11, grade: "Kelas 3", type: "quiz", title: "Perkalian Dasar", question: "Berapa hasil dari 4 × 5?", answer: "20", commands: ["15", "18", "20", "25"] },
-    { id: 12, grade: "Kelas 3", type: "quiz", title: "Pembagian Dasar", question: "Berapa hasil dari 24 ÷ 3?", answer: "8", commands: ["6", "7", "8", "9"] },
-    { id: 13, grade: "Kelas 3", type: "quiz", title: "Hukum Bacaan Mad", question: "Mad Thabi'i dibaca panjang berapa harakat?", answer: "2 harakat", commands: ["1 harakat", "2 harakat", "4 harakat", "6 harakat"] },
-    { id: 14, grade: "Kelas 3", type: "quiz", title: "Rukun Islam", question: "Rukun Islam yang kedua adalah...?", answer: "Shalat", commands: ["Syahadat", "Shalat", "Zakat", "Haji"] },
-    { id: 15, grade: "Kelas 3", type: "coding_grid", title: "Taman Literasi Al Mujahidin", question: "Gunakan perintah terstruktur mencapai titik (T)!", answer: ["Maju 3", "Belok Kiri", "Maju 2"], commands: ["Maju 1", "Maju 2", "Maju 3", "Belok Kiri", "Belok Kanan"], startPos: [7, 0], targetPos: [5, 3], map: [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,'T',0,0,0,0],[0,0,0,0,0,0,0,0],['S',0,0,0,0,0,0,0]] },
+ q(3,'mat','Kali Bintang','Perkalian adalah penjumlahan berulang. 4 × 5 = 5 + 5 + 5 + 5.','Berapa hasil 4 × 5?',['15','18','20','25'],'20'),
+ q(3,'sns','Tumbuhan Hebat','Tumbuhan hijau membuat makanan sendiri dengan bantuan cahaya matahari. Prosesnya disebut fotosintesis.','Proses tumbuhan membuat makanan sendiri disebut...',['Respirasi','Fotosintesis','Evaporasi','Adaptasi'],'Fotosintesis'),
+ q(3,'agm','Kenali Muhammadiyah','Muhammadiyah adalah organisasi Islam yang mengajak umat berilmu dan beramal. Pendirinya KH Ahmad Dahlan.','Pendiri Muhammadiyah adalah...',['KH Ahmad Dahlan','KH Hasyim Asyari','Ir. Soekarno','Ki Hajar Dewantara'],'KH Ahmad Dahlan'),
+ q(3,'arb','Tajwid Mad','Mad Thabi\'i terjadi saat ada alif, waw, atau ya mati setelah harakat yang sesuai. Dibaca sepanjang 2 harakat.','Mad Thabi\'i dibaca berapa harakat?',['1 harakat','2 harakat','4 harakat','6 harakat'],'2 harakat'),
+ c(3,'Taman Literasi','Pecah masalah besar menjadi langkah kecil. Dua bintang ilmu: 1 + 1 = 2. Kumpulkan keduanya dulu!','Kumpulkan 2 bintang ilmu, lalu menuju perpustakaan.',
+   {s:[5,0,0],g:[2,3],o:[[3,1],[4,2],[2,4],[1,1]],k:[[3,0],[2,1]],gi:'📚',max:9}),
 
-    // --- KELAS 4 ---
-    { id: 16, grade: "Kelas 4", type: "quiz", title: "Pecahan Senilai", question: "Bentuk sederhana dari pecahan 4/8 adalah...?", answer: "1/2", commands: ["1/3", "1/2", "3/4", "2/3"] },
-    { id: 17, grade: "Kelas 4", type: "quiz", title: "Sains: Wujud Benda", question: "Perubahan wujud dari cair menjadi padat disebut...?", answer: "Membeku", commands: ["Mencair", "Membeku", "Menguap", "Menyublim"] },
-    { id: 18, grade: "Kelas 4", type: "quiz", title: "Tajwid: Nun Sukin / Tanwin", question: "Dibaca apakah hukum nun sukun bertemu huruf Ba' (ب)?", answer: "Iqlab", commands: ["Idgham", "Iqlab", "Izhar", "Ikhfa"] },
-    { id: 19, grade: "Kelas 4", type: "quiz", title: "Sejarah Nabi & Rasul", question: "Nabi yang mendapat mukjizat tongkat membelah laut adalah...?", answer: "Nabi Musa AS", commands: ["Nabi Ibrahim AS", "Nabi Musa AS", "Nabi Isa AS", "Nabi Nuh AS"] },
-    { id: 20, grade: "Kelas 4", type: "coding_grid", title: "Misi Algoritma Kompleks 4", question: "Susun rute terarah menuju target (T)!", answer: ["Maju 3", "Belok Kanan", "Maju 3"], commands: ["Maju 1", "Maju 2", "Maju 3", "Belok Kiri", "Belok Kanan"], startPos: [7, 0], targetPos: [4, 3], map: [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,'T',0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],['S',0,0,0,0,0,0,0]] },
+ q(4,'mat','Pecahan Senilai','Bagi pembilang dan penyebut dengan angka yang sama. 4/8 dibagi 4 menjadi 1/2.','Bentuk paling sederhana dari 4/8 adalah...',['1/3','1/2','3/4','2/3'],'1/2'),
+ q(4,'sns','Wujud Benda','Air cair yang didinginkan sampai 0 derajat Celsius berubah menjadi es.','Perubahan wujud dari cair menjadi padat disebut...',['Mencair','Membeku','Menguap','Menyublim'],'Membeku'),
+ q(4,'agm','Sejarah Muhammadiyah','KH Ahmad Dahlan mendirikan Muhammadiyah di Yogyakarta pada 18 November 1912.','Muhammadiyah didirikan pada tahun...',['1812','1912','1945','2012'],'1912'),
+ q(4,'arb','Tajwid Nun Sukun','Nun sukun atau tanwin bertemu huruf Ba (ب) dibaca dengung dan berubah menjadi mim. Hukumnya Iqlab.','Nun sukun bertemu huruf Ba (ب) hukumnya...',['Idgham','Iqlab','Izhar','Ikhfa'],'Iqlab'),
+ c(4,'Mengulang Itu Hemat','Perulangan (loop) menghemat blok. Daripada Maju 4 kali, pakai Ulang 4x lalu Maju.','Ambil 2 bintang ilmu dan sampai di ruang kelas. Coba pakai blok Ulang!',
+   {s:[5,0,0],g:[1,4],o:[[2,2],[3,3],[4,1],[0,4]],k:[[3,0],[1,2]],gi:'🏫',max:6}),
 
-    // --- KELAS 5 ---
-    { id: 21, grade: "Kelas 5", type: "quiz", title: "Matematika: Volume Bangun", question: "Volume kubus dengan sisi 5 cm adalah...?", answer: "125 cm³", commands: ["25 cm³", "75 cm³", "125 cm³", "150 cm³"] },
-    { id: 22, grade: "Kelas 5", type: "quiz", title: "Sains: Sistem Pernapasan", question: "Alat pernapasan utama pada manusia adalah...?", answer: "Paru-paru", commands: ["Jantung", "Hati", "Paru-paru", "Ginjal"] },
-    { id: 23, grade: "Kelas 5", type: "quiz", title: "Fiqih: Ketentuan Puasa", question: "Hal yang membatalkan puasa di siang hari adalah...?", answer: "Makan dan minum dengan sengaja", commands: ["Tidur siang", "Makan dan minum dengan sengaja", "Lupa makan", "Mandi"] },
-    { id: 24, grade: "Kelas 5", type: "quiz", title: "Bahasa Arab Dasar", question: "Apa bahasa Arabnya 'Buku'?", answer: "Kitabun", commands: ["Qalamun", "Kitabun", "Maktabun", "Baitun"] },
-    { id: 25, grade: "Kelas 5", type: "coding_grid", title: "Navigasi Gedung Al Mujahidin", question: "Gunakan logika looping/maju untuk mencapai titik akhir (T)!", answer: ["Maju 3", "Belok Kiri", "Maju 3"], commands: ["Maju 1", "Maju 2", "Maju 3", "Belok Kiri", "Belok Kanan"], startPos: [7, 0], targetPos: [4, 3], map: [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,'T',0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],['S',0,0,0,0,0,0,0]] },
+ q(5,'mat','Volume Kubus','Volume kubus = sisi × sisi × sisi. Sisi 5 cm berarti 5 × 5 × 5.','Volume kubus bersisi 5 cm adalah...',['25 cm³','75 cm³','125 cm³','150 cm³'],'125 cm³'),
+ q(5,'sns','Sistem Pernapasan','Udara masuk ke hidung, lewat tenggorokan, lalu menuju paru-paru tempat oksigen diserap darah.','Alat pernapasan utama manusia adalah...',['Jantung','Hati','Paru-paru','Ginjal'],'Paru-paru'),
+ q(5,'agm','Teologi Al-Ma\'un','KH Ahmad Dahlan mengajarkan Surat Al-Ma\'un berulang-ulang agar santri peduli dan menolong anak yatim serta kaum miskin.','Surat yang diamalkan KH Ahmad Dahlan untuk peduli anak yatim dan fakir miskin adalah...',['Al-Ikhlas','Al-Ma\'un','Al-Fatihah','An-Nas'],'Al-Ma\'un'),
+ q(5,'arb','Mufradat Sekolah','Dalam bahasa Arab, buku adalah kitab. Kitabun artinya sebuah buku.','Bahasa Arab dari "buku" adalah...',['Qalamun','Kitabun','Maktabun','Baitun'],'Kitabun'),
+ c(5,'Tangga Algoritma','Pola yang berulang membantu memecahkan masalah. Kali ini robot melangkah naik seperti tangga.','Naik tangga ke taman, ambil 1 bintang ilmu di tengah jalan.',
+   {s:[5,0,0],g:[3,2],o:[[4,2],[3,0],[5,1],[2,1]],k:[[4,1]],gi:'🌳',max:9}),
 
-    // --- KELAS 6 ---
-    { id: 26, grade: "Kelas 6", type: "quiz", title: "Matematika: Statistika", question: "Rata-rata (mean) dari data: 8, 9, 7, 8, 8 adalah...?", answer: "8", commands: ["7", "7.5", "8", "8.5"] },
-    { id: 27, grade: "Kelas 6", type: "quiz", title: "Sains: Tata Surya", question: "Planet terdekat dari matahari adalah...?", answer: "Merkurius", commands: ["Venus", "Merkurius", "Bumi", "Mars"] },
-    { id: 28, grade: "Kelas 6", type: "quiz", title: "Akidah Akhlak", question: "Sifat wajib bagi Allah yang berarti Maha Kuasa adalah...?", answer: "Qudrat", commands: ["Wujud", "Qudrat", "Ilmu", "Hayat"] },
-    { id: 29, grade: "Kelas 6", type: "quiz", title: "Logika Pemrograman Dasar", question: "Simbol apa yang digunakan untuk mengulang perintah dalam logika coding?", answer: "Loop / Perulangan", commands: ["Variabel", "Loop / Perulangan", "Kondisi If", "Array"] },
-    { id: 30, grade: "Kelas 6", type: "coding_grid", title: "Misi Akhir Wisuda Rabbani", question: "Tantangan akhir robot melintasi arena menuju Panggung Utama (T)!", answer: ["Maju 4", "Belok Kanan", "Maju 4"], commands: ["Maju 1", "Maju 2", "Maju 4", "Belok Kiri", "Belok Kanan"], startPos: [7, 0], targetPos: [3, 4], map: [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,'T',0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],['S',0,0,0,0,0,0,0]] }
+ q(6,'mat','Statistika','Rata-rata (mean) = jumlah semua data dibagi banyak data. 8+9+7+8+8 = 40, lalu 40 ÷ 5.','Rata-rata data 8, 9, 7, 8, 8 adalah...',['7','7,5','8','8,5'],'8'),
+ q(6,'sns','Tata Surya','Matahari adalah pusat tata surya. Planet paling dekat dengan matahari adalah yang berukuran terkecil.','Planet terdekat dari matahari adalah...',['Venus','Merkurius','Bumi','Mars'],'Merkurius'),
+ q(6,'agm','Aisyiyah','Aisyiyah adalah organisasi perempuan Muhammadiyah yang bergerak di bidang pendidikan, kesehatan, dan sosial.','Organisasi perempuan Muhammadiyah bernama...',['Nasyiatul Aisyiyah','Aisyiyah','Hizbul Wathan','Tapak Suci'],'Aisyiyah'),
+ q(6,'arb','Ungkapan Terima Kasih','Ucapan terima kasih dalam bahasa Arab adalah Syukran. Jawabannya "Afwan" yang berarti sama-sama.','Arti kata "Syukran" adalah...',['Maaf','Terima kasih','Selamat pagi','Tolong'],'Terima kasih'),
+ c(6,'Misi Wisuda Rabbani','Gabungkan belok dan perulangan. Susun program sependek mungkin!','Ambil 2 bintang ilmu dan sampai di panggung wisuda. Rintangan ada di sekitar jalur.',
+   {s:[5,0,0],g:[0,5],o:[[4,1],[3,3],[1,2],[2,4],[4,4]],k:[[5,2],[2,5]],gi:'🎓',max:7})
 ];
+L.forEach((l,i)=>l.id=i+1);
 
-let currentLevel = levels[0];
-let score = 0;
-let currentBotPos = [7, 0];
-let botRotation = 0;
-let levelCodeSequence = [];
+const DIRS=[[-1,0],[0,1],[1,0],[0,-1]];
+const $=id=>document.getElementById(id);
+let S={name:'',cls:'',score:0,done:{}},cur=1,filter='all',prog=[],busy=false;
 
-const icons = {
-    'S': '<i class="fa-solid fa-robot text-warning"></i>',
-    'T': '<i class="fa-solid fa-school text-info cell-item"></i>',
-    'obstacle': '<i class="fa-solid fa-ban text-danger opacity-50"></i>'
-};
+function load(){try{const d=JSON.parse(localStorage.getItem('mujahebot')||'null');if(d)S=Object.assign(S,d)}catch(e){}}
+function save(){try{localStorage.setItem('mujahebot',JSON.stringify(S))}catch(e){}}
+function speak(t){try{if('speechSynthesis' in window){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='id-ID';u.rate=.95;speechSynthesis.speak(u)}}catch(e){}}
+const isAr=s=>/[\u0600-\u06FF]/.test(s);
+const botSvg=(col)=>`<svg viewBox="0 0 100 118" style="color:${col}"><use href="#bot"/></svg>`;
 
-// Fungsi Suara Menggunakan Web Speech API (Browser Native TTS)
-function speakFeedback(text) {
-    if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = 'id-ID';
-        utterance.rate = 0.9;
-        utterance.pitch = 1.1;
-        window.speechSynthesis.speak(utterance);
-    }
+function header(){
+  $('score').textContent=S.score;
+  const r=S.score>=400?'Rabbani Hero':S.score>=250?'Master Robot':S.score>=100?'Insinyur Muda':'Teknisi Cilik';
+  $('rank').textContent=r;
+  $('hello').textContent=S.name||'Anak Hebat';
+  $('loginBtn').textContent=S.name?'Ganti Profil':'Masuk Siswa';
 }
 
-window.onload = () => {
-    generateLevelList();
-    loadLevel(1);
-    checkSavedStudent();
-};
-
-function handleLogin(e) {
-    e.preventDefault();
-    const name = document.getElementById('studentName').value.trim();
-    const studentClass = document.getElementById('studentClass').value;
-    if (name && studentClass) {
-        localStorage.setItem('studentName', name);
-        localStorage.setItem('studentClass', studentClass);
-        updateUserUI(name, studentClass);
-        const modalEl = document.getElementById('loginModal');
-        const modal = bootstrap.Modal.getInstance(modalEl);
-        if (modal) modal.hide();
-    }
+function renderFilters(){
+  const f=$('filters');f.innerHTML='';
+  [['all','Semua'],...Object.entries(SUB).map(([k,v])=>[k,v.n])].forEach(([k,n])=>{
+    const b=document.createElement('button');b.textContent=n;b.setAttribute('aria-pressed',filter===k);
+    b.onclick=()=>{filter=k;renderFilters();renderMap()};f.appendChild(b);
+  });
 }
 
-function checkSavedStudent() {
-    const savedName = localStorage.getItem('studentName');
-    const savedClass = localStorage.getItem('studentClass');
-    if (savedName && savedClass) {
-        updateUserUI(savedName, savedClass);
-    }
-}
-
-function updateUserUI(name, studentClass) {
-    document.getElementById('displayStudentName').textContent = name;
-    document.getElementById('displayStudentClass').textContent = 'Kelas ' + studentClass;
-    document.getElementById('userProfileDisplay').classList.remove('d-none');
-    document.getElementById('welcomeNameText').textContent = name + '!';
-    document.getElementById('loginBtnText').textContent = 'Ganti Profil';
-}
-
-function generateLevelList() {
-    const container = document.getElementById('levelList');
-    container.innerHTML = "";
-    levels.forEach((lvl, idx) => {
-        const card = document.createElement('div');
-        card.className = `level-card p-2 px-3 ${idx === 0 ? 'active' : ''}`;
-        card.id = `level-card-${lvl.id}`;
-        card.onclick = () => loadLevel(lvl.id);
-        card.innerHTML = `
-            <div class="d-flex justify-content-between align-items-center">
-                <small class="text-warning fw-bold">${lvl.grade}</small>
-                <i class="fa-solid fa-star text-warning" style="font-size: 0.8rem;"></i>
-            </div>
-            <h6 class="fw-bold m-0 text-light" style="font-size: 0.9rem;">Misi ${lvl.id}: ${lvl.title}</h6>
-        `;
-        container.appendChild(card);
+function renderMap(){
+  const m=$('map');m.innerHTML='';
+  for(let g=1;g<=6;g++){
+    const row=document.createElement('div');row.className='grade';
+    row.innerHTML=`<h3>Kelas ${g}</h3><div class="nodes"></div>`;
+    const nodes=row.querySelector('.nodes');
+    L.filter(l=>l.g===g).forEach(l=>{
+      const s=SUB[l.s];const b=document.createElement('button');
+      b.className='node'+(l.id===cur?' cur':'')+(S.done[l.id]?' done':'')+(filter!=='all'&&filter!==l.s?' dim':'');
+      b.style.setProperty('--c',`var(${s.c})`);
+      b.setAttribute('aria-label',`Misi ${l.id}: ${l.t}, ${s.n}`);
+      b.innerHTML=`<i class="ok">✓</i><span class="ic${l.s==='arb'?' a':''}">${s.i}</span><span class="t">${l.t}</span>`;
+      b.onclick=()=>{cur=l.id;prog=[];renderMap();renderMission();$('misi').scrollIntoView({behavior:'smooth'})};
+      nodes.appendChild(b);
     });
+    m.appendChild(row);
+  }
 }
 
-function loadLevel(levelId) {
-    currentLevel = levels.find(l => l.id === levelId) || levels[0];
-    document.getElementById('badgeLevel').textContent = `${currentLevel.grade} - Misi ${currentLevel.id}`;
-    document.getElementById('questTitle').textContent = currentLevel.title;
-    document.getElementById('questQuestion').textContent = currentLevel.question;
-    document.getElementById('feedbackBox').style.display = 'none';
-    
-    levelCodeSequence = [];
-    resetCode();
-
-    // Tampilkan / Sembunyikan Grid Robot vs Kuis Interaktif secara Sinkron
-    const gridWrapper = document.getElementById('gridWrapper');
-    const quizBannerWrapper = document.getElementById('quizBannerWrapper');
-    const blockAreaTitle = document.getElementById('blockAreaTitle');
-    const selectedAreaTitle = document.getElementById('selectedAreaTitle');
-
-    if (currentLevel.type === 'coding_grid') {
-        gridWrapper.style.display = 'block';
-        quizBannerWrapper.style.display = 'none';
-        blockAreaTitle.textContent = "Blok Perintah Robot";
-        selectedAreaTitle.textContent = "Program Robot";
-        renderGridMap();
-        resetBotPosition();
-    } else {
-        gridWrapper.style.display = 'none';
-        quizBannerWrapper.style.display = 'block';
-        document.getElementById('quizBannerText').textContent = `Misi ${currentLevel.grade}: Pilih Jawaban di Samping!`;
-        blockAreaTitle.textContent = "Pilihan Jawaban";
-        selectedAreaTitle.textContent = "Jawaban Terpilih";
-    }
-
-    renderCommandBlocks();
-
-    document.querySelectorAll('.level-card').forEach(c => c.classList.remove('active'));
-    const activeCard = document.getElementById(`level-card-${levelId}`);
-    if (activeCard) activeCard.classList.add('active');
-}
-
-function renderGridMap() {
-    const board = document.getElementById('gridBoard');
-    board.innerHTML = "";
-    const mapData = currentLevel.map;
-    for (let r = 0; r < 8; r++) {
-        for (let c = 0; c < 8; c++) {
-            const cell = document.createElement('div');
-            cell.className = 'grid-cell';
-            cell.id = `cell-${r}-${c}`;
-            const content = mapData[r][c];
-            if (content === 'T') {
-                cell.classList.add('target');
-                cell.innerHTML = icons.T;
-            }
-            board.appendChild(cell);
-        }
-    }
-}
-
-function resetBotPosition() {
-    if (currentLevel.type !== 'coding_grid') return;
-    currentBotPos = [...currentLevel.startPos];
-    botRotation = 0;
-    updateBotVisuals();
-}
-
-function updateBotVisuals() {
-    if (currentLevel.type !== 'coding_grid') return;
-    document.querySelectorAll('.grid-cell.bot').forEach(c => c.classList.remove('bot'));
-    const cellId = `cell-${currentBotPos[0]}-${currentBotPos[1]}`;
-    const cell = document.getElementById(cellId);
-    if (cell) {
-        cell.classList.add('bot');
-        if (!cell.querySelector('i.fa-robot')) {
-            cell.innerHTML = icons.S;
-        }
-    }
-}
-
-function renderCommandBlocks() {
-    const container = document.getElementById('commandBlocks');
-    container.innerHTML = "";
-    currentLevel.commands.forEach(cmd => {
-        const btn = document.createElement('button');
-        btn.className = 'block-btn';
-        btn.style.background = currentLevel.type === 'coding_grid' ? '#2563eb' : '#059669';
-        btn.innerHTML = `<i class="fa-solid fa-cube me-1"></i> ${cmd}`;
-        btn.onclick = () => addBlockToProgram(cmd);
-        container.appendChild(btn);
+function renderMission(){
+  const l=L[cur-1],s=SUB[l.s];$('fb').className='fb';$('fb').innerHTML='';
+  const info=`<div>
+    <span class="tag" style="--c:var(${s.c})">Kelas ${l.g} · ${s.n}</span>
+    <h2 style="margin:10px 0 0;font-size:1.7rem">Misi ${l.id}: ${l.t}</h2>
+    <div class="materi"><b>Materi singkat</b>${l.m}</div>
+    <p class="q">${l.q}</p>
+    ${l.type==='code'?'<div id="board" class="board" aria-label="Papan robot"></div>':'<div style="text-align:center;padding:10px"><div style="width:140px;margin:auto">'+botSvg(`var(${s.c})`)+'</div></div>'}
+  </div>`;
+  let work='';
+  if(l.type==='quiz'){
+    work=`<div><h3 style="margin-bottom:12px">Pilih jawabanmu</h3><div class="opts">${l.o.map(o=>`<button class="opt${isAr(o)?' ar':''}" data-v="${o.replace(/"/g,'&quot;')}">${o}</button>`).join('')}</div></div>`;
+  }else{
+    work=`<div><h3>Blok perintah</h3><div class="palette" id="pal"></div>
+      <h3>Programmu <small style="font-weight:600">(klik blok untuk menghapus)</small></h3><div class="prog" id="prog"></div>
+      <div class="row"><button class="btn" id="run">▶ Jalankan</button><button class="btn alt" id="clr">Hapus Semua</button></div>
+      <p style="font-size:.9rem;margin:10px 0 0">Maksimal ${l.grid.max} blok. Blok Ulang menjalankan blok setelahnya beberapa kali.</p></div>`;
+  }
+  $('mission').innerHTML=info+work;
+  if(l.type==='quiz'){
+    document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>answer(b,l));
+  }else{
+    const pal=$('pal');
+    [['Maju','F','go'],['Kiri','L','turn'],['Kanan','R','turn'],['Ulang 2x',2,'rep'],['Ulang 3x',3,'rep'],['Ulang 4x',4,'rep'],['Ulang 5x',5,'rep']].forEach(([n,a,k])=>{
+      const b=document.createElement('button');b.className='blk '+k;b.textContent=n;
+      b.onclick=()=>{if(busy)return;if(prog.length>=l.grid.max){return fbMsg(false,'Blok penuh','Hapus beberapa blok atau pakai Ulang agar lebih hemat.')}prog.push({n,a,k});drawProg()};
+      pal.appendChild(b);
     });
+    $('run').onclick=()=>runProg(l);$('clr').onclick=()=>{if(busy)return;prog=[];drawProg();drawBoard(l,initState(l))};
+    drawProg();drawBoard(l,initState(l));
+  }
 }
 
-function addBlockToProgram(cmd) {
-    if (currentLevel.type === 'quiz') {
-        levelCodeSequence = []; // Kuis cukup pilih 1 jawaban utama
+function fbMsg(ok,title,text){
+  const f=$('fb');f.className='fb '+(ok?'ok':'no');
+  f.innerHTML=botSvg(ok?'#3fae5a':'#e04b3f')+`<div><h4>${title}</h4><div>${text}</div></div>`;
+  speak(ok?'Masya Allah, hebat!':'Belum tepat. Ayo coba lagi.');
+}
+function reward(l,pts){
+  if(!S.done[l.id]){S.done[l.id]=true;S.score+=pts;save();header();renderMap()}
+}
+function nextBtn(){
+  if(cur<L.length){const b=document.createElement('button');b.className='btn warn';b.textContent='Misi berikutnya';b.style.marginTop='10px';
+    b.onclick=()=>{cur++;prog=[];renderMap();renderMission()};$('fb').lastElementChild.appendChild(b)}
+}
+
+function answer(btn,l){
+  if(btn.disabled)return;
+  if(btn.dataset.v===l.a){
+    document.querySelectorAll('.opt').forEach(b=>b.disabled=true);btn.classList.add('right');
+    const first=!S.done[l.id];reward(l,15);
+    fbMsg(true,'Jawabanmu benar!',first?'Kamu mendapat +15 poin. Masya Allah!':'Benar lagi! Poin sudah pernah kamu dapat.');nextBtn();
+  }else{
+    btn.classList.add('wrong');setTimeout(()=>btn.classList.remove('wrong'),400);
+    fbMsg(false,'Belum tepat','Baca lagi materi singkat di atas, lalu coba jawaban lain.');
+  }
+}
+
+/* Coding */
+function initState(l){return{r:l.grid.s[0],c:l.grid.s[1],d:l.grid.s[2],got:[],bump:null}}
+function drawProg(){
+  const p=$('prog');p.innerHTML='';
+  prog.forEach((t,i)=>{const b=document.createElement('button');b.className='blk '+t.k;b.textContent=t.n;b.onclick=()=>{if(busy)return;prog.splice(i,1);drawProg()};p.appendChild(b)});
+}
+function drawBoard(l,st){
+  const g=l.grid,b=$('board');b.innerHTML='';
+  for(let r=0;r<6;r++)for(let c=0;c<6;c++){
+    const d=document.createElement('div');d.className='cell';
+    const isG=r===g.g[0]&&c===g.g[1];
+    if(isG){d.classList.add('goal');d.textContent=g.gi}
+    else if(g.o.some(o=>o[0]===r&&o[1]===c))d.textContent='🪨';
+    else if(g.k.some((k,i)=>k[0]===r&&k[1]===c&&!st.got.includes(i)))d.textContent='⭐';
+    if(st.r===r&&st.c===c){
+      d.innerHTML=botSvg('#3b8bd9')+`<i class="dir" style="transform:rotate(${st.d*90}deg) translateY(0);top:-1px;left:50%"></i>`;
+      const a=d.querySelector('.dir');a.style.cssText=`position:absolute;width:0;height:0;border:7px solid transparent;border-bottom:10px solid #e04b3f;border-top:0;`+
+        ['left:calc(50% - 7px);top:0;','right:0;top:calc(50% - 5px);transform:rotate(90deg);','left:calc(50% - 7px);bottom:0;transform:rotate(180deg);','left:0;top:calc(50% - 5px);transform:rotate(-90deg);'][st.d];
+      if(st.bump)d.classList.add('bump');
     }
-    levelCodeSequence.push(cmd);
-    updateCodeDisplay();
+    b.appendChild(d);
+  }
 }
-
-function updateCodeDisplay() {
-    const display = document.getElementById('codeArea');
-    display.innerHTML = "";
-    levelCodeSequence.forEach((cmd, idx) => {
-        const block = document.createElement('div');
-        block.className = 'code-block-placed';
-        block.style.backgroundColor = '#fbbf24';
-        block.innerHTML = `<span class="text-dark opacity-50">${idx + 1}.</span> ${cmd}`;
-        display.appendChild(block);
-    });
-}
-
-function resetCode() {
-    levelCodeSequence = [];
-    updateCodeDisplay();
-    resetBotPosition();
-    document.getElementById('feedbackBox').style.display = 'none';
-}
-
-function runCode() {
-    let success = false;
-    if (currentLevel.type === 'quiz') {
-        if (levelCodeSequence.length === 0) {
-            showFeedback(false, "Pilih salah satu jawaban terlebih dahulu!");
-            return;
-        }
-        success = (levelCodeSequence[0] === currentLevel.answer);
-    } else if (currentLevel.type === 'coding_grid') {
-        if (JSON.stringify(levelCodeSequence) === JSON.stringify(currentLevel.answer)) {
-            success = true;
-            currentBotPos = [...currentLevel.targetPos];
-            updateBotVisuals();
-        } else {
-            success = false;
-        }
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+async function runProg(l){
+  if(busy)return;
+  if(!prog.length)return fbMsg(false,'Programmu masih kosong','Klik blok perintah untuk menyusun program.');
+  const acts=[];
+  for(let i=0;i<prog.length;i++){
+    const t=prog[i];
+    if(t.k==='rep'){const n=prog[i+1];if(!n||n.k==='rep')return fbMsg(false,'Blok Ulang belum lengkap','Letakkan Maju, Kiri, atau Kanan tepat setelah blok Ulang.');
+      for(let k=0;k<t.a;k++)acts.push(n.a);i++}
+    else acts.push(t.a);
+  }
+  busy=true;$('run').disabled=true;$('fb').className='fb';
+  const g=l.grid;let st=initState(l);drawBoard(l,st);await sleep(400);let crashed=false;
+  for(const a of acts){
+    if(a==='L')st.d=(st.d+3)%4;else if(a==='R')st.d=(st.d+1)%4;
+    else{
+      const nr=st.r+DIRS[st.d][0],nc=st.c+DIRS[st.d][1];
+      if(nr<0||nc<0||nr>5||nc>5||g.o.some(o=>o[0]===nr&&o[1]===nc)){st.bump=true;crashed=true;drawBoard(l,st);break}
+      st.r=nr;st.c=nc;g.k.forEach((k,i)=>{if(k[0]===nr&&k[1]===nc&&!st.got.includes(i))st.got.push(i)});
     }
-    showFeedback(success);
+    drawBoard(l,st);await sleep(450);
+  }
+  busy=false;$('run').disabled=false;
+  const atGoal=st.r===g.g[0]&&st.c===g.g[1],all=st.got.length===g.k.length;
+  if(crashed)fbMsg(false,'Robot menabrak!','Robot membentur batu atau tepi papan. Periksa lagi urutan belok dan langkahmu.');
+  else if(atGoal&&all){const first=!S.done[l.id];reward(l,25);fbMsg(true,'Misi selesai!',first?'Programmu benar. Kamu mendapat +25 poin!':'Programmu benar lagi!');nextBtn()}
+  else if(atGoal)fbMsg(false,'Bintang belum lengkap',`Robot sampai, tetapi baru mengambil ${st.got.length} dari ${g.k.length} bintang ilmu.`);
+  else fbMsg(false,'Belum sampai tujuan','Robot berhenti sebelum sampai. Tambah atau ubah blokmu.');
 }
 
-function showFeedback(success, customMsg = "") {
-    const box = document.getElementById('feedbackBox');
-    const text = document.getElementById('feedbackText');
-    const title = document.getElementById('feedbackTitle');
-    const icon = document.getElementById('feedbackIcon');
-    box.style.display = 'block';
-
-    if (success) {
-        box.style.backgroundColor = '#065f46';
-        box.style.border = '1px solid #10b981';
-        title.textContent = "Kamu Hebat!";
-        title.className = "fw-bold text-warning";
-        icon.className = "fa-solid fa-star fa-3x text-warning";
-        text.textContent = "Jawabanmu benar! MasyaAllah, hebat sekali!";
-        
-        speakFeedback("Kamu hebat!");
-
-        score += 15;
-        document.getElementById('scoreDisplay').textContent = score;
-    } else {
-        box.style.backgroundColor = '#7f1d1d';
-        box.style.border = '1px solid #ef4444';
-        title.textContent = "Salah, Coba Ulangi Lagi!";
-        title.className = "fw-bold text-danger-light";
-        icon.className = "fa-solid fa-circle-xmark fa-3x text-danger";
-        text.textContent = customMsg || "Belum tepat sayang, ayo coba ulangi lagi dengan teliti!";
-        
-        speakFeedback("Salah, coba ulangi lagi.");
-    }
+/* Login */
+function initLogin(){
+  const sel=$('cl');sel.innerHTML='<option value="">Pilih kelas</option>';
+  for(let g=1;g<=6;g++)['Champion','Excellent','Brilliant','Olimpiade','Smart'].forEach(n=>sel.insertAdjacentHTML('beforeend',`<option>${g} ${n}</option>`));
+  $('loginBtn').onclick=()=>{$('nm').value=S.name;$('cl').value=S.cls;$('dlg').showModal()};
+  $('cancelLogin').onclick=()=>$('dlg').close();
+  $('loginForm').addEventListener('submit',()=>{S.name=$('nm').value.trim();S.cls=$('cl').value;save();header()});
+  $('resetAll').onclick=()=>{if(confirm('Hapus semua kemajuan di perangkat ini?')){S={name:S.name,cls:S.cls,score:0,done:{}};save();cur=1;header();renderMap();renderMission()}};
 }
+
+/* Logo cadangan jika file gambar tidak ditemukan */
+$('logoImg').onerror=function(){$('logoBox').innerHTML=botSvg('#3b8bd9')};
+
+load();header();initLogin();renderFilters();renderMap();renderMission();
 </script>
 </body>
 </html>
