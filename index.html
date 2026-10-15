@@ -7,18 +7,23 @@
 <meta name="description" content="Peta misi coding, matematika, sains, Al Islam, Kemuhammadiyahan, dan bahasa Arab bersama robot MujaHeeBot.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Fredoka:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Baloo+2:wght@600;700;800&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
  --navy:#14263a;--blue:#1e7bff;--green:#00b365;--lime:#7ed321;--cyan:#45f0f0;--purple:#6b4bd8;--yellow:#f7d23e;
  /* Tema hijau gelap */
  --bg1:#03130e;--bg2:#06241c;--panel:#111a2e;--panel2:#0d1526;--card:#0b2f27;
- --line:#14574a;--mint:#0a2b24;--txt:#e8fff6;--muted:#8fb8aa;--accent:#2ee6a6;--accent2:#22d3ee;--tabc:#5ee2b8;
+ --line:#14574a;--mint:#0a2b24;--txt:#e8fff6;--muted:#a3c9bb;--accent:#2ee6a6;--accent2:#22d3ee;--tabc:#5ee2b8;
+ /* Font tebal ramah anak */
+ --fb:'Baloo 2','Fredoka',system-ui,sans-serif;--fh:'Fredoka','Baloo 2',sans-serif;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;color-scheme:dark}
-body{margin:0;min-height:100vh;background:radial-gradient(ellipse at top,#07382b 0,var(--bg2) 35%,var(--bg1) 100%) fixed;color:var(--txt);font:700 16px/1.5 'Nunito',system-ui,sans-serif}
-h1,h2,h3,h4{font-family:'Fredoka',sans-serif;margin:0;line-height:1.15;letter-spacing:.2px}
+body{margin:0;min-height:100vh;background:var(--bg1);color:var(--txt);font:800 18px/1.4 var(--fb);position:relative}
+/* Latar gambar gedung sekolah */
+body::before{content:"";position:fixed;inset:0;z-index:-2;background:url("gedung_sd.jpg") center/cover no-repeat,var(--bg1)}
+body::after{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(3,19,14,.72) 0%,rgba(4,36,27,.82) 55%,rgba(3,19,14,.94) 100%)}
+h1,h2,h3,h4{font-family:var(--fh);font-weight:700;margin:0;line-height:1.15;letter-spacing:.3px}
 button{font:inherit;color:inherit;cursor:pointer}
 :focus-visible{outline:3px solid var(--accent2);outline-offset:2px}
 .wrap{max-width:1200px;margin:0 auto;padding:0 20px}
@@ -26,38 +31,41 @@ button{font:inherit;color:inherit;cursor:pointer}
 .sp{margin-left:auto}
 
 /* Navigasi */
-.nav{border-bottom:1px solid var(--line);background:rgba(3,19,14,.92);backdrop-filter:blur(6px);position:sticky;top:0;z-index:30}
-.nav .in{max-width:1200px;margin:auto;padding:8px 20px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--accent2);font:700 1.5rem 'Fredoka';letter-spacing:1px}
-.lg{width:46px;height:46px;border-radius:50%;border:2px solid var(--accent);overflow:hidden;display:grid;place-items:center;background:#fff}
-.lg img{width:100%;height:100%;object-fit:contain}.lg svg{width:34px;height:34px}
-.tab{color:var(--tabc);text-decoration:none;font-weight:800;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:6px 14px;font-size:.92rem}
+.nav{border-bottom:2px solid var(--line);background:rgba(3,19,14,.92);backdrop-filter:blur(6px);position:sticky;top:0;z-index:30}
+.nav .in{max-width:1200px;margin:auto;padding:6px 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;text-decoration:none}
+.lg{display:grid;place-items:center;height:62px}
+.lg img{height:62px;width:auto;display:block;filter:drop-shadow(0 0 8px rgba(126,211,33,.55))}
+.lg svg{width:46px;height:54px}
+.tab{color:var(--tabc);text-decoration:none;font-weight:800;border:2px solid var(--line);background:var(--card);border-radius:14px;padding:6px 18px;font-size:1.05rem}
 .tab.on,.tab:hover{color:#fff;border-color:var(--accent);background:#0e5a47;box-shadow:0 0 14px rgba(46,230,166,.35)}
-.user{display:flex;align-items:center;gap:10px;border:0;background:none;font-weight:800;color:var(--txt)}
-.av{width:42px;height:42px;border-radius:50%;background:var(--yellow);display:grid;place-items:center}.av svg{width:28px;height:28px}
+.user{display:flex;align-items:center;gap:10px;border:0;background:none;font-weight:800;font-size:1.05rem;color:var(--txt)}
+.av{width:44px;height:44px;border-radius:50%;background:var(--yellow);display:grid;place-items:center}.av svg{width:30px;height:30px}
 
 /* Beranda */
-.hero{display:grid;grid-template-columns:150px 1fr;gap:24px;align-items:center;padding:26px 20px;margin-top:18px;border:2px solid var(--accent);border-radius:24px;background:linear-gradient(135deg,#0a5f49,#0e8a68);box-shadow:0 0 30px rgba(46,230,166,.15)}
-.hbot{background:var(--yellow);border:3px solid var(--navy);border-radius:50%;width:150px;height:150px;display:grid;place-items:center}
-.hbot svg{width:96px;animation:fl 3s ease-in-out infinite}
+.hero{display:grid;grid-template-columns:250px 1fr;gap:26px;align-items:center;padding:26px 24px;margin-top:18px;border:2px solid var(--accent);border-radius:26px;background:linear-gradient(135deg,rgba(10,95,73,.93),rgba(14,138,104,.9));box-shadow:0 0 30px rgba(46,230,166,.2)}
+.hlogo{display:grid;place-items:center;background:rgba(3,19,14,.55);border:3px solid var(--accent);border-radius:24px;padding:10px;width:250px}
+.hlogo img{width:100%;height:auto;display:block;filter:drop-shadow(0 0 10px rgba(126,211,33,.6));animation:fl 3s ease-in-out infinite}
+.hlogo svg{width:110px;animation:fl 3s ease-in-out infinite}
 @keyframes fl{50%{transform:translateY(-8px)}}
-.hero h1{font-size:clamp(1.6rem,4vw,2.4rem);color:#fff}.hero p{margin:6px 0 14px;color:#d3fff0;max-width:60ch}
+.hero h1{font-size:clamp(2rem,5vw,3.1rem);color:#fff;font-weight:700;text-shadow:0 3px 0 rgba(0,0,0,.25)}
+.hero p{margin:8px 0 16px;color:#e3fff5;max-width:60ch;font-size:1.12rem}
 .stats{display:flex;gap:10px;flex-wrap:wrap}
-.st{border:1px solid var(--line);border-radius:14px;padding:8px 16px;background:var(--panel)}
-.st small{display:block;color:var(--muted);font-size:.78rem}.st b{font:600 1.2rem 'Fredoka';color:#fff}
+.st{border:2px solid var(--line);border-radius:16px;padding:8px 18px;background:var(--panel)}
+.st small{display:block;color:var(--muted);font-size:.9rem}.st b{font:700 1.45rem var(--fh);color:#fff}
 
 /* Bar kelas */
 .bar2{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding-top:22px;padding-bottom:14px}
-.bar2 h2{font-size:1.5rem;margin-right:8px;color:#fff}
+.bar2 h2{font-size:2rem;margin-right:8px;color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.35)}
 .seg{display:flex;gap:6px;flex-wrap:wrap}
-.pb,.seg button,select.pb{border:1px solid var(--line);background:var(--card);color:var(--txt);border-radius:999px;padding:6px 16px;font-weight:800;font-size:.92rem}
+.pb,.seg button,select.pb{border:2px solid var(--line);background:var(--card);color:var(--txt);border-radius:999px;padding:6px 18px;font-weight:800;font-size:1.02rem;font-family:var(--fb)}
 .seg button[aria-pressed=true]{background:#0ea5d9;border-color:#38c9f5;color:#fff;box-shadow:0 0 14px rgba(34,211,238,.45)}
 .pb:hover{background:#0e4a3d;border-color:var(--accent)}
-.cta{background:#0ea5d9;color:#fff;border:0;border-radius:999px;padding:9px 22px;font-weight:800;box-shadow:0 3px 0 rgba(0,0,0,.35)}.cta:hover{filter:brightness(1.12)}
+.cta{background:#0ea5d9;color:#fff;border:0;border-radius:999px;padding:9px 24px;font-weight:800;font-size:1.05rem;box-shadow:0 3px 0 rgba(0,0,0,.35)}.cta:hover{filter:brightness(1.12)}
 .cta:disabled{opacity:.5}
 
 /* Peta */
-.mapwrap{height:74vh;min-height:420px;overflow:auto;border-radius:20px;background:var(--mint);border:2px solid var(--line);position:relative}
+.mapwrap{height:74vh;min-height:420px;overflow:auto;border-radius:20px;background:rgba(10,43,36,.92);border:2px solid var(--line);position:relative}
 .map{position:relative;width:100%;overflow:hidden;
  background:repeating-linear-gradient(0deg,transparent 0 21px,rgba(255,255,255,.05) 21px 24px),repeating-linear-gradient(90deg,transparent 0 40px,rgba(255,255,255,.04) 40px 43px),var(--mint)}
 .gr{position:absolute;background:#0d6b45;border-radius:46%;border-top:12px solid #3d9a2e}
@@ -66,17 +74,17 @@ button{font:inherit;color:inherit;cursor:pointer}
 .dc{position:absolute;pointer-events:none}.dc svg{width:100%;height:auto;display:block}
 .nd{position:absolute;left:50%;margin-left:-38px;width:76px;height:76px;border-radius:50%;border:0;padding:0;background:conic-gradient(var(--blue) calc(var(--p)*1%),#1d4a5c 0);display:grid;place-items:center;box-shadow:0 0 0 5px var(--bg2);transition:transform .15s}
 .nd:hover{transform:scale(1.08)}.nd.dim{opacity:.3}
-.ni{width:62px;height:62px;border-radius:50%;background:var(--blue);border:4px solid var(--bg2);display:grid;place-items:center;color:#fff;font:700 1.7rem 'Fredoka';text-shadow:0 2px 0 rgba(0,0,0,.2)}
+.ni{width:62px;height:62px;border-radius:50%;background:var(--blue);border:4px solid var(--bg2);display:grid;place-items:center;color:#fff;font:700 1.8rem var(--fh);text-shadow:0 2px 0 rgba(0,0,0,.2)}
 .nd.done .ni{background:var(--purple);font-size:1.6rem}
 .nd.now{animation:pu 1.6s infinite}
 @keyframes pu{50%{box-shadow:0 0 0 12px rgba(46,230,166,.3)}}
 .bd{position:absolute;right:-8px;top:-8px;width:30px;height:30px;border-radius:50%;border:3px solid var(--bg2);display:grid;place-items:center;font-size:.9rem;color:#fff;font-family:'Amiri'}
 .walker{position:absolute;width:46px;animation:fl 1.2s ease-in-out infinite;z-index:3}
 .pop{position:absolute;z-index:10;left:calc(50% + 66px);width:min(430px,46%);background:var(--panel);color:var(--txt);border:2px solid var(--line);border-radius:22px;padding:20px 22px;box-shadow:0 12px 40px rgba(0,0,0,.6)}
-.pop small{color:var(--accent2);font-weight:800;font-size:1rem}
-.pop h3{font-size:1.4rem;margin:6px 0 4px;color:#fff}.pop h3 span{color:#f7c531;font-size:1rem;margin-left:6px}
-.pop p{color:var(--muted);margin:0 0 10px}.pop .mt{color:var(--muted);font-size:.9rem;display:flex;gap:16px;margin-bottom:12px}
-.pop .acts{display:flex;gap:8px;flex-wrap:wrap}.plan{display:none;background:#0e2a3c;border-radius:12px;padding:10px 12px;margin-bottom:10px;font-size:.92rem}
+.pop small{color:var(--accent2);font-weight:800;font-size:1.05rem}
+.pop h3{font-size:1.55rem;margin:6px 0 4px;color:#fff}.pop h3 span{color:#f7c531;font-size:1.05rem;margin-left:6px}
+.pop p{color:var(--muted);margin:0 0 10px}.pop .mt{color:var(--muted);font-size:1rem;display:flex;gap:16px;margin-bottom:12px}
+.pop .acts{display:flex;gap:8px;flex-wrap:wrap}.plan{display:none;background:#0e2a3c;border-radius:12px;padding:10px 12px;margin-bottom:10px;font-size:1rem}
 .pop .x{position:absolute;right:14px;top:12px;border:1px solid var(--line);background:var(--card);color:var(--txt);border-radius:10px;width:32px;height:32px}
 
 /* Misi */
@@ -84,12 +92,12 @@ dialog{border:2px solid var(--line);border-radius:24px;padding:0;width:96%;max-w
 dialog::backdrop{background:rgba(0,10,6,.75)}
 .mission{display:grid;grid-template-columns:1fr 1fr;gap:22px;padding:26px}
 .close{position:absolute;right:14px;top:12px;border:1px solid var(--line);background:var(--card);color:var(--txt);border-radius:50%;width:38px;height:38px;z-index:2}
-.tag{display:inline-block;color:#fff;border-radius:999px;padding:2px 14px;font:500 .95rem 'Fredoka'}
+.tag{display:inline-block;color:#fff;border-radius:999px;padding:2px 16px;font:600 1.05rem var(--fh)}
 .materi{background:#0e2b3f;border-left:6px solid var(--accent2);border-radius:12px;padding:12px 14px;margin:12px 0}
-.materi b{font-family:'Fredoka';display:block;color:var(--accent2)}
-.q{font-size:1.2rem;font-weight:800;margin:0 0 12px}
+.materi b{font-family:var(--fh);display:block;color:var(--accent2);font-size:1.1rem}
+.q{font-size:1.35rem;font-weight:800;margin:0 0 12px}
 .opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.opt{background:var(--card);color:var(--txt);border:2px solid var(--line);border-radius:14px;padding:14px 8px;font-weight:800;transition:.12s}
+.opt{background:var(--card);color:var(--txt);border:2px solid var(--line);border-radius:14px;padding:14px 8px;font-weight:800;font-size:1.1rem;transition:.12s}
 .opt:hover:not(:disabled){border-color:var(--accent);background:#0e4a3d}
 .opt.right{background:var(--green);color:#fff;border-color:var(--green)}.opt.wrong{background:#e04b3f;color:#fff;border-color:#e04b3f;animation:sh .35s}
 @keyframes sh{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
@@ -98,28 +106,30 @@ dialog::backdrop{background:rgba(0,10,6,.75)}
 .cell:nth-child(even){background:#1d3044}.cell.goal{background:#4a3d12;border-color:#f7c531}.cell.bump{background:#7a2a24}
 .cell svg{width:80%;height:80%}.dir{position:absolute;inset:0;display:flex;justify-content:center;font-style:normal;color:#ff7a6e;font-size:.7rem;line-height:1}
 .pal,.prog{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 14px}
-.blk{border:0;border-radius:10px;padding:7px 14px;color:#fff;font:500 1rem 'Fredoka';box-shadow:0 3px 0 rgba(0,0,0,.35)}
+.blk{border:0;border-radius:10px;padding:7px 15px;color:#fff;font:600 1.1rem var(--fh);box-shadow:0 3px 0 rgba(0,0,0,.35)}
 .blk.go{background:#2563eb}.blk.turn{background:#4f46e5}.blk.rep{background:#9333ea}
 .prog{min-height:62px;background:#050b16;border:2px dashed #2a4a5e;border-radius:14px;padding:10px;align-content:flex-start}
 .prog:empty::before{content:"Klik blok di atas untuk menyusun program";color:var(--muted);font-weight:600}
 .row{display:flex;gap:10px;flex-wrap:wrap}
 .fb{display:none;margin:0 26px 26px;padding:14px 16px;border-radius:16px;gap:12px;align-items:center}
-.fb.ok{display:flex;background:#0f4a33;border:1px solid #1fbf8a}.fb.no{display:flex;background:#4a1d1a;border:1px solid #e04b3f}.fb svg{width:46px;flex:none}.fb h4{font-size:1.2rem}
+.fb.ok{display:flex;background:#0f4a33;border:1px solid #1fbf8a}.fb.no{display:flex;background:#4a1d1a;border:1px solid #e04b3f}.fb svg{width:46px;flex:none}.fb h4{font-size:1.3rem}
 dialog form{padding:24px;display:grid;gap:12px}
-label{font:500 1rem 'Fredoka'}input,select{width:100%;padding:10px 12px;border:2px solid var(--line);border-radius:12px;font:inherit;background:var(--panel2);color:var(--txt)}
+label{font:600 1.1rem var(--fh)}input,select{width:100%;padding:10px 12px;border:2px solid var(--line);border-radius:12px;font:inherit;background:var(--panel2);color:var(--txt)}
 select option{background:#0d1526;color:#e8fff6}
 input::placeholder{color:#6f9a8c}
-footer{background:#020d09;border-top:1px solid var(--line);color:var(--muted);text-align:center;padding:20px 12px;margin-top:30px;font-size:.9rem}
+footer{background:rgba(2,13,9,.9);border-top:2px solid var(--line);color:var(--muted);text-align:center;padding:20px 12px;margin-top:30px;font-size:1rem}
 @media(max-width:800px){
  .hero,.mission{grid-template-columns:1fr}.hero{justify-items:center;text-align:center}.stats{justify-content:center}
+ .hlogo{width:min(250px,80%)}
  .river{display:none}.pop{left:12px;right:12px;width:auto}.tab{display:none}
+ .lg,.lg img{height:50px}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 
-<!-- Robot tanpa mata dan tanpa mulut -->
+<!-- Robot tanpa mata dan tanpa mulut (dipakai untuk avatar, papan coding, dan cadangan logo) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
  <symbol id="bot" viewBox="0 0 100 118"><g stroke="#14263a" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
   <path d="M50 4v13" fill="none"/><circle cx="50" cy="5" r="4" fill="#f7d23e"/>
@@ -135,13 +145,13 @@ footer{background:#020d09;border-top:1px solid var(--line);color:var(--muted);te
 </svg>
 
 <nav class="nav"><div class="in">
- <a class="brand" href="#beranda"><span class="lg" id="lg"><img id="logoImg" src="logo_mujahebot.jpg" alt="Logo MujaHeeBot"></span>mujahebot</a>
+ <a class="brand" href="#beranda" aria-label="MujaHeeBot - Beranda"><span class="lg" id="lg"><img id="logoImg" src="logo_mujahebot.png" alt="Logo MujaHeeBot"></span></a>
  <a class="tab" href="#beranda">🏠 Beranda</a><a class="tab on" href="#peta">🎮 Tantangan</a>
  <button class="user sp" id="user"><span id="un">Masuk Siswa</span><span class="av"><svg viewBox="0 0 100 118" style="color:#3b8bd9"><use href="#bot"/></svg></span></button>
 </div></nav>
 
 <section id="beranda" class="wrap hero">
- <div class="hbot"><svg viewBox="0 0 100 118" style="color:#3b8bd9" role="img" aria-label="Robot MujaHeeBot"><use href="#bot"/></svg></div>
+ <div class="hlogo" id="hl"><img id="heroImg" src="logo_mujahebot.png" alt="Logo robot MujaHeeBot"></div>
  <div>
   <h1>Halo, <span id="hello">Anak Hebat</span>!</h1>
   <p>Pandu robot MujaHeeBot memecahkan masalah sambil belajar coding, matematika, sains, Al Islam, Kemuhammadiyahan, dan bahasa Arab. Rabbani, Unggul, Mendunia!</p>
@@ -331,7 +341,7 @@ function openM(id){cur=M[id-1];S.grade=cur.g;prog=[];busy=false;renderBar();rend
 function renderM(){
  const l=cur,s=SUB[l.s];$('fb').className='fb';$('fb').innerHTML='';
  const info=`<div><span class="tag" style="background:${s.c}">Kelas ${l.g} · ${s.n}</span>
-  <h2 style="margin:10px 0 0;font-size:1.7rem">Misi ${l.id}: ${l.t}</h2>
+  <h2 style="margin:10px 0 0;font-size:1.9rem">Misi ${l.id}: ${l.t}</h2>
   <div class="materi"><b>Materi singkat</b>${l.m}</div><p class="q">${l.q}</p>
   ${l.type=='code'?'<div id="board" class="board" aria-label="Papan robot"></div>':`<div style="width:130px;margin:10px auto">${botSvg(s.c)}</div>`}</div>`;
  let w;
@@ -397,7 +407,9 @@ function initUI(){
  $('subf').onchange=e=>{filter=e.target.value;renderMap()};
  $('shuf').onclick=()=>{S.seed=Math.floor(Math.random()*90000)+2;popId=0;save();build();head();renderMap();$('mw').scrollTop=0};
  $('resetAll').onclick=()=>{if(confirm('Hapus semua progres di perangkat ini?')){S.score=0;S.done={};save();head();renderMap()}};
- $('logoImg').onerror=()=>{$('lg').innerHTML=botSvg('#3b8bd9')}}
+ /* Jika file logo belum diunggah, tampilkan robot cadangan */
+ $('logoImg').onerror=()=>{$('lg').innerHTML=botSvg('#3b8bd9')};
+ $('heroImg').onerror=()=>{$('hl').innerHTML=botSvg('#3b8bd9')}}
 
 load();build();initUI();head();renderBar();$('mw').scrollTop=renderMap()-40;
 </script>
