@@ -152,6 +152,41 @@ footer{background:rgba(2,13,9,.9);border-top:2px solid var(--line);color:var(--m
 #gt small{color:var(--muted)}
 .chip{display:inline-block;margin:2px 4px 2px 0;padding:0 9px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:.88rem;white-space:nowrap}.chip.full{background:#0f4a33;border-color:#1fbf8a}
 .del{border:1px solid #e04b3f;background:#4a1d1a;color:#fff;border-radius:10px;padding:2px 10px}
+/* Video perkenalan (bingkai tablet) */
+#beranda,#kenalan,#peta,#bank,#guru{scroll-margin-top:84px}
+a.pb,a.cta{text-decoration:none;display:inline-block}
+.kenal{display:grid;grid-template-columns:1fr 1.3fr;gap:26px;align-items:center;margin-top:22px;padding:24px;border:2px solid var(--line);border-radius:26px;background:rgba(3,19,14,.8);backdrop-filter:blur(4px)}
+.kt h2{font-size:clamp(1.6rem,3.5vw,2.3rem);color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.3)}
+.kt p{color:#d3fff0;font-size:1.08rem;margin:8px 0 12px}
+.kl{list-style:none;margin:0 0 16px;padding:0;display:grid;gap:6px}
+.kl li{background:rgba(14,90,71,.45);border:1px solid var(--line);border-radius:12px;padding:5px 12px;font-size:1rem}
+.tablet{margin:0;filter:drop-shadow(0 0 22px rgba(46,230,166,.35))}
+.tb{position:relative;background:linear-gradient(145deg,#2f4256,#0d1722);border:2px solid #4a6178;border-radius:30px;padding:16px 24px 16px 32px;box-shadow:inset 0 0 0 2px #0a1118}
+.tb .cam{position:absolute;left:12px;top:50%;width:9px;height:9px;margin-top:-4px;border-radius:50%;background:#101a24;box-shadow:0 0 0 2px #0a1118,inset 0 0 3px #3ab8ff}
+.tb .hb{position:absolute;right:8px;top:50%;width:5px;height:44px;margin-top:-22px;border-radius:5px;background:#52677d}
+.scr{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000;box-shadow:0 0 0 2px #05090e}
+.scr iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.tablet figcaption{text-align:center;margin-top:10px;color:var(--muted);font-size:.95rem}
+/* Bank soal */
+.bsum{margin:0 0 14px;color:var(--muted);font-size:1.02rem}
+.bgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(360px,100%),1fr));gap:14px}
+.bc{background:rgba(17,26,46,.95);border:2px solid var(--line);border-top:6px solid var(--c);border-radius:20px;padding:16px 18px}
+.bc h3{font-size:1.35rem;color:#fff;display:flex;gap:10px;align-items:center}
+.bi{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font:700 1rem 'Amiri',serif;color:#fff;flex:none}
+.bact{background:#0e2b3f;border-left:6px solid var(--accent2);border-radius:12px;padding:10px 12px;margin:12px 0 4px}
+.bact b{font-family:var(--fh);color:var(--accent2)}.bact p{margin:4px 0 2px;color:var(--muted);font-size:1rem}.bact small{color:#9fd5e8}
+.bq{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.lv{font:600 .82rem var(--fh);padding:1px 10px;border-radius:99px;margin-right:8px}.lv.d{background:#0f4a33;color:#7dffc4}.lv.l{background:#4a2d0f;color:#ffc27a}
+.bqn{color:var(--muted);font-size:.9rem}
+.bqt{font-size:1.12rem;margin:6px 0 8px}
+.bopts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.bo{background:var(--card);color:var(--txt);border:2px solid var(--line);border-radius:12px;padding:9px 8px;font-weight:800;font-size:1rem;transition:.12s}
+.bo:hover:not(:disabled){border-color:var(--accent);background:#0e4a3d}
+.bo.right{background:var(--green);color:#fff;border-color:var(--green)}.bo.wrong{background:#e04b3f;color:#fff;border-color:#e04b3f;animation:sh .35s}
+.bo:disabled:not(.right){opacity:.55;cursor:default}
+.bex{display:none;margin-top:8px;padding:8px 12px;border-radius:12px;background:#0f4a33;font-size:.98rem}.bex.on{display:block}.bex.no{background:#4a1d1a}
+@media(max-width:800px){.kenal{grid-template-columns:1fr;padding:16px}.tb{padding:10px 16px 10px 22px;border-radius:22px}.tb .cam{left:7px}.tb .hb{right:5px;height:30px;margin-top:-15px}}
+@media(max-width:480px){.bopts{grid-template-columns:1fr}}
 @media(max-width:800px){.gbtn{padding:6px 10px;font-size:.92rem}.nav .in{gap:10px}}
 @media(max-width:800px){
  .hero,.mission{grid-template-columns:1fr}.hero{justify-items:center;text-align:center}.stats{justify-content:center}
@@ -181,7 +216,7 @@ footer{background:rgba(2,13,9,.9);border-top:2px solid var(--line);color:var(--m
 
 <nav class="nav"><div class="in">
  <a class="brand" href="#beranda" aria-label="MujaHeeBot - Beranda"><span class="lg" id="lg"><img id="logoImg" src="logo_mujahebot.png" alt="Logo MujaHeeBot"></span></a>
- <a class="tab" href="#beranda">🏠 Beranda</a><a class="tab on" href="#peta">🎮 Tantangan</a><a class="tab" id="tabg" href="#guru" hidden>📊 Dashboard Guru</a>
+ <a class="tab" href="#beranda">🏠 Beranda</a><a class="tab on" href="#peta">🎮 Tantangan</a><a class="tab" href="#bank">📚 Bank Soal</a><a class="tab" id="tabg" href="#guru" hidden>📊 Dashboard Guru</a>
  <button class="gbtn sp" id="gbtn" type="button">👩‍🏫 Masuk Guru</button>
  <button class="user" id="user"><span id="un">Masuk Siswa</span><span class="av" id="av"></span></button>
 </div></nav>
@@ -199,15 +234,41 @@ footer{background:rgba(2,13,9,.9);border-top:2px solid var(--line);color:var(--m
  </div>
 </section>
 
+<section id="kenalan" class="wrap kenal" aria-labelledby="kt">
+ <div class="kt">
+  <h2 id="kt">🎬 Kenalan dengan MujaHeeBot</h2>
+  <p>Tonton video perkenalan platform belajar interaktif berbasis game untuk siswa SD: dari peta misi kelas 1–6 sampai latihan di laboratorium komputer.</p>
+  <ul class="kl"><li>🧩 Coding &amp; informatika lewat misi robot</li><li>➕🔬 Matematika dan Sains yang seru</li><li>🕌 Al Islam, Kemuhammadiyahan &amp; Bahasa Arab</li></ul>
+  <div class="row"><a class="cta" href="#peta">🎮 Mulai Misi</a><a class="pb" href="#bank">📚 Bank Soal</a><a class="pb" href="https://youtu.be/c_rcRxCV3LQ" target="_blank" rel="noopener noreferrer">▶ Buka di YouTube</a></div>
+ </div>
+ <figure class="tablet">
+  <div class="tb"><i class="cam"></i>
+   <div class="scr"><iframe src="https://www.youtube-nocookie.com/embed/c_rcRxCV3LQ?rel=0&amp;modestbranding=1&amp;playsinline=1" title="Video: Fun Coding Learning Innovation with MujaHeeBot" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+   <i class="hb"></i></div>
+  <figcaption>Video perkenalan MujaHeeBot · SDAM TV</figcaption>
+ </figure>
+</section>
+
 <main id="peta" class="wrap">
  <div class="bar2">
   <h2>Peta Misi</h2><div class="seg" id="grades" role="group" aria-label="Pilih kelas"></div>
   <select class="pb" id="subf" aria-label="Filter mapel"></select>
   <button class="pb sp" id="shuf">🎲 Acak Soal Baru</button>
   <button class="pb" id="resetAll">Ulang Progres</button>
+  <a class="pb" href="#bank">📚 Bank Soal</a>
  </div>
  <div class="mapwrap" id="mw"><div class="map" id="map"></div></div>
 </main>
+
+<section id="bank" class="wrap">
+ <div class="bar2">
+  <h2>📚 Bank Soal &amp; Aktivitas</h2><div class="seg" id="bgr" role="group" aria-label="Pilih kelas bank soal"></div>
+  <select class="pb" id="bsub" aria-label="Filter materi"></select>
+  <div class="st sp" id="bstat"></div>
+ </div>
+ <p class="bsum" id="bsum"></p>
+ <div id="bbody"></div>
+</section>
 
 <section id="guru" class="wrap" hidden>
  <div class="gh">
@@ -341,7 +402,7 @@ function gen(r,g,boss){
 
 let S={name:'',cls:'',score:0,done:{},seed:1,grade:1},M=[],cur=null,filter='all',prog=[],busy=false,popId=0;
 function load(){try{const d=JSON.parse(localStorage.getItem('mujahebot2')||'null');if(d)S=Object.assign(S,d)}catch(e){}
- S.fin=S.fin||{};for(const k in S.done){const id=k.split(':')[1];if(id)S.fin[id]=1}}
+ S.fin=S.fin||{};S.bq=S.bq||{};for(const k in S.done){const id=k.split(':')[1];if(id)S.fin[id]=1}}
 let _sy;function save(){try{localStorage.setItem('mujahebot2',JSON.stringify(S))}catch(e){}clearTimeout(_sy);_sy=setTimeout(syncNow,500)}
 function speak(t){try{if('speechSynthesis' in window){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='id-ID';u.rate=.95;speechSynthesis.speak(u)}}catch(e){}}
 
@@ -489,6 +550,83 @@ async function run(){
  else if(at)fbMsg(false,'Bintang belum lengkap',`Robot sampai, tetapi baru mengambil ${st.got.length} dari ${g.k.length} bintang ilmu.`);
  else fbMsg(false,'Belum sampai tujuan','Robot berhenti sebelum sampai. Tambah atau ubah blokmu.')}
 
+/* ================= BANK SOAL & AKTIVITAS =================
+ Format aktivitas : 'Judul|Petunjuk|Waktu'
+ Format soal      : 'Pertanyaan|Jawaban benar|Salah 1|Salah 2|Salah 3|Penjelasan'
+ Tiap kelas: 5 materi x (1 aktivitas + 2 soal: Dasar & Lanjutan). Total 60 soal + 30 aktivitas. */
+const BN={mat:'Matematika',sns:'Sains',agm:'Al Islam & Kemuhammadiyahan',arb:'Bahasa Arab',cod:'Coding & Literasi Digital'};
+const BANK={
+1:{
+ mat:['Hitung Kelereng|Siapkan 10 benda kecil. Gabungkan dua kelompok benda lalu hitung bersama temanmu.|10 menit','Berapa 3 + 4?|7|6|8|5|Gabungkan 3 dan 4. Hitung maju dari 3: 4, 5, 6, 7.','Ali punya 9 pensil, lalu diberi 6 pensil lagi. Berapa pensil Ali sekarang?|15|14|16|13|Ditambah berarti 9 + 6 = 15.'],
+ sns:['Jalan-jalan Pancaindra|Berjalan di halaman sekolah. Sebutkan 3 benda yang bisa kamu lihat, dengar, dan cium.|15 menit','Indra untuk melihat adalah...|Mata|Hidung|Telinga|Lidah|Mata adalah indra penglihatan.','Bagian tubuh untuk merasakan manis dan asin adalah...|Lidah|Kulit|Telinga|Mata|Lidah adalah indra pengecap.'],
+ agm:['Doa Sebelum Belajar|Bacalah doa sebelum belajar bersama-sama sebelum pelajaran dimulai.|5 menit','Sebelum belajar kita berdoa kepada...|Allah|Teman|Boneka|Papan tulis|Kita berdoa dan memohon pertolongan kepada Allah.','Ucapan saat bertemu sesama muslim adalah...|Assalamu’alaikum|Selamat tidur|Sampai nanti|Terima kasih|Salam berarti mendoakan keselamatan.'],
+ arb:['Tunjuk dan Sebut|Tunjuk benda di kelas lalu sebutkan namanya: kitabun, qalamun, babun.|10 menit','Bahasa Arab dari “pena” adalah...|Qalamun|Kitabun|Baitun|Babun|Qalamun artinya pena.','Bahasa Arab dari “pintu” adalah...|Babun|Qalamun|Kitabun|Ummun|Babun artinya pintu.'],
+ cod:['Robot Manusia|Satu teman menjadi robot. Beri perintah maju, kiri, kanan sampai ke kursi tujuan.|15 menit','Urutan langkah yang rapi untuk menyelesaikan tugas disebut...|Algoritma|Gambar|Lagu|Warna|Algoritma adalah urutan langkah yang jelas.','Robot diberi perintah “Kanan”. Robot akan...|Berputar ke kanan|Maju lurus|Mundur|Mati|Perintah Kanan membuat robot berbelok ke kanan.']},
+2:{
+ mat:['Pasar Mini|Bermain jual beli dengan uang mainan. Hitung total belanja 3 barang.|15 menit','45 + 23 = ...|68|58|78|67|Satuan 5+3=8, puluhan 4+2=6, jadi 68.','Dina punya 50 stiker lalu memberi 18 stiker kepada adik. Sisa stiker Dina...|32|42|68|38|50 - 18 = 32.'],
+ sns:['Mengamati Wujud Air|Amati es batu yang mencair di piring. Catat berapa menit sampai habis.|15 menit','Es batu yang mencair berubah wujud dari padat menjadi...|Cair|Gas|Padat|Debu|Mencair adalah perubahan dari padat menjadi cair.','Hewan yang bernapas dengan insang adalah...|Ikan|Kucing|Burung|Kelinci|Ikan bernapas dengan insang di dalam air.'],
+ agm:['Wudhu Bersama|Praktikkan urutan wudhu dengan bimbingan guru dan teman.|15 menit','Wudhu dilakukan sebelum...|Shalat|Tidur|Bermain|Menonton|Wudhu mensucikan diri sebelum shalat.','Rukun wudhu setelah niat adalah membasuh...|Wajah|Kaki|Telinga|Rambut saja|Rukun wudhu: niat, membasuh wajah, tangan, mengusap kepala, membasuh kaki, tertib.'],
+ arb:['Kartu Warna Arab|Buat kartu warna: ahmar (merah), azraq (biru), akhdhar (hijau). Cocokkan dengan benda.|15 menit','“Merah” dalam bahasa Arab adalah...|Ahmar|Azraq|Akhdhar|Abyadh|Ahmar artinya merah.','“Akhdhar” artinya warna...|Hijau|Biru|Putih|Hitam|Akhdhar artinya hijau.'],
+ cod:['Pola Tepuk|Buat pola tepuk, tepuk, injak. Ulangi 3 kali bersama teman.|10 menit','Pola tepuk, injak, tepuk, injak adalah contoh...|Pengulangan|Penghapusan|Kesalahan|Gambar|Pola yang berulang disebut perulangan.','Agar robot maju 3 langkah dengan singkat, kita pakai blok...|Ulang 3x Maju|Kiri|Kanan|Berhenti|Ulang 3x mengulang perintah Maju tiga kali.']},
+3:{
+ mat:['Kartu Perkalian|Buat kartu perkalian 2 sampai 9. Main tebak cepat berpasangan.|15 menit','6 × 7 = ...|42|36|48|49|6 dikali 7 sama dengan 42.','Ada 8 kotak, tiap kotak berisi 9 permen. Jumlah permen seluruhnya...|72|63|81|64|8 × 9 = 72.'],
+ sns:['Siklus Hidup Kupu-kupu|Gambarkan empat tahap: telur, ulat, kepompong, kupu-kupu.|20 menit','Tahap sesudah ulat pada kupu-kupu adalah...|Kepompong|Telur|Larva|Kupu-kupu dewasa|Urutannya telur, ulat, kepompong, kupu-kupu.','Sumber energi utama bagi bumi adalah...|Matahari|Bulan|Angin|Awan|Matahari memberi cahaya dan panas bagi bumi.'],
+ agm:['Kotak Infak Kelas|Kumpulkan infak seikhlasnya selama seminggu, lalu salurkan bersama untuk kebaikan.|1 minggu','Memberi sebagian harta dengan ikhlas disebut...|Infak|Rakus|Pelit|Boros|Infak adalah memberi harta dengan ikhlas karena Allah.','Sifat Rasulullah ﷺ yang artinya jujur adalah...|Shiddiq|Amanah|Fathanah|Tabligh|Shiddiq berarti benar atau jujur.'],
+ arb:['Anggota Keluarga|Tempel foto keluarga lalu sebut: abun, ummun, akhun, ukhtun.|15 menit','“Saudara laki-laki” dalam bahasa Arab adalah...|Akhun|Ukhtun|Abun|Ummun|Akhun artinya saudara laki-laki.','Ukhtun artinya...|Saudara perempuan|Ibu|Ayah|Kakek|Ukhtun artinya saudara perempuan.'],
+ cod:['Resep Roti Isi|Tulis langkah membuat roti isi dengan berurutan. Tukar dengan teman dan cek apakah runtut.|15 menit','Jika urutan langkah algoritma salah, maka...|Hasil tidak sesuai|Selalu benar|Lebih cepat|Tidak ada akibat|Urutan yang tepat membuat hasil benar.','Robot menghadap utara, diberi perintah: Maju, Maju, Kanan, Maju. Gerakan terakhir robot menuju...|Timur|Utara|Barat|Selatan|Setelah Kanan, robot menghadap timur lalu maju.']},
+4:{
+ mat:['Pizza Pecahan|Potong kertas bulat menjadi 2, 4, dan 8 bagian. Bandingkan 1/2 dan 2/4.|20 menit','Bentuk paling sederhana dari 4/8 adalah...|1/2|1/4|2/3|4/4|Bagi 4 dan 8 dengan 4 menjadi 1/2.','Hasil dari 24 × 15 adalah...|360|340|380|320|24 × 15 = 240 + 120 = 360.'],
+ sns:['Magnet Misterius|Uji benda di sekitarmu: mana yang menempel pada magnet dan mana yang tidak.|20 menit','Benda yang ditarik oleh magnet adalah...|Paku besi|Penghapus|Kertas|Plastik|Besi termasuk bahan magnetis.','Energi yang tersimpan pada makanan disebut energi...|Kimia|Bunyi|Listrik|Gerak|Makanan menyimpan energi kimia.'],
+ agm:['Cerita KH Ahmad Dahlan|Tulis tiga kebaikan KH Ahmad Dahlan lalu ceritakan di depan kelas.|20 menit','KH Ahmad Dahlan mendirikan Muhammadiyah di kota...|Yogyakarta|Jakarta|Surabaya|Bandung|Muhammadiyah berdiri di Yogyakarta pada tahun 1912.','Jumlah rukun iman adalah...|6|5|7|4|Rukun iman ada enam.'],
+ arb:['Berburu Huruf Mad|Cari kata bermad dalam teks hijaiyyah dan beri tanda. Bacalah dengan benar.|15 menit','Huruf mad ada tiga yaitu alif, waw, dan...|Ya|Ba|Ta|Ra|Huruf mad: alif, waw, dan ya.','Arti “Yaumun” adalah...|Hari|Bulan|Tahun|Minggu|Yaumun artinya hari.'],
+ cod:['Coding Tanpa Layar|Tulis program berpola untuk menggambar persegi: ulangi maju dan belok.|20 menit','Untuk menggambar persegi, robot mengulang “Maju lalu Kanan” sebanyak...|4 kali|2 kali|3 kali|6 kali|Persegi memiliki 4 sisi dan 4 sudut.','Kesalahan dalam program disebut...|Bug|Pixel|Ikon|Sensor|Bug adalah kesalahan program; memperbaikinya disebut debugging.']},
+5:{
+ mat:['Taman Kubus|Susun kubus satuan menjadi kubus 3 × 3 × 3. Hitung banyak kubusnya.|20 menit','Volume kubus dengan sisi 4 cm adalah...|64 cm³|16 cm³|48 cm³|12 cm³|4 × 4 × 4 = 64.','KPK dari 4 dan 6 adalah...|12|24|10|2|Kelipatan 4: 4, 8, 12. Kelipatan 6: 6, 12. KPK-nya 12.'],
+ sns:['Rangkaian Listrik Sederhana|Rangkai baterai, kabel, dan lampu kecil. Gambar rangkaian yang menyala dan yang padam.|25 menit','Lampu menyala jika rangkaian listrik...|Tertutup|Terbuka|Terputus|Basah|Arus hanya mengalir pada rangkaian tertutup.','Bagian darah yang mengangkut oksigen adalah...|Sel darah merah|Sel darah putih|Keping darah|Air liur|Sel darah merah membawa oksigen ke seluruh tubuh.'],
+ agm:['Lini Masa Hijrah|Susun peristiwa hijrah Nabi ﷺ dari Makkah ke Madinah menjadi lini masa.|25 menit','Nabi Muhammad ﷺ hijrah dari Makkah ke...|Madinah|Mesir|Yaman|Baghdad|Hijrah Nabi ﷺ menuju Madinah.','Kepanduan Muhammadiyah bernama...|Hizbul Wathan|Tapak Suci|Nasyiatul Aisyiyah|Aisyiyah|Hizbul Wathan melatih disiplin dan cinta tanah air.'],
+ arb:['Kalimat Sederhana|Susun kalimat: Hadza kitabun, Hadzihi madrasatun. Baca bergantian.|20 menit','“Hadza kitabun” artinya...|Ini sebuah buku|Itu sebuah rumah|Ini sebuah pena|Itu sebuah sekolah|Hadza berarti ini, kitabun berarti buku.','“Hadzihi” dipakai untuk benda...|Perempuan (mu’annats)|Laki-laki|Jamak saja|Apa saja|Hadzihi berarti ini untuk benda mu’annats.'],
+ cod:['Debug Bersama|Berikan program robot yang salah. Temanmu mencari kesalahan lalu memperbaikinya.|20 menit','Mencari dan memperbaiki kesalahan program disebut...|Debugging|Printing|Scrolling|Zooming|Debugging adalah proses memperbaiki bug.','Kalimat “Jika hujan, bawa payung” adalah contoh...|Percabangan|Perulangan|Variabel|Bug|Jika... maka... adalah percabangan (if).']},
+6:{
+ mat:['Survei Data Kelas|Catat tinggi badan 10 teman, lalu hitung rata-rata dan modusnya.|25 menit','Rata-rata dari 6, 8, dan 10 adalah...|8|9|7|10|(6 + 8 + 10) ÷ 3 = 8.','25% dari 240 adalah...|60|50|80|120|25% sama dengan 1/4. Jadi 240 ÷ 4 = 60.'],
+ sns:['Bumi, Bulan, dan Matahari|Peragakan rotasi dan revolusi memakai bola dan senter.|25 menit','Peristiwa bumi mengelilingi matahari disebut...|Revolusi|Rotasi|Gerhana|Evaporasi|Satu kali revolusi bumi sekitar 365 hari.','Perubahan zat gas menjadi cair disebut...|Mengembun|Menguap|Membeku|Menyublim|Uap air yang mendingin mengembun menjadi titik air.'],
+ agm:['Aksi Al-Ma’un|Rancang aksi peduli kecil, misalnya berbagi makanan atau membantu teman, lalu tulis refleksimu.|1 minggu','Surat Al-Ma’un mengajarkan kepedulian kepada...|Anak yatim dan fakir miskin|Hewan saja|Pedagang|Pejabat|Al-Ma’un mengajak kita peduli kepada yatim dan fakir miskin.','Muhammadiyah didirikan pada tanggal...|18 November 1912|17 Agustus 1945|1 Juni 1945|28 Oktober 1928|KH Ahmad Dahlan mendirikan Muhammadiyah di Yogyakarta pada 18 November 1912.'],
+ arb:['Percakapan Pendek|Berlatih dialog berpasangan: Kaifa haluka? Alhamdulillah, bikhair.|15 menit','“Kaifa haluka?” artinya...|Apa kabarmu?|Siapa namamu?|Dari mana kamu?|Berapa umurmu?|Kaifa haluka berarti bagaimana kabarmu.','“Ismuka” artinya...|Namamu|Rumahmu|Kelasmu|Bukumu|Ismuka berarti namamu.'],
+ cod:['Rancang Aplikasi Sekolah|Gambar tampilan aplikasi absensi sederhana dan tulis alur kerjanya.|30 menit','Tempat menyimpan nilai yang dapat berubah dalam program disebut...|Variabel|Monitor|Kabel|Printer|Variabel menyimpan data yang bisa berubah.','Menjaga kata sandi tetap aman berarti...|Tidak membagikannya kepada orang lain|Memberi tahu semua teman|Memakai 1234|Menulis di papan tulis|Kata sandi bersifat rahasia.']}
+};
+const BQ={};let BG=1,BF='all';
+const BTOT=Object.values(BANK).reduce((a,g)=>a+Object.keys(g).length*2,0),BACT=Object.values(BANK).reduce((a,g)=>a+Object.keys(g).length,0);
+function bankStat(){
+ let got=0,tot=0;Object.keys(BANK[BG]).forEach(k=>[0,1].forEach(i=>{tot++;if(S.bq&&S.bq[`${BG}-${k}-${i}`])got++}));
+ $('bstat').innerHTML=`<small>Soal benar kelas ${BG}</small><b>✅ ${got}/${tot}</b>`}
+function renderBank(){
+ const gs=$('bgr');gs.innerHTML='';
+ for(let g=1;g<=6;g++){const b=document.createElement('button');b.type='button';b.textContent='Kelas '+g;b.setAttribute('aria-pressed',BG===g);b.onclick=()=>{BG=g;renderBank()};gs.appendChild(b)}
+ $('bsum').textContent=`${BTOT} soal dan ${BACT} aktivitas untuk kelas 1–6, dari materi Dasar sampai Lanjutan. Setiap soal yang benar pertama kali memberi +5 poin.`;
+ bankStat();
+ let h='',n=0;
+ Object.keys(BANK[BG]).filter(k=>BF==='all'||BF===k).forEach(k=>{
+  const [act,...qs]=BANK[BG][k],[at,ad,am]=act.split('|'),sb=SUB[k];
+  h+=`<article class="bc" style="--c:${sb.c}"><h3><span class="bi" style="background:${sb.c}">${sb.i}</span>${BN[k]}</h3><div class="bact"><b>🎯 Aktivitas: ${at}</b><p>${ad}</p><small>⏱ ${am}</small></div>`;
+  qs.forEach((q,i)=>{
+   const p=q.split('|'),id=`${BG}-${k}-${i}`,dn=!!(S.bq&&S.bq[id]);n++;BQ[id]={a:p[1],ex:p[5]};
+   const ops=shuf(p.slice(1,5),rng(BG*131+i*17+k.charCodeAt(0)));
+   h+=`<div class="bq" data-id="${id}"><div><span class="lv ${i?'l':'d'}">${i?'🚀 Lanjutan':'🌱 Dasar'}</span><span class="bqn">Soal ${n}</span></div><p class="bqt">${p[0]}</p><div class="bopts">${ops.map(o=>`<button type="button" class="bo${dn&&o===p[1]?' right':''}" data-v="${esc(o)}"${dn?' disabled':''}>${o}</button>`).join('')}</div><div class="bex${dn?' on':''}">${dn?'✅ '+p[5]:''}</div></div>`});
+  h+='</article>'});
+ $('bbody').innerHTML=`<div class="bgrid">${h}</div>`}
+function initBank(){
+ BG=+String(S.cls).charAt(0)||S.grade||1;if(BG<1||BG>6)BG=1;
+ $('bsub').innerHTML='<option value="all">Semua materi</option>'+Object.keys(BN).map(k=>`<option value="${k}">${BN[k]}</option>`).join('');
+ $('bsub').onchange=e=>{BF=e.target.value;renderBank()};
+ $('bbody').addEventListener('click',e=>{
+  const b=e.target.closest('.bo');if(!b||b.disabled)return;
+  const q=b.closest('.bq'),id=q.dataset.id,d=BQ[id],ex=q.querySelector('.bex');
+  if(b.dataset.v===d.a){
+   q.querySelectorAll('.bo').forEach(x=>{x.disabled=true});b.classList.add('right');
+   S.bq=S.bq||{};const first=!S.bq[id];if(first){S.bq[id]=1;S.score+=5;save();head()}
+   ex.className='bex on';ex.textContent=(first?'✅ Benar! +5 poin. ':'✅ Benar! ')+d.ex;speak('Masya Allah, hebat!');bankStat()}
+  else{b.classList.add('wrong');setTimeout(()=>b.classList.remove('wrong'),450);ex.className='bex on no';ex.textContent='Belum tepat. Baca soal lagi, lalu coba jawaban lain.'}});
+ renderBank()}
+
 /* ================= MODUL GURU ================= */
 const CLS_N=['Champion','Excellent','Brilliant','Olimpiade','Smart'];
 const PER={};T.forEach(x=>PER[x]=(PER[x]||0)+1);
@@ -514,9 +652,10 @@ function tsSave(){try{TS?sessionStorage.setItem('mujahebot_ts',JSON.stringify(TS
 function updT(){$('gbtn').textContent=TS?'📊 Dashboard Guru':'👩‍🏫 Masuk Guru';$('tabg').hidden=!TS}
 function setView(v){
  const g=v==='guru'&&!!TS;
- $('beranda').hidden=g;$('peta').hidden=g;$('guru').hidden=!g;
- document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',g?t.id==='tabg':t.getAttribute('href')==='#peta'));
- if(g){loadDash();window.scrollTo(0,0)}else{$('mw').scrollTop=Math.max(0,renderMap()-40)}}
+ ['beranda','kenalan','peta','bank'].forEach(i=>{$(i).hidden=g});$('guru').hidden=!g;
+ document.querySelectorAll('.tab').forEach(t=>{if(g)t.classList.toggle('on',t.id==='tabg');else if(t.id==='tabg')t.classList.remove('on')});
+ if(g){loadDash();window.scrollTo(0,0)}
+ else{if(!document.querySelector('.tab.on'))document.querySelector('.tab[href="#peta"]').classList.add('on');$('mw').scrollTop=Math.max(0,renderMap()-40);renderBank()}}
 function ago(t){if(!t)return '-';const s=(Date.now()-t)/1000;if(s<90)return 'Baru saja';if(s<3600)return Math.round(s/60)+' menit lalu';if(s<86400)return Math.round(s/3600)+' jam lalu';return new Date(t).toLocaleDateString('id-ID',{day:'numeric',month:'short',year:'numeric'})}
 
 async function loadDash(){
@@ -583,7 +722,7 @@ function initTeacher(){
   TS={name,classes,code};tsSave();try{localStorage.setItem('mujahebot_guru',JSON.stringify({name,classes}))}catch(x){}
   gSel='all';$('tc').value='';$('tdlg').close();updT();setView('guru')});
  $('tabg').onclick=e=>{e.preventDefault();setView('guru')};
- document.querySelectorAll('.tab:not(#tabg)').forEach(t=>t.addEventListener('click',()=>setView('siswa')));
+ document.querySelectorAll('.tab:not(#tabg)').forEach(t=>t.addEventListener('click',()=>{setView('siswa');document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===t))}));
  $('gref').onclick=loadDash;$('gcsv').onclick=csv;$('gback').onclick=()=>setView('siswa');
  $('gout').onclick=()=>{TS=null;tsSave();updT();setView('siswa')};
  $('gq').oninput=renderDash;$('gsort').onchange=renderDash;
@@ -599,13 +738,13 @@ function initUI(){
  $('mc').onclick=()=>$('md').close();$('md').addEventListener('close',()=>{try{speechSynthesis.cancel()}catch(e){}renderMap()});
  $('subf').onchange=e=>{filter=e.target.value;renderMap()};
  $('shuf').onclick=()=>{S.seed=Math.floor(Math.random()*90000)+2;popId=0;save();build();head();renderMap();$('mw').scrollTop=0};
- $('resetAll').onclick=()=>{if(confirm('Hapus semua progres di perangkat ini?')){S.score=0;S.done={};S.fin={};save();head();renderMap()}};
+ $('resetAll').onclick=()=>{if(confirm('Hapus semua progres di perangkat ini?')){S.score=0;S.done={};S.fin={};S.bq={};save();head();renderMap();renderBank()}};
  /* Jika file logo belum diunggah, tampilkan robot cadangan */
  $('av').innerHTML=botSvg();
  $('logoImg').onerror=()=>{$('lg').innerHTML=botSvg('#3b8bd9')};
  $('heroImg').onerror=()=>{$('hl').innerHTML=botSvg('#3b8bd9')}}
 
-load();build();initUI();initTeacher();head();renderBar();$('mw').scrollTop=renderMap()-40;syncNow();
+load();build();initUI();initTeacher();initBank();head();renderBar();$('mw').scrollTop=renderMap()-40;syncNow();
 </script>
 </body>
 </html>
