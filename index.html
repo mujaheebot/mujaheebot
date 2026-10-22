@@ -41,6 +41,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .tab.on,.tab:hover{color:#fff;border-color:var(--accent);background:#0e5a47;box-shadow:0 0 14px rgba(46,230,166,.35)}
 .user{display:flex;align-items:center;gap:10px;border:0;background:none;font-weight:800;font-size:1.05rem;color:var(--txt)}
 .av{width:54px;height:54px;border-radius:50%;background:rgba(3,19,14,.7);border:2px solid var(--accent);display:grid;place-items:center;overflow:hidden;box-shadow:0 0 12px rgba(126,211,33,.45)}.av img{width:44px;height:auto;display:block}
+.sout{border:2px solid #e04b3f;background:rgba(224,75,63,.16);color:#ff9a90;border-radius:14px;padding:6px 14px;font-weight:800;font-size:1.02rem;font-family:var(--fb)}.sout:hover{background:rgba(224,75,63,.32);color:#fff}
 
 /* Beranda */
 .hero{display:grid;grid-template-columns:250px 1fr;gap:26px;align-items:center;padding:26px 24px;margin-top:18px;border:2px solid var(--accent);border-radius:26px;background:linear-gradient(135deg,rgba(10,95,73,.93),rgba(14,138,104,.9));box-shadow:0 0 30px rgba(46,230,166,.2)}
@@ -78,6 +79,8 @@ button{font:inherit;color:inherit;cursor:pointer}
 .pb:hover{background:#0e4a3d;border-color:var(--accent)}
 .cta{background:#0ea5d9;color:#fff;border:0;border-radius:999px;padding:9px 24px;font-weight:800;font-size:1.05rem;box-shadow:0 3px 0 rgba(0,0,0,.35)}.cta:hover{filter:brightness(1.12)}
 .cta:disabled{opacity:.5}
+.cert{border:2px solid var(--yellow);background:rgba(247,210,62,.14);color:var(--yellow);border-radius:999px;padding:6px 18px;font-weight:800;font-size:1.02rem;font-family:var(--fb)}.cert:hover{background:rgba(247,210,62,.3)}
+.cta.gold{background:#f7c531;color:#14263a}
 
 /* Peta */
 .mapwrap{height:74vh;min-height:420px;overflow:auto;border-radius:20px;background:rgba(10,43,36,.92);border:2px solid var(--line);position:relative}
@@ -142,6 +145,12 @@ select option{background:#0d1526;color:#e8fff6}
 input::placeholder{color:#6f9a8c}
 footer{background:rgba(2,13,9,.9);border-top:2px solid var(--line);color:var(--muted);text-align:center;padding:20px 12px;margin-top:30px;font-size:1rem}
 [hidden]{display:none!important}
+/* Sertifikat */
+#cd{max-width:1000px}
+.cbox{padding:22px;display:grid;gap:12px;justify-items:center}
+.cbox h3{font-size:1.6rem;color:#fff;text-align:center}
+.cbox p{margin:0;color:var(--muted);text-align:center;font-size:1rem}
+#cv{width:100%;height:auto;border-radius:10px;border:3px solid #f7c531;background:#fff;box-shadow:0 8px 30px rgba(0,0,0,.5)}
 /* Guru */
 .gbtn{border:2px solid var(--yellow);background:rgba(247,210,62,.12);color:var(--yellow);border-radius:14px;padding:6px 14px;font-weight:800;font-size:1.02rem;font-family:var(--fb)}.gbtn:hover{background:rgba(247,210,62,.26)}
 #tdlg{max-width:680px}
@@ -167,7 +176,7 @@ footer{background:rgba(2,13,9,.9);border-top:2px solid var(--line);color:var(--m
 #gt small{color:var(--muted)}
 .chip{display:inline-block;margin:2px 4px 2px 0;padding:0 9px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:.88rem;white-space:nowrap}.chip.full{background:#0f4a33;border-color:#1fbf8a}
 .del{border:1px solid #e04b3f;background:#4a1d1a;color:#fff;border-radius:10px;padding:2px 10px}
-@media(max-width:800px){.gbtn{padding:6px 10px;font-size:.92rem}.nav .in{gap:10px}}
+@media(max-width:800px){.gbtn,.sout{padding:6px 10px;font-size:.92rem}.nav .in{gap:10px}}
 @media(max-width:800px){
  .hero,.mission{grid-template-columns:1fr}.hero{justify-items:center;text-align:center}.stats{justify-content:center}
  .hlogo{width:min(250px,80%)}
@@ -200,6 +209,7 @@ footer{background:rgba(2,13,9,.9);border-top:2px solid var(--line);color:var(--m
  <a class="tab" href="#beranda">🏠 Beranda</a><a class="tab" href="#video">🎬 Video</a><a class="tab on" href="#peta">🎮 Tantangan</a><a class="tab" id="tabg" href="#guru" hidden>📊 Dashboard Guru</a>
  <button class="gbtn sp" id="gbtn" type="button">👩‍🏫 Masuk Guru</button>
  <button class="user" id="user"><span id="un">Masuk Siswa</span><span class="av" id="av"></span></button>
+ <button class="sout" id="sout" type="button" hidden>🚪 Keluar</button>
 </div></nav>
 
 <section id="beranda" class="wrap hero">
@@ -244,6 +254,7 @@ footer{background:rgba(2,13,9,.9);border-top:2px solid var(--line);color:var(--m
  <div class="bar2">
   <h2>Peta Misi</h2><div class="seg" id="grades" role="group" aria-label="Pilih kelas"></div>
   <select class="pb" id="subf" aria-label="Filter mapel"></select>
+  <button class="cert" id="certBtn" type="button">🏅 Sertifikat</button>
   <button class="pb sp" id="shuf">🎲 Acak Soal Baru</button>
   <button class="pb" id="resetAll">Ulang Progres</button>
  </div>
@@ -270,7 +281,7 @@ footer{background:rgba(2,13,9,.9);border-top:2px solid var(--line);color:var(--m
  <h3>Identitas Petualang</h3>
  <div><label for="nm">Nama siswa</label><input id="nm" required maxlength="40" placeholder="Tulis namamu"></div>
  <div><label for="cl">Kelas</label><select id="cl" required></select></div>
- <p style="margin:0;color:var(--muted);font-size:.95rem">Pilih kelasmu dengan benar supaya gurumu bisa melihat progres belajarmu.</p>
+ <p style="margin:0;color:var(--muted);font-size:.95rem">Pilih kelasmu dengan benar supaya gurumu bisa melihat progres belajarmu. Nama ini akan tercetak di sertifikatmu, jadi tulis dengan benar ya.</p>
  <div class="row" style="justify-content:flex-end"><button type="button" class="pb" id="cx">Batal</button><button class="cta">Simpan</button></div>
 </form></dialog>
 
@@ -282,6 +293,15 @@ footer{background:rgba(2,13,9,.9);border-top:2px solid var(--line);color:var(--m
  <p id="terr" class="terr" role="alert"></p>
  <div class="row" style="justify-content:flex-end"><button type="button" class="pb" id="tx">Batal</button><button class="cta" id="tok">Masuk</button></div>
 </form></dialog>
+
+<dialog id="cd"><button class="close" id="cc" aria-label="Tutup">✕</button>
+ <div class="cbox">
+  <h3 id="ct">🏅 Sertifikat Apresiasi Terbaik</h3>
+  <canvas id="cv" width="1600" height="1131" aria-label="Sertifikat"></canvas>
+  <div class="row" style="justify-content:center"><button class="cta gold" id="cdl" type="button">⬇ Unduh Sertifikat (PNG)</button><button class="pb" id="cpr" type="button">🖨 Cetak</button><button class="pb" id="cx2" type="button">Tutup</button></div>
+  <p>Nama di sertifikat mengikuti nama yang kamu isi di tombol Masuk Siswa.</p>
+ </div>
+</dialog>
 
 <script>
 /* ================= PENGATURAN GURU =================
@@ -435,10 +455,18 @@ function gen(r,g,boss){
   return{s:[5,0,0],g:p[p.length-1],k,o:shuf(free,r).slice(0,3+Math.floor(g/2)),max:(g<4?acts.length:comp)+1,gi:GN[Math.floor(r()*GN.length)]}}
 }
 
-let S={name:'',cls:'',score:0,done:{},seed:1,grade:1},M=[],cur=null,filter='all',prog=[],busy=false,popId=0;
+const freshS=()=>({name:'',cls:'',score:0,done:{},fin:{},cd:{},seed:1,grade:1});
+let S=freshS(),M=[],cur=null,filter='all',prog=[],busy=false,popId=0;
 function load(){try{const d=JSON.parse(localStorage.getItem('mujahebot2')||'null');if(d)S=Object.assign(S,d)}catch(e){}
- S.fin=S.fin||{};for(const k in S.done){const id=k.split(':')[1];if(id)S.fin[id]=1}}
-let _sy;function save(){try{localStorage.setItem('mujahebot2',JSON.stringify(S))}catch(e){}clearTimeout(_sy);_sy=setTimeout(syncNow,500)}
+ S.fin=S.fin||{};S.cd=S.cd||{};for(const k in S.done){const id=k.split(':')[1];if(id)S.fin[id]=1}}
+
+/* Profil siswa tersimpan per perangkat, supaya progres tidak hilang saat siswa keluar lalu masuk lagi */
+const profGet=()=>{try{return JSON.parse(localStorage.getItem('mujahebot_profiles')||'{}')}catch(e){return{}}};
+const profSet=o=>{try{localStorage.setItem('mujahebot_profiles',JSON.stringify(o))}catch(e){}};
+let _sy;function save(){
+ try{localStorage.setItem('mujahebot2',JSON.stringify(S))}catch(e){}
+ if(S.name&&S.cls){const P=profGet();P[S.cls+'|'+S.name.toLowerCase()]={score:S.score,done:S.done,fin:S.fin,cd:S.cd,seed:S.seed,grade:S.grade};profSet(P)}
+ clearTimeout(_sy);_sy=setTimeout(syncNow,500)}
 function speak(t){try{if('speechSynthesis' in window){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='id-ID';u.rate=.95;speechSynthesis.speak(u)}}catch(e){}}
 
 function mk(g,i){
@@ -456,10 +484,13 @@ function mk(g,i){
  return o}
 const build=()=>{M=[];for(let g=1;g<=6;g++)for(let i=0;i<NM;i++)M.push(mk(g,i))};
 const dk=id=>S.seed+':'+id,isDone=id=>!!S.done[dk(id)];
+/* Hitung misi yang sudah selesai di satu kelas (permanen, tidak hilang saat soal diacak) */
+const gradeCount=g=>{let n=0;for(let i=1;i<=NM;i++)if(S.fin[(g-1)*NM+i])n++;return n};
 
 function head(){
  const dn=M.filter(m=>isDone(m.id)).length;
  $('sc').textContent=S.score;$('dn').textContent=dn+'/'+TOT;$('hello').textContent=S.name||'Anak Hebat';$('un').textContent=S.name||'Masuk Siswa';
+ $('sout').hidden=!S.name;
  $('rk').textContent=S.score>=800?'Rabbani Hero':S.score>=400?'Master Robot':S.score>=150?'Insinyur Muda':'Teknisi Cilik'}
 
 /* Peta kampus: jalan berkelok menuju sekolah, dengan bangunan sesuai mapel */
@@ -522,7 +553,7 @@ function renderMap(){
 
 function renderBar(){
  const gs=$('grades');gs.innerHTML='';
- for(let g=1;g<=6;g++){const b=document.createElement('button');b.textContent='Kelas '+g;b.setAttribute('aria-pressed',S.grade==g);b.onclick=()=>{S.grade=g;popId=0;save();renderBar();renderMap();$('mw').scrollTop=0};gs.appendChild(b)}
+ for(let g=1;g<=6;g++){const b=document.createElement('button');b.textContent='Kelas '+g+(gradeCount(g)>=NM?' 🏅':'');b.setAttribute('aria-pressed',S.grade==g);b.onclick=()=>{S.grade=g;popId=0;save();renderBar();renderMap();$('mw').scrollTop=0};gs.appendChild(b)}
  $('subf').innerHTML='<option value="all">Semua mapel</option>'+Object.entries(SUB).map(([k,v])=>`<option value="${k}"${filter==k?' selected':''}>${v.n}</option>`).join('')}
 
 /* Misi */
@@ -544,12 +575,18 @@ function renderM(){
    b.onclick=()=>{if(busy)return;if(prog.length>=l.grid.max)return fbMsg(false,'Blok penuh','Hapus beberapa blok, atau pakai blok Ulang agar lebih hemat.');prog.push({n,a,k});drawProg()};$('pal').appendChild(b)});
   $('run').onclick=run;$('clr').onclick=()=>{if(busy)return;prog=[];drawProg();drawBoard(init())};drawProg();drawBoard(init())}}
 function fbMsg(ok,t,x){const f=$('fb');f.className='fb '+(ok?'ok':'no');f.innerHTML=botSvg(ok?'#3fae5a':'#e04b3f')+`<div><h4>${t}</h4><div>${x}</div></div>`;speak(ok?'Masya Allah, hebat!':'Belum tepat. Ayo coba lagi.')}
-function reward(pts){const k=dk(cur.id);if(S.done[k])return false;S.done[k]=1;(S.fin=S.fin||{})[cur.id]=1;S.score+=pts;save();head();renderMap();return true}
+function reward(pts){const k=dk(cur.id);if(S.done[k])return false;S.done[k]=1;(S.fin=S.fin||{})[cur.id]=1;S.score+=pts;
+ /* catat tanggal pertama kali seluruh misi kelas ini selesai */
+ if(gradeCount(cur.g)>=NM&&!(S.cd||(S.cd={}))[cur.g])S.cd[cur.g]=Date.now();
+ save();head();renderBar();renderMap();return true}
 function nextBtn(){if(cur.id<TOT){const b=document.createElement('button');b.className='cta';b.textContent='Misi berikutnya →';b.style.marginTop='8px';b.onclick=()=>openM(cur.id+1);$('fb').lastElementChild.appendChild(b)}}
+/* Tombol sertifikat muncul di umpan balik bila semua 25 misi kelas ini sudah selesai */
+function certBtnFb(){if(gradeCount(cur.g)>=NM){const b=document.createElement('button');b.className='cta gold';b.textContent='🏅 Ambil Sertifikat Kelas '+cur.g;b.style.cssText='margin:8px 8px 0 0';const g=cur.g;b.onclick=()=>{$('md').close();openCert(g)};$('fb').lastElementChild.appendChild(b)}}
+function endBtns(){certBtnFb();nextBtn()}
 function answer(btn){
  if(btn.disabled)return;
  if(btn.dataset.v===cur.a){document.querySelectorAll('.opt').forEach(b=>b.disabled=true);btn.classList.add('right');
-  const f=reward(15);fbMsg(true,'Jawabanmu benar!',f?'Kamu mendapat +15 poin. Masya Allah!':'Benar lagi! Poin misi ini sudah pernah kamu dapat.');nextBtn()}
+  const f=reward(15);fbMsg(true,'Jawabanmu benar!',f?'Kamu mendapat +15 poin. Masya Allah!':'Benar lagi! Poin misi ini sudah pernah kamu dapat.');endBtns()}
  else{btn.classList.add('wrong');setTimeout(()=>btn.classList.remove('wrong'),400);fbMsg(false,'Belum tepat','Baca lagi materi singkat, lalu coba jawaban lain.')}}
 
 /* Coding */
@@ -581,15 +618,77 @@ async function run(){
  busy=false;$('run').disabled=false;
  const at=st.r==g.g[0]&&st.c==g.g[1];
  if(crash)fbMsg(false,'Robot menabrak!','Robot membentur batu atau tepi papan. Periksa lagi urutan belok dan langkahmu.');
- else if(at&&st.got.length==g.k.length){const f=reward(25);fbMsg(true,'Misi selesai!',f?'Programmu benar. Kamu mendapat +25 poin!':'Programmu benar lagi!');nextBtn()}
+ else if(at&&st.got.length==g.k.length){const f=reward(25);fbMsg(true,'Misi selesai!',f?'Programmu benar. Kamu mendapat +25 poin!':'Programmu benar lagi!');endBtns()}
  else if(at)fbMsg(false,'Bintang belum lengkap',`Robot sampai, tetapi baru mengambil ${st.got.length} dari ${g.k.length} bintang ilmu.`);
  else fbMsg(false,'Belum sampai tujuan','Robot berhenti sebelum sampai. Tambah atau ubah blokmu.')}
+
+/* ================= SERTIFIKAT ================= */
+let certG=0;
+const rankOf=sc=>sc>=800?'Rabbani Hero':sc>=400?'Master Robot':sc>=150?'Insinyur Muda':'Teknisi Cilik';
+function openCert(g){
+ if(!S.name||!S.cls){alert('Isi nama dan kelasmu dulu lewat tombol Masuk Siswa supaya namamu tercetak di sertifikat.');$('user').click();return}
+ if(gradeCount(g)<NM){alert(`Selesaikan dulu semua ${NM} misi Kelas ${g}. Misi yang selesai: ${gradeCount(g)}/${NM}.`);return}
+ certG=g;$('ct').textContent='🏅 Sertifikat Apresiasi Terbaik · Kelas '+g;
+ drawCert(g,true).then(()=>{if(!$('cd').open)$('cd').showModal()})}
+async function drawCert(g,useLogo){
+ const W=1600,H=1131,c=$('cv'),x=c.getContext('2d');c.width=W;c.height=H;
+ try{await Promise.all([document.fonts.load('700 60px Fredoka'),document.fonts.load('600 30px Fredoka'),document.fonts.load('400 30px Fredoka'),document.fonts.load('700 60px Amiri')])}catch(e){}
+ let img=null;
+ if(useLogo){img=await new Promise(res=>{const i=new Image();i.onload=()=>res(i);i.onerror=()=>res(null);i.src=ROBOT})}
+ const F="Fredoka,'Baloo 2',system-ui,sans-serif",G='#0e8a68',DK='#0b5a45',GOLD='#c99a14';
+ x.textAlign='center';x.textBaseline='alphabetic';
+ /* latar */
+ const bg=x.createLinearGradient(0,0,0,H);bg.addColorStop(0,'#fffdf2');bg.addColorStop(1,'#eafaf1');x.fillStyle=bg;x.fillRect(0,0,W,H);
+ x.globalAlpha=.07;x.fillStyle=G;for(let i=0;i<14;i++)for(let j=0;j<10;j++){x.beginPath();x.arc(60+i*115,60+j*115,4,0,7);x.fill()}x.globalAlpha=1;
+ /* bingkai */
+ x.strokeStyle=G;x.lineWidth=16;x.strokeRect(30,30,W-60,H-60);
+ x.strokeStyle=GOLD;x.lineWidth=4;x.strokeRect(56,56,W-112,H-112);
+ [[56,56],[W-56,56],[56,H-56],[W-56,H-56]].forEach(([a,b])=>{x.fillStyle=GOLD;x.beginPath();x.arc(a,b,16,0,7);x.fill();x.fillStyle=G;x.beginPath();x.arc(a,b,8,0,7);x.fill()});
+ /* basmalah */
+ x.fillStyle=DK;x.font="700 54px Amiri,serif";x.fillText('بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ',W/2,140);
+ /* logo */
+ if(img){const h=150,w=img.width*h/img.height;x.drawImage(img,W/2-w/2,165,w,h)}
+ /* judul */
+ x.fillStyle=DK;x.font=`700 104px ${F}`;x.fillText('SERTIFIKAT',W/2,395);
+ x.fillStyle=GOLD;x.font=`600 38px ${F}`;x.fillText('MUJAHEEBOT CODING QUEST',W/2,448);
+ x.fillStyle='#444';x.font=`400 34px ${F}`;x.fillText('Dengan bangga diberikan kepada',W/2,520);
+ /* nama siswa */
+ const nm=S.name.trim();let fs=96;
+ do{x.font=`700 ${fs}px ${F}`;fs-=4}while(x.measureText(nm).width>1250&&fs>36);
+ x.fillStyle='#14263a';x.fillText(nm,W/2,625);
+ x.strokeStyle=GOLD;x.lineWidth=3;x.beginPath();x.moveTo(280,655);x.lineTo(W-280,655);x.stroke();
+ x.fillStyle='#333';x.font=`600 34px ${F}`;x.fillText(`Siswa Kelas ${S.cls} · SD Muhammadiyah Al Mujahidin Wonosari`,W/2,712);
+ x.font=`400 32px ${F}`;x.fillText(`telah berhasil menyelesaikan seluruh ${NM} misi Tantangan MujaHeeBot Kelas ${g}`,W/2,775);
+ x.font=`400 27px ${F}`;x.fillStyle='#555';x.fillText('meliputi Matematika, Sains, Al Islam & Kemuhammadiyahan, Bahasa Arab, dan Coding',W/2,815);
+ /* pita predikat */
+ const bw=1000,bh=84,bx=W/2-bw/2,by=850;
+ x.fillStyle=G;x.beginPath();x.roundRect?x.roundRect(bx,by,bw,bh,42):x.rect(bx,by,bw,bh);x.fill();
+ x.strokeStyle=GOLD;x.lineWidth=5;x.stroke();
+ x.fillStyle='#fff';x.font=`700 44px ${F}`;x.fillText('PREDIKAT: APRESIASI TERBAIK',W/2,by+57);
+ x.fillStyle='#14263a';x.font=`600 28px ${F}`;x.fillText(`Skor ${S.score}  ·  Pangkat ${rankOf(S.score)}`,W/2,975);
+ /* tanda tangan */
+ const dt=new Date(S.cd&&S.cd[g]||Date.now()).toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric'});
+ x.fillStyle='#333';x.font=`400 26px ${F}`;x.fillText('Wonosari, '+dt,1250,1000);
+ x.strokeStyle='#333';x.lineWidth=2;
+ x.beginPath();x.moveTo(230,1050);x.lineTo(630,1050);x.moveTo(1050,1050);x.lineTo(1450,1050);x.stroke();
+ x.font=`600 24px ${F}`;x.fillText('Guru Pembimbing',430,1080);x.fillText('Kepala Sekolah',1250,1080);
+ x.fillStyle=G;x.font=`600 26px ${F}`;x.fillText('Rabbani · Unggul · Mendunia',W/2,1050)}
+const safeName=()=>(S.name.replace(/[^\p{L}\p{N} _-]+/gu,'').trim().replace(/\s+/g,'-')||'Siswa');
+/* Jika membuka file langsung dari komputer, logo bisa memblokir ekspor; otomatis digambar ulang tanpa logo */
+async function certBlob(){const c=$('cv'),tb=()=>new Promise((res,rej)=>{try{c.toBlob(b=>b?res(b):rej(new Error('x')),'image/png')}catch(e){rej(e)}});
+ try{return await tb()}catch(e){await drawCert(certG,false);return await tb()}}
+async function certDownload(){
+ const b=await certBlob(),a=document.createElement('a');a.href=URL.createObjectURL(b);
+ a.download=`Sertifikat-MujaHeeBot-Kelas${certG}-${safeName()}.png`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),2000)}
+async function certPrint(){
+ const b=await certBlob(),u=URL.createObjectURL(b),w=window.open('','_blank');
+ if(!w){alert('Pop-up diblokir. Izinkan pop-up, atau unduh sertifikatnya lalu cetak dari file PNG.');return}
+ w.document.write(`<!DOCTYPE html><title>Sertifikat ${safeName()}</title><style>@page{size:A4 landscape;margin:0}html,body{margin:0}img{width:100%;display:block}</style><img src="${u}" onload="setTimeout(()=>print(),300)">`);w.document.close()}
 
 /* ================= MODUL GURU ================= */
 const CLS_N=['Champion','Excellent','Brilliant','Olimpiade','Smart'];
 const PER={};T.forEach(x=>PER[x]=(PER[x]||0)+1);
 const esc=x=>String(x==null?'':x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const rankOf=sc=>sc>=800?'Rabbani Hero':sc>=400?'Master Robot':sc>=150?'Insinyur Muda':'Teknisi Cilik';
 const rosterGet=()=>{try{return JSON.parse(localStorage.getItem('mujahebot_roster')||'{}')}catch(e){return{}}};
 const rosterSet=o=>{try{localStorage.setItem('mujahebot_roster',JSON.stringify(o))}catch(e){}};
 const cloudPost=o=>{if(!CLOUD_URL)return;try{fetch(CLOUD_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(o)}).catch(()=>{})}catch(e){}};
@@ -685,17 +784,35 @@ function initTeacher(){
  $('gq').oninput=renderDash;$('gsort').onchange=renderDash;
  updT()}
 
+/* Keluar siswa: progres disimpan dulu, lalu perangkat dikosongkan untuk siswa berikutnya */
+function logout(){
+ if(!S.name)return;
+ if(!confirm(`Keluar dari akun ${S.name}?\n\nProgres dan sertifikatmu tetap tersimpan. Masuk lagi dengan nama dan kelas yang sama untuk melanjutkan.`))return;
+ save();clearTimeout(_sy);syncNow();
+ S=freshS();popId=0;filter='all';
+ try{if($('md').open)$('md').close();if($('cd').open)$('cd').close()}catch(e){}
+ try{localStorage.setItem('mujahebot2',JSON.stringify(S))}catch(e){}
+ build();head();renderBar();renderMap();$('mw').scrollTop=0;window.scrollTo(0,0)}
+
 /* Profil dan kontrol */
 function initUI(){
  const sel=$('cl');sel.innerHTML='<option value="">Pilih kelas</option>';
  for(let g=1;g<=6;g++)['Champion','Excellent','Brilliant','Olimpiade','Smart'].forEach(n=>sel.insertAdjacentHTML('beforeend',`<option>${g} ${n}</option>`));
  $('user').onclick=()=>{$('nm').value=S.name;$('cl').value=S.cls;$('dlg').showModal()};
  $('cx').onclick=()=>$('dlg').close();
- $('lf').addEventListener('submit',()=>{S.name=$('nm').value.trim();S.cls=$('cl').value;if(S.cls)S.grade=+S.cls[0];save();head();renderBar();renderMap()});
+ $('lf').addEventListener('submit',()=>{
+  const nn=$('nm').value.trim(),nc=$('cl').value,nid=nc+'|'+nn.toLowerCase(),P=profGet();
+  /* jika nama & kelas ini pernah dipakai di perangkat ini, lanjutkan progresnya */
+  if(nc&&S.rid!==nid&&P[nid]){const p=P[nid];S.score=p.score||0;S.done=p.done||{};S.fin=p.fin||{};S.cd=p.cd||{};S.seed=p.seed||1}
+  S.name=nn;S.cls=nc;if(S.cls)S.grade=+S.cls[0];save();build();head();renderBar();renderMap()});
+ $('sout').onclick=logout;
+ $('certBtn').onclick=()=>{const g=S.grade;if(gradeCount(g)<NM)alert(`Sertifikat Kelas ${g} terbuka setelah kamu menyelesaikan semua ${NM} misi. Misi selesai: ${gradeCount(g)}/${NM}. Semangat!`);else openCert(g)};
+ $('cc').onclick=()=>$('cd').close();$('cx2').onclick=()=>$('cd').close();
+ $('cdl').onclick=certDownload;$('cpr').onclick=certPrint;
  $('mc').onclick=()=>$('md').close();$('md').addEventListener('close',()=>{try{speechSynthesis.cancel()}catch(e){}renderMap()});
  $('subf').onchange=e=>{filter=e.target.value;renderMap()};
  $('shuf').onclick=()=>{S.seed=Math.floor(Math.random()*90000)+2;popId=0;save();build();head();renderMap();$('mw').scrollTop=0};
- $('resetAll').onclick=()=>{if(confirm('Hapus semua progres di perangkat ini?')){S.score=0;S.done={};S.fin={};save();head();renderMap()}};
+ $('resetAll').onclick=()=>{if(confirm('Hapus semua progres di perangkat ini?')){S.score=0;S.done={};S.fin={};S.cd={};save();head();renderBar();renderMap()}};
  /* Jika file logo belum diunggah, tampilkan robot cadangan */
  $('av').innerHTML=botSvg();
  $('logoImg').onerror=()=>{$('lg').innerHTML=botSvg('#3b8bd9')};
