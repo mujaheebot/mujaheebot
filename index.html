@@ -70,6 +70,19 @@ button{font:inherit;color:inherit;cursor:pointer}
 .dev-base{position:relative;height:16px;margin:0 -5%;background:linear-gradient(180deg,#cfd8dc,#7e909c);border-radius:0 0 22px 22px;box-shadow:0 8px 14px rgba(0,0,0,.45)}
 .dev-base::after{content:"";position:absolute;left:41%;top:0;width:18%;height:6px;background:#9aa8b5;border-radius:0 0 8px 8px}
 
+/* Dua video: perkenalan (laptop) dan panduan (tablet) */
+.vids{display:grid;gap:18px;margin-top:18px}
+.vids .vid{margin-top:0}
+.vid.rev{grid-template-columns:1.3fr 1fr;border-color:#1f7a63;background:linear-gradient(135deg,rgba(11,47,39,.92),rgba(8,58,48,.9))}
+.vid.rev small{color:var(--yellow)}
+.tab-dev{width:100%;max-width:640px;margin:0 auto}
+.tab-body{position:relative;background:#0d1526;border:3px solid #2a4a5e;border-radius:30px;padding:18px 30px;box-shadow:0 0 28px rgba(46,230,166,.28),inset 0 0 0 2px rgba(255,255,255,.05)}
+.tab-body::before{content:"";position:absolute;left:11px;top:50%;width:8px;height:8px;margin-top:-4px;border-radius:50%;background:var(--accent)}
+.tab-body::after{content:"";position:absolute;right:10px;top:50%;width:6px;height:46px;margin-top:-23px;border-radius:6px;background:#2a4a5e}
+.tab-vid{position:relative;aspect-ratio:16/9;background:#000;border-radius:8px;overflow:hidden}
+.tab-vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.tab-shadow{height:10px;margin:8px 8%;border-radius:50%;background:radial-gradient(ellipse at center,rgba(0,0,0,.5),transparent 70%)}
+
 /* Bar kelas */
 .bar2{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding-top:22px;padding-bottom:14px}
 .bar2 h2{font-size:2rem;margin-right:8px;color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.35)}
@@ -182,7 +195,7 @@ footer{background:rgba(2,13,9,.9);border-top:2px solid var(--line);color:var(--m
  .hlogo{width:min(250px,80%)}
  .river{display:none}.pop{left:12px;right:12px;width:auto}.tab{display:none}
  .lg,.lg img{height:50px}
- .vid{grid-template-columns:1fr;text-align:center}.vid .row{justify-content:center}.dev-base{margin:0 -3%}
+ .vid,.vid.rev{grid-template-columns:1fr;text-align:center}.vid.rev .tab-dev{order:2}.tab-body{padding:14px 22px;border-radius:24px}.vid .row{justify-content:center}.dev-base{margin:0 -3%}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
@@ -225,7 +238,8 @@ footer{background:rgba(2,13,9,.9);border-top:2px solid var(--line);color:var(--m
  </div>
 </section>
 
-<section id="video" class="wrap vid" aria-labelledby="vid-h">
+<div id="video" class="wrap vids">
+<section class="vid" aria-labelledby="vid-h">
  <div>
   <small>🎬 Kenalan dulu, yuk!</small>
   <h2 id="vid-h">Video Perkenalan MujaHeeBot</h2>
@@ -249,6 +263,32 @@ footer{background:rgba(2,13,9,.9);border-top:2px solid var(--line);color:var(--m
   <div class="dev-base" aria-hidden="true"></div>
  </div>
 </section>
+
+<section class="vid rev" aria-labelledby="vid-t">
+ <div class="tab-dev">
+  <div class="tab-body">
+   <div class="tab-vid">
+    <iframe src="https://www.youtube-nocookie.com/embed/ajWdOu1L5qM?rel=0&modestbranding=1" title="Video panduan cara bermain MujaHeeBot" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+   </div>
+  </div>
+  <div class="tab-shadow" aria-hidden="true"></div>
+ </div>
+ <div>
+  <small>📘 Belajar caranya, yuk!</small>
+  <h2 id="vid-t">Video Panduan Cara Bermain</h2>
+  <p>Ikuti langkah demi langkah di video ini supaya kamu lancar menyelesaikan misi dan mendapatkan sertifikat.</p>
+  <ul>
+   <li>📝 Cara masuk dan mengisi nama serta kelas</li>
+   <li>🧩 Cara menjawab soal dan menyusun blok coding</li>
+   <li>🏅 Cara mendapatkan dan mengunduh sertifikat</li>
+  </ul>
+  <div class="row">
+   <a class="cta" href="#peta" style="text-decoration:none">🎮 Mulai Tantangan</a>
+   <a class="pb" href="https://www.youtube.com/watch?v=ajWdOu1L5qM" target="_blank" rel="noopener" style="text-decoration:none">▶ Buka di YouTube</a>
+  </div>
+ </div>
+</section>
+</div>
 
 <main id="peta" class="wrap">
  <div class="bar2">
